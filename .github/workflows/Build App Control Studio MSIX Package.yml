@@ -1120,16 +1120,17 @@ jobs:
               # Push the new branch to the remote repository
               git push -u origin $NewBranchName
 
-              $PRBody = @(
-                  "This PR updates MSIXBundleDownloadURL.txt to"
-                  "```"
-                  "$DownloadURLForMSIXBundle"
-                  "```"
-                  "And version.txt to"
-                  "```"
-                  "$PACKAGE_VERSION"
-                  "```"
-              ) -join "`n"
+              # Create PR body using here-string to avoid parsing issues
+              $PRBody = @"
+          This PR updates MSIXBundleDownloadURL.txt to
+            ``````
+          $DownloadURLForMSIXBundle
+            ``````
+          And version.txt to
+            ``````
+          $PACKAGE_VERSION
+            ``````
+          "@
 
               # Create the pull request
               gh pr create --title $CommitMessageAndPRTitle --body $PRBody --base main --label 'Automated 🤖' --assignee OFFSECHQ
