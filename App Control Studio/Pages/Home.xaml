@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
 
     FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}"
@@ -107,10 +108,8 @@
             </Grid.RowDefinitions>
 
             <!-- Header Section -->
-            <StackPanel Grid.Row="0" 
-                        Margin="24,32,0,12" 
-                        Spacing="4" 
-                        HorizontalAlignment="Left">
+            <!-- Header Section -->
+            <controls:WrapPanel Style="{StaticResource PageHeaderWrapPanelStyle}">
                 <TextBlock Text="App Control Studio" 
                            Style="{ThemeResource TitleTextBlockStyle}"
                            FontSize="32" 
@@ -119,7 +118,7 @@
                            Style="{ThemeResource BodyTextBlockStyle}"
                            Opacity="0.7"
                            FontSize="14"/>
-            </StackPanel>
+            </controls:WrapPanel>
 
             <!-- Overview-style sections -->
             <ScrollViewer Grid.Row="2">
