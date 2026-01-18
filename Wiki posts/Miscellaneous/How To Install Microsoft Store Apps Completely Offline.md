@@ -19,7 +19,7 @@ winget download --id 9P7GGFL7DX57 --exact --accept-package-agreements --accept-s
 > [!NOTE]\
 > `9P7GGFL7DX57` is the ID for the [Harden System Security](https://apps.microsoft.com/detail/9P7GGFL7DX57) app.
 >
-> `9PNG1JDDTGP8` is the ID for the [AppControl Manager](https://apps.microsoft.com/detail/9PNG1JDDTGP8) app.
+> `9PNG1JDDTGP8` is the ID for the [App Control Studio](https://apps.microsoft.com/detail/9PNG1JDDTGP8) app.
 >
 
 After running the above command, you will be prompted in a new window to enter the credentials for your Microsoft Entra ID account that has at least one of the required roles. Authenticated information will be shared with Microsoft services for access authorization.

@@ -4,7 +4,7 @@
 
 [This is the GitHub source](https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules.md) for the XML content shown on the Microsoft document website. You can see when the last time it was changed was, read the change history and commit messages.
 
-Use the [**AppControl Manager**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to **automate** the required [steps explained on the document](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules#steps-to-download-and-apply-the-vulnerable-driver-blocklist-binary) to download and deploy the recommended driver block rules.
+Use the [**App Control Studio**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to **automate** the required [steps explained on the document](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules#steps-to-download-and-apply-the-vulnerable-driver-blocklist-binary) to download and deploy the recommended driver block rules.
 
 ![image](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/APNGs/Fast%20and%20Automatic%20Microsoft%20Recommended%20Driver%20Block%20Rules%20updates.apng)
 

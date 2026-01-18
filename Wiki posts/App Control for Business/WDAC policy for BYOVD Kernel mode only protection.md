@@ -242,7 +242,7 @@ Remove this item which is for Windows Store EKU
 
 ## How to Use and Automate This Entire Process
 
-> [!IMPORTANT] > **Use the [AppControl Manager](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Create-and-Maintain-Strict-Kernel%E2%80%90Mode-App-Control-Policy)** to automatically Audit and deploy the Strict Kernel-mode App Control policies.
+> [!IMPORTANT] > **Use the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Create-and-Maintain-Strict-Kernel%E2%80%90Mode-App-Control-Policy)** to automatically Audit and deploy the Strict Kernel-mode App Control policies.
 
 As mentioned earlier, this policy only enforces and applies to Kernel-mode drivers, so your non-Kernel mode files are unaffected. Keep in mind that Kernel-mode does not mean programs that require Administrator privileges, those 2 categories are completely different. Also, not all drivers are Kernel mode, [**there are user-mode drivers too.**](https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)
 

@@ -11,9 +11,6 @@ Microsoft Security Compliance Toolkit includes multiple files and useful program
 * [Microsoft Security Compliance Toolkit 1.0 - How to use](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-security-configuration-framework/security-compliance-toolkit-10)
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Microsoft Security Baseline
@@ -32,9 +29,6 @@ When you unzip the Microsoft Security Baseline file, you will find this folder s
 5. **Templates** – contains additional Group Policy Object templates that are not available by default on Windows, such as `MSS-legacy.admx`, these are in `ADMX` and `ADML` formats. They will be copied to `C:\Windows\PolicyDefinitions`, where they belong, so that the new Security Baselines GPOs can be interpreted.
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## LGPO
@@ -100,9 +94,6 @@ Example:
 ```
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Policy Analyzer
@@ -132,9 +123,6 @@ In Policy Analyzer, there is an option called `Compare to Effective State`. Quot
 > The effective state settings are also saved to a new .PolicyRules file with a name combining "EffectiveState_," the current computer name, and the current date and time in the format "yyyyMMdd- HHmmss." For example, "EffectiveState_WKS51279_20200210-183947.PolicyRules."
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## How Are Group Policies Used by the Harden Windows Security Module?
@@ -146,9 +134,6 @@ In Policy Analyzer, there is an option called `Compare to Effective State`. Quot
 3. When applying the Microsoft Security Baselines, you have the option to apply the optional overrides too, [you can find the details of those overrides in here,](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Overrides-for-Microsoft-Security-Baseline), they are required to be applied if you are using Harden Windows Security Module in Azure VMs and highly recommended in general.
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## How Are Group Policies for the Module Created and Maintained?
@@ -176,9 +161,6 @@ In Policy Analyzer, there is an option called `Compare to Effective State`. Quot
 5. Replace the old Group Policy file with the new file in the Security-Baselines-X directory and upload it to the GitHub repository.
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## We Can Use Policy Analyzer for Verification and Comparison
@@ -198,9 +180,6 @@ Another way to verify the applied Group Policies is to perform the 3 tasks above
 Note: At first, when we clean install Windows, the Group Policy folder `C:\Windows\System32\GroupPolicy` is empty, it will get populated with empty folders and a `1kb` file that contains only 1 word when we first open the local Group Policy editor. It will get more populated with actual policies once we start modifying any group policies.
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## How to verify Security-Baselines-X directory and 100% trust it?
@@ -214,9 +193,6 @@ Note: At first, when we clean install Windows, the Group Policy folder `C:\Windo
 5. As you will see, everything is according to what has been explicitly stated in the [GitHub's Readme page](https://github.com/HotCakeX/Harden-Windows-Security).
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Using Configuration Service Providers (CSPs) and Provisioning Packages (Work in Progress)

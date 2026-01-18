@@ -138,7 +138,7 @@ In contrast, on conventional computer systems, root/administrator privileges are
 >
 > - [Deploying Signed App Control policies](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Deploy-App-Control-Policy)
 >
-> - [Creating Code Signing Certificate via AppControl Manager](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Build-New-Certificate)
+> - [Creating Code Signing Certificate via App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Build-New-Certificate)
 >
 > - [Only a Small Portion of The Windows OS Security Apparatus](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Only-a-Small-Portion-of-The-Windows-OS-Security-Apparatus)
 >

@@ -1,6 +1,6 @@
 # How To Generate Audit Logs via App Control Policies
 
-Audit Logs are generated when a Base policy is deployed with `Audit Mode` rule option. You can configure rule options in policies via [AppControl Manager's features](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Configure-Policy-Rule-Options).
+Audit Logs are generated when a Base policy is deployed with `Audit Mode` rule option. You can configure rule options in policies via [App Control Studio's features](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Configure-Policy-Rule-Options).
 
 You can view all of the available rule options in the following [Microsoft Learn page](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/select-types-of-rules-to-create#table-1-app-control-for-business-policy---policy-rule-options).
 
@@ -8,7 +8,7 @@ During the Audit mode phase, no file is blocked, instead an audit log in the `Co
 
 If the file is a `MSI` installer file or script, then `AppLocker` event is generated for it, otherwise `Code Integrity` will log that file.
 
-The logs can be collected by the AppControl Manager in order to create Supplemental policies. The logs can also be collected in bulk from thousands of systems by the Microsoft Defender for Endpoint Advanced Hunting and then fed to the AppControl Manager to create Supplemental policies.
+The logs can be collected by the App Control Studio in order to create Supplemental policies. The logs can also be collected in bulk from thousands of systems by the Microsoft Defender for Endpoint Advanced Hunting and then fed to the App Control Studio to create Supplemental policies.
 
 ## Create and Deploy a Base Policy
 
@@ -50,26 +50,26 @@ Keep in mind that only files that are executed during audit mode phase generate 
 
 ## Scan the Event Logs
 
-Navigate to the [AppControl Manager's Event Logs page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Policy-From-Event-Logs), then press the `Scan Logs` Button.
+Navigate to the [App Control Studio's Event Logs page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Policy-From-Event-Logs), then press the `Scan Logs` Button.
 
-![Scan Logs Button in AppControl Manager app](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/How%20To%20Generate%20Audit%20Logs%20via%20App%20Control%20Policies/Event%20Logs%20Scan%20Logs%20Button.png)
+![Scan Logs Button in App Control Studio app](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/How%20To%20Generate%20Audit%20Logs%20via%20App%20Control%20Policies/Event%20Logs%20Scan%20Logs%20Button.png)
 
-AppControl Manager will begin scanning all of the related logs in Code Integrity and AppLocker events. Blocked and Audits events will both be included. You can use various User Interface elements and features to filter the logs such as by sorting the columns, filtering based on the date and so on.
+App Control Studio will begin scanning all of the related logs in Code Integrity and AppLocker events. Blocked and Audits events will both be included. You can use various User Interface elements and features to filter the logs such as by sorting the columns, filtering based on the date and so on.
 
-![Date based filtering in AppControl Manager Event Logs scan](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/How%20To%20Generate%20Audit%20Logs%20via%20App%20Control%20Policies/Date%20based%20filtering.png)
+![Date based filtering in App Control Studio Event Logs scan](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/How%20To%20Generate%20Audit%20Logs%20via%20App%20Control%20Policies/Date%20based%20filtering.png)
 
 Once you're done with filtering the logs, press the `Create Policy` button's small arrow on the right. It will open a flyout with 3 options. The options are explained [on this page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Policy-From-Event-Logs#configuration-details). In this case, we need to select the middle option called `Base Policy File` and then select the `Browse` Button. A file picker dialog will open, allowing you to select the base policy XML file that you created and deployed earlier.
 
-![Selecting Base policy XML file path in AppControl Manager](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/How%20To%20Generate%20Audit%20Logs%20via%20App%20Control%20Policies/selecting%20base%20policy%20for%20audit%20logs%20supplemental.png)
+![Selecting Base policy XML file path in App Control Studio](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/How%20To%20Generate%20Audit%20Logs%20via%20App%20Control%20Policies/selecting%20base%20policy%20for%20audit%20logs%20supplemental.png)
 
 The `Create Policy` button's label is now changed to `Create Policy for Selected Base`. Press it and after few seconds it will create a Supplemental policy for all of the logs displayed in the page.
 
-![Selecting Base policy XML file path in AppControl Manager](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/How%20To%20Generate%20Audit%20Logs%20via%20App%20Control%20Policies/Create%20policy%20for%20the%20selected%20base.png)
+![Selecting Base policy XML file path in App Control Studio](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/How%20To%20Generate%20Audit%20Logs%20via%20App%20Control%20Policies/Create%20policy%20for%20the%20selected%20base.png)
 
-From the actions menu you can select to deploy the Supplemental policy after creation too, or you can modify the supplemental policy further using AppControl Manager's other pages. You can [Sign the policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Deploy-App-Control-Policy) and make it tamper-proof or [Merge](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Merge-App-Control-Policies) it with other policies.
+From the actions menu you can select to deploy the Supplemental policy after creation too, or you can modify the supplemental policy further using App Control Studio's other pages. You can [Sign the policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Deploy-App-Control-Policy) and make it tamper-proof or [Merge](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Merge-App-Control-Policies) it with other policies.
 
 ## Wrapping Up
 
-By now, you should have a solid understanding of how to generate and work with audit logs using AppControl Manager. You've learned how to deploy base policies, trigger audit events, and scan logs to create supplemental policies.
+By now, you should have a solid understanding of how to generate and work with audit logs using App Control Studio. You've learned how to deploy base policies, trigger audit events, and scan logs to create supplemental policies.
 
-So go ahead start experimenting, collect those logs, and build policies that fit your environment and if you’re ever unsure about the next steps, the [AppControl Manager documentation](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) is always there to help you out! Plus you can always ask any questions you might have [here on GitHub discussions](https://github.com/HotCakeX/Harden-Windows-Security/discussions).
+So go ahead start experimenting, collect those logs, and build policies that fit your environment and if you’re ever unsure about the next steps, the [App Control Studio documentation](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) is always there to help you out! Plus you can always ask any questions you might have [here on GitHub discussions](https://github.com/HotCakeX/Harden-Windows-Security/discussions).

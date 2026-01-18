@@ -57,7 +57,7 @@ For a truly secure environment, we recommend adhering to the following best prac
 
 This is a fork of [HotCakeX/Harden-Windows-Security](https://github.com/HotCakeX/Harden-Windows-Security), maintained by **OFFSECHQ**.
 
-Due to rebranding (`AppControl Manager` → `App Control Studio`, `Harden Windows Security` → `System Security Studio`), automatic syncing causes conflicts. Instead, this fork uses a **notification-based approach**:
+This fork uses a **notification-based approach**:
 
 - A weekly workflow checks for upstream updates
 - If updates exist, a GitHub issue is created for manual review

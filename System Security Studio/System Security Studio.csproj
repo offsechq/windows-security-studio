@@ -401,7 +401,7 @@
 		<Content Include="Resources\EventViewerCustomViews\USB storage Connects &amp; Disconnects.xml">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
-		<Content Include="Resources\Intune Files\Compliance\Harden Windows Security Device Compliance Policy.json">
+		<Content Include="Resources\Intune Files\Compliance\System Security Studio Device Compliance Policy.json">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 		<Content Include="Resources\Intune Files\Hardening Policies\Attack Surface Reduction Rules.json">

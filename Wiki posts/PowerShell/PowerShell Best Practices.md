@@ -81,7 +81,6 @@ get-ChildItem
 new-Item
 ```
 
-
 ✅ Do this instead
 ```powershell
 $MyVariable

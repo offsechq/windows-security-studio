@@ -6,9 +6,6 @@ Since Microsoft Security Baselines are geared towards Enterprise level security,
 > All of the features and functionalities listed below are enabled by default in Windows.
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Windows Game Recording and Broadcasting
@@ -23,9 +20,6 @@ Computer Configuration\Administrative Templates\Windows Components\Windows Game 
 ```
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Prohibit use of Internet Connection Sharing on your DNS domain network
@@ -55,9 +49,6 @@ Computer Configuration\Administrative Templates\Network\Network Connections\Proh
 ```
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Firewall local rule merging
@@ -78,11 +69,7 @@ Here is an screenshot of the settings for the Public Profile tab:
 
 ![Firewall](https://user-images.githubusercontent.com/118815227/214886150-0acca5b6-5e38-49c4-b0ef-99b1eb832f4f.png)
 
-
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Deny write access to removable drives not protected by BitLocker
@@ -96,9 +83,6 @@ Computer Configuration\Administrative Templates\Windows Components\BitLocker Dri
 ```
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Enable Clipboard and Drive redirection when using Remote Desktop connection
@@ -112,9 +96,6 @@ Computer Configuration\Administrative Templates\Windows Components\Remote Deskto
 ```
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Enable Microsoft Defender exclusion lists to be visible to Local Admins
@@ -126,9 +107,6 @@ Computer Configuration\Administrative Templates\Windows Components\Microsoft Def
 ```
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Disabled "Turn off Microsoft Consumer Experiences"
@@ -142,9 +120,6 @@ Computer Configuration\Administrative Templates\Windows Components\Cloud Content
 ```
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Enabled "Apply UAC restrictions to local accounts on network logons"
@@ -156,9 +131,6 @@ Computer Configuration\Administrative Templates\MS Security Guide
 ```
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Restores the ability of Administrator to enable Sudo
@@ -170,9 +142,6 @@ Computer Configuration\Administrative Templates\System\Configure the behavior of
 ```
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Allow signing in through Remote Desktop Services
@@ -183,9 +152,6 @@ Restores the functionality of signing in through [Remote Desktop Services](https
 Computer Configuration\Windows Settings\Security Settings\Local Policies\User Rights Assignment\Deny log on through Remote Desktop Services
 ```
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Allow elevation from Standard user accounts

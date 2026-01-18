@@ -54,9 +54,6 @@ You should change the values for `$CertificateLocation` and `$CertificatePasswor
   - [Export-PfxCertificate](https://learn.microsoft.com/en-us/powershell/module/pki/export-pfxcertificate?view=windowsserver2022-ps)
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## How to Enable Nested Virtualization for All the VMs on the Hyper-V Host
@@ -90,9 +87,6 @@ This is how to verify Nested Virtualization is enabled for all of your VMs
 * [Source](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Confidential Computing on Azure
@@ -146,9 +140,6 @@ HgsClientConfiguration
 </details>
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Scenario: Hyper-V, Enhanced session mode, no authentication in the VM's OS
@@ -156,9 +147,6 @@ HgsClientConfiguration
 When you create a VM in Hyper-V that doesn't have any authentication method for login such as Password or PIN, and use Enhanced session-mode to connect to it, there might be an issue where the RDP disconnects once after each restart of the VM and Hyper-V virtual machine connection asks you to connect to the VM again by clicking/tapping on the connect button. **To fix this, set a local password for the user account of the OS in VM.**
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Native boot Hyper-V VMs, VHDX
@@ -229,9 +217,6 @@ If `{default}` is not the correct identifier, then change it according to the re
 There are three different identifiers: The chosen default OS has identifier {default}, the current OS you are signed in at the moment is {current}. All other entries have a long hexadecimal identifier.
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Some Hyper-v Nested Virtualization Screenshots
@@ -248,41 +233,26 @@ To display how optimized and powerful Hyper-V hypervisor is (including any featu
 <details>
 
 <summary>
-<img width="30" src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/Gifs/diamond-7.gif" alt="Diamond spinning 1 gif">
+
 Click/Tap here to see the screenshots
-<img width="30" src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/Gifs/diamond-7.gif" alt="Diamond spinning 2 gif">
+
 </summary>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Hyper-V%20Nested%20Virtualization/1%20(1).png" alt="Hyper-V nested virtualization on a very old and weak hardware - 1">
-
 <br>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Hyper-V%20Nested%20Virtualization/1%20(2).png" alt="Hyper-V nested virtualization on a very old and weak hardware - 2">
-
 <br>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Hyper-V%20Nested%20Virtualization/1%20(3).png" alt="Hyper-V nested virtualization on a very old and weak hardware - 3">
-
 <br>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Hyper-V%20Nested%20Virtualization/1%20(4).png" alt="Hyper-V nested virtualization on a very old and weak hardware - 4">
-
 </details>
 
 <br>
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Important Hyper-V Related Documents

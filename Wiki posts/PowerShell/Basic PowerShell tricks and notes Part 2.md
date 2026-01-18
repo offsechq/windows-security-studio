@@ -258,7 +258,6 @@ $(Get-MpPreference).puaprotection
 
 To dot-source a PowerShell function in the same script file, you can use the dot operator `.` followed by the path of the script file containing the function. The path can be relative or absolute. Here's an example:
 
-
 ```powershell
 # Contents of MyFunctions.ps1
 function New-Function {

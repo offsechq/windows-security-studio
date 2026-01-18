@@ -89,9 +89,9 @@ Here is an example of a valid Supplemental policy that allows a root certificate
 
 As you can see, we need the TBS Hash value of the root certificate.
 
-### Use the AppControl Manager to Automatically Allow Certificates
+### Use the App Control Studio to Automatically Allow Certificates
 
-You can use the [AppControl Manager](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to create a supplemental policy that allows the certificates you select to be allowed by App Control.
+You can use the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to create a supplemental policy that allows the certificates you select to be allowed by App Control.
 
 **_[Refer to this page for more information](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Supplemental-App-Control-Policy#create-a-supplemental-policy-from-certificate-files)_**
 

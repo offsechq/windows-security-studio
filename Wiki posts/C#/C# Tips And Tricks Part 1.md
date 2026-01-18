@@ -77,7 +77,6 @@ For example, use the following code in your `.csproj` file to make everything in
 You can navigate to an individual file in your solution explorer, right-click on it and select Properties, in the *Copy To Output Directory* property select *Copy always*.
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Copy%20To%20output%20Directory.png" alt="Visual Studio file properties">
 </div>
 
 <br>

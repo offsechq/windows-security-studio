@@ -1,8 +1,8 @@
-# Harden Windows Security GitHub Wiki
+# Windows Security Studio Wiki
 
-Welcome to the Harden Windows Security Wiki. This documentation provides comprehensive guides, tools, and resources for hardening Windows systems using enterprise-grade security controls.
+Welcome to the Windows Security Studio Wiki. This documentation provides comprehensive guides, tools, and resources for hardening Windows systems using enterprise-grade security controls.
 
-## [AppControl Manager](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager)
+## [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager)
 
 - [Create AppControl Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-App-Control-Policy)
 - [Create Supplemental Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Supplemental-App-Control-Policy)
@@ -25,7 +25,7 @@ Welcome to the Harden Windows Security Wiki. This documentation provides compreh
 - [View File Certificates](https://github.com/HotCakeX/Harden-Windows-Security/wiki/View-File-Certificates)
 - [Microsoft Graph](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Graph)
 
-## [Harden System Security](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security)
+## [System Security Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security)
 
 - [Protect](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Protect)
   - [Microsoft Security Baselines](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Security-Baselines)
@@ -62,7 +62,7 @@ Welcome to the Harden Windows Security Wiki. This documentation provides compreh
 - [How To Create an App Control Supplemental Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Create-an-App-Control-Supplemental-Policy)
 - [How to Create an App Control Deny Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-to-Create-an-App-Control-Deny-Policy)
 - [The Strength of Signed App Control Policies](https://github.com/HotCakeX/Harden-Windows-Security/wiki/The-Strength-of-Signed-App-Control-Policies)
-- [How To Upload App Control Policies To Intune Using AppControl Manager](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Upload-App-Control-Policies-To-Intune-Using-AppControl-Manager)
+- [How To Upload App Control Policies To Intune Using App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Upload-App-Control-Policies-To-Intune-Using-AppControl-Manager)
 - [How To Create and Maintain Strict Kernel‐Mode App Control Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Create-and-Maintain-Strict-Kernel%E2%80%90Mode-App-Control-Policy)
 - [App Control Notes](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Notes)
 - [How to use Windows Server to Create App Control Code Signing Certificate](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-to-Create-and-Deploy-a-Signed-WDAC-Policy-Windows-Defender-Application-Control)

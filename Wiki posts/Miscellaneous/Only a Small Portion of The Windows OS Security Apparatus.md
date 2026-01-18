@@ -1,9 +1,6 @@
 # Only a Small Portion of The Windows OS Security Apparatus
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/Only%20a%20Small%20Portion%20of%20The%20Windows%20OS%20Security%20Apparatus/Smaller%20version.png" alt="Only a Small Portion of The Windows OS Security Apparatus">
-
 <br>
 
 * [**Full Resolution Available Here**](https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/Only%20a%20Small%20Portion%20of%20The%20Windows%20OS%20Security%20Apparatus/Full%20Res.png) - Perfect For Desktop Background
@@ -15,9 +12,6 @@
 > Many of the features mentioned in the map above can be automatically deployed and configured via the [Harden Windows Security repository's](https://github.com/HotCakeX/Harden-Windows-Security) offerings.
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## SUPERIORITY
@@ -125,9 +119,6 @@ Regularly updating Microsoft Defender Antivirus is crucial for maintaining robus
 * [Read More](https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-defender#signatureupdateinterval)
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## ULTIMATUM
@@ -138,7 +129,7 @@ Application control is a crucial line of defense for protecting computer systems
 
 * [Read More](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction)
 
-* [**AppControl Manager**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager)
+* [**App Control Studio**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager)
 
 <br>
 
@@ -241,9 +232,6 @@ A security model in the kernel to better defend against malicious attacks on sys
 * [Read More](https://learn.microsoft.com/en-us/windows/win32/services/protecting-anti-malware-services-)
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Physical Security
@@ -393,9 +381,6 @@ Secure Boot is a security standard developed by members of the PC industry to he
 * [Read More](https://learn.microsoft.com/en-us/mem/intune/user-help/you-need-to-enable-secure-boot-windows)
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## IDENTITY (In the Abstract Sense)
@@ -508,9 +493,6 @@ This feature is constantly learning from phishing attacks seen throughout the en
 * [Read More](https://learn.microsoft.com/en-us/windows/security/operating-system-security/virus-and-threat-protection/microsoft-defender-smartscreen/enhanced-phishing-protection)
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Continue Reading

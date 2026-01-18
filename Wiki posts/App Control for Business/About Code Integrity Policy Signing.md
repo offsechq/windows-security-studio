@@ -66,7 +66,7 @@ Since the version value of the CMS is outside the signed portion of the data blo
 
 The strange thing about this requirement is that custom encapsulated data types seem to have come in version 3, so the OS is basically saying "I only understand v1, but I also understand that you are using a custom encapsulated data type, which is a V3 feature."
 
-[AppControl Manager](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) implements this workaround in [its signing process](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/AppControl%20Manager/Signing/Main.cs) so it can produce CIP files that are both signed and usable by the operating system.
+[App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) implements this workaround in [its signing process](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/AppControl%20Manager/Signing/Main.cs) so it can produce CIP files that are both signed and usable by the operating system.
 
 Keep in mind that if you deploy a signed CIP file with `CMS V3` certificate, the system will reject it and boot failure might occur.
 

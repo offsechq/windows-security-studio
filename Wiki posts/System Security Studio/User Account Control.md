@@ -1,0 +1,20 @@
+# User Account Control | Harden System Security
+
+<p align="center">
+</p>
+
+- **[Group Policy]** [Prompt for elevation of privilege on secure desktop for all binaries](https://learn.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-group-policy-and-registry-key-settings#user-account-control-behavior-of-the-elevation-prompt-for-administrators-in-admin-approval-mode) in [Administrator accounts](https://learn.microsoft.com/openspecs/windows_protocols/ms-gpsb/341747f5-6b5d-4d30-85fc-fa1cc04038d4), which presents the sign-in UI and restricts functionality and access to the system until the sign-in requirements are satisfied. The [secure desktop's](https://learn.microsoft.com/windows/security/threat-protection/security-policy-settings/user-account-control-switch-to-the-secure-desktop-when-prompting-for-elevation#reference) primary difference from the user desktop is that only trusted processes running as SYSTEM are allowed to run here (that is, nothing is running at the user's privilege level). The path to get to the secure desktop from the user desktop must also be trusted through the entire chain. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-localpoliciessecurityoptions#useraccountcontrol_behavioroftheelevationpromptforadministrators)
+
+  - **Default Behavior:** Prompt for consent for non-Windows binaries: When an operation for a non-Microsoft application requires elevation of privilege, the user is prompted on the secure desktop to select either Permit or Deny. If the user selects Permit, the operation continues with the user's highest available privilege.
+
+  - **Harden Windows Security Behavior:** When an operation requires elevation of privilege, the user is prompted on the secure desktop to select either Permit or Deny. If the user selects Permit, the operation continues with the user's highest available privilege.
+
+- **[Group Policy]** **[Subcategory]** Only elevate executables that are signed and validated [by enforcing cryptographic signatures on any interactive application](https://learn.microsoft.com/windows/security/threat-protection/security-policy-settings/user-account-control-only-elevate-executables-that-are-signed-and-validated) that requests elevation of privilege. One of the [Potential impacts](https://learn.microsoft.com/windows/security/threat-protection/security-policy-settings/user-account-control-only-elevate-executables-that-are-signed-and-validated#potential-impact) of it is that it can prevent certain poorly designed programs from prompting for UAC. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-localpoliciessecurityoptions#useraccountcontrol_onlyelevateexecutablefilesthataresignedandvalidated)
+
+- **[Group Policy]** **[Subcategory]** Hides the entry points for [Fast User Switching](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowslogon). **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowslogon#hidefastuserswitching)
+
+  - This policy will prevent you from using "Forgot my PIN" feature in lock screen or logon screen. If you forget your PIN, you won't be able to recover it.
+
+- **[Group Policy]** Sets the behavior of the elevation prompt for Standard users to Prompt for Credentials on the Secure Desktop. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-localpoliciessecurityoptions#useraccountcontrol_behavioroftheelevationpromptforstandardusers)
+
+- **[Group Policy]** [Administrator Protection](https://blogs.windows.com/windowsdeveloper/2025/05/19/enhance-your-application-security-with-administrator-protection/): Configures the type of [Admin Approval Mode](https://techcommunity.microsoft.com/blog/windows-itpro-blog/administrator-protection-on-windows-11/4303482) to be Admin Approval Mode with enhanced privilege protection.

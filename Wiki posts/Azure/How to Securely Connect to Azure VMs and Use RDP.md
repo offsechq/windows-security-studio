@@ -1,7 +1,6 @@
 # How to Securely Connect to Azure VMs and Use RDP
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/64dgfs.png" alt="AI Generated pic for How to Securely Connect to Azure VMs and Use RDP" height="450">
 </div>
 
 ## What Are Azure VMs
@@ -13,9 +12,6 @@ To establish a secure connection to your Azure VM, you need to make some prepara
 None of the methods described below require you to assign a public IP address or open inbound ports in your Azure VM. They only need a virtual network with a private IP address assigned to the Azure VM.
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Bastion
@@ -51,15 +47,9 @@ Screenshots <img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pi
 </summary>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20How%20to%20Securely%20Connect%20to%20Azure%20VMs%20and%20Use%20RDP/Bastion%20Creation.png" alt="Creating Bastion client in Azure Portal">
-
 <br>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20How%20to%20Securely%20Connect%20to%20Azure%20VMs%20and%20Use%20RDP/Bastion%20Native%20Client%20setup.png" alt="Creating Bastion client in Azure Portal and Advanced settings">
-
 <br>
 
 <br>
@@ -97,9 +87,6 @@ az network bastion rdp --name "<BastionName>" --resource-group "<ResourceGroupNa
 You now have a secure connection to your Azure VM using Bastion Native Client.
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Using Azure VPN - GUI Method
@@ -136,21 +123,12 @@ Screenshots <img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pi
 </summary>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20How%20to%20Securely%20Connect%20to%20Azure%20VMs%20and%20Use%20RDP/VirtualNetwork%20Creation.png" alt="Creating virtual network in Azure portal - screenshot">
-
 <br>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20How%20to%20Securely%20Connect%20to%20Azure%20VMs%20and%20Use%20RDP/VirtualNetwork%20Creation%20Debault%20Subnet.png" alt="Creating virtual network and configuring IP settings in Azure portal - screenshot 2">
-
 <br>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20How%20to%20Securely%20Connect%20to%20Azure%20VMs%20and%20Use%20RDP/VirtualNetwork%20Creation%20Gateway%20Subnet.png" alt="Creating virtual network in Azure portal and configuring the final settings such as ranges">
-
 <br>
 
 <br>
@@ -196,9 +174,6 @@ Screenshot <img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pic
 </summary>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20How%20to%20Securely%20Connect%20to%20Azure%20VMs%20and%20Use%20RDP/Virtual%20Network%20Gateway%20Creation.png" alt="Creating Azure Virtual network gateway in Azure portal">
-
 <br>
 
 </details>
@@ -246,9 +221,6 @@ Screenshot <img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pic
 </summary>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20How%20to%20Securely%20Connect%20to%20Azure%20VMs%20and%20Use%20RDP/Virtual%20Network%20Gateway%20Point%20to%20Site%20Configuration.png" alt="Setting up Azure point to point connection in Azure portal">
-
 <br>
 
 <br>
@@ -268,15 +240,9 @@ Screenshots <img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pi
 </summary>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20How%20to%20Securely%20Connect%20to%20Azure%20VMs%20and%20Use%20RDP/VM1.png" alt="Using VMs and showing the successful connection of point to site connection using Azure Virtual Gateway">
-
 <br>
 
 <br>
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20How%20to%20Securely%20Connect%20to%20Azure%20VMs%20and%20Use%20RDP/VM2.png" alt="Using VMs and showing the successful connection of point to site connection using Azure Virtual Gateway - 2">
-
 <br>
 
 <br>
@@ -286,9 +252,6 @@ Screenshots <img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pi
 </details>
 
 <br>
-
-<img src="https://github.com/HotCakeX/Harden-Windows-Security/raw/main/images/Gifs/1pxRainbowLine.gif" width= "300000" alt="horizontal super thin rainbow RGB line">
-
 <br>
 
 ## Using Azure VPN - Cloud PowerShell Method

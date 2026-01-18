@@ -13,7 +13,7 @@ You can have as many supplemental policies as you need, but each supplemental po
 >
 > There are other signs that indicate if a policy is a base or supplemental policy. A supplemental policy can only contain allow rules. A supplemental policy can only have a subset of [the rule options](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/select-types-of-rules-to-create#table-1-app-control-for-business-policy---policy-rule-options).
 >
-> Use the [System Information page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/System-Information) in the [AppControl Manager](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to view all of the deployed policies and see which ones are base or supplemental.
+> Use the [System Information page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/System-Information) in the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to view all of the deployed policies and see which ones are base or supplemental.
 
 When it comes to signing, if the base policy is signed, then the supplemental policy must be signed too and vice versa.
 
@@ -29,13 +29,13 @@ The default [level](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDA
 
 After you've submitted the necessary details, press the `Create Supplemental Policy` button. The scan will begin and you will be able to view the progress in real time. If you toggle the `Deploy After Creation` button, the policy will be automatically deployed on the local system, otherwise the XML file will just be created.
 
-You can customize the XML file further using different pages and features of the AppControl Manager.
+You can customize the XML file further using different pages and features of the App Control Studio.
 
 ## Create a Supplemental Policy for Packaged Apps
 
 Packaged apps are modern, they use MSIX packages and are easy to manage and authorize in App Control policies because all of the files in a packaged app share the same signing certificate and Package Family Name.
 
-Use the [AppControl Manager](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to create supplemental policies for packaged apps. The policy that you create will not need any changes when the apps are updated since the authorization is based on the `PackageFamilyName`, aka `PFN`.
+Use the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to create supplemental policies for packaged apps. The policy that you create will not need any changes when the apps are updated since the authorization is based on the `PackageFamilyName`, aka `PFN`.
 
 In the [**Create Supplemental Policy Page**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Supplemental-App-Control-Policy), navigate to the **Package Family Name** section.
 
@@ -53,7 +53,7 @@ Finally press the `Create Supplemental Policy` button to create the supplemental
 
 You can create a supplemental policy that will allow everything inside of a folder to be authorized to run. It is based on a wildcard file path. This type of supplemental policy is less secure than ones that are based on file signature, publisher or hash so use it with caution.
 
-Navigate to the [**Create Supplemental Policy Page**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Supplemental-App-Control-Policy) page in the AppControl Manager and select the **Files and Folders** section.
+Navigate to the [**Create Supplemental Policy Page**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Supplemental-App-Control-Policy) page in the App Control Studio and select the **Files and Folders** section.
 
 ![Creating wildcard based folder path supplemental policy](https://raw.githubusercontent.com/HotCakeX/.github/f391b22dfba59f8070a9d7191c743827dc89afb3/Pictures/PNG%20and%20JPG/How%20To%20Create%20an%20App%20Control%20Supplemental%20Policy/wildcard%20folder%20path.png)
 

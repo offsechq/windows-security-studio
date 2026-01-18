@@ -1,7 +1,6 @@
 # Rethinking Trust: Advanced Security Measures for High-Stakes Systems
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/fFDStthhT.jpg" alt="Rethinking Trust: Advanced Security Measures for High-Stakes Systems" width="600">
 </div>
 
 <br>

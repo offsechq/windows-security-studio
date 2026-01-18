@@ -2,13 +2,15 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: Harden Windows Security
+title: Windows Security Studio
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
 type: software
 authors:
-  - orcid: 'https://orcid.org/0009-0000-6616-4938'
+  - given-names: OFFSECHQ
+    affiliation: OFFSECHQ
+  - orcid: "https://orcid.org/0009-0000-6616-4938"
     email: spynetgirl@outlook.com
     given-names: Violet
     family-names: Hansen
@@ -16,31 +18,31 @@ authors:
 identifiers:
   - type: url
     value: >-
-      https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction
-    description: ' Windows Defender Application Control Introduction'
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/Introduction
+    description: Windows Defender Application Control Introduction
   - type: url
     value: >-
-      https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-for-Fully-Managed-Devices
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-for-Fully-Managed-Devices
     description: WDAC policy for Fully Managed device - Variant 1
   - type: url
     value: >-
-      https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-for-Fully-Managed-Devices-(2nd-variant)
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-for-Fully-Managed-Devices-(2nd-variant)
     description: WDAC policy for Fully managed device - Variant 2
   - type: url
     value: >-
-      https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-Fully-managed-device---Variant-3
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-Fully-managed-device---Variant-3
     description: WDAC policy for Fully managed device - Variant 3
   - type: url
     value: >-
-      https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-Fully-managed-device---Variant-4
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-Fully-managed-device---Variant-4
     description: WDAC policy for Fully managed device Variant 4
-repository-code: 'https://github.com/HotCakeX/Harden-Windows-Security'
-url: 'http://hotcakex.github.io/'
-repository: 'https://github.com/HotCakeX/MSEdgeFeatures'
+repository-code: "https://github.com/OFFSECHQ/windows-security-studio"
+url: "https://github.com/OFFSECHQ/windows-security-studio"
+repository: "https://github.com/HotCakeX/Harden-Windows-Security"
 abstract: >-
-  Harden Windows Safely, Securely using Official Supported
-  Microsoft methods with proper explanation | Always
-  up-to-date and works with the latest build of Windows
+  Enterprise-grade Windows security hardening using official
+  Microsoft methods. Fork of Harden-Windows-Security maintained
+  by OFFSECHQ with professional branding.
 keywords:
   - Microsoft
   - Windows

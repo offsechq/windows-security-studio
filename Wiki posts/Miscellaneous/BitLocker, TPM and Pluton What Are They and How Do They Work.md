@@ -1,7 +1,6 @@
 # BitLocker, TPM and Pluton
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/dsadasdas.jpg" alt="AI generated photo of a girl - BitLocker, TPM and Pluton What Are They and How Do They Work" width="700">
 </div>
 
 ## Introduction
@@ -67,9 +66,6 @@ This time, all 3 key protectors are essential to unlock the drive. You will have
 ## How To Properly Configure BitLocker Key Protectors
 
 As we've already discussed before, having TPM alone is not enough to protect the system from physical attacks. TPM must be coupled with other factors to provide strong deterrence against physical attacks. So when configuring policies, either in Intune or Group Policy, you should disable the TPM only mode.
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Secure%20BitLocker%20key%20protectors%20group%20policy.png" alt="Secure BitLocker key protectors group policy">
-
 <br>
 
 In the image above:
@@ -81,17 +77,11 @@ In the image above:
 Depending on your organization's or personal needs you can disallow the rest of them and only keep one.
 
 The same settings can be found in Intune as well
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Secure%20Bitlocker%20key%20protector%20policies%20in%20Intune%20portal.png" alt="Secure BitLocker key protector policies in Intune portal">
-
 <br>
 
 A few seconds after enrolling the device in Intune, you will see a notification
 
 <div align="center">
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Intune%20encrolled%20device%20Bitlocker%20notification%20for%20encryotion.png" alt="Intune encrolled device BitLocker notification for encryption">
-
 </div>
 
 <br>
@@ -101,9 +91,6 @@ After clicking on the notification and accepting the next prompt, you will see t
 <br>
 
 <div align="center">
-
-<img src="https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/TPM%20only%20key%20protector%20grayed%20out%20as%20a%20result%20of%20the%20policy%20enforcements.png" alt="TPM only key protector grayed out as a result of the policy enforcements">
-
 </div>
 
 <br>
