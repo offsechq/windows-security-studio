@@ -13,7 +13,7 @@
     xmlns:animatedvisuals="using:AnimatedVisuals"
     xmlns:CC="using:CommonCore.Others"
     SystemBackdrop="{x:Bind ViewModel.SystemBackDropStyle, Mode=OneWay}"
-    Title="Harden System Security">
+    Title="System Security Studio">
 
     <Grid x:Name="RootGrid" FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}">
 
@@ -472,7 +472,7 @@
                                         </Grid>
                                     </HyperlinkButton>
 
-                                    <HyperlinkButton Content="AppControl Manager"
+                                    <HyperlinkButton Content="App Control Studio"
                                                      HorizontalAlignment="Center"
                                                      NavigateUri="https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager"
                                                      Padding="12,8"

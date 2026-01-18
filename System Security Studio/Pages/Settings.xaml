@@ -214,7 +214,7 @@
                 <!-- About section -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
                        x:Uid="About" />
-                <controls:SettingsExpander Header="Harden System Security"
+                <controls:SettingsExpander Header="System Security Studio"
                                        IsExpanded="True"
                                        Description="{x:Bind ViewModel.CopyRightSettingsExpanderDescription, Mode=OneTime}"
                                        HeaderIcon="{ui:BitmapIcon Source=ms-appx:///Assets/Square44x44Logo.altform-lightunplated_targetsize-256.png}">
