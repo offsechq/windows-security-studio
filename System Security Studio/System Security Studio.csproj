@@ -192,6 +192,7 @@
 		<Compile Include="..\App Control Studio\Others\UpdateAvailableEventArgs.cs" Link="Others\UpdateAvailableEventArgs.cs" />
 		<Compile Include="..\App Control Studio\Others\UpdateCheckResponse.cs" Link="Others\UpdateCheckResponse.cs" />
 		<Compile Include="..\App Control Studio\Others\AnimatedCancellableButtonInitializer.cs" Link="Others\AnimatedCancellableButtonInitializer.cs" />
+		<Compile Include="..\App Control Studio\Others\StagingArea.cs" Link="Others\StagingArea.cs" />
 		<Compile Include="..\App Control Studio\Pages\GitHubDocumentation.xaml.cs" Link="Pages\GitHubDocumentation.xaml.cs" />
 		<Compile Include="..\App Control Studio\Pages\Home.xaml.cs" Link="Pages\Home.xaml.cs" />
 		<Compile Include="..\App Control Studio\Pages\Logs.xaml.cs" Link="Pages\Logs.xaml.cs" />
