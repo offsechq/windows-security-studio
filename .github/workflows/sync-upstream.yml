@@ -1,4 +1,4 @@
-name: Sync Fork with Upstream
+name: Check for Upstream Updates
 
 on:
   schedule:
@@ -7,24 +7,15 @@ on:
   workflow_dispatch: # Allows manual trigger
 
 jobs:
-  sync:
+  check-upstream:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Fetch upstream changes
+      - name: Fetch upstream
         run: |
           git remote add upstream https://github.com/HotCakeX/Harden-Windows-Security.git || true
           git fetch upstream
@@ -32,49 +23,67 @@ jobs:
       - name: Check for new commits
         id: check
         run: |
-          # Count how many commits are in upstream but not in our main
+          # Count commits in upstream not in our main
           COMMITS_BEHIND=$(git rev-list --count main..upstream/main)
           echo "commits_behind=$COMMITS_BEHIND" >> $GITHUB_OUTPUT
-          echo "Upstream has $COMMITS_BEHIND new commits"
 
-      - name: Create sync branch and PR
-        if: steps.check.outputs.commits_behind != '0'
-        run: |
-          # Create a branch for the sync
-          SYNC_BRANCH="sync-upstream-$(date +%Y%m%d)"
-          git checkout -b $SYNC_BRANCH
-
-          # Attempt the merge (may have conflicts)
-          if git merge upstream/main --no-edit; then
-            echo "Merge successful, pushing branch..."
-            git push origin $SYNC_BRANCH
-
-            # Create PR using GitHub CLI
-            gh pr create \
-              --title "🔄 Sync with upstream ($(date +%Y-%m-%d))" \
-              --body "This PR syncs changes from the upstream repository.
-
-          ## ⚠️ Review Required
-
-          Please review the following before merging:
-          - Check if any changes conflict with our rebranding (App Control Studio / System Security Studio)
-          - Verify no files were added to old directory names (AppControl Manager / Harden System Security)
-          - Review any changes to shared components in eXclude/
-
-          **Upstream commits included:** ${{ steps.check.outputs.commits_behind }}
-
-          ---
-          *This PR was automatically created by the sync workflow.*" \
-              --base main \
-              --head $SYNC_BRANCH
+          if [ "$COMMITS_BEHIND" = "0" ]; then
+            echo "✅ Already up to date with upstream!"
           else
-            echo "::warning::Merge conflicts detected. Manual intervention required."
-            echo "You may need to cherry-pick specific commits from upstream."
-            exit 1
+            echo "📦 Upstream has $COMMITS_BEHIND new commit(s)"
+            echo ""
+            echo "## Recent upstream commits:"
+            git log --oneline main..upstream/main -n 20
+            echo ""
+            echo "---"
+            echo "⚠️ NOTE: This is a rebranded fork. Directory names have changed:"
+            echo "  - 'AppControl Manager' → 'App Control Studio'"
+            echo "  - 'Harden Windows Security' → 'System Security Studio'"
+            echo ""
+            echo "Review upstream changes and manually apply relevant updates."
+            echo "Upstream repo: https://github.com/HotCakeX/Harden-Windows-Security"
           fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: No changes
-        if: steps.check.outputs.commits_behind == '0'
-        run: echo "Already up to date with upstream!"
+      - name: Create issue for review
+        if: steps.check.outputs.commits_behind != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const commits = ${{ steps.check.outputs.commits_behind }};
+
+            // Check if an issue already exists
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'upstream-sync'
+            });
+
+            if (issues.data.length > 0) {
+              console.log('Issue already exists, skipping creation');
+              return;
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔄 Upstream has ${commits} new commit(s) to review`,
+              body: `The upstream repository has new changes that may need to be manually applied.
+
+            ## ⚠️ Important
+
+            This is a **rebranded fork**. Automatic syncing is disabled because:
+            - \`AppControl Manager\` has been renamed to \`App Control Studio\`
+            - \`Harden Windows Security\` has been renamed to \`System Security Studio\`
+
+            ## Steps to sync manually
+
+            1. Review upstream commits: https://github.com/HotCakeX/Harden-Windows-Security/commits/main
+            2. Identify relevant changes (dependency updates, bug fixes, new features)
+            3. Manually apply changes to the corresponding rebranded directories
+            4. Close this issue once reviewed
+
+            ---
+            *This issue was automatically created by the upstream check workflow.*`,
+              labels: ['upstream-sync']
+            });
