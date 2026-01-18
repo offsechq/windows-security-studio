@@ -775,8 +775,12 @@ jobs:
           $ZipPath = Join-Path $env:RUNNER_TEMP $ZipName
           Compress-Archive -Path "$InstallKitDir\*" -DestinationPath $ZipPath
 
+          # Standalone MSIXBundle for in-app updates (name format: System.Security.Studio_X.X.X.X.msixbundle)
+          $StandaloneBundleName = "System.Security.Studio_${{ env.PACKAGE_VERSION }}.msixbundle"
+
           $Assets = @(
               @{ Path = $ZipPath; Name = $ZipName }
+              @{ Path = "${{ env.MSIXBundle_PATH }}"; Name = $StandaloneBundleName }
               @{ Path = "${{ env.X64MSBuildLog_PATH }}"; Name = 'X64MSBuildLog.binlog' }
               @{ Path = "${{ env.ARM64MSBuildLog_PATH }}"; Name = 'ARM64MSBuildLog.binlog' }
               @{ Path = "${{ env.X64Symbol_PATH }}"; Name = "${{ env.X64Symbol_NAME }}" }
