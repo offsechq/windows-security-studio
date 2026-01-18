@@ -127,7 +127,6 @@ internal sealed partial class UpdateVM : ViewModelBase
 
 				WhatsNewInfoBarIsOpen = true;
 
-#if APP_CONTROL_MANAGER
 				try
 				{
 					string stagingArea = StagingArea.NewStagingArea("AppUpdate").ToString();
@@ -136,7 +135,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 					Uri onlineDownloadURL = new(await SecHttpClient.Instance.GetStringAsync(GlobalVars.AppUpdateDownloadLinkURL));
 
 					// Location of the MSIXBundle package where it will be saved after downloading it from GitHub
-					string AppControlManagerSavePath = Path.Combine(stagingArea, "AppControlManager.msixbundle");
+					string packageSavePath = Path.Combine(stagingArea, "update.msixbundle");
 
 					MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadingPackage"));
 
@@ -156,7 +155,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 						{
 							// Open a file stream to save the downloaded data locally
 							await using (FileStream fileStream = new(
-								AppControlManagerSavePath,       // Path to save the file
+								packageSavePath,                 // Path to save the file
 								FileMode.Create,                 // Create a new file or overwrite if it exists
 								FileAccess.Write,                // Write-only access
 								FileShare.None,                  // Do not allow other processes to access the file
@@ -200,13 +199,13 @@ internal sealed partial class UpdateVM : ViewModelBase
 						}
 					}
 
-					MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadSuccess") + AppControlManagerSavePath);
+					MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadSuccess") + packageSavePath);
 
 					ProgressBarIsIndeterminate = true;
 
 					MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadsFinished"));
 
-					await InstallAppPackage(AppControlManagerSavePath, UseHardenedInstallationProcess, MainInfoBar);
+					await InstallAppPackage(packageSavePath, UseHardenedInstallationProcess, MainInfoBar);
 
 					MainInfoBar.WriteSuccess(GlobalVars.GetStr("UpdateSuccess"));
 
@@ -217,13 +216,6 @@ internal sealed partial class UpdateVM : ViewModelBase
 					WhatsNewInfoBarIsOpen = false;
 					throw;
 				}
-#endif
-
-#if HARDEN_SYSTEM_SECURITY
-				// For System Security Studio, open GitHub releases page for manual download
-				_ = await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/OFFSECHQ/windows-security-studio/releases"));
-				MainInfoBar.WriteSuccess(GlobalVars.GetStr("NewUpdateIsAvailable"));
-#endif
 			}
 			else
 			{
