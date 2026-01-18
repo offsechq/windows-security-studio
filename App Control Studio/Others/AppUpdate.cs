@@ -15,9 +15,7 @@
 // See here for more information: https://github.com/HotCakeX/Harden-Windows-Security/blob/main/LICENSE
 //
 
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Windows.Services.Store;
 
 #if HARDEN_SYSTEM_SECURITY
 using AppControlManager.Others;
@@ -32,7 +30,7 @@ namespace AppControlManager.Others;
 #endif
 
 /// <summary>
-/// AppUpdate class is responsible for checking for application updates.
+/// AppUpdate class is responsible for checking for application updates via GitHub.
 /// </summary>
 internal static class AppUpdate
 {
@@ -43,8 +41,6 @@ internal static class AppUpdate
 	internal static event EventHandler<UpdateAvailableEventArgs>? UpdateAvailable;
 
 	private static UpdateVM UpdateVM { get; } = ViewModelProvider.UpdateVM;
-
-	internal static StoreContext? _StoreContext;
 
 	/// <summary>
 	/// Downloads the version file from GitHub,
@@ -84,60 +80,17 @@ internal static class AppUpdate
 	}
 
 	/// <summary>
-	/// Checks for update based on the Store Context.
-	/// </summary>
-	/// <returns></returns>
-	internal static async Task<UpdateCheckResponse> CheckStore()
-	{
-		_StoreContext = StoreContext.GetDefault();
-
-		// Initialize the dialog using wrapper function for IInitializeWithWindow
-		WinRT.Interop.InitializeWithWindow.Initialize(_StoreContext, GlobalVars.hWnd);
-
-		// Find any available updates to the currently running package
-		IReadOnlyList<StorePackageUpdate> updates = await _StoreContext.GetAppAndOptionalStorePackageUpdatesAsync();
-
-		bool isUpdateAvailable = false;
-
-		// This is a dummy value for now until we can get the actual latest version from the Store available update.
-		Version latestVersion = new(0, 0, 0, 0);
-
-		if (updates.Count is 0)
-		{
-			Logger.Write(GlobalVars.GetStr("TheAppIsUpToDate"));
-		}
-		else
-		{
-			isUpdateAvailable = true;
-
-			// Raise the UpdateAvailable event if there are subscribers
-			UpdateAvailable?.Invoke(
-				null,
-				new UpdateAvailableEventArgs(isUpdateAvailable, latestVersion)
-			);
-
-			// Set the text for the button in the update page
-			UpdateVM.UpdateButtonContent = GlobalVars.GetStr("InstallLatestVer");
-		}
-
-		return new UpdateCheckResponse(
-			isUpdateAvailable,
-			latestVersion
-		);
-	}
-
-	/// <summary>
-	/// Runs at startup to perform update check.
+	/// Runs at startup to perform update check via GitHub.
 	/// </summary>
 	internal static void CheckAtStartup()
 	{
-		_ = Task.Run(async () =>
+		_ = Task.Run(() =>
 		{
 			try
 			{
 				if (App.Settings.AutoCheckForUpdateAtStartup)
 				{
-					_ = App.PackageSource is 0 ? CheckGitHub() : await CheckStore();
+					_ = CheckGitHub();
 				}
 			}
 			catch (Exception ex)

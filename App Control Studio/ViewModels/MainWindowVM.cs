@@ -329,11 +329,6 @@ internal sealed partial class MainWindowVM : ViewModelBase
 
 		// Apply the BackDrop when the ViewModel is instantiated
 		UpdateSystemBackDrop();
-
-		// If the App is installed from the Microsoft Store source
-		// Then make the update page available for non-elevated usage.
-		if (App.PackageSource is 1)
-			UnelevatedPages.Add(typeof(Pages.UpdatePage));
 	}
 
 	#region UI-Bound Properties

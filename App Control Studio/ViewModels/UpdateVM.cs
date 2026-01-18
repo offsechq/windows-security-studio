@@ -102,12 +102,12 @@ internal sealed partial class UpdateVM : ViewModelBase
 
 	internal bool WhatsNewInfoBarIsOpen { get; set => SP(ref field, value); }
 
-	internal Visibility RatingsSectionVisibility { get; set => SP(ref field, value); } = App.PackageSource is 1 ? Visibility.Visible : Visibility.Collapsed;
+	internal Visibility RatingsSectionVisibility { get; set => SP(ref field, value); } = Visibility.Collapsed;
 
 	#endregion
 
 	/// <summary>
-	/// Event handler for check for update button
+	/// Event handler for check for update button - checks for updates via GitHub
 	/// </summary>
 	internal async void CheckForUpdateButton_Click()
 	{
@@ -115,134 +115,102 @@ internal sealed partial class UpdateVM : ViewModelBase
 		{
 			ElementsAreEnabled = false;
 
-			if (App.PackageSource is 1)
+			MainInfoBar.WriteInfo(GlobalVars.GetStr("CheckingForUpdate"));
+
+			// Check for update asynchronously via GitHub
+			UpdateCheckResponse updateCheckResult = await Task.Run(AppUpdate.CheckGitHub);
+
+			// If a new version is available
+			if (updateCheckResult.IsNewVersionAvailable)
 			{
-				MainInfoBar.WriteInfo(GlobalVars.GetStr("CheckingForUpdateStore"));
+				MainInfoBar.WriteInfo(GlobalVars.GetStr("VersionComparison") + App.currentAppVersion + GlobalVars.GetStr("WhileOnlineVersion") + updateCheckResult.OnlineVersion + GlobalVars.GetStr("UpdatingApplication"));
 
-				UpdateCheckResponse UpCheckResult = await AppUpdate.CheckStore();
+				WhatsNewInfoBarIsOpen = true;
 
-				if (UpCheckResult.IsNewVersionAvailable)
-				{
-					MainInfoBar.WriteInfo(GlobalVars.GetStr("NewUpdateIsAvailableStore"));
-
-					// https://learn.microsoft.com/windows/apps/develop/launch/launch-store-app#opening-to-a-specific-product
-					Uri uri = new($"ms-windows-store://pdp/?ProductId={GlobalVars.StoreProductID}&mode=mini");
-
-					bool launched = await Launcher.LaunchUriAsync(uri);
-
-					if (!launched)
-					{
-						MainInfoBar.WriteWarning(GlobalVars.GetStr("ProblemOpeningMSStore"));
-					}
-				}
-				else
-				{
-					MainInfoBar.WriteSuccess(GlobalVars.GetStr("TheAppIsUpToDate"));
-				}
-			}
-			else
-			{
 #if APP_CONTROL_MANAGER
 				try
 				{
-					MainInfoBar.WriteInfo(GlobalVars.GetStr("CheckingForUpdate"));
+					string stagingArea = StagingArea.NewStagingArea("AppUpdate").ToString();
 
-					// Check for update asynchronously
-					UpdateCheckResponse updateCheckResult = await Task.Run(AppUpdate.CheckGitHub);
+					// store the latest MSIXBundle version download link after retrieving it from GitHub text file
+					Uri onlineDownloadURL = new(await SecHttpClient.Instance.GetStringAsync(GlobalVars.AppUpdateDownloadLinkURL));
 
-					// If a new version is available
-					if (updateCheckResult.IsNewVersionAvailable)
+					// Location of the MSIXBundle package where it will be saved after downloading it from GitHub
+					string AppControlManagerSavePath = Path.Combine(stagingArea, "AppControlManager.msixbundle");
+
+					MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadingPackage"));
+
+					ProgressBarIsIndeterminate = false;
+
+					// Send an Async get request to the url and specify to stop reading after headers are received for better efficiently
+					using (HttpResponseMessage response = await SecHttpClient.Instance.GetAsync(onlineDownloadURL, HttpCompletionOption.ResponseHeadersRead))
 					{
-						MainInfoBar.WriteInfo(GlobalVars.GetStr("VersionComparison") + App.currentAppVersion + GlobalVars.GetStr("WhileOnlineVersion") + updateCheckResult.OnlineVersion + GlobalVars.GetStr("UpdatingApplication"));
+						// Ensure that the response is successful (status code 2xx); otherwise, throw an exception
+						_ = response.EnsureSuccessStatusCode();
 
-						WhatsNewInfoBarIsOpen = true;
+						// Retrieve the total file size from the Content-Length header (if available)
+						long? totalBytes = response.Content.Headers.ContentLength;
 
-						string stagingArea = StagingArea.NewStagingArea("AppUpdate").ToString();
-
-						// store the latest MSIXBundle version download link after retrieving it from GitHub text file
-						Uri onlineDownloadURL = new(await SecHttpClient.Instance.GetStringAsync(GlobalVars.AppUpdateDownloadLinkURL));
-
-						// Location of the MSIXBundle package where it will be saved after downloading it from GitHub
-						string AppControlManagerSavePath = Path.Combine(stagingArea, "AppControlManager.msixbundle");
-
-						MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadingPackage"));
-
-						ProgressBarIsIndeterminate = false;
-
-						// Send an Async get request to the url and specify to stop reading after headers are received for better efficiently
-						using (HttpResponseMessage response = await SecHttpClient.Instance.GetAsync(onlineDownloadURL, HttpCompletionOption.ResponseHeadersRead))
+						// Open a stream to read the response content asynchronously
+						await using (Stream contentStream = await response.Content.ReadAsStreamAsync())
 						{
-							// Ensure that the response is successful (status code 2xx); otherwise, throw an exception
-							_ = response.EnsureSuccessStatusCode();
-
-							// Retrieve the total file size from the Content-Length header (if available)
-							long? totalBytes = response.Content.Headers.ContentLength;
-
-							// Open a stream to read the response content asynchronously
-							await using (Stream contentStream = await response.Content.ReadAsStreamAsync())
+							// Open a file stream to save the downloaded data locally
+							await using (FileStream fileStream = new(
+								AppControlManagerSavePath,       // Path to save the file
+								FileMode.Create,                 // Create a new file or overwrite if it exists
+								FileAccess.Write,                // Write-only access
+								FileShare.None,                  // Do not allow other processes to access the file
+								bufferSize: 8192,                // Set buffer size to 8 KB
+								useAsync: true))                 // Enable asynchronous operations for the file stream
 							{
-								// Open a file stream to save the downloaded data locally
-								await using (FileStream fileStream = new(
-									AppControlManagerSavePath,       // Path to save the file
-									FileMode.Create,                 // Create a new file or overwrite if it exists
-									FileAccess.Write,                // Write-only access
-									FileShare.None,                  // Do not allow other processes to access the file
-									bufferSize: 8192,                // Set buffer size to 8 KB
-									useAsync: true))                 // Enable asynchronous operations for the file stream
+								// Define a buffer to hold data chunks as they are read
+								byte[] buffer = new byte[8192];
+								long totalReadBytes = 0;         // Track the total number of bytes read
+								int readBytes;                   // Holds the count of bytes read in each iteration
+								double lastReportedProgress = 0; // Tracks the last reported download progress
+
+								// Loop to read from the content stream in chunks until no more data is available
+								while ((readBytes = await contentStream.ReadAsync(buffer)) > 0)
 								{
-									// Define a buffer to hold data chunks as they are read
-									byte[] buffer = new byte[8192];
-									long totalReadBytes = 0;         // Track the total number of bytes read
-									int readBytes;                   // Holds the count of bytes read in each iteration
-									double lastReportedProgress = 0; // Tracks the last reported download progress
+									// Write the buffer to the file stream
+									await fileStream.WriteAsync(buffer.AsMemory(0, readBytes));
+									totalReadBytes += readBytes;  // Update the total bytes read so far
 
-									// Loop to read from the content stream in chunks until no more data is available
-									while ((readBytes = await contentStream.ReadAsync(buffer)) > 0)
+									// If the total file size is known, calculate and report progress
+									if (totalBytes.HasValue)
 									{
-										// Write the buffer to the file stream
-										await fileStream.WriteAsync(buffer.AsMemory(0, readBytes));
-										totalReadBytes += readBytes;  // Update the total bytes read so far
+										// Calculate the current download progress as a percentage
+										double progressPercentage = (double)totalReadBytes / totalBytes.Value * 100;
 
-										// If the total file size is known, calculate and report progress
-										if (totalBytes.HasValue)
+										// Only update the ProgressBar if progress has increased by at least 1% to avoid constantly interacting with the UI thread
+										if (progressPercentage - lastReportedProgress >= 1)
 										{
-											// Calculate the current download progress as a percentage
-											double progressPercentage = (double)totalReadBytes / totalBytes.Value * 100;
+											// Update the last reported progress
+											lastReportedProgress = progressPercentage;
 
-											// Only update the ProgressBar if progress has increased by at least 1% to avoid constantly interacting with the UI thread
-											if (progressPercentage - lastReportedProgress >= 1)
+											// Update the UI ProgressBar value on the dispatcher thread
+											_ = Dispatcher.TryEnqueue(() =>
 											{
-												// Update the last reported progress
-												lastReportedProgress = progressPercentage;
-
-												// Update the UI ProgressBar value on the dispatcher thread
-												_ = Dispatcher.TryEnqueue(() =>
-												{
-													ProgressBarValue = progressPercentage;
-												});
-											}
+												ProgressBarValue = progressPercentage;
+											});
 										}
 									}
 								}
 							}
 						}
-
-						MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadSuccess") + AppControlManagerSavePath);
-
-						ProgressBarIsIndeterminate = true;
-
-						MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadsFinished"));
-
-						await InstallAppPackage(AppControlManagerSavePath, UseHardenedInstallationProcess, MainInfoBar);
-
-						MainInfoBar.WriteSuccess(GlobalVars.GetStr("UpdateSuccess"));
-
-						UpdateButtonContent = GlobalVars.GetStr("UpdatesInstalled");
 					}
-					else
-					{
-						MainInfoBar.WriteSuccess(GlobalVars.GetStr("AlreadyUpdated"));
-					}
+
+					MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadSuccess") + AppControlManagerSavePath);
+
+					ProgressBarIsIndeterminate = true;
+
+					MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadsFinished"));
+
+					await InstallAppPackage(AppControlManagerSavePath, UseHardenedInstallationProcess, MainInfoBar);
+
+					MainInfoBar.WriteSuccess(GlobalVars.GetStr("UpdateSuccess"));
+
+					UpdateButtonContent = GlobalVars.GetStr("UpdatesInstalled");
 				}
 				catch
 				{
@@ -250,6 +218,16 @@ internal sealed partial class UpdateVM : ViewModelBase
 					throw;
 				}
 #endif
+
+#if HARDEN_SYSTEM_SECURITY
+				// For System Security Studio, open GitHub releases page for manual download
+				_ = await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/OFFSECHQ/windows-security-studio/releases"));
+				MainInfoBar.WriteSuccess(GlobalVars.GetStr("NewUpdateIsAvailable"));
+#endif
+			}
+			else
+			{
+				MainInfoBar.WriteSuccess(GlobalVars.GetStr("AlreadyUpdated"));
 			}
 		}
 		catch (Exception ex)
@@ -265,27 +243,21 @@ internal sealed partial class UpdateVM : ViewModelBase
 	}
 
 	/// <summary>
-	/// Launches the Microsoft Store mini page of the app where user can review and rate.
+	/// Opens GitHub releases page for rating/feedback (replaces Microsoft Store rating).
 	/// </summary>
 	internal async void LaunchRating()
 	{
 		try
 		{
-			// https://learn.microsoft.com/windows/apps/develop/launch/launch-store-app#opening-to-a-specific-product
-			Uri uri = new($"ms-windows-store://review/?ProductId={GlobalVars.StoreProductID}");
-
-			bool launched = await Launcher.LaunchUriAsync(uri);
-
-			if (!launched)
-			{
-				Logger.Write(GlobalVars.GetStr("FailedToOpenRating"));
-			}
+			// Open GitHub releases page for feedback
+			_ = await Launcher.LaunchUriAsync(new Uri("https://github.com/OFFSECHQ/windows-security-studio/releases"));
 		}
 		catch (Exception ex)
 		{
 			MainInfoBar.WriteError(ex);
 		}
 	}
+
 
 	#region App Package Installer's Page
 

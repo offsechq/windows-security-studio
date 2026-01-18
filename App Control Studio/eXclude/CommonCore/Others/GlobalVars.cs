@@ -52,13 +52,6 @@ internal static partial class GlobalVars
 	internal static readonly Uri AppVersionLinkURL = new("https://raw.githubusercontent.com/OFFSECHQ/windows-security-studio/refs/heads/main/App%20Control%20Studio/version.txt");
 #endif
 
-	// Product ID of the application when installed from the Microsoft Store
-#if HARDEN_SYSTEM_SECURITY
-	internal const string StoreProductID = "9P7GGFL7DX57";
-#endif
-#if APP_CONTROL_MANAGER
-	internal const string StoreProductID = "9PNG1JDDTGP8";
-#endif
 
 	// The filters for the file pickers dialogs to select files based on specific extensions
 	internal const string XMLFilePickerFilter = "XML file|*.xml";
