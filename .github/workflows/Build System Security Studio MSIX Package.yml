@@ -963,17 +963,16 @@ jobs:
               # Push the new branch to the remote repository
               git push -u origin $NewBranchName
 
-              [string]$PRBody = @"
-              This PR updates MSIXBundleDownloadURL.txt to
-              ```
-              $DownloadURLForMSIXBundle
-              ```
-              And version.txt to
-              ```
-              $PACKAGE_VERSION
-              ```
-
-              "@
+              $PRBody = @(
+                  "This PR updates MSIXBundleDownloadURL.txt to"
+                  "```"
+                  "$DownloadURLForMSIXBundle"
+                  "```"
+                  "And version.txt to"
+                  "```"
+                  "$PACKAGE_VERSION"
+                  "```"
+              ) -join "`n"
 
               # Create the pull request
               gh pr create --title $CommitMessageAndPRTitle --body $PRBody --base main --label 'Automated 🤖' --assignee OFFSECHQ
@@ -989,35 +988,35 @@ jobs:
           $Repo = "${{ github.repository }}"
           $DraftTag = "${{ needs.build.outputs.DRAFT_RELEASE_TAG }}"
 
-          [string]$Note = @"
-
-          # System Security Studio
-
-          A Windows application for system security hardening.
-
-          [**Documentation**](https://github.com/OFFSECHQ/windows-security-studio/wiki)
-
-          ## What's New
-
-          <!-- Main Content -->
-
-          <br>
-
-          How to [verify](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds#verifying-artifact-attestations-with-the-github-cli) the MSIXBundle's authenticity:
-
-          ```
-          gh attestation verify "Path To MSIXBundle" --repo OFFSECHQ/windows-security-studio --format json
-          ```
-
-          You can [install the GitHub CLI](https://github.com/cli/cli?tab=readme-ov-file#windows) from Winget:
-
-          ```
-          winget install --id GitHub.cli
-          ```
-
-          <br>
-
-          "@
+          $Note = @(
+              ""
+              "# System Security Studio"
+              ""
+              "A Windows application for system security hardening."
+              ""
+              "[**Documentation**](https://github.com/OFFSECHQ/windows-security-studio/wiki)"
+              ""
+              "## What's New"
+              ""
+              "<!-- Main Content -->"
+              ""
+              "<br>"
+              ""
+              "How to [verify](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds#verifying-artifact-attestations-with-the-github-cli) the MSIXBundle's authenticity:"
+              ""
+              "```"
+              "gh attestation verify `"Path To MSIXBundle`" --repo OFFSECHQ/windows-security-studio --format json"
+              "```"
+              ""
+              "You can [install the GitHub CLI](https://github.com/cli/cli?tab=readme-ov-file#windows) from Winget:"
+              ""
+              "```"
+              "winget install --id GitHub.cli"
+              "```"
+              ""
+              "<br>"
+              ""
+          ) -join "`n"
 
           $Payload = @{
            body = $Note
