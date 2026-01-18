@@ -5,8 +5,8 @@
 This repository hosts the source code and documentation for tools designed to secure Windows personal and enterprise devices against advanced threats without relying on third-party security software.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/CodeQL%20Advanced%20-%20Quality.yml/badge.svg)](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/CodeQL%20Advanced%20-%20Quality.yml)
-[![PSScriptAnalyzer](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/powershell.yml/badge.svg)](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/powershell.yml)
+[![Build App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/Build%20App%20Control%20Studio%20MSIX%20Package.yml/badge.svg)](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/Build%20App%20Control%20Studio%20MSIX%20Package.yml)
+[![Build System Security Studio](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/Build%20System%20Security%20Studio%20MSIX%20Package.yml/badge.svg)](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/Build%20System%20Security%20Studio%20MSIX%20Package.yml)
 
 ---
 
@@ -57,7 +57,11 @@ For a truly secure environment, we recommend adhering to the following best prac
 
 This is a fork of [HotCakeX/Harden-Windows-Security](https://github.com/HotCakeX/Harden-Windows-Security), maintained by **OFFSECHQ**.
 
-This fork is automatically synced with the upstream repository and includes custom branding and build configurations.
+Due to rebranding (`AppControl Manager` → `App Control Studio`, `Harden Windows Security` → `System Security Studio`), automatic syncing causes conflicts. Instead, this fork uses a **notification-based approach**:
+
+- A weekly workflow checks for upstream updates
+- If updates exist, a GitHub issue is created for manual review
+- Relevant changes are applied to the rebranded directories
 
 ---
 
