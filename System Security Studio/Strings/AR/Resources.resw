@@ -179,7 +179,7 @@
   <value>JumpList غير مدعوم.</value>
 </data>
   <data name="AppElevationNoticeMain" xml:space="preserve">
-    <value>يرجى تشغيل Harden System Security كمسؤول للوصول إلى هذه الصفحة</value>
+    <value>يرجى تشغيل System Security Studio كمسؤول للوصول إلى هذه الصفحة</value>
   </data>
     <data name="AppElevationNoticeExtraPrompt" xml:space="preserve">
     <value>اطلب الصلاحيات المرتفعة دائماً عند بدء تشغيل التطبيق</value>
@@ -206,7 +206,7 @@
     <value>الدعم - طرح الأسئلة</value>
   </data>
   <data name="SettingsPageTitle.Text" xml:space="preserve">
-    <value>خصص إعدادات تطبيقك هنا. ستُحفظ تفضيلاتك بحيث تكون جاهزة لك في كل مرة تبدأ فيها تشغيل Harden System Security.</value>
+    <value>خصص إعدادات تطبيقك هنا. ستُحفظ تفضيلاتك بحيث تكون جاهزة لك في كل مرة تبدأ فيها تشغيل System Security Studio.</value>
   </data>
   <data name="Appearance.Text" xml:space="preserve">
     <value>المظهر</value>
@@ -215,13 +215,13 @@
     <value>حول</value>
   </data>
     <data name="AppearanceSectionSettingsExpander.Header" xml:space="preserve">
-    <value>اجعل Harden System Security يبدو بالطريقة التي تريدها</value>
+    <value>اجعل System Security Studio يبدو بالطريقة التي تريدها</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>استخدم الخيارات المختلفة المتاحة لتغيير مظهر والتأثيرات البصرية لـ Harden System Security</value>
+    <value>استخدم الخيارات المختلفة المتاحة لتغيير مظهر والتأثيرات البصرية لـ System Security Studio</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>استخدم الخيارات المختلفة المتاحة لتغيير مظهر والتأثيرات البصرية لـ Harden System Security</value>
+    <value>استخدم الخيارات المختلفة المتاحة لتغيير مظهر والتأثيرات البصرية لـ System Security Studio</value>
   </data>
     <data name="DarkerBackGroundSettingsCard.Description" xml:space="preserve">
     <value>مناسب في الغالب عند استخدام MicaAlt كخلفية.</value>
@@ -230,10 +230,10 @@
     <value>خلفية أكثر قتامة</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>سيزيل الظل الفاتح الإضافي من الخلفية، مما يعطي مظهراً أكثر قتامة بشكل عام لـ Harden System Security.</value>
+    <value>سيزيل الظل الفاتح الإضافي من الخلفية، مما يعطي مظهراً أكثر قتامة بشكل عام لـ System Security Studio.</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>سيزيل الظل الفاتح الإضافي من الخلفية، مما يعطي مظهراً أكثر قتامة بشكل عام لـ Harden System Security.</value>
+    <value>سيزيل الظل الفاتح الإضافي من الخلفية، مما يعطي مظهراً أكثر قتامة بشكل عام لـ System Security Studio.</value>
   </data>
     <data name="ToggleSwitchGeneral.OnContent" xml:space="preserve">
     <value>تشغيل</value>
@@ -248,10 +248,10 @@
     <value>نمط الخلفية</value>
   </data>
   <data name="BackgroundStyleSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>هذه هي خلفية Harden System Security. ستكون التغييرات مرئية في الخلفية.</value>
+    <value>هذه هي خلفية System Security Studio. ستكون التغييرات مرئية في الخلفية.</value>
   </data>
   <data name="BackgroundStyleSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>هذه هي خلفية Harden System Security. ستكون التغييرات مرئية في الخلفية.</value>
+    <value>هذه هي خلفية System Security Studio. ستكون التغييرات مرئية في الخلفية.</value>
   </data>
     <data name="AppThemeSettingsCard.Description" xml:space="preserve">
     <value>خصص السمة</value>
@@ -260,10 +260,10 @@
     <value>السمة</value>
   </data>
   <data name="AppThemeSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>اختر سمة لـ Harden System Security</value>
+    <value>اختر سمة لـ System Security Studio</value>
   </data>
   <data name="AppThemeSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>اختر سمة لـ Harden System Security</value>
+    <value>اختر سمة لـ System Security Studio</value>
   </data>
     <data name="MainNavigationIconsSettingsCard.Description" xml:space="preserve">
     <value>اختر نمطاً لأيقونات التنقل الرئيسي</value>
@@ -290,16 +290,16 @@
     <value>اختر موقعاً لقائمة التنقل</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.Header" xml:space="preserve">
-    <value>غيّر سلوك Harden System Security والعناصر المختلفة بداخله</value>
+    <value>غيّر سلوك System Security Studio والعناصر المختلفة بداخله</value>
   </data>
   <data name="Behavior.Text" xml:space="preserve">
     <value>السلوك</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>غيّر سلوك Harden System Security والعناصر المختلفة بداخله</value>
+    <value>غيّر سلوك System Security Studio والعناصر المختلفة بداخله</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>غيّر سلوك Harden System Security والعناصر المختلفة بداخله</value>
+    <value>غيّر سلوك System Security Studio والعناصر المختلفة بداخله</value>
   </data>
     <data name="ListViewsCenterVerticallyUponSelectionSettingsCard.Description" xml:space="preserve">
     <value>كلما حددت عنصراً في عرض القائمة، قم بتوسيط ذلك العنصر عمودياً على الشاشة.</value>
@@ -314,40 +314,40 @@
     <value>كلما حددت عنصراً في عرض القائمة، قم بتوسيط ذلك العنصر عمودياً على الشاشة.</value>
   </data>
     <data name="PromptForElevationSettingsCard.Description" xml:space="preserve">
-    <value>إذا تم تمكين هذا، فسيطلب Harden System Security الصلاحيات المرتفعة للعمل بصلاحيات المسؤول عند بدء التشغيل.</value>
+    <value>إذا تم تمكين هذا، فسيطلب System Security Studio الصلاحيات المرتفعة للعمل بصلاحيات المسؤول عند بدء التشغيل.</value>
   </data>
   <data name="PromptForElevationSettingsCard.Header" xml:space="preserve">
     <value>طلب الصلاحيات المرتفعة عند بدء التشغيل</value>
   </data>
   <data name="PromptForElevationSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>إذا تم تمكين هذا، فسيطلب Harden System Security الصلاحيات المرتفعة للعمل بصلاحيات المسؤول عند بدء التشغيل.</value>
+    <value>إذا تم تمكين هذا، فسيطلب System Security Studio الصلاحيات المرتفعة للعمل بصلاحيات المسؤول عند بدء التشغيل.</value>
   </data>
   <data name="PromptForElevationSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>إذا تم تمكين هذا، فسيطلب Harden System Security الصلاحيات المرتفعة للعمل بصلاحيات المسؤول عند بدء التشغيل.</value>
+    <value>إذا تم تمكين هذا، فسيطلب System Security Studio الصلاحيات المرتفعة للعمل بصلاحيات المسؤول عند بدء التشغيل.</value>
   </data>
     <data name="ScreenShieldSettingsCard.Description" xml:space="preserve">
-    <value>منع التطبيقات الأخرى مثل مسجلات الشاشة (بما في ذلك Recall) من تسجيل أو أخذ لقطات شاشة لنافذة Harden System Security.</value>
+    <value>منع التطبيقات الأخرى مثل مسجلات الشاشة (بما في ذلك Recall) من تسجيل أو أخذ لقطات شاشة لنافذة System Security Studio.</value>
   </data>
   <data name="ScreenShieldSettingsCard.Header" xml:space="preserve">
     <value>حماية الشاشة</value>
   </data>
   <data name="ScreenShieldSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>منع التطبيقات الأخرى مثل مسجلات الشاشة (بما في ذلك Recall) من تسجيل أو أخذ لقطات شاشة لنافذة Harden System Security.</value>
+    <value>منع التطبيقات الأخرى مثل مسجلات الشاشة (بما في ذلك Recall) من تسجيل أو أخذ لقطات شاشة لنافذة System Security Studio.</value>
   </data>
   <data name="ScreenShieldSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>منع التطبيقات الأخرى مثل مسجلات الشاشة (بما في ذلك Recall) من تسجيل أو أخذ لقطات شاشة لنافذة Harden System Security.</value>
+    <value>منع التطبيقات الأخرى مثل مسجلات الشاشة (بما في ذلك Recall) من تسجيل أو أخذ لقطات شاشة لنافذة System Security Studio.</value>
   </data>
    <data name="PublishUserActivityInTheOSSettingsCard.Description" xml:space="preserve">
-    <value>نشر الأنشطة المختلفة التي تقوم بها في Harden System Security لنظام التشغيل، مما يسمح لها بالظهور وتكون متاحة لك في Microsoft Recall حتى تتمكن من تتبع أعمالك.</value>
+    <value>نشر الأنشطة المختلفة التي تقوم بها في System Security Studio لنظام التشغيل، مما يسمح لها بالظهور وتكون متاحة لك في Microsoft Recall حتى تتمكن من تتبع أعمالك.</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.Header" xml:space="preserve">
     <value>نشر النشاط في نظام التشغيل</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>نشر الأنشطة المختلفة التي تقوم بها في Harden System Security لنظام التشغيل، مما يسمح لها بالظهور وتكون متاحة لك في Microsoft Recall حتى تتمكن من تتبع أعمالك.</value>
+    <value>نشر الأنشطة المختلفة التي تقوم بها في System Security Studio لنظام التشغيل، مما يسمح لها بالظهور وتكون متاحة لك في Microsoft Recall حتى تتمكن من تتبع أعمالك.</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>نشر الأنشطة المختلفة التي تقوم بها في Harden System Security لنظام التشغيل، مما يسمح لها بالظهور وتكون متاحة لك في Microsoft Recall حتى تتمكن من تتبع أعمالك.</value>
+    <value>نشر الأنشطة المختلفة التي تقوم بها في System Security Studio لنظام التشغيل، مما يسمح لها بالظهور وتكون متاحة لك في Microsoft Recall حتى تتمكن من تتبع أعمالك.</value>
   </data>
     <data name="LanguageTextBlock.Text" xml:space="preserve">
     <value>اللغة</value>
@@ -395,16 +395,16 @@
     <value>الصوت</value>
   </data>
     <data name="AppSoundSettingSettingsCard.Description" xml:space="preserve">
-    <value>سماع ملاحظات صوتية عند استخدام عناصر مختلفة من Harden System Security</value>
+    <value>سماع ملاحظات صوتية عند استخدام عناصر مختلفة من System Security Studio</value>
   </data>
   <data name="AppSoundSettingSettingsCard.Header" xml:space="preserve">
     <value>الصوت</value>
   </data>
   <data name="AppSoundSettingSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>سماع ملاحظات صوتية عند استخدام عناصر مختلفة من Harden System Security</value>
+    <value>سماع ملاحظات صوتية عند استخدام عناصر مختلفة من System Security Studio</value>
   </data>
   <data name="AppSoundSettingSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>سماع ملاحظات صوتية عند استخدام عناصر مختلفة من Harden System Security</value>
+    <value>سماع ملاحظات صوتية عند استخدام عناصر مختلفة من System Security Studio</value>
   </data>
     <data name="GitHubRepoHyperLinkButton.Content" xml:space="preserve">
     <value>مستودع GitHub</value>
@@ -461,10 +461,10 @@
     <value>معلومات أكثر</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>يفتح صفحة الويكي الرئيسية لـ GitHub الخاصة بـ Harden System Security</value>
+    <value>يفتح صفحة الويكي الرئيسية لـ GitHub الخاصة بـ System Security Studio</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>يفتح صفحة الويكي الرئيسية لـ GitHub الخاصة بـ Harden System Security</value>
+    <value>يفتح صفحة الويكي الرئيسية لـ GitHub الخاصة بـ System Security Studio</value>
   </data>
     <data name="UpdatePageWhatsNewInfoBar.Title" xml:space="preserve">
     <value>ملاحظات الإصدار</value>
@@ -488,16 +488,16 @@
     <value>يفتح صفحة إصدارات GitHub حيث يمكنك العثور على ملاحظات الإصدار الكاملة للتحديث المتاح.</value>
   </data>
     <data name="CheckForUpdateSettingsCard.Description" xml:space="preserve">
-    <value>بمجرد تنزيل التحديثات وتثبيتها، في المرة القادمة التي تفتح فيها Harden System Security ستستخدم النسخة الجديدة.</value>
+    <value>بمجرد تنزيل التحديثات وتثبيتها، في المرة القادمة التي تفتح فيها System Security Studio ستستخدم النسخة الجديدة.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.Header" xml:space="preserve">
-    <value>البحث عن تحديث Harden System Security</value>
+    <value>البحث عن تحديث System Security Studio</value>
   </data>
   <data name="CheckForUpdateSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>بمجرد تنزيل التحديثات وتثبيتها، في المرة القادمة التي تفتح فيها Harden System Security ستستخدم النسخة الجديدة.</value>
+    <value>بمجرد تنزيل التحديثات وتثبيتها، في المرة القادمة التي تفتح فيها System Security Studio ستستخدم النسخة الجديدة.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>بمجرد تنزيل التحديثات وتثبيتها، في المرة القادمة التي تفتح فيها Harden System Security ستستخدم النسخة الجديدة.</value>
+    <value>بمجرد تنزيل التحديثات وتثبيتها، في المرة القادمة التي تفتح فيها System Security Studio ستستخدم النسخة الجديدة.</value>
   </data>
     <data name="UpdatePageCheckForUpdateButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>سيقوم بتنزيل وتثبيت أحدث نسخة من مستودع GitHub. الوقت المستغرق يعتمد على اتصال الشبكة لديك. حجم التنزيل التقريبي هو 65 ميجابايت.</value>
@@ -530,16 +530,16 @@
     <value>عند تمكين هذا الخيار، سيتم ربط المفتاح الخاص المؤقت للشهادة المُنشأة على الجهاز بحساب المستخدم، مما يتطلب تأكيد المطالبات قبل أن يتمكن من استخدامه للتوقيع.</value>
   </data>
     <data name="RateAndReviewSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>يفتح صفحة Microsoft Store المصغرة حيث يمكنك تقييم وكتابة مراجعة اختيارياً لـ Harden System Security.</value>
+    <value>يفتح صفحة Microsoft Store المصغرة حيث يمكنك تقييم وكتابة مراجعة اختيارياً لـ System Security Studio.</value>
   </data>
   <data name="RateAndReviewSettingsCard.Header" xml:space="preserve">
     <value>تقييم ومراجعة</value>
   </data>
     <data name="RateAndReviewSettingsCard.Description" xml:space="preserve">
-    <value>يفتح صفحة Microsoft Store المصغرة حيث يمكنك تقييم وكتابة مراجعة اختيارياً لـ Harden System Security.</value>
+    <value>يفتح صفحة Microsoft Store المصغرة حيث يمكنك تقييم وكتابة مراجعة اختيارياً لـ System Security Studio.</value>
   </data>
   <data name="RateAndReviewSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>يفتح صفحة Microsoft Store المصغرة حيث يمكنك تقييم وكتابة مراجعة اختيارياً لـ Harden System Security.</value>
+    <value>يفتح صفحة Microsoft Store المصغرة حيث يمكنك تقييم وكتابة مراجعة اختيارياً لـ System Security Studio.</value>
   </data>
     <data name="CheckingForUpdateStore" xml:space="preserve">
     <value>جاري البحث عن تحديث في Microsoft Store...</value>
@@ -548,10 +548,10 @@
     <value>تحديث جديد متاح. فتح Microsoft Store حتى تتمكن من المتابعة مع تحديث التطبيق هناك.</value>
   </data>
     <data name="ProblemOpeningMSStore" xml:space="preserve">
-    <value>كانت هناك مشكلة في فتح صفحة Microsoft Store الخاصة بـ Harden System Security.</value>
+    <value>كانت هناك مشكلة في فتح صفحة Microsoft Store الخاصة بـ System Security Studio.</value>
   </data>
     <data name="TheAppIsUpToDate" xml:space="preserve">
-    <value>تطبيق Harden System Security محدث.</value>
+    <value>تطبيق System Security Studio محدث.</value>
   </data>
    <data name="UpdateCheckError" xml:space="preserve">
     <value>حدث خطأ أثناء فحص التحديث.</value>
@@ -2174,10 +2174,10 @@
     <value>غير متاح</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-  <value>Harden System Security هو تطبيق يساعدك على تكوين نظامك ليكون آمناً ضد العديد من التهديدات المتقدمة، باستخدام الأدوات والميزات المتاحة في نظام التشغيل والمقدمة من Microsoft فقط دون استخدام أي أدوات أو برامج طرف ثالث.</value>
+  <value>System Security Studio هو تطبيق يساعدك على تكوين نظامك ليكون آمناً ضد العديد من التهديدات المتقدمة، باستخدام الأدوات والميزات المتاحة في نظام التشغيل والمقدمة من Microsoft فقط دون استخدام أي أدوات أو برامج طرف ثالث.</value>
 </data>
   <data name="LogsPageTitle" xml:space="preserve">
-    <value>فيما يلي السجلات التي ينشئها Harden System Security تلقائياً ويخزنها في المجلد المخصص. لن يتجاوز الحجم الإجمالي لمجلد السجلات 1 جيجابايت أبداً.</value>
+    <value>فيما يلي السجلات التي ينشئها System Security Studio تلقائياً ويخزنها في المجلد المخصص. لن يتجاوز الحجم الإجمالي لمجلد السجلات 1 جيجابايت أبداً.</value>
   </data>
     <data name="OpenLogsDirectoryButtonText.Text" xml:space="preserve">
     <value>فتح دليل السجلات</value>
@@ -5016,13 +5016,13 @@
     <value>استرداد قواعد جدار الحماية</value>
   </data>
   <data name="RetrieveFirewallRulesButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>استرد جميع قواعد جدار الحماية التي تم إنشاؤها بواسطة تطبيق Harden System Security.</value>
+    <value>استرد جميع قواعد جدار الحماية التي تم إنشاؤها بواسطة تطبيق System Security Studio.</value>
   </data>
   <data name="RetrieveFirewallRulesButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>استرد جميع قواعد جدار الحماية التي تم إنشاؤها بواسطة تطبيق Harden System Security.</value>
+    <value>استرد جميع قواعد جدار الحماية التي تم إنشاؤها بواسطة تطبيق System Security Studio.</value>
   </data>
   <data name="SuccessfullyRetrievedFirewallRulesMessage" xml:space="preserve">
-    <value>تم استرداد {0} من قواعد جدار الحماية التي تم إنشاؤها بواسطة تطبيق Harden System Security بنجاح.</value>
+    <value>تم استرداد {0} من قواعد جدار الحماية التي تم إنشاؤها بواسطة تطبيق System Security Studio بنجاح.</value>
   </data>
     <data name="LastBootTime.Text" xml:space="preserve">
     <value>وقت التمهيد الأخير</value>

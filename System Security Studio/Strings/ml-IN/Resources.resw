@@ -179,7 +179,7 @@
   <value>JumpList പിന്തുണയ്ക്കുന്നില്ല.</value>
 </data>
   <data name="AppElevationNoticeMain" xml:space="preserve">
-    <value>ഈ പേജ് ആക്സസ് ചെയ്യാൻ Harden System Security അഡ്മിനിസ്ട്രേറ്ററായി പ്രവർത്തിപ്പിക്കുക</value>
+    <value>ഈ പേജ് ആക്സസ് ചെയ്യാൻ System Security Studio അഡ്മിനിസ്ട്രേറ്ററായി പ്രവർത്തിപ്പിക്കുക</value>
   </data>
     <data name="AppElevationNoticeExtraPrompt" xml:space="preserve">
     <value>ആപ്ലിക്കേഷൻ ആരംഭിക്കുമ്പോൾ എല്ലായ്പ്പോഴും എലിവേഷനു വേണ്ടി ചോദിക്കുക</value>
@@ -206,7 +206,7 @@
     <value>സഹായം - ചോദ്യങ്ങൾ ചോദിക്കുക</value>
   </data>
   <data name="SettingsPageTitle.Text" xml:space="preserve">
-    <value>നിങ്ങളുടെ ആപ്ലിക്കേഷൻ സെറ്റിംഗുകൾ ഇവിടെ കസ്റ്റമൈസ് ചെയ്യുക. നിങ്ങളുടെ മുൻഗണനകൾ സേവ് ചെയ്യപ്പെടും, അതിനാൽ നിങ്ങൾ Harden System Security ആരംഭിക്കുമ്പോഴൊക്കെ അവ നിങ്ങൾക്കായി തയ്യാറായിരിക്കും.</value>
+    <value>നിങ്ങളുടെ ആപ്ലിക്കേഷൻ സെറ്റിംഗുകൾ ഇവിടെ കസ്റ്റമൈസ് ചെയ്യുക. നിങ്ങളുടെ മുൻഗണനകൾ സേവ് ചെയ്യപ്പെടും, അതിനാൽ നിങ്ങൾ System Security Studio ആരംഭിക്കുമ്പോഴൊക്കെ അവ നിങ്ങൾക്കായി തയ്യാറായിരിക്കും.</value>
   </data>
   <data name="Appearance.Text" xml:space="preserve">
     <value>കാഴ്ച</value>
@@ -215,13 +215,13 @@
     <value>കുറിച്ച്</value>
   </data>
     <data name="AppearanceSectionSettingsExpander.Header" xml:space="preserve">
-    <value>Harden System Security നിങ്ങൾ ആഗ്രഹിക്കുന്ന രീതിയിൽ കാണിപ്പിക്കുക</value>
+    <value>System Security Studio നിങ്ങൾ ആഗ്രഹിക്കുന്ന രീതിയിൽ കാണിപ്പിക്കുക</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Harden System Security-യുടെ കാഴ്ചയും വിഷ്വൽ ഇഫക്റ്റുകളും മാറ്റാൻ ലഭ്യമായ വിവിധ ഓപ്ഷനുകൾ ഉപയോഗിക്കുക</value>
+    <value>System Security Studio-യുടെ കാഴ്ചയും വിഷ്വൽ ഇഫക്റ്റുകളും മാറ്റാൻ ലഭ്യമായ വിവിധ ഓപ്ഷനുകൾ ഉപയോഗിക്കുക</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Harden System Security-യുടെ കാഴ്ചയും വിഷ്വൽ ഇഫക്റ്റുകളും മാറ്റാൻ ലഭ്യമായ വിവിധ ഓപ്ഷനുകൾ ഉപയോഗിക്കുക</value>
+    <value>System Security Studio-യുടെ കാഴ്ചയും വിഷ്വൽ ഇഫക്റ്റുകളും മാറ്റാൻ ലഭ്യമായ വിവിധ ഓപ്ഷനുകൾ ഉപയോഗിക്കുക</value>
   </data>
     <data name="DarkerBackGroundSettingsCard.Description" xml:space="preserve">
     <value>പ്രധാനമായും നിങ്ങൾ MicaAlt പശ്ചാത്തലമായി ഉപയോഗിക്കുമ്പോൾ അനുയോജ്യമാണ്.</value>
@@ -230,10 +230,10 @@
     <value>ഇരുണ്ട പശ്ചാത്തലം</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>ഇത് പശ്ചാത്തലത്തിൽ നിന്ന് അധിക ലൈറ്റ് ഷേഡിംഗ് നീക്കം ചെയ്യും, Harden System Security-ക്ക് മൊത്തത്തിൽ കൂടുതൽ ഇരുണ്ട കാഴ്ച നൽകും.</value>
+    <value>ഇത് പശ്ചാത്തലത്തിൽ നിന്ന് അധിക ലൈറ്റ് ഷേഡിംഗ് നീക്കം ചെയ്യും, System Security Studio-ക്ക് മൊത്തത്തിൽ കൂടുതൽ ഇരുണ്ട കാഴ്ച നൽകും.</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>ഇത് പശ്ചാത്തലത്തിൽ നിന്ന് അധിക ലൈറ്റ് ഷേഡിംഗ് നീക്കം ചെയ്യും, Harden System Security-ക്ക് മൊത്തത്തിൽ കൂടുതൽ ഇരുണ്ട കാഴ്ച നൽകും.</value>
+    <value>ഇത് പശ്ചാത്തലത്തിൽ നിന്ന് അധിക ലൈറ്റ് ഷേഡിംഗ് നീക്കം ചെയ്യും, System Security Studio-ക്ക് മൊത്തത്തിൽ കൂടുതൽ ഇരുണ്ട കാഴ്ച നൽകും.</value>
   </data>
     <data name="ToggleSwitchGeneral.OnContent" xml:space="preserve">
     <value>ഓൺ</value>
@@ -248,10 +248,10 @@
     <value>പശ്ചാത്തല ശൈലി</value>
   </data>
   <data name="BackgroundStyleSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>ഇത് Harden System Security-യുടെ പശ്ചാത്തലമാണ്. മാറ്റങ്ങൾ പശ്ചാത്തലത്തിൽ കാണപ്പെടും.</value>
+    <value>ഇത് System Security Studio-യുടെ പശ്ചാത്തലമാണ്. മാറ്റങ്ങൾ പശ്ചാത്തലത്തിൽ കാണപ്പെടും.</value>
   </data>
   <data name="BackgroundStyleSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>ഇത് Harden System Security-യുടെ പശ്ചാത്തലമാണ്. മാറ്റങ്ങൾ പശ്ചാത്തലത്തിൽ കാണപ്പെടും.</value>
+    <value>ഇത് System Security Studio-യുടെ പശ്ചാത്തലമാണ്. മാറ്റങ്ങൾ പശ്ചാത്തലത്തിൽ കാണപ്പെടും.</value>
   </data>
     <data name="AppThemeSettingsCard.Description" xml:space="preserve">
     <value>തീം കസ്റ്റമൈസ് ചെയ്യുക</value>
@@ -260,10 +260,10 @@
     <value>തീം</value>
   </data>
   <data name="AppThemeSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Harden System Security-ക്കായി ഒരു തീം തിരഞ്ഞെടുക്കുക</value>
+    <value>System Security Studio-ക്കായി ഒരു തീം തിരഞ്ഞെടുക്കുക</value>
   </data>
   <data name="AppThemeSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Harden System Security-ക്കായി ഒരു തീം തിരഞ്ഞെടുക്കുക</value>
+    <value>System Security Studio-ക്കായി ഒരു തീം തിരഞ്ഞെടുക്കുക</value>
   </data>
     <data name="MainNavigationIconsSettingsCard.Description" xml:space="preserve">
     <value>പ്രധാന നാവിഗേഷൻ ഐക്കണുകൾക്കായി ഒരു ശൈലി തിരഞ്ഞെടുക്കുക</value>
@@ -290,16 +290,16 @@
     <value>നാവിഗേഷൻ മെനുവിനുള്ള ഒരു സ്ഥാനം തിരഞ്ഞെടുക്കുക</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.Header" xml:space="preserve">
-    <value>Harden System Security-യുടെയും അതിനുള്ളിലെ വിവിധ എലമെന്റുകളുടെയും പെരുമാറ്റം മാറ്റുക</value>
+    <value>System Security Studio-യുടെയും അതിനുള്ളിലെ വിവിധ എലമെന്റുകളുടെയും പെരുമാറ്റം മാറ്റുക</value>
   </data>
   <data name="Behavior.Text" xml:space="preserve">
     <value>പെരുമാറ്റം</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Harden System Security-യുടെയും അതിനുള്ളിലെ വിവിധ എലമെന്റുകളുടെയും പെരുമാറ്റം മാറ്റുക</value>
+    <value>System Security Studio-യുടെയും അതിനുള്ളിലെ വിവിധ എലമെന്റുകളുടെയും പെരുമാറ്റം മാറ്റുക</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Harden System Security-യുടെയും അതിനുള്ളിലെ വിവിധ എലമെന്റുകളുടെയും പെരുമാറ്റം മാറ്റുക</value>
+    <value>System Security Studio-യുടെയും അതിനുള്ളിലെ വിവിധ എലമെന്റുകളുടെയും പെരുമാറ്റം മാറ്റുക</value>
   </data>
     <data name="ListViewsCenterVerticallyUponSelectionSettingsCard.Description" xml:space="preserve">
     <value>നിങ്ങൾ ഒരു ലിസ്റ്റ് വ്യൂവിൽ ഒരു ഇനം തിരഞ്ഞെടുക്കുമ്പോഴെല്ലാം, ആ ഇനത്തെ സ്ക്രീനിൽ ലംബമായി മധ്യത്തിൽ വയ്ക്കുക.</value>
@@ -314,40 +314,40 @@
     <value>നിങ്ങൾ ഒരു ലിസ്റ്റ് വ്യൂവിൽ ഒരു ഇനം തിരഞ്ഞെടുക്കുമ്പോഴെല്ലാം, ആ ഇനത്തെ സ്ക്രീനിൽ ലംബമായി മധ്യത്തിൽ വയ്ക്കുക.</value>
   </data>
     <data name="PromptForElevationSettingsCard.Description" xml:space="preserve">
-    <value>ഇത് പ്രാപ്തമാക്കിയാൽ, Harden System Security സ്റ്റാർട്ടപ്പിൽ അഡ്മിനിസ്ട്രേറ്റർ അനുമതികളോടെ പ്രവർത്തിക്കാൻ എലിവേഷൻ അഭ്യർത്ഥിക്കും.</value>
+    <value>ഇത് പ്രാപ്തമാക്കിയാൽ, System Security Studio സ്റ്റാർട്ടപ്പിൽ അഡ്മിനിസ്ട്രേറ്റർ അനുമതികളോടെ പ്രവർത്തിക്കാൻ എലിവേഷൻ അഭ്യർത്ഥിക്കും.</value>
   </data>
   <data name="PromptForElevationSettingsCard.Header" xml:space="preserve">
     <value>സ്റ്റാർട്ടപ്പിൽ എലിവേഷനു വേണ്ടി പ്രേരിപ്പിക്കുക</value>
   </data>
   <data name="PromptForElevationSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>ഇത് പ്രാപ്തമാക്കിയാൽ, Harden System Security സ്റ്റാർട്ടപ്പിൽ അഡ്മിനിസ്ട്രേറ്റർ അനുമതികളോടെ പ്രവർത്തിക്കാൻ എലിവേഷൻ അഭ്യർത്ഥിക്കും.</value>
+    <value>ഇത് പ്രാപ്തമാക്കിയാൽ, System Security Studio സ്റ്റാർട്ടപ്പിൽ അഡ്മിനിസ്ട്രേറ്റർ അനുമതികളോടെ പ്രവർത്തിക്കാൻ എലിവേഷൻ അഭ്യർത്ഥിക്കും.</value>
   </data>
   <data name="PromptForElevationSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>ഇത് പ്രാപ്തമാക്കിയാൽ, Harden System Security സ്റ്റാർട്ടപ്പിൽ അഡ്മിനിസ്ട്രേറ്റർ അനുമതികളോടെ പ്രവർത്തിക്കാൻ എലിവേഷൻ അഭ്യർത്ഥിക്കും.</value>
+    <value>ഇത് പ്രാപ്തമാക്കിയാൽ, System Security Studio സ്റ്റാർട്ടപ്പിൽ അഡ്മിനിസ്ട്രേറ്റർ അനുമതികളോടെ പ്രവർത്തിക്കാൻ എലിവേഷൻ അഭ്യർത്ഥിക്കും.</value>
   </data>
     <data name="ScreenShieldSettingsCard.Description" xml:space="preserve">
-    <value>സ്ക്രീൻ റെക്കോർഡറുകൾ (Recall ഉൾപ്പെടെ) പോലുള്ള മറ്റ് ആപ്ലിക്കേഷനുകൾ Harden System Security വിൻഡോ റെക്കോർഡ് ചെയ്യുന്നതോ സ്ക്രീൻഷോട്ട് എടുക്കുന്നതോ തടയുക.</value>
+    <value>സ്ക്രീൻ റെക്കോർഡറുകൾ (Recall ഉൾപ്പെടെ) പോലുള്ള മറ്റ് ആപ്ലിക്കേഷനുകൾ System Security Studio വിൻഡോ റെക്കോർഡ് ചെയ്യുന്നതോ സ്ക്രീൻഷോട്ട് എടുക്കുന്നതോ തടയുക.</value>
   </data>
   <data name="ScreenShieldSettingsCard.Header" xml:space="preserve">
     <value>സ്ക്രീൻ ഷീൽഡ്</value>
   </data>
   <data name="ScreenShieldSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>സ്ക്രീൻ റെക്കോർഡറുകൾ (Recall ഉൾപ്പെടെ) പോലുള്ള മറ്റ് ആപ്ലിക്കേഷനുകൾ Harden System Security വിൻഡോ റെക്കോർഡ് ചെയ്യുന്നതോ സ്ക്രീൻഷോട്ട് എടുക്കുന്നതോ തടയുക.</value>
+    <value>സ്ക്രീൻ റെക്കോർഡറുകൾ (Recall ഉൾപ്പെടെ) പോലുള്ള മറ്റ് ആപ്ലിക്കേഷനുകൾ System Security Studio വിൻഡോ റെക്കോർഡ് ചെയ്യുന്നതോ സ്ക്രീൻഷോട്ട് എടുക്കുന്നതോ തടയുക.</value>
   </data>
   <data name="ScreenShieldSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>സ്ക്രീൻ റെക്കോർഡറുകൾ (Recall ഉൾപ്പെടെ) പോലുള്ള മറ്റ് ആപ്ലിക്കേഷനുകൾ Harden System Security വിൻഡോ റെക്കോർഡ് ചെയ്യുന്നതോ സ്ക്രീൻഷോട്ട് എടുക്കുന്നതോ തടയുക.</value>
+    <value>സ്ക്രീൻ റെക്കോർഡറുകൾ (Recall ഉൾപ്പെടെ) പോലുള്ള മറ്റ് ആപ്ലിക്കേഷനുകൾ System Security Studio വിൻഡോ റെക്കോർഡ് ചെയ്യുന്നതോ സ്ക്രീൻഷോട്ട് എടുക്കുന്നതോ തടയുക.</value>
   </data>
    <data name="PublishUserActivityInTheOSSettingsCard.Description" xml:space="preserve">
-    <value>Harden System Security-യിൽ നിങ്ങൾ നടത്തുന്ന വിവിധ പ്രവർത്തനങ്ങൾ ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിൽ പ്രസിദ്ധീകരിക്കുക, അവ Microsoft Recall-ൽ നിങ്ങൾക്കായി ദൃശ്യമാവുകയും ലഭ്യമാവുകയും ചെയ്യുന്നതിനായി, നിങ്ങളുടെ പ്രവർത്തനങ്ങൾ ഓർക്കാൻ സഹായിക്കുന്നതിന്.</value>
+    <value>System Security Studio-യിൽ നിങ്ങൾ നടത്തുന്ന വിവിധ പ്രവർത്തനങ്ങൾ ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിൽ പ്രസിദ്ധീകരിക്കുക, അവ Microsoft Recall-ൽ നിങ്ങൾക്കായി ദൃശ്യമാവുകയും ലഭ്യമാവുകയും ചെയ്യുന്നതിനായി, നിങ്ങളുടെ പ്രവർത്തനങ്ങൾ ഓർക്കാൻ സഹായിക്കുന്നതിന്.</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.Header" xml:space="preserve">
     <value>OS-ൽ പ്രവർത്തനം പ്രസിദ്ധീകരിക്കുക</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Harden System Security-യിൽ നിങ്ങൾ നടത്തുന്ന വിവിധ പ്രവർത്തനങ്ങൾ ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിൽ പ്രസിദ്ധീകരിക്കുക, അവ Microsoft Recall-ൽ നിങ്ങൾക്കായി ദൃശ്യമാവുകയും ലഭ്യമാവുകയും ചെയ്യുന്നതിനായി, നിങ്ങളുടെ പ്രവർത്തനങ്ങൾ ഓർക്കാൻ സഹായിക്കുന്നതിന്.</value>
+    <value>System Security Studio-യിൽ നിങ്ങൾ നടത്തുന്ന വിവിധ പ്രവർത്തനങ്ങൾ ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിൽ പ്രസിദ്ധീകരിക്കുക, അവ Microsoft Recall-ൽ നിങ്ങൾക്കായി ദൃശ്യമാവുകയും ലഭ്യമാവുകയും ചെയ്യുന്നതിനായി, നിങ്ങളുടെ പ്രവർത്തനങ്ങൾ ഓർക്കാൻ സഹായിക്കുന്നതിന്.</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Harden System Security-യിൽ നിങ്ങൾ നടത്തുന്ന വിവിധ പ്രവർത്തനങ്ങൾ ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിൽ പ്രസിദ്ധീകരിക്കുക, അവ Microsoft Recall-ൽ നിങ്ങൾക്കായി ദൃശ്യമാവുകയും ലഭ്യമാവുകയും ചെയ്യുന്നതിനായി, നിങ്ങളുടെ പ്രവർത്തനങ്ങൾ ഓർക്കാൻ സഹായിക്കുന്നതിന്.</value>
+    <value>System Security Studio-യിൽ നിങ്ങൾ നടത്തുന്ന വിവിധ പ്രവർത്തനങ്ങൾ ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിൽ പ്രസിദ്ധീകരിക്കുക, അവ Microsoft Recall-ൽ നിങ്ങൾക്കായി ദൃശ്യമാവുകയും ലഭ്യമാവുകയും ചെയ്യുന്നതിനായി, നിങ്ങളുടെ പ്രവർത്തനങ്ങൾ ഓർക്കാൻ സഹായിക്കുന്നതിന്.</value>
   </data>
     <data name="LanguageTextBlock.Text" xml:space="preserve">
     <value>ഭാഷ</value>
@@ -395,16 +395,16 @@
     <value>ശബ്ദം</value>
   </data>
     <data name="AppSoundSettingSettingsCard.Description" xml:space="preserve">
-    <value>Harden System Security-യുടെ വിവിധ എലമെന്റുകൾ ഉപയോഗിക്കുമ്പോൾ ഓഡിയോ ഫീഡ്ബാക്ക് കേൾക്കുക</value>
+    <value>System Security Studio-യുടെ വിവിധ എലമെന്റുകൾ ഉപയോഗിക്കുമ്പോൾ ഓഡിയോ ഫീഡ്ബാക്ക് കേൾക്കുക</value>
   </data>
   <data name="AppSoundSettingSettingsCard.Header" xml:space="preserve">
     <value>ശബ്ദം</value>
   </data>
   <data name="AppSoundSettingSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Harden System Security-യുടെ വിവിധ എലമെന്റുകൾ ഉപയോഗിക്കുമ്പോൾ ഓഡിയോ ഫീഡ്ബാക്ക് കേൾക്കുക</value>
+    <value>System Security Studio-യുടെ വിവിധ എലമെന്റുകൾ ഉപയോഗിക്കുമ്പോൾ ഓഡിയോ ഫീഡ്ബാക്ക് കേൾക്കുക</value>
   </data>
   <data name="AppSoundSettingSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Harden System Security-യുടെ വിവിധ എലമെന്റുകൾ ഉപയോഗിക്കുമ്പോൾ ഓഡിയോ ഫീഡ്ബാക്ക് കേൾക്കുക</value>
+    <value>System Security Studio-യുടെ വിവിധ എലമെന്റുകൾ ഉപയോഗിക്കുമ്പോൾ ഓഡിയോ ഫീഡ്ബാക്ക് കേൾക്കുക</value>
   </data>
     <data name="GitHubRepoHyperLinkButton.Content" xml:space="preserve">
     <value>GitHub റിപ്പോസിറ്ററി</value>
@@ -461,10 +461,10 @@
     <value>കൂടുതൽ വിവരങ്ങൾ</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Harden System Security-ക്കുള്ള പ്രധാന GitHub wiki പേജ് തുറക്കുന്നു</value>
+    <value>System Security Studio-ക്കുള്ള പ്രധാന GitHub wiki പേജ് തുറക്കുന്നു</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Harden System Security-ക്കുള്ള പ്രധാന GitHub wiki പേജ് തുറക്കുന്നു</value>
+    <value>System Security Studio-ക്കുള്ള പ്രധാന GitHub wiki പേജ് തുറക്കുന്നു</value>
   </data>
     <data name="UpdatePageWhatsNewInfoBar.Title" xml:space="preserve">
     <value>റിലീസ് കുറിപ്പുകൾ</value>
@@ -488,16 +488,16 @@
     <value>ലഭ്യമായ അപ്ഡേറ്റിനുള്ള പൂർണ്ണ റിലീസ് കുറിപ്പുകൾ കണ്ടെത്താൻ കഴിയുന്ന GitHub റിലീസ് പേജ് തുറക്കുന്നു.</value>
   </data>
     <data name="CheckForUpdateSettingsCard.Description" xml:space="preserve">
-    <value>അപ്ഡേറ്റുകൾ ഡൗൺലോഡും ഇൻസ്റ്റാളും ചെയ്തുകഴിഞ്ഞാൽ, അടുത്ത തവണ നിങ്ങൾ Harden System Security തുറക്കുമ്പോൾ നിങ്ങൾ പുതിയ പതിപ്പ് ഉപയോഗിക്കും.</value>
+    <value>അപ്ഡേറ്റുകൾ ഡൗൺലോഡും ഇൻസ്റ്റാളും ചെയ്തുകഴിഞ്ഞാൽ, അടുത്ത തവണ നിങ്ങൾ System Security Studio തുറക്കുമ്പോൾ നിങ്ങൾ പുതിയ പതിപ്പ് ഉപയോഗിക്കും.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.Header" xml:space="preserve">
-    <value>Harden System Security അപ്ഡേറ്റിനായി പരിശോധിക്കുക</value>
+    <value>System Security Studio അപ്ഡേറ്റിനായി പരിശോധിക്കുക</value>
   </data>
   <data name="CheckForUpdateSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>അപ്ഡേറ്റുകൾ ഡൗൺലോഡും ഇൻസ്റ്റാളും ചെയ്തുകഴിഞ്ഞാൽ, അടുത്ത തവണ നിങ്ങൾ Harden System Security തുറക്കുമ്പോൾ നിങ്ങൾ പുതിയ പതിപ്പ് ഉപയോഗിക്കും.</value>
+    <value>അപ്ഡേറ്റുകൾ ഡൗൺലോഡും ഇൻസ്റ്റാളും ചെയ്തുകഴിഞ്ഞാൽ, അടുത്ത തവണ നിങ്ങൾ System Security Studio തുറക്കുമ്പോൾ നിങ്ങൾ പുതിയ പതിപ്പ് ഉപയോഗിക്കും.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>അപ്ഡേറ്റുകൾ ഡൗൺലോഡും ഇൻസ്റ്റാളും ചെയ്തുകഴിഞ്ഞാൽ, അടുത്ത തവണ നിങ്ങൾ Harden System Security തുറക്കുമ്പോൾ നിങ്ങൾ പുതിയ പതിപ്പ് ഉപയോഗിക്കും.</value>
+    <value>അപ്ഡേറ്റുകൾ ഡൗൺലോഡും ഇൻസ്റ്റാളും ചെയ്തുകഴിഞ്ഞാൽ, അടുത്ത തവണ നിങ്ങൾ System Security Studio തുറക്കുമ്പോൾ നിങ്ങൾ പുതിയ പതിപ്പ് ഉപയോഗിക്കും.</value>
   </data>
     <data name="UpdatePageCheckForUpdateButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>GitHub റിപ്പോസിറ്ററിയിൽ നിന്ന് ഏറ്റവും പുതിയ പതിപ്പ് ഡൗൺലോഡും ഇൻസ്റ്റാളും ചെയ്യും. ആവശ്യമായ സമയം നിങ്ങളുടെ നെറ്റ്‌വർക്ക് കണക്ഷനെ ആശ്രയിച്ചിരിക്കുന്നു. ഏകദേശ ഡൗൺലോഡ് വലുപ്പം 65 MB ആണ്.</value>
@@ -530,16 +530,16 @@
     <value>ഈ ഓപ്ഷൻ പ്രാപ്തമാക്കുമ്പോൾ, ഉപകരണത്തിൽ സൃഷ്ടിക്കപ്പെട്ട സർട്ടിഫിക്കറ്റിന്റെ താൽക്കാലിക സ്വകാര്യ കീ ഉപയോക്തൃ അക്കൗണ്ടുമായി ബന്ധിപ്പിക്കും, ഒപ്പുവയ്ക്കാൻ ഉപയോഗിക്കുന്നതിന് മുമ്പ് പ്രോംപ്റ്റുകളുടെ സ്ഥിരീകരണം ആവശ്യപ്പെടും.</value>
   </data>
     <data name="RateAndReviewSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Microsoft Store മിനി പേജ് തുറക്കുന്നു, അവിടെ നിങ്ങൾക്ക് Harden System Security റേറ്റ് ചെയ്യാനും ഐച്ഛികമായി ഒരു റിവ്യൂ എഴുതാനും കഴിയും.</value>
+    <value>Microsoft Store മിനി പേജ് തുറക്കുന്നു, അവിടെ നിങ്ങൾക്ക് System Security Studio റേറ്റ് ചെയ്യാനും ഐച്ഛികമായി ഒരു റിവ്യൂ എഴുതാനും കഴിയും.</value>
   </data>
   <data name="RateAndReviewSettingsCard.Header" xml:space="preserve">
     <value>റേറ്റ് ചെയ്ത് റിവ്യൂ ചെയ്യുക</value>
   </data>
     <data name="RateAndReviewSettingsCard.Description" xml:space="preserve">
-    <value>Microsoft Store മിനി പേജ് തുറക്കുന്നു, അവിടെ നിങ്ങൾക്ക് Harden System Security റേറ്റ് ചെയ്യാനും ഐച്ഛികമായി ഒരു റിവ്യൂ എഴുതാനും കഴിയും.</value>
+    <value>Microsoft Store മിനി പേജ് തുറക്കുന്നു, അവിടെ നിങ്ങൾക്ക് System Security Studio റേറ്റ് ചെയ്യാനും ഐച്ഛികമായി ഒരു റിവ്യൂ എഴുതാനും കഴിയും.</value>
   </data>
   <data name="RateAndReviewSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Microsoft Store മിനി പേജ് തുറക്കുന്നു, അവിടെ നിങ്ങൾക്ക് Harden System Security റേറ്റ് ചെയ്യാനും ഐച്ഛികമായി ഒരു റിവ്യൂ എഴുതാനും കഴിയും.</value>
+    <value>Microsoft Store മിനി പേജ് തുറക്കുന്നു, അവിടെ നിങ്ങൾക്ക് System Security Studio റേറ്റ് ചെയ്യാനും ഐച്ഛികമായി ഒരു റിവ്യൂ എഴുതാനും കഴിയും.</value>
   </data>
     <data name="CheckingForUpdateStore" xml:space="preserve">
     <value>Microsoft Store-ൽ അപ്ഡേറ്റിനായി പരിശോധിക്കുന്നു...</value>
@@ -548,10 +548,10 @@
     <value>ഒരു പുതിയ അപ്ഡേറ്റ് ലഭ്യമാണ്. Microsoft Store തുറക്കുന്നു, അതിനാൽ നിങ്ങൾക്ക് അവിടെ ആപ്ലിക്കേഷൻ അപ്ഡേറ്റ് തുടരാം.</value>
   </data>
     <data name="ProblemOpeningMSStore" xml:space="preserve">
-    <value>Harden System Security-യുടെ Microsoft Store പേജ് തുറക്കുന്നതിൽ പ്രശ്നമുണ്ടായി.</value>
+    <value>System Security Studio-യുടെ Microsoft Store പേജ് തുറക്കുന്നതിൽ പ്രശ്നമുണ്ടായി.</value>
   </data>
     <data name="TheAppIsUpToDate" xml:space="preserve">
-    <value>Harden System Security ആപ്ലിക്കേഷൻ അപ്-ടു-ഡേറ്റ് ആണ്.</value>
+    <value>System Security Studio ആപ്ലിക്കേഷൻ അപ്-ടു-ഡേറ്റ് ആണ്.</value>
   </data>
    <data name="UpdateCheckError" xml:space="preserve">
     <value>അപ്ഡേറ്റ് പരിശോധിക്കുന്നതിൽ ഒരു പിശക് സംഭവിച്ചു.</value>
@@ -2174,10 +2174,10 @@
     <value>ലഭ്യമല്ല</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-  <value>Harden System Security എന്നത് നിരവധി വിപുലമായ ഭീഷണികൾക്കെതിരെ സുരക്ഷിതമായിരിക്കാൻ നിങ്ങളുടെ സിസ്റ്റം കോൺഫിഗർ ചെയ്യാൻ സഹായിക്കുന്ന ഒരു ആപ്ലിക്കേഷനാണ്, ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിൽ ലഭ്യമായതും Microsoft നൽകുന്നതുമായ ടൂളുകളും സവിശേഷതകളും മാത്രം ഉപയോഗിച്ച്, മൂന്നാം കക്ഷി ടൂളുകളോ പ്രോഗ്രാമുകളോ ഉപയോഗിക്കാതെ.</value>
+  <value>System Security Studio എന്നത് നിരവധി വിപുലമായ ഭീഷണികൾക്കെതിരെ സുരക്ഷിതമായിരിക്കാൻ നിങ്ങളുടെ സിസ്റ്റം കോൺഫിഗർ ചെയ്യാൻ സഹായിക്കുന്ന ഒരു ആപ്ലിക്കേഷനാണ്, ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിൽ ലഭ്യമായതും Microsoft നൽകുന്നതുമായ ടൂളുകളും സവിശേഷതകളും മാത്രം ഉപയോഗിച്ച്, മൂന്നാം കക്ഷി ടൂളുകളോ പ്രോഗ്രാമുകളോ ഉപയോഗിക്കാതെ.</value>
 </data>
   <data name="LogsPageTitle" xml:space="preserve">
-    <value>Harden System Security സ്വയമേവ സൃഷ്ടിക്കുകയും നിയുക്ത ഫോൾഡറിൽ സംഭരിക്കുകയും ചെയ്യുന്ന ലോഗുകൾ താഴെ പറഞ്ഞിരിക്കുന്നവയാണ്. ലോഗ് ഫോൾഡറിന്റെ മൊത്തം വലുപ്പം ഒരിക്കലും 1GB കവിയില്ല.</value>
+    <value>System Security Studio സ്വയമേവ സൃഷ്ടിക്കുകയും നിയുക്ത ഫോൾഡറിൽ സംഭരിക്കുകയും ചെയ്യുന്ന ലോഗുകൾ താഴെ പറഞ്ഞിരിക്കുന്നവയാണ്. ലോഗ് ഫോൾഡറിന്റെ മൊത്തം വലുപ്പം ഒരിക്കലും 1GB കവിയില്ല.</value>
   </data>
   <data name="OpenLogsDirectoryButtonText.Text" xml:space="preserve">
     <value>ലോഗ് ഡയറക്ടറി തുറക്കുക</value>
@@ -5016,13 +5016,13 @@
     <value>ഫയർവാൾ നിയമങ്ങൾ നേടുക</value>
   </data>
   <data name="RetrieveFirewallRulesButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Harden System Security ആപ്പ് സൃഷ്ടിച്ച എല്ലാ ഫയർവാൾ നിയമങ്ങളും നേടുക.</value>
+    <value>System Security Studio ആപ്പ് സൃഷ്ടിച്ച എല്ലാ ഫയർവാൾ നിയമങ്ങളും നേടുക.</value>
   </data>
   <data name="RetrieveFirewallRulesButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Harden System Security ആപ്പ് സൃഷ്ടിച്ച എല്ലാ ഫയർവാൾ നിയമങ്ങളും നേടുക.</value>
+    <value>System Security Studio ആപ്പ് സൃഷ്ടിച്ച എല്ലാ ഫയർവാൾ നിയമങ്ങളും നേടുക.</value>
   </data>
   <data name="SuccessfullyRetrievedFirewallRulesMessage" xml:space="preserve">
-    <value>Harden System Security ആപ്പ് സൃഷ്ടിച്ച {0} ഫയർവാൾ നിയമങ്ങൾ വിജയകരമായി നേടി.</value>
+    <value>System Security Studio ആപ്പ് സൃഷ്ടിച്ച {0} ഫയർവാൾ നിയമങ്ങൾ വിജയകരമായി നേടി.</value>
   </data>
     <data name="LastBootTime.Text" xml:space="preserve">
     <value>അവസാന ബൂട്ട് സമയം</value>

@@ -179,7 +179,7 @@
   <value>JumpList wird nicht unterstützt.</value>
 </data>
   <data name="AppElevationNoticeMain" xml:space="preserve">
-    <value>Bitte starten Sie Harden System Security als Administrator, um auf diese Seite zuzugreifen</value>
+    <value>Bitte starten Sie System Security Studio als Administrator, um auf diese Seite zuzugreifen</value>
   </data>
     <data name="AppElevationNoticeExtraPrompt" xml:space="preserve">
     <value>Beim App-Start immer zur Erhöhung der Berechtigungen auffordern</value>
@@ -206,7 +206,7 @@
     <value>Support - Fragen stellen</value>
   </data>
   <data name="SettingsPageTitle.Text" xml:space="preserve">
-    <value>Passen Sie hier Ihre App-Einstellungen an. Ihre Präferenzen werden gespeichert und stehen bei jedem Start von Harden System Security bereit.</value>
+    <value>Passen Sie hier Ihre App-Einstellungen an. Ihre Präferenzen werden gespeichert und stehen bei jedem Start von System Security Studio bereit.</value>
   </data>
   <data name="Appearance.Text" xml:space="preserve">
     <value>Erscheinungsbild</value>
@@ -215,13 +215,13 @@
     <value>Info</value>
   </data>
     <data name="AppearanceSectionSettingsExpander.Header" xml:space="preserve">
-    <value>Gestalten Sie Harden System Security nach Ihren Vorstellungen</value>
+    <value>Gestalten Sie System Security Studio nach Ihren Vorstellungen</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Verwenden Sie verschiedene Optionen, um Erscheinungsbild und visuelle Effekte von Harden System Security zu ändern.</value>
+    <value>Verwenden Sie verschiedene Optionen, um Erscheinungsbild und visuelle Effekte von System Security Studio zu ändern.</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Verwenden Sie verschiedene Optionen, um Erscheinungsbild und visuelle Effekte von Harden System Security zu ändern.</value>
+    <value>Verwenden Sie verschiedene Optionen, um Erscheinungsbild und visuelle Effekte von System Security Studio zu ändern.</value>
   </data>
     <data name="DarkerBackGroundSettingsCard.Description" xml:space="preserve">
     <value>Vorwiegend geeignet bei Verwendung von MicaAlt als Hintergrund.</value>
@@ -230,10 +230,10 @@
     <value>Dunklerer Hintergrund</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Entfernt die zusätzliche helle Schattierung aus dem Hintergrund und verleiht dem Erscheinungsbild von Harden System Security insgesamt einen dunkleren Look.</value>
+    <value>Entfernt die zusätzliche helle Schattierung aus dem Hintergrund und verleiht dem Erscheinungsbild von System Security Studio insgesamt einen dunkleren Look.</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Entfernt die zusätzliche helle Schattierung aus dem Hintergrund und verleiht dem Erscheinungsbild von Harden System Security insgesamt einen dunkleren Look.</value>
+    <value>Entfernt die zusätzliche helle Schattierung aus dem Hintergrund und verleiht dem Erscheinungsbild von System Security Studio insgesamt einen dunkleren Look.</value>
   </data>
     <data name="ToggleSwitchGeneral.OnContent" xml:space="preserve">
     <value>Ein</value>
@@ -248,10 +248,10 @@
     <value>Hintergrundstil</value>
   </data>
   <data name="BackgroundStyleSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Dies ist der Hintergrund von Harden System Security. Änderungen sind im Hintergrund sichtbar.</value>
+    <value>Dies ist der Hintergrund von System Security Studio. Änderungen sind im Hintergrund sichtbar.</value>
   </data>
   <data name="BackgroundStyleSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Dies ist der Hintergrund von Harden System Security. Änderungen sind im Hintergrund sichtbar.</value>
+    <value>Dies ist der Hintergrund von System Security Studio. Änderungen sind im Hintergrund sichtbar.</value>
   </data>
     <data name="AppThemeSettingsCard.Description" xml:space="preserve">
     <value>Thema anpassen</value>
@@ -260,10 +260,10 @@
     <value>Thema</value>
   </data>
   <data name="AppThemeSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Wählen Sie ein Thema für Harden System Security</value>
+    <value>Wählen Sie ein Thema für System Security Studio</value>
   </data>
   <data name="AppThemeSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Wählen Sie ein Thema für Harden System Security</value>
+    <value>Wählen Sie ein Thema für System Security Studio</value>
   </data>
     <data name="MainNavigationIconsSettingsCard.Description" xml:space="preserve">
     <value>Stil für die Hauptnavigationssymbole auswählen</value>
@@ -290,16 +290,16 @@
     <value>Wählen Sie eine Position für das Navigationsmenü</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.Header" xml:space="preserve">
-    <value>Ändern Sie das Verhalten von Harden System Security und verschiedener darin enthaltener Elemente</value>
+    <value>Ändern Sie das Verhalten von System Security Studio und verschiedener darin enthaltener Elemente</value>
   </data>
   <data name="Behavior.Text" xml:space="preserve">
     <value>Verhalten</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ändern Sie das Verhalten von Harden System Security und verschiedener darin enthaltener Elemente</value>
+    <value>Ändern Sie das Verhalten von System Security Studio und verschiedener darin enthaltener Elemente</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Ändern Sie das Verhalten von Harden System Security und verschiedener darin enthaltener Elemente</value>
+    <value>Ändern Sie das Verhalten von System Security Studio und verschiedener darin enthaltener Elemente</value>
   </data>
     <data name="ListViewsCenterVerticallyUponSelectionSettingsCard.Description" xml:space="preserve">
     <value>Wenn Sie ein Element in einer Listenansicht auswählen, wird dieses vertikal im Bildschirm zentriert.</value>
@@ -314,40 +314,40 @@
     <value>Wenn Sie ein Element in einer Listenansicht auswählen, wird dieses vertikal im Bildschirm zentriert.</value>
   </data>
     <data name="PromptForElevationSettingsCard.Description" xml:space="preserve">
-    <value>Wenn dies aktiviert ist, fordert Harden System Security beim Start zur Ausführung mit Administratorrechten auf.</value>
+    <value>Wenn dies aktiviert ist, fordert System Security Studio beim Start zur Ausführung mit Administratorrechten auf.</value>
   </data>
   <data name="PromptForElevationSettingsCard.Header" xml:space="preserve">
     <value>Beim Start zur Erhöhung der Berechtigungen auffordern</value>
   </data>
   <data name="PromptForElevationSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Wenn dies aktiviert ist, fordert Harden System Security beim Start zur Ausführung mit Administratorrechten auf.</value>
+    <value>Wenn dies aktiviert ist, fordert System Security Studio beim Start zur Ausführung mit Administratorrechten auf.</value>
   </data>
   <data name="PromptForElevationSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Wenn dies aktiviert ist, fordert Harden System Security beim Start zur Ausführung mit Administratorrechten auf.</value>
+    <value>Wenn dies aktiviert ist, fordert System Security Studio beim Start zur Ausführung mit Administratorrechten auf.</value>
   </data>
     <data name="ScreenShieldSettingsCard.Description" xml:space="preserve">
-    <value>Verhindert, dass andere Apps wie Bildschirmrekorder (einschließlich Recall) das Fenster von Harden System Security aufzeichnen oder Screenshots erstellen.</value>
+    <value>Verhindert, dass andere Apps wie Bildschirmrekorder (einschließlich Recall) das Fenster von System Security Studio aufzeichnen oder Screenshots erstellen.</value>
   </data>
   <data name="ScreenShieldSettingsCard.Header" xml:space="preserve">
     <value>Bildschirmschutz</value>
   </data>
   <data name="ScreenShieldSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Verhindert, dass andere Apps wie Bildschirmrekorder (einschließlich Recall) das Fenster von Harden System Security aufzeichnen oder Screenshots erstellen.</value>
+    <value>Verhindert, dass andere Apps wie Bildschirmrekorder (einschließlich Recall) das Fenster von System Security Studio aufzeichnen oder Screenshots erstellen.</value>
   </data>
   <data name="ScreenShieldSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Verhindert, dass andere Apps wie Bildschirmrekorder (einschließlich Recall) das Fenster von Harden System Security aufzeichnen oder Screenshots erstellen.</value>
+    <value>Verhindert, dass andere Apps wie Bildschirmrekorder (einschließlich Recall) das Fenster von System Security Studio aufzeichnen oder Screenshots erstellen.</value>
   </data>
    <data name="PublishUserActivityInTheOSSettingsCard.Description" xml:space="preserve">
-    <value>Veröffentlicht verschiedene Aktivitäten, die Sie in Harden System Security durchführen, im Betriebssystem, damit diese in Microsoft Recall erscheinen und Ihnen zum Nachverfolgen Ihrer Schritte zur Verfügung stehen.</value>
+    <value>Veröffentlicht verschiedene Aktivitäten, die Sie in System Security Studio durchführen, im Betriebssystem, damit diese in Microsoft Recall erscheinen und Ihnen zum Nachverfolgen Ihrer Schritte zur Verfügung stehen.</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.Header" xml:space="preserve">
     <value>Aktivitäten im Betriebssystem veröffentlichen</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Veröffentlicht verschiedene Aktivitäten, die Sie in Harden System Security durchführen, im Betriebssystem, damit diese in Microsoft Recall erscheinen und Ihnen zum Nachverfolgen Ihrer Schritte zur Verfügung stehen.</value>
+    <value>Veröffentlicht verschiedene Aktivitäten, die Sie in System Security Studio durchführen, im Betriebssystem, damit diese in Microsoft Recall erscheinen und Ihnen zum Nachverfolgen Ihrer Schritte zur Verfügung stehen.</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Veröffentlicht verschiedene Aktivitäten, die Sie in Harden System Security durchführen, im Betriebssystem, damit diese in Microsoft Recall erscheinen und Ihnen zum Nachverfolgen Ihrer Schritte zur Verfügung stehen.</value>
+    <value>Veröffentlicht verschiedene Aktivitäten, die Sie in System Security Studio durchführen, im Betriebssystem, damit diese in Microsoft Recall erscheinen und Ihnen zum Nachverfolgen Ihrer Schritte zur Verfügung stehen.</value>
   </data>
     <data name="LanguageTextBlock.Text" xml:space="preserve">
     <value>Sprache</value>
@@ -395,16 +395,16 @@
     <value>Sound</value>
   </data>
     <data name="AppSoundSettingSettingsCard.Description" xml:space="preserve">
-    <value>Akustisches Feedback hören, wenn Sie verschiedene Elemente von Harden System Security verwenden</value>
+    <value>Akustisches Feedback hören, wenn Sie verschiedene Elemente von System Security Studio verwenden</value>
   </data>
   <data name="AppSoundSettingSettingsCard.Header" xml:space="preserve">
     <value>Sound</value>
   </data>
   <data name="AppSoundSettingSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Akustisches Feedback hören, wenn Sie verschiedene Elemente von Harden System Security verwenden</value>
+    <value>Akustisches Feedback hören, wenn Sie verschiedene Elemente von System Security Studio verwenden</value>
   </data>
   <data name="AppSoundSettingSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Akustisches Feedback hören, wenn Sie verschiedene Elemente von Harden System Security verwenden</value>
+    <value>Akustisches Feedback hören, wenn Sie verschiedene Elemente von System Security Studio verwenden</value>
   </data>
     <data name="GitHubRepoHyperLinkButton.Content" xml:space="preserve">
     <value>GitHub-Repository</value>
@@ -461,10 +461,10 @@
     <value>Weitere Informationen</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Öffnet die Haupt-Wikiseite auf GitHub für Harden System Security</value>
+    <value>Öffnet die Haupt-Wikiseite auf GitHub für System Security Studio</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Öffnet die Haupt-Wikiseite auf GitHub für Harden System Security</value>
+    <value>Öffnet die Haupt-Wikiseite auf GitHub für System Security Studio</value>
   </data>
     <data name="UpdatePageWhatsNewInfoBar.Title" xml:space="preserve">
     <value>Versionshinweise</value>
@@ -488,16 +488,16 @@
     <value>Öffnet die Releases-Seite auf GitHub, auf der Sie die vollständigen Versionshinweise zum verfügbaren Update finden.</value>
   </data>
     <data name="CheckForUpdateSettingsCard.Description" xml:space="preserve">
-    <value>Sobald die Updates heruntergeladen und installiert wurden, verwenden Sie beim nächsten Start von Harden System Security die neue Version.</value>
+    <value>Sobald die Updates heruntergeladen und installiert wurden, verwenden Sie beim nächsten Start von System Security Studio die neue Version.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.Header" xml:space="preserve">
-    <value>Nach Update für Harden System Security suchen</value>
+    <value>Nach Update für System Security Studio suchen</value>
   </data>
   <data name="CheckForUpdateSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Sobald die Updates heruntergeladen und installiert wurden, verwenden Sie beim nächsten Start von Harden System Security die neue Version.</value>
+    <value>Sobald die Updates heruntergeladen und installiert wurden, verwenden Sie beim nächsten Start von System Security Studio die neue Version.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Sobald die Updates heruntergeladen und installiert wurden, verwenden Sie beim nächsten Start von Harden System Security die neue Version.</value>
+    <value>Sobald die Updates heruntergeladen und installiert wurden, verwenden Sie beim nächsten Start von System Security Studio die neue Version.</value>
   </data>
     <data name="UpdatePageCheckForUpdateButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Lädt die neueste Version aus dem GitHub-Repository herunter und installiert sie. Die Dauer hängt von Ihrer Netzwerkverbindung ab. Ungefähre Downloadgröße: 65 MB.</value>
@@ -530,16 +530,16 @@
     <value>Wenn diese Option aktiviert ist, wird der temporäre private Schlüssel des geräteintern erzeugten Zertifikats mit dem Benutzerkonto verknüpft; bevor er zum Signieren verwendet werden kann, ist die Bestätigung von Eingabeaufforderungen erforderlich.</value>
   </data>
     <data name="RateAndReviewSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Öffnet die Mini-Seite des Microsoft Store, auf der Sie Harden System Security bewerten und optional eine Rezension schreiben können.</value>
+    <value>Öffnet die Mini-Seite des Microsoft Store, auf der Sie System Security Studio bewerten und optional eine Rezension schreiben können.</value>
   </data>
   <data name="RateAndReviewSettingsCard.Header" xml:space="preserve">
     <value>Bewerten und rezensieren</value>
   </data>
     <data name="RateAndReviewSettingsCard.Description" xml:space="preserve">
-    <value>Öffnet die Mini-Seite des Microsoft Store, auf der Sie Harden System Security bewerten und optional eine Rezension schreiben können.</value>
+    <value>Öffnet die Mini-Seite des Microsoft Store, auf der Sie System Security Studio bewerten und optional eine Rezension schreiben können.</value>
   </data>
   <data name="RateAndReviewSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Öffnet die Mini-Seite des Microsoft Store, auf der Sie Harden System Security bewerten und optional eine Rezension schreiben können.</value>
+    <value>Öffnet die Mini-Seite des Microsoft Store, auf der Sie System Security Studio bewerten und optional eine Rezension schreiben können.</value>
   </data>
     <data name="CheckingForUpdateStore" xml:space="preserve">
     <value>Suche nach Updates im Microsoft Store...</value>
@@ -548,10 +548,10 @@
     <value>Ein neues Update ist verfügbar. Der Microsoft Store wird geöffnet, damit Sie die App dort aktualisieren können.</value>
   </data>
     <data name="ProblemOpeningMSStore" xml:space="preserve">
-    <value>Beim Öffnen der Microsoft-Store-Seite von Harden System Security ist ein Problem aufgetreten.</value>
+    <value>Beim Öffnen der Microsoft-Store-Seite von System Security Studio ist ein Problem aufgetreten.</value>
   </data>
     <data name="TheAppIsUpToDate" xml:space="preserve">
-    <value>Die Anwendung Harden System Security ist auf dem neuesten Stand.</value>
+    <value>Die Anwendung System Security Studio ist auf dem neuesten Stand.</value>
   </data>
    <data name="UpdateCheckError" xml:space="preserve">
     <value>Beim Suchen nach Updates ist ein Fehler aufgetreten.</value>
@@ -2174,10 +2174,10 @@
     <value>N/A</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Harden System Security ist eine Anwendung, die Sie dabei unterstützt, Ihr System gegen zahlreiche fortgeschrittene Bedrohungen abzusichern – ausschließlich mit im Betriebssystem verfügbaren, von Microsoft bereitgestellten Tools und Funktionen, ohne den Einsatz jeglicher Drittanbieterprogramme.</value>
+    <value>System Security Studio ist eine Anwendung, die Sie dabei unterstützt, Ihr System gegen zahlreiche fortgeschrittene Bedrohungen abzusichern – ausschließlich mit im Betriebssystem verfügbaren, von Microsoft bereitgestellten Tools und Funktionen, ohne den Einsatz jeglicher Drittanbieterprogramme.</value>
   </data>
   <data name="LogsPageTitle" xml:space="preserve">
-    <value>Nachfolgend finden Sie die Protokolle, die Harden System Security automatisch erzeugt und im vorgesehenen Ordner speichert. Die Gesamtgröße des Protokollordners überschreitet niemals 1GB.</value>
+    <value>Nachfolgend finden Sie die Protokolle, die System Security Studio automatisch erzeugt und im vorgesehenen Ordner speichert. Die Gesamtgröße des Protokollordners überschreitet niemals 1GB.</value>
   </data>
   <data name="OpenLogsDirectoryButtonText.Text" xml:space="preserve">
     <value>Protokollverzeichnis öffnen</value>
@@ -5016,13 +5016,13 @@ Fingerabdruck: {3}</value>
     <value>Firewallregeln abrufen</value>
   </data>
   <data name="RetrieveFirewallRulesButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Rufen Sie alle Firewallregeln ab, die von der App Harden System Security erstellt wurden.</value>
+    <value>Rufen Sie alle Firewallregeln ab, die von der App System Security Studio erstellt wurden.</value>
   </data>
   <data name="RetrieveFirewallRulesButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Rufen Sie alle Firewallregeln ab, die von der App Harden System Security erstellt wurden.</value>
+    <value>Rufen Sie alle Firewallregeln ab, die von der App System Security Studio erstellt wurden.</value>
   </data>
   <data name="SuccessfullyRetrievedFirewallRulesMessage" xml:space="preserve">
-    <value>{0} von der App Harden System Security erstellte Firewallregeln wurden erfolgreich abgerufen.</value>
+    <value>{0} von der App System Security Studio erstellte Firewallregeln wurden erfolgreich abgerufen.</value>
   </data>
     <data name="LastBootTime.Text" xml:space="preserve">
     <value>Letzte Startzeit</value>
