@@ -947,34 +947,40 @@ jobs:
           git config --global user.email '101721830+OFFSECHQ@users.noreply.github.com'
           git config --global user.name 'offsechq'
 
-          # Create a new branch for the pull request, making sure branch name has valid characters
-          [string]$NewBranchName = 'System-Security-Studio-DownloadLink-Version-Update'
-          git checkout -b $NewBranchName
+          # Check if there are any changes to commit
+          if (git status --porcelain) {
+              # Create a new branch for the pull request, making sure branch name has valid characters
+              [string]$NewBranchName = 'System-Security-Studio-DownloadLink-Version-Update'
+              git checkout -b $NewBranchName
 
-          [string]$CommitMessageAndPRTitle = "System-Security-Studio-DownloadLink-Version-Update-Version-$PACKAGE_VERSION"
+              [string]$CommitMessageAndPRTitle = "System-Security-Studio-DownloadLink-Version-Update-Version-$PACKAGE_VERSION"
 
-          # Stage and commit the change
-          git add $DownloadURLFilePathForMSIXBundle
-          git add $VersionFilePath
-          git commit -m $CommitMessageAndPRTitle
+              # Stage and commit the change
+              git add $DownloadURLFilePathForMSIXBundle
+              git add $VersionFilePath
+              git commit -m $CommitMessageAndPRTitle
 
-          # Push the new branch to the remote repository
-          git push -u origin $NewBranchName
+              # Push the new branch to the remote repository
+              git push -u origin $NewBranchName
 
-          [string]$PRBody = @"
-          This PR updates MSIXBundleDownloadURL.txt to
-          ```
-          $DownloadURLForMSIXBundle
-          ```
-          And version.txt to
-          ```
-          $PACKAGE_VERSION
-          ```
+              [string]$PRBody = @"
+              This PR updates MSIXBundleDownloadURL.txt to
+              ```
+              $DownloadURLForMSIXBundle
+              ```
+              And version.txt to
+              ```
+              $PACKAGE_VERSION
+              ```
 
-          "@
+              "@
 
-          # Create the pull request
-          gh pr create --title $CommitMessageAndPRTitle --body $PRBody --base main --label 'Automated 🤖' --assignee OFFSECHQ
+              # Create the pull request
+              gh pr create --title $CommitMessageAndPRTitle --body $PRBody --base main --label 'Automated 🤖' --assignee OFFSECHQ
+          }
+          else {
+              Write-Host -Object "No changes to commit. Version and Download URL are already up to date." -ForegroundColor Green
+          }
 
       - name: Add Body Text to the Draft Release
         shell: pwsh
