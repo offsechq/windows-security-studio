@@ -78,14 +78,14 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Cache NuGet packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.nuget/packages
           key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/global.json') }}
           restore-keys: nuget-${{ runner.os }}-
 
       - name: Cache Cargo dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ~/.cargo/registry
@@ -95,7 +95,7 @@ jobs:
           restore-keys: cargo-${{ runner.os }}-
 
       - name: Cache SBOM Tool
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: sbom-cache
         with:
           path: ${{ runner.temp }}/sbom-tool.exe
