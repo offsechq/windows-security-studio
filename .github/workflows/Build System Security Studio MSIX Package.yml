@@ -37,6 +37,30 @@ jobs:
       - name: Check out the repository code
         uses: actions/checkout@v6
 
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/global.json') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      - name: Cache Cargo dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ./App Control Studio/eXclude/Rust Interop Library/target
+          key: cargo-${{ runner.os }}-${{ hashFiles('**/Cargo.lock', '**/Cargo.toml') }}
+          restore-keys: cargo-${{ runner.os }}-
+
+      - name: Cache SBOM Tool
+        uses: actions/cache@v4
+        id: sbom-cache
+        with:
+          path: ${{ runner.temp }}/sbom-tool.exe
+          key: sbom-tool-win-x64-v1
+
       - name: Building And Packaging the System Security Studio
         id: main_buildOp
         shell: pwsh
@@ -683,8 +707,10 @@ jobs:
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "CERT_NAME=OFFSECHQ_CodeSigning.cer"
 
                   # https://github.com/microsoft/sbom-tool
-                  # Generating SBOM
-                  Invoke-WebRequest -Uri 'https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-win-x64.exe' -OutFile "${Env:RUNNER_TEMP}\sbom-tool.exe"
+                  # Generating SBOM - only download if not cached
+                  if (-not (Test-Path "${Env:RUNNER_TEMP}\sbom-tool.exe")) {
+                      Invoke-WebRequest -Uri 'https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-win-x64.exe' -OutFile "${Env:RUNNER_TEMP}\sbom-tool.exe"
+                  }
 
                   # https://github.com/microsoft/sbom-tool/blob/main/docs/sbom-tool-arguments.md
                   . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc .\ -pn 'System Security Studio' -ps 'OFFSECHQ' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
