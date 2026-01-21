@@ -9,8 +9,8 @@ version: 2
 updates:
   - package-ecosystem: "dotnet-sdk"
     directories:
-      - "/AppControl Manager/"
-      - "/Harden System Security/"
+      - "/App Control Studio/"
+      - "/System Security Studio/"
     schedule:
       interval: "weekly"
       day: "tuesday"
@@ -18,8 +18,8 @@ updates:
       - "Dependabot ✨"
   - package-ecosystem: "nuget"
     directories:
-      - "/AppControl Manager/"
-      - "/Harden System Security/"
+      - "/App Control Studio/"
+      - "/System Security Studio/"
     schedule:
       interval: "daily"
       time: "07:30"
@@ -35,7 +35,7 @@ updates:
       - "Dependabot ✨"
   - package-ecosystem: "cargo"
     directories:
-      - "/AppControl Manager/"
+      - "/App Control Studio/"
     schedule:
       interval: "daily"
       time: "07:30"
