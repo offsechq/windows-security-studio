@@ -14,7 +14,7 @@
 
 // Defining the Package Family Name (PFN)
 // It's set to a placeholder value here, replaced during compilation
-static constexpr LPCWSTR APP_CONTROL_MANAGER_PFN = L"PFN!App";
+static constexpr LPCWSTR APP_CONTROL_MANAGER_PFN = L"AppControlManager_sadt7br7jpt02!App";
 
 static const int ICON_RESOURCE_INDEX = 0;
 static const int ICON_POLICY_EDITOR = 1;
