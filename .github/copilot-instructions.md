@@ -1,11 +1,13 @@
 Please follow these guidelines when contributing:
 
 ## Repository Structure
-- `AppControl Manager/`: The main directory for the AppControl Manager application.
-- `AppControl Manager/eXclude/`: Ignore everything in this directory, they are not part of the AppControl Manager application files.
-- `Harden System Security/`: The main directory for the Harden System Security application.
+
+- `App Control Studio/`: The main directory for the App Control Studio application.
+- `App Control Studio/eXclude/`: Ignore everything in this directory, they are not part of the App Control Studio application files.
+- `System Security Studio/`: The main directory for the System Security Studio application.
 
 ## Key Guidelines
+
 1. Use the latest .NET and C# features when working with C# or .NET code.
 2. Use the latest features of the Rust language when working with Rust code.
 3. Use the latest features of the C++ language when working with C++ code.
