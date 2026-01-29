@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="using:CommunityToolkit.WinUI"
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
-    xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
 
     FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}"
     Loaded="{x:Bind OnInitialLoaded}"
@@ -82,22 +81,7 @@
 
     <Grid Background="Transparent">
 
-        <Grid x:Name="BackgroundLayer"
-              HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch">
-            <!-- Background Web (first child draws behind everything else) -->
-            <!-- Force LTR for Win2D coordinate space so RTL does not mirror drawing -->
-            <canvas:CanvasControl x:Name="BackgroundCanvas"
-                                  FlowDirection="LeftToRight"
-                                  ClearColor="Transparent"
-                                  Draw="OnBackgroundCanvasDraw"
-                                  IsHitTestVisible="False"
-                                  HorizontalAlignment="Stretch"
-                                  VerticalAlignment="Stretch"/>
-        </Grid>
-
-        <Grid x:Name="ContentLayer"
-              HorizontalAlignment="Stretch"
+        <Grid HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch">
 
             <Grid.RowDefinitions>
