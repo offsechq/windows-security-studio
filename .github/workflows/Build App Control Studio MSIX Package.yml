@@ -882,7 +882,7 @@ jobs:
           }
 
           # For GitHub workflow 1
-          Build_ACM -Type Self -DownloadRepo $false -InstallDeps $true -Workflow $true -UpdateWorkLoads $false -Install $false -Upload $false -X64ONLY $false
+          Build_ACM -Type Self -DownloadRepo $false -InstallDeps $true -Workflow $true -UpdateWorkLoads $false -Install $false -Upload $false -X64ONLY $true
           # For GitHub workflow 2
           # Build_ACM -Type Store -DownloadRepo $false -InstallDeps $true -Workflow $true -UpdateWorkLoads $false -Install $false -Upload $true -X64ONLY $false
           # Example of building the app from the source code and installing it on a clean system with self-signed certificate
@@ -958,11 +958,6 @@ jobs:
           $Assets = @(
               @{ Path = $ZipPath; Name = $ZipName }
               @{ Path = "${{ env.MSIXBundle_PATH }}"; Name = $StandaloneBundleName }
-              @{ Path = "${{ env.X64MSBuildLog_PATH }}"; Name = 'X64MSBuildLog.binlog' }
-              @{ Path = "${{ env.ARM64MSBuildLog_PATH }}"; Name = 'ARM64MSBuildLog.binlog' }
-              @{ Path = "${{ env.X64Symbol_PATH }}"; Name = "${{ env.X64Symbol_NAME }}" }
-              @{ Path = "${{ env.ARM64Symbol_PATH }}"; Name = "${{ env.ARM64Symbol_NAME }}" }
-              @{ Path = "${{ env.SBOM_PATH }}"; Name = "${{ env.SBOM_NAME }}" }
           )
           [string]$DraftReleaseId = $env:DRAFT_RELEASE_ID
           [string]$Repo = "${{ github.repository }}"
@@ -994,14 +989,6 @@ jobs:
           name: X64MSBuildLog.binlog
           path: ${{ env.X64MSBuildLog_PATH }}
 
-      - name: Uploading Artifact 3
-        uses: actions/upload-artifact@v6
-        with:
-          retention-days: 1
-          compression-level: 0
-          name: ARM64MSBuildLog.binlog
-          path: ${{ env.ARM64MSBuildLog_PATH }}
-
       - name: Uploading Artifact 4
         uses: actions/upload-artifact@v6
         with:
@@ -1009,14 +996,6 @@ jobs:
           compression-level: 0
           name: ${{ env.X64Symbol_NAME }}
           path: ${{ env.X64Symbol_PATH }}
-
-      - name: Uploading Artifact 5
-        uses: actions/upload-artifact@v6
-        with:
-          retention-days: 1
-          compression-level: 0
-          name: ${{ env.ARM64Symbol_NAME }}
-          path: ${{ env.ARM64Symbol_PATH }}
 
       - name: Uploading Artifact 6
         uses: actions/upload-artifact@v6
@@ -1103,7 +1082,7 @@ jobs:
           [string]$MSIXBundleName = "${{ needs.build.outputs.MSIXBundle_NAME }}"
 
           # Spaces in files added to the GitHub assets will be replaced with dots, so we need to do the same when constructing the download link
-          [string]$AdjustedMSIXBundleName = $MSIXBundleName.Replace('App Control Studio', 'App.Control.Studio')
+          [string]$AdjustedMSIXBundleName = "App.Control.Studio_$PACKAGE_VERSION.msixbundle"
 
           [string]$DRAFT_RELEASE_TAG = "${{ needs.build.outputs.DRAFT_RELEASE_TAG }}"
           [string]$GitHubRepository = "${{ github.repository }}"

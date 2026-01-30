@@ -73,7 +73,8 @@ jobs:
                   [bool]$DownloadRepo,
                   [bool]$InstallDeps,
                   [bool]$Workflow,
-                  [bool]$UpdateWorkLoads
+                  [bool]$UpdateWorkLoads,
+                  [bool]$X64ONLY
               )
 
               $ErrorActionPreference = 'Stop'
@@ -262,9 +263,12 @@ jobs:
 
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ComManager solution for X64. Exit Code: $LASTEXITCODE") }
 
-              . $MSBuildPath '..\App Control Studio\eXclude\ComManager\ComManager.slnx' /p:Configuration=Release /p:Platform=arm64 /target:Build
 
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ComManager solution for ARM64. Exit Code: $LASTEXITCODE") }
+              if (!$X64ONLY) {
+                  . $MSBuildPath '..\App Control Studio\eXclude\ComManager\ComManager.slnx' /p:Configuration=Release /p:Platform=arm64 /target:Build
+
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ComManager solution for ARM64. Exit Code: $LASTEXITCODE") }
+              }
 
               #region --- RUST projects ---
 
@@ -332,9 +336,11 @@ jobs:
 
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building x64 Rust Interop project. Exit Code: $LASTEXITCODE") }
 
-              cargo build_arm64
+              if (!$X64ONLY) {
+                  cargo build_arm64
 
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ARM64 Rust Interop project. Exit Code: $LASTEXITCODE") }
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ARM64 Rust Interop project. Exit Code: $LASTEXITCODE") }
+              }
 
               Set-Location -Path $Current_Location
 
@@ -347,8 +353,11 @@ jobs:
               dotnet restore '..\App Control Studio\eXclude\DISMService\DISMService.csproj' -r win-x64
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed restoring DISMService for x64. Exit Code: $LASTEXITCODE") }
 
-              dotnet restore '..\App Control Studio\eXclude\DISMService\DISMService.csproj' -r win-arm64
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed restoring DISMService for ARM64. Exit Code: $LASTEXITCODE") }
+
+              if (!$X64ONLY) {
+                  dotnet restore '..\App Control Studio\eXclude\DISMService\DISMService.csproj' -r win-arm64
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed restoring DISMService for ARM64. Exit Code: $LASTEXITCODE") }
+              }
 
               dotnet clean '..\App Control Studio\eXclude\DISMService\DISMService.csproj' --configuration Release
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning DISMService (first pass). Exit Code: $LASTEXITCODE") }
@@ -359,14 +368,17 @@ jobs:
               dotnet msbuild '..\App Control Studio\eXclude\DISMService\DISMService.csproj' /p:Configuration=Release /restore /p:Platform=x64 /p:RuntimeIdentifier=win-x64 /p:PublishProfile="..\App Control Studio\eXclude\DISMService\Properties\PublishProfiles\win-x64.pubxml" /t:Publish -v:minimal
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed publishing DISMService for x64. Exit Code: $LASTEXITCODE") }
 
-              dotnet clean '..\App Control Studio\eXclude\DISMService\DISMService.csproj' --configuration Release
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning DISMService (second pass). Exit Code: $LASTEXITCODE") }
 
-              dotnet build '..\App Control Studio\eXclude\DISMService\DISMService.csproj' --configuration Release --verbosity minimal /p:Platform=ARM64 /p:RuntimeIdentifier=win-arm64
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building DISMService (second pass). Exit Code: $LASTEXITCODE") }
+              if (!$X64ONLY) {
+                  dotnet clean '..\App Control Studio\eXclude\DISMService\DISMService.csproj' --configuration Release
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning DISMService (second pass). Exit Code: $LASTEXITCODE") }
 
-              dotnet msbuild '..\App Control Studio\eXclude\DISMService\DISMService.csproj' /p:Configuration=Release /restore /p:Platform=arm64 /p:RuntimeIdentifier=win-arm64 /p:PublishProfile="..\App Control Studio\eXclude\DISMService\Properties\PublishProfiles\win-arm64.pubxml" /t:Publish -v:minimal
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed publishing DISMService for ARM64. Exit Code: $LASTEXITCODE") }
+                  dotnet build '..\App Control Studio\eXclude\DISMService\DISMService.csproj' --configuration Release --verbosity minimal /p:Platform=ARM64 /p:RuntimeIdentifier=win-arm64
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building DISMService (second pass). Exit Code: $LASTEXITCODE") }
+
+                  dotnet msbuild '..\App Control Studio\eXclude\DISMService\DISMService.csproj' /p:Configuration=Release /restore /p:Platform=arm64 /p:RuntimeIdentifier=win-arm64 /p:PublishProfile="..\App Control Studio\eXclude\DISMService\Properties\PublishProfiles\win-arm64.pubxml" /t:Publish -v:minimal
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed publishing DISMService for ARM64. Exit Code: $LASTEXITCODE") }
+              }
 
 
               # Windows Service
@@ -374,8 +386,11 @@ jobs:
               dotnet restore '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' -r win-x64
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed restoring QuantumRelayHSS for x64. Exit Code: $LASTEXITCODE") }
 
-              dotnet restore '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' -r win-arm64
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed restoring QuantumRelayHSS for ARM64. Exit Code: $LASTEXITCODE") }
+
+              if (!$X64ONLY) {
+                  dotnet restore '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' -r win-arm64
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed restoring QuantumRelayHSS for ARM64. Exit Code: $LASTEXITCODE") }
+              }
 
               dotnet clean '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' --configuration Release
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning QuantumRelayHSS (first pass). Exit Code: $LASTEXITCODE") }
@@ -386,14 +401,17 @@ jobs:
               dotnet msbuild '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' /p:Configuration=Release /restore /p:Platform=x64 /p:RuntimeIdentifier=win-x64 /p:PublishProfile="..\App Control Studio\eXclude\QuantumRelayHSS\Properties\PublishProfiles\win-x64.pubxml" /t:Publish -v:minimal
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed publishing QuantumRelayHSS for x64. Exit Code: $LASTEXITCODE") }
 
-              dotnet clean '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' --configuration Release
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning QuantumRelayHSS (second pass). Exit Code: $LASTEXITCODE") }
 
-              dotnet build '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' --configuration Release --verbosity minimal /p:Platform=ARM64 /p:RuntimeIdentifier=win-arm64
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building QuantumRelayHSS (second pass). Exit Code: $LASTEXITCODE") }
+              if (!$X64ONLY) {
+                  dotnet clean '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' --configuration Release
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning QuantumRelayHSS (second pass). Exit Code: $LASTEXITCODE") }
 
-              dotnet msbuild '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' /p:Configuration=Release /restore /p:Platform=arm64 /p:RuntimeIdentifier=win-arm64 /p:PublishProfile="..\App Control Studio\eXclude\QuantumRelayHSS\Properties\PublishProfiles\win-arm64.pubxml" /t:Publish -v:minimal
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed publishing QuantumRelayHSS for ARM64. Exit Code: $LASTEXITCODE") }
+                  dotnet build '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' --configuration Release --verbosity minimal /p:Platform=ARM64 /p:RuntimeIdentifier=win-arm64
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building QuantumRelayHSS (second pass). Exit Code: $LASTEXITCODE") }
+
+                  dotnet msbuild '..\App Control Studio\eXclude\QuantumRelayHSS\QuantumRelayHSS.csproj' /p:Configuration=Release /restore /p:Platform=arm64 /p:RuntimeIdentifier=win-arm64 /p:PublishProfile="..\App Control Studio\eXclude\QuantumRelayHSS\Properties\PublishProfiles\win-arm64.pubxml" /t:Publish -v:minimal
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed publishing QuantumRelayHSS for ARM64. Exit Code: $LASTEXITCODE") }
+              }
 
 
               #endregion
@@ -422,23 +440,25 @@ jobs:
 
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed packaging x64 System Security Studio project. Exit Code: $LASTEXITCODE") }
 
-              # Copy the ARM64 components to the directory before the build starts
+              if (!$X64ONLY) {
+                  # Copy the ARM64 components to the directory before the build starts
 
-              Copy-Item -Path '..\App Control Studio\eXclude\ComManager\ARM64\Release\ComManager.exe' -Destination '.\CppInterop\ComManager.exe' -Force
+                  Copy-Item -Path '..\App Control Studio\eXclude\ComManager\ARM64\Release\ComManager.exe' -Destination '.\CppInterop\ComManager.exe' -Force
 
-              Copy-Item -Path '..\App Control Studio\eXclude\DISMService\OutputARM64\DISMService.exe' -Destination '.\DISMService.exe' -Force
+                  Copy-Item -Path '..\App Control Studio\eXclude\DISMService\OutputARM64\DISMService.exe' -Destination '.\DISMService.exe' -Force
 
-              Copy-Item -Path '..\App Control Studio\eXclude\QuantumRelayHSS\OutputARM64\QuantumRelayHSS.exe' -Destination '.\QuantumRelayHSS.exe' -Force
+                  Copy-Item -Path '..\App Control Studio\eXclude\QuantumRelayHSS\OutputARM64\QuantumRelayHSS.exe' -Destination '.\QuantumRelayHSS.exe' -Force
 
-              # Generate for ARM64 architecture
-              dotnet clean 'System Security Studio.csproj' --configuration Release
-              dotnet build 'System Security Studio.csproj' --configuration Release --verbosity minimal /p:Platform=ARM64 /p:RuntimeIdentifier=win-arm64
+                  # Generate for ARM64 architecture
+                  dotnet clean 'System Security Studio.csproj' --configuration Release
+                  dotnet build 'System Security Studio.csproj' --configuration Release --verbosity minimal /p:Platform=ARM64 /p:RuntimeIdentifier=win-arm64
 
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ARM64 System Security Studio project. Exit Code: $LASTEXITCODE") }
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ARM64 System Security Studio project. Exit Code: $LASTEXITCODE") }
 
-              dotnet msbuild 'System Security Studio.csproj' /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-arm64 /p:AppxPackageDir="MSIXOutputARM64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=ARM64 -v:minimal /p:MsPdbCmfExeFullpath=$mspdbcmfPath -bl:ARM64MSBuildLog.binlog
+                  dotnet msbuild 'System Security Studio.csproj' /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-arm64 /p:AppxPackageDir="MSIXOutputARM64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=ARM64 -v:minimal /p:MsPdbCmfExeFullpath=$mspdbcmfPath -bl:ARM64MSBuildLog.binlog
 
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed packaging ARM64 System Security Studio project. Exit Code: $LASTEXITCODE") }
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed packaging ARM64 System Security Studio project. Exit Code: $LASTEXITCODE") }
+              }
 
               function Get-MSIXFile {
                   param(
@@ -543,41 +563,42 @@ jobs:
               #endregion
 
               #region Finding ARM64 outputs
-              [System.String]$FinalMSIXARM64Path = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($script:HSSDirectory, 'MSIXOutputARM64')) -FolderPattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64_Test' -FileNamePattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64\.msix' -ErrorMessageFolder 'Could not find the directory for ARM64 MSIX file' -ErrorMessageFile 'Could not find the ARM64 MSIX file'
-              [System.String]$FinalMSIXARM64Name = [System.IO.Path]::GetFileName($FinalMSIXARM64Path)
-              [System.String]$FinalMSIXARM64SymbolPath = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($script:HSSDirectory, 'MSIXOutputARM64')) -FolderPattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64_Test' -FileNamePattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64\.appxsym' -ErrorMessageFolder 'Could not find the directory for ARM64 symbol file' -ErrorMessageFile 'Could not find the ARM64 symbol file'
-              [System.String]$FinalMSIXARM64SymbolName = [System.IO.Path]::GetFileName($FinalMSIXARM64SymbolPath)
+              if (!$X64ONLY) {
+                  [System.String]$FinalMSIXARM64Path = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($script:HSSDirectory, 'MSIXOutputARM64')) -FolderPattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64_Test' -FileNamePattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64\.msix' -ErrorMessageFolder 'Could not find the directory for ARM64 MSIX file' -ErrorMessageFile 'Could not find the ARM64 MSIX file'
+                  [System.String]$FinalMSIXARM64Name = [System.IO.Path]::GetFileName($FinalMSIXARM64Path)
+                  [System.String]$FinalMSIXARM64SymbolPath = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($script:HSSDirectory, 'MSIXOutputARM64')) -FolderPattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64_Test' -FileNamePattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64\.appxsym' -ErrorMessageFolder 'Could not find the directory for ARM64 symbol file' -ErrorMessageFile 'Could not find the ARM64 symbol file'
+                  [System.String]$FinalMSIXARM64SymbolName = [System.IO.Path]::GetFileName($FinalMSIXARM64SymbolPath)
 
-              # Sign ARM64 MSIX
-              Write-Host -Object "Signing ARM64 MSIX: $FinalMSIXARM64Path" -ForegroundColor Magenta
-              . $SignToolPath sign /fd SHA256 /sha1 $Cert.Thumbprint /td SHA256 /tr "http://timestamp.digicert.com" $FinalMSIXARM64Path
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("SignTool failed signing the ARM64 MSIX. Exit Code: $LASTEXITCODE") }
+                  # Sign ARM64 MSIX
+                  Write-Host -Object "Signing ARM64 MSIX: $FinalMSIXARM64Path" -ForegroundColor Magenta
+                  . $SignToolPath sign /fd SHA256 /sha1 $Cert.Thumbprint /td SHA256 /tr "http://timestamp.digicert.com" $FinalMSIXARM64Path
+                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("SignTool failed signing the ARM64 MSIX. Exit Code: $LASTEXITCODE") }
+              }
               #endregion
 
               #region Detect and Validate File Versions
               [System.Text.RegularExpressions.Regex]$versionRegexX64 = [System.Text.RegularExpressions.Regex]::New('System Security Studio_(\d+\.\d+\.\d+\.\d+)_x64\.msix')
 
-              [System.Text.RegularExpressions.Regex]$versionRegexARM64 = [System.Text.RegularExpressions.Regex]::New('System Security Studio_(\d+\.\d+\.\d+\.\d+)_arm64\.msix')
-              [System.Text.RegularExpressions.Match]$MatchX64 = $versionRegexX64.Match($FinalMSIXX64Name)
-
-              [System.Text.RegularExpressions.Match]$MatchARM64 = $versionRegexARM64.Match($FinalMSIXARM64Name)
-
               if (!$MatchX64.Success) {
                   throw [System.InvalidOperationException]::New('Could not detect version from X64 file name')
               }
 
-              if (!$MatchARM64.Success) {
-                  throw [System.InvalidOperationException]::New('Could not detect version from ARM64 file name')
+              if (!$X64ONLY) {
+                  [System.Text.RegularExpressions.Regex]$versionRegexARM64 = [System.Text.RegularExpressions.Regex]::New('System Security Studio_(\d+\.\d+\.\d+\.\d+)_arm64\.msix')
+                  [System.Text.RegularExpressions.Match]$MatchARM64 = $versionRegexARM64.Match($FinalMSIXARM64Name)
+
+                  if (!$MatchARM64.Success) {
+                      throw [System.InvalidOperationException]::New('Could not detect version from ARM64 file name')
+                  }
+
+                  [System.String]$versionARM64 = $MatchARM64.Groups[1].Value
+
+                  if ($versionX64 -ne $versionARM64) {
+                      throw [System.InvalidOperationException]::New('The versions in X64 and ARM64 files do not match')
+                  }
               }
 
               [System.String]$versionX64 = $MatchX64.Groups[1].Value
-
-              [System.String]$versionARM64 = $MatchARM64.Groups[1].Value
-
-
-              if ($versionX64 -ne $versionARM64) {
-                  throw [System.InvalidOperationException]::New('The versions in X64 and ARM64 files do not match')
-              }
 
               # Craft the file name for the MSIX Bundle file
               [System.String]$FinalBundleFileName = "System Security Studio_$versionX64.msixbundle"
@@ -588,7 +609,9 @@ jobs:
 
               [System.IO.File]::Copy($FinalMSIXX64Path, [System.IO.Path]::Combine($MSIXBundleOutput, $FinalMSIXX64Name), $true)
 
-              [System.IO.File]::Copy($FinalMSIXARM64Path, [System.IO.Path]::Combine($MSIXBundleOutput, $FinalMSIXARM64Name), $true)
+              if (!$X64ONLY) {
+                  [System.IO.File]::Copy($FinalMSIXARM64Path, [System.IO.Path]::Combine($MSIXBundleOutput, $FinalMSIXARM64Name), $true)
+              }
 
               # The path to the final MSIX Bundle file
               [System.String]$MSIXBundle = [System.IO.Path]::Combine($MSIXBundleOutput, $FinalBundleFileName)
@@ -665,9 +688,12 @@ jobs:
               Write-Host -Object "X64 MSIX File Name: $FinalMSIXX64Name" -ForegroundColor Green
               Write-Host -Object "X64 Symbols: $FinalMSIXX64SymbolPath" -ForegroundColor Green
 
-              Write-Host -Object "ARM64 MSIX File Path: $FinalMSIXARM64Path" -ForegroundColor Cyan
-              Write-Host -Object "ARM64 MSIX File Name: $FinalMSIXARM64Name" -ForegroundColor Cyan
-              Write-Host -Object "ARM64 Symbols: $FinalMSIXARM64SymbolPath" -ForegroundColor Cyan
+
+              if (!$X64ONLY) {
+                  Write-Host -Object "ARM64 MSIX File Path: $FinalMSIXARM64Path" -ForegroundColor Cyan
+                  Write-Host -Object "ARM64 MSIX File Name: $FinalMSIXARM64Name" -ForegroundColor Cyan
+                  Write-Host -Object "ARM64 Symbols: $FinalMSIXARM64SymbolPath" -ForegroundColor Cyan
+              }
 
               Write-Host -Object "MSIX Bundle File Path: $MSIXBundle" -ForegroundColor Yellow
               Write-Host -Object "MSIX Bundle File Name: $FinalBundleFileName" -ForegroundColor Yellow
@@ -688,15 +714,16 @@ jobs:
 
                   # Saving the details of the log files
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "X64MSBuildLog_PATH=$((Resolve-Path -Path .\X64MSBuildLog.binlog).Path)"
-                  Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64MSBuildLog_PATH=$((Resolve-Path -Path .\ARM64MSBuildLog.binlog).Path)"
+
+                  if (!$X64ONLY) {
+                      Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64MSBuildLog_PATH=$((Resolve-Path -Path .\ARM64MSBuildLog.binlog).Path)"
+                      Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64Symbol_PATH=$FinalMSIXARM64SymbolPath"
+                      Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64Symbol_NAME=$FinalMSIXARM64SymbolName"
+                  }
 
                   # Saving the details of the X64 symbol file
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "X64Symbol_PATH=$FinalMSIXX64SymbolPath"
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "X64Symbol_NAME=$FinalMSIXX64SymbolName"
-
-                  # Saving the details of the ARM64 symbol file
-                  Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64Symbol_PATH=$FinalMSIXARM64SymbolPath"
-                  Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64Symbol_NAME=$FinalMSIXARM64SymbolName"
 
                   # Saving the details of the code signing certificate
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "CERT_PATH=$CertExportPath"
@@ -737,7 +764,7 @@ jobs:
           }
 
           # For GitHub workflow
-          Build_HSS -DownloadRepo $false -InstallDeps $true -Workflow $true -UpdateWorkLoads $false
+          Build_HSS -DownloadRepo $false -InstallDeps $true -Workflow $true -UpdateWorkLoads $false -X64ONLY $true
 
       - name: Finding or Creating Draft Release
         id: find_draft_release
@@ -803,11 +830,6 @@ jobs:
           $Assets = @(
               @{ Path = $ZipPath; Name = $ZipName }
               @{ Path = "${{ env.MSIXBundle_PATH }}"; Name = $StandaloneBundleName }
-              @{ Path = "${{ env.X64MSBuildLog_PATH }}"; Name = 'X64MSBuildLog.binlog' }
-              @{ Path = "${{ env.ARM64MSBuildLog_PATH }}"; Name = 'ARM64MSBuildLog.binlog' }
-              @{ Path = "${{ env.X64Symbol_PATH }}"; Name = "${{ env.X64Symbol_NAME }}" }
-              @{ Path = "${{ env.ARM64Symbol_PATH }}"; Name = "${{ env.ARM64Symbol_NAME }}" }
-              @{ Path = "${{ env.SBOM_PATH }}"; Name = "${{ env.SBOM_NAME }}" }
           )
           [string]$DraftReleaseId = $env:DRAFT_RELEASE_ID
           [string]$Repo = "${{ github.repository }}"
@@ -839,14 +861,6 @@ jobs:
           name: X64MSBuildLog.binlog
           path: ${{ env.X64MSBuildLog_PATH }}
 
-      - name: Uploading Artifact 3
-        uses: actions/upload-artifact@v6
-        with:
-          retention-days: 1
-          compression-level: 0
-          name: ARM64MSBuildLog.binlog
-          path: ${{ env.ARM64MSBuildLog_PATH }}
-
       - name: Uploading Artifact 4
         uses: actions/upload-artifact@v6
         with:
@@ -854,14 +868,6 @@ jobs:
           compression-level: 0
           name: ${{ env.X64Symbol_NAME }}
           path: ${{ env.X64Symbol_PATH }}
-
-      - name: Uploading Artifact 5
-        uses: actions/upload-artifact@v6
-        with:
-          retention-days: 1
-          compression-level: 0
-          name: ${{ env.ARM64Symbol_NAME }}
-          path: ${{ env.ARM64Symbol_PATH }}
 
       - name: Uploading Artifact 6
         uses: actions/upload-artifact@v6
@@ -946,7 +952,7 @@ jobs:
           [string]$MSIXBundleName = "${{ needs.build.outputs.MSIXBundle_NAME }}"
 
           # Spaces in files added to the GitHub assets will be replaced with dots, so we need to do the same when constructing the download link
-          [string]$AdjustedMSIXBundleName = $MSIXBundleName.Replace('System Security Studio', 'System.Security.Studio')
+          [string]$AdjustedMSIXBundleName = "System.Security.Studio_$PACKAGE_VERSION.msixbundle"
 
           [string]$DRAFT_RELEASE_TAG = "${{ needs.build.outputs.DRAFT_RELEASE_TAG }}"
           [string]$GitHubRepository = "${{ github.repository }}"
