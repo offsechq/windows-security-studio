@@ -258,11 +258,11 @@ jobs:
 
               ### ComManager
 
-              . $MSBuildPath '..\App Control Studio\eXclude\ComManager\ComManager.slnx' /p:Configuration=Release /p:Platform=x64 /target:"clean;Rebuild"
+              . $MSBuildPath '..\App Control Studio\eXclude\ComManager\ComManager.slnx' /p:Configuration=Release /p:Platform=x64 /target:Build
 
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ComManager solution for X64. Exit Code: $LASTEXITCODE") }
 
-              . $MSBuildPath '..\App Control Studio\eXclude\ComManager\ComManager.slnx' /p:Configuration=Release /p:Platform=arm64 /target:"clean;Rebuild"
+              . $MSBuildPath '..\App Control Studio\eXclude\ComManager\ComManager.slnx' /p:Configuration=Release /p:Platform=arm64 /target:Build
 
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ComManager solution for ARM64. Exit Code: $LASTEXITCODE") }
 
@@ -294,9 +294,7 @@ jobs:
 
               Set-Location -Path '..\App Control Studio\eXclude\Rust Interop Library'
 
-              if (Test-Path -PathType Leaf -LiteralPath 'Cargo.lock') {
-                  Remove-Item -Force -LiteralPath 'Cargo.lock'
-              }
+              # Keep Cargo.lock for reproducible builds and caching
 
               rustup toolchain install nightly
 
@@ -318,9 +316,7 @@ jobs:
 
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed checking for Rust version. Exit Code: $LASTEXITCODE") }
 
-              cargo clean
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning the Rust project. Exit Code: $LASTEXITCODE") }
+              # Skip cargo clean to leverage cached build artifacts
 
               cargo update --verbose
 
