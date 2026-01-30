@@ -726,7 +726,7 @@ jobs:
               if ($Workflow) {
 
                   [XML]$CSProjXMLContent = Get-Content -Path $CsProjFilePath -Force
-                  [string]$MSIXVersion = $CSProjXMLContent.Project.PropertyGroup.FileVersion
+                  [string]$MSIXVersion = $CSProjXMLContent.Project.PropertyGroup.Version
                   [string]$MSIXVersion = $MSIXVersion.Trim() # It would have trailing whitespaces
                   if ([string]::IsNullOrWhiteSpace($FinalMSIXX64Path) -or [string]::IsNullOrWhiteSpace($FinalMSIXX64Name) -or [string]::IsNullOrWhiteSpace($MSIXVersion)) { throw 'Necessary info could not be found' }
 
