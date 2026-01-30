@@ -81,6 +81,9 @@
   <ItemGroup Condition="'$(Platform)' == 'arm64' OR '$(RuntimeIdentifier)' == 'win-arm64'">
     <DirectPInvoke Include="rust_interop" />
     <NativeLibrary Include="./eXclude/Rust Interop Library/target/aarch64-pc-windows-msvc/release/rust_interop.lib" />
+    <!-- Fix for LNK4072: section count exceeds max on ARM64 -->
+    <LinkerArg Include="/MERGE:.rdata=.text" />
+    <LinkerArg Include="/MERGE:.pdata=.text" />
   </ItemGroup>
   <!-- Only for Debug -->
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

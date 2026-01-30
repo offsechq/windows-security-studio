@@ -272,10 +272,13 @@
 		<NativeLibrary Include="../App Control Studio/eXclude/Rust Interop Library/target/x86_64-pc-windows-msvc/release/rust_interop.lib" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(Platform)' == 'arm64' OR '$(RuntimeIdentifier)' == 'win-arm64'">
-		<DirectPInvoke Include="rust_interop" />
-		<NativeLibrary Include="../App Control Studio/eXclude/Rust Interop Library/target/aarch64-pc-windows-msvc/release/rust_interop.lib" />
-	</ItemGroup>
+  <ItemGroup Condition="'$(Platform)' == 'arm64' OR '$(RuntimeIdentifier)' == 'win-arm64'">
+    <DirectPInvoke Include="rust_interop" />
+    <NativeLibrary Include="../App Control Studio/eXclude/Rust Interop Library/target/aarch64-pc-windows-msvc/release/rust_interop.lib" />
+    <!-- Fix for LNK4072: section count exceeds max on ARM64 -->
+    <LinkerArg Include="/MERGE:.rdata=.text" />
+    <LinkerArg Include="/MERGE:.pdata=.text" />
+  </ItemGroup>
 
 	<PropertyGroup>
 		<DefineConstants>$(DefineConstants);HARDEN_SYSTEM_SECURITY</DefineConstants>
