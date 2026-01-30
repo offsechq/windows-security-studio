@@ -1130,6 +1130,13 @@ jobs:
           git config --global user.email '101721830+OFFSECHQ@users.noreply.github.com'
           git config --global user.name 'offsechq'
 
+          # Check if there are any changes to commit
+          $GitStatus = git status --porcelain
+          if ([string]::IsNullOrWhiteSpace($GitStatus)) {
+              Write-Host -Object "No changes detected. Version and download URL files already up to date. Skipping PR creation." -ForegroundColor Yellow
+              exit 0
+          }
+
           # Create a new branch for the pull request, making sure branch name has valid characters
           [string]$NewBranchName = 'App-Control-Studio-DownloadLink-Version-Update'
           git checkout -b $NewBranchName
@@ -1142,7 +1149,7 @@ jobs:
           git commit -m $CommitMessageAndPRTitle
 
           # Push the new branch to the remote repository
-          git push -u origin $NewBranchName
+          git push -u origin $NewBranchName --force
 
           [string]$PRBody = @"
           This PR updates MSIXBundleDownloadURL.txt to
