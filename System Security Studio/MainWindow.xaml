@@ -170,29 +170,6 @@
                 </AutoSuggestBox.ItemTemplate>
             </AutoSuggestBox>
 
-            <!-- Sidebar access point -->
-            <Button x:Name="SidebarButton"
-                    Click="{x:Bind ViewModel.SidebarButton_Click}"
-                    Grid.Column="8"
-                    Height="32"
-                    Margin="5,0,30,0"
-                    Background="Transparent"
-                    BorderThickness="0">
-
-                <Button.Content>
-                    <controls:WrapPanel Orientation="Horizontal">
-
-                        <AnimatedIcon Height="35" Width="35" Margin="-9,-9,-9,-9">
-                            <AnimatedIcon.Source>
-                                <animatedvisuals:Sidebar/>
-                            </AnimatedIcon.Source>
-                        </AnimatedIcon>
-
-                    </controls:WrapPanel>
-                </Button.Content>
-
-            </Button>
-
         </Grid>
 
         <!-- Doc: https://learn.microsoft.com/windows/apps/design/controls/navigationview -->
@@ -388,6 +365,14 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
+                <!-- Quick Actions Group -->
+                <NavigationViewItemHeader Content="Quick Actions"/>
+                <NavigationViewItem x:Name="QuickActionsNavItem" Tag="QuickActions" Icon="{ui:FontIcon Glyph=&#xE771;}" Content="System Actions">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="System Utilities" Tag="SystemUtilities" Icon="{ui:FontIcon Glyph=&#xE90F;}"/>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
                 <!-- Documentation Group -->
                 <NavigationViewItemHeader x:Name="DocumentationNavigationViewItemHeader" x:Uid="DocumentationNavigationViewItemHeader"/>
                 <NavigationViewItem x:Name="GitHubDocsNavItem" x:Uid="GitHubDocsNavItem" Icon="{x:Bind ViewModel.GitHubDocsIcon, Mode=OneWay}" Tag="GitHubDocs" />
@@ -410,352 +395,127 @@
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
 
-            <!-- Split view to create the sidebar -->
-            <SplitView x:Name="SidebarSplitView"
-                       PaneBackground="Transparent"
-                       IsPaneOpen="{x:Bind ViewModel.SidebarPaneIsOpen, Mode=TwoWay}"
-                       OpenPaneLength="256"
-                       CompactPaneLength="48"
-                       DisplayMode="Inline"
-                       PanePlacement="Right"
-                       AutomationProperties.LandmarkType="Custom"
-                       AutomationProperties.LocalizedLandmarkType="Sidebar">
+            <!-- The area where the main window content are displayed -->
+            <Grid>
 
-                <SplitView.Pane>
-                    <!-- Wrap pane content in a Grid so we can overlay a left-edge sizer -->
-                    <Grid>
-                        <Border BorderThickness="1"
-                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                CornerRadius="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-                            <ScrollViewer>
-
-                                <controls:WrapPanel HorizontalSpacing="20" VerticalSpacing="20" Orientation="Vertical" Margin="10,0,10,0" HorizontalAlignment="Center">
-
-                                    <TextBlock x:Name="SidebarTextBlock" x:Uid="SidebarTextBlock" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" Margin="0,15,0,0" HorizontalTextAlignment="Center"/>
-
-                                    <TextBlock x:Name="SidebarMainCaptionTextBlock" x:Uid="SidebarMainCaptionTextBlock" Style="{ThemeResource CaptionTextBlockStyle}" HorizontalAlignment="Center" HorizontalTextAlignment="Center"/>
-
-                                    <customUI:InfoBarV2 IsOpen="{x:Bind ViewModel.MainInfoBarIsOpen, Mode=TwoWay}"
-                                                        Message="{x:Bind ViewModel.MainInfoBarMessage, Mode=OneWay}"
-                                                        Severity="{x:Bind ViewModel.MainInfoBarSeverity, Mode=OneWay}"
-                                                        IsClosable="{x:Bind ViewModel.MainInfoBarIsClosable, Mode=OneWay}" />
-
-                                    <HyperlinkButton x:Name="SidebarHelpHyperlinkButton"
-                                                     HorizontalAlignment="Center"
-                                                     HorizontalContentAlignment="Stretch"
-                                                     NavigateUri="https://github.com/OFFSECHQ/windows-security-studio/discussions"
-                                                     Padding="12,8"
-                                                     CornerRadius="6"
-                                                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                                     BorderThickness="1">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <FontIcon Grid.Column="0"
-                                                      Glyph="&#xE9CE;"
-                                                      Foreground="Gold"
-                                                      FontSize="16"/>
-
-                                            <TextBlock Grid.Column="1"
-                                                       x:Uid="SidebarHelpHyperlinkTextBlock"
-                                                       x:Name="SidebarHelpHyperlinkTextBlock"
-                                                       Margin="8,0,0,0"
-                                                       VerticalAlignment="Center"
-                                                       FontWeight="SemiBold"
-                                                       TextWrapping="WrapWholeWords"/>
-                                        </Grid>
-                                    </HyperlinkButton>
-
-                                    <HyperlinkButton Content="App Control Studio"
-                                                     HorizontalAlignment="Center"
-                                                     NavigateUri="https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager"
-                                                     Padding="12,8"
-                                                     CornerRadius="6"
-                                                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                                     BorderThickness="1"/>
-
-                                    <Button HorizontalAlignment="Center"
-                                            x:Uid="OptimizeMemoryButton"
-                                            IsEnabled="{x:Bind ViewModel.OptimizeMemoryButtonIsEnabled, Mode=OneWay}"
-                                            Click="{x:Bind ViewModel.OptimizeMemory}">
-                                        <Button.ContentTemplate>
-                                            <DataTemplate x:DataType="x:String">
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <FontIcon Grid.Column="0"
-                                                              Glyph="&#xEEA0;"
-                                                              FontFamily="Segoe Fluent Icons"
-                                                              FontSize="16"/>
-
-                                                    <TextBlock Grid.Column="1"
-                                                               Margin="8,0,0,0"
-                                                               HorizontalTextAlignment="Center"
-                                                               HorizontalAlignment="Center"
-                                                               TextWrapping="WrapWholeWords"
-                                                               Text="{x:Bind}"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </Button.ContentTemplate>
-                                    </Button>
-
-                                    <DropDownButton x:Uid="ConfigureHyperVMNestedVirtualizationButton"
-                                                    HorizontalAlignment="Center"
-                                                    IsEnabled="{x:Bind ViewModel.IsHyperVNestedVirtualizationButtonEnabled, Mode=OneWay}">
-                                        <DropDownButton.Flyout>
-                                            <MenuFlyout Placement="Bottom">
-                                                <MenuFlyoutItem x:Uid="EnableHyperVMNestedVirtualizationMenuFlyoutItem"
-                                                                Click="{x:Bind ViewModel.EnableNestedVirtualizationForVMs}"/>
-                                                <MenuFlyoutItem x:Uid="DisableHyperVMNestedVirtualizationMenuFlyoutItem"
-                                                                Click="{x:Bind ViewModel.DisableNestedVirtualizationForVMs}"/>
-                                            </MenuFlyout>
-                                        </DropDownButton.Flyout>
-
-                                        <DropDownButton.ContentTemplate>
-                                            <DataTemplate x:DataType="x:String">
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <FontIcon Grid.Column="0"
-                                                              Glyph="&#xEEA3;"
-                                                              FontFamily="Segoe Fluent Icons"
-                                                              FontSize="16"/>
-
-                                                    <TextBlock Grid.Column="1"
-                                                               Margin="8,0,0,0"
-                                                               HorizontalAlignment="Center"
-                                                               HorizontalTextAlignment="Center"
-                                                               TextWrapping="WrapWholeWords"
-                                                               Text="{x:Bind}"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </DropDownButton.ContentTemplate>
-
-                                    </DropDownButton>
-
-                                    <DropDownButton x:Uid="ConfigureUltimatePerformancePowerPlanButton"
-                                                    HorizontalAlignment="Center"
-                                                    IsEnabled="{x:Bind ViewModel.IsPowerPlanConfigButtonEnabled, Mode=OneWay}">
-                                        <DropDownButton.Flyout>
-                                            <MenuFlyout Placement="Bottom">
-                                                <MenuFlyoutItem x:Uid="EnableUltimatePerformancePowerPlanMenuFlyoutItem"
-                                                                Click="{x:Bind ViewModel.EnableUltimatePerformancePowerPlan}"/>
-                                                <MenuFlyoutItem x:Uid="DisableUltimatePerformancePowerPlanMenuFlyoutItem"
-                                                                Click="{x:Bind ViewModel.DisableUltimatePerformancePowerPlan}"/>
-                                            </MenuFlyout>
-                                        </DropDownButton.Flyout>
-
-                                        <DropDownButton.ContentTemplate>
-                                            <DataTemplate x:DataType="x:String">
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <FontIcon Grid.Column="0"
-                                                              Glyph="&#xE7E8;"
-                                                              FontFamily="Segoe Fluent Icons"
-                                                              FontSize="16"/>
-
-                                                    <TextBlock Grid.Column="1"
-                                                               Margin="8,0,0,0"
-                                                               HorizontalAlignment="Center"
-                                                               HorizontalTextAlignment="Center"
-                                                               TextWrapping="WrapWholeWords"
-                                                               Text="{x:Bind}"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </DropDownButton.ContentTemplate>
-
-                                    </DropDownButton>
-
-                                    <Button x:Uid="MicrosoftStoreAppUpdatesCheckButton"
-                                                 HorizontalAlignment="Center"
-                                                 Click="{x:Bind ViewModel.CheckForAllAppUpdates}"
-                                                 IsEnabled="{x:Bind ViewModel.IsCheckForAllAppUpdatesButtonEnabled, Mode=OneWay}">
-                                        <Button.ContentTemplate>
-                                            <DataTemplate x:DataType="x:String">
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <FontIcon Grid.Column="0"
-                                                              Glyph="&#xECC5;"
-                                                              FontFamily="Segoe Fluent Icons"
-                                                              FontSize="16"/>
-
-                                                    <TextBlock Grid.Column="1"
-                                                               Margin="8,0,0,0"
-                                                               HorizontalAlignment="Center"
-                                                               HorizontalTextAlignment="Center"
-                                                               TextWrapping="WrapWholeWords"
-                                                               Text="{x:Bind}"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </Button.ContentTemplate>
-                                    </Button>
-
-                                </controls:WrapPanel>
-
-                            </ScrollViewer>
-
-                        </Border>
-
-                        <!-- Invisible sizer along the left edge of the right-hand pane -->
-                        <controls:PropertySizer Width="8"
-                                                HorizontalAlignment="Left"
-                                                VerticalAlignment="Stretch"
-                                                Binding="{x:Bind SidebarSplitView.OpenPaneLength, Mode=TwoWay}"
-                                                Orientation="Vertical"
-                                                IsDragInverted="True"
-                                                IsThumbVisible="False"
-                                                Background="Transparent"
-                                                Cursor="SizeWestEast"
-                                                Minimum="200"
-                                                Maximum="1200"
-                                                IsTabStop="False"
-                                                Margin="0"/>
-                    </Grid>
-                </SplitView.Pane>
-
-                <!-- The area where the main window content are displayed -->
-                <Grid>
-
+                <!-- Breadcrumb + header region -->
+                <Grid Grid.Row="0" x:Name="BreadcrumbRegionGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                    <!-- Breadcrumb + header region -->
-                    <Grid Grid.Row="0" x:Name="BreadcrumbRegionGrid">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
+                    <!-- BreadCrumbBar -->
+                    <BreadcrumbBar Grid.Row="0"
+                                   Grid.Column="0"
+                                   x:Name="MainBreadcrumbBar"
+                                   Visibility="{x:Bind ViewModel.IsCrumbBarVisible, Mode=OneWay}"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Top"
+                                   Padding="10"
+                                   AutomationProperties.LandmarkType="Custom"
+                                   AutomationProperties.LocalizedLandmarkType="Bread Crumb Bar Navigation and Page Title"
+                                   Margin="20,10,0,0"
+                                   ItemsSource="{x:Bind ViewModel.Breadcrumbs}"
+                                   ItemClicked="{x:Bind Nav.BreadcrumbBar_ItemClicked}">
+                        <BreadcrumbBar.ItemTemplate>
+                            <DataTemplate x:DataType="WindowComponents:Crumb"
+                                          xmlns:vms="using:HardenSystemSecurity.ViewModels">
+                                <TextBlock Text="{x:Bind Label}"
+                                           Style="{x:Bind vms:ViewModelProvider.MainWindowVM.BreadcrumbItemStyle, Mode=OneWay}"
+                                           TextWrapping="NoWrap"/>
+                            </DataTemplate>
+                        </BreadcrumbBar.ItemTemplate>
+                    </BreadcrumbBar>
 
-                        <!-- BreadCrumbBar -->
-                        <BreadcrumbBar Grid.Row="0"
-                                       Grid.Column="0"
-                                       x:Name="MainBreadcrumbBar"
-                                       Visibility="{x:Bind ViewModel.IsCrumbBarVisible, Mode=OneWay}"
-                                       HorizontalAlignment="Stretch"
-                                       VerticalAlignment="Top"
-                                       Padding="10"
-                                       AutomationProperties.LandmarkType="Custom"
-                                       AutomationProperties.LocalizedLandmarkType="Bread Crumb Bar Navigation and Page Title"
-                                       Margin="20,10,0,0"
-                                       ItemsSource="{x:Bind ViewModel.Breadcrumbs}"
-                                       ItemClicked="{x:Bind Nav.BreadcrumbBar_ItemClicked}">
-                            <BreadcrumbBar.ItemTemplate>
-                                <DataTemplate x:DataType="WindowComponents:Crumb"
-                                              xmlns:vms="using:HardenSystemSecurity.ViewModels">
-                                    <TextBlock Text="{x:Bind Label}"
-                                               Style="{x:Bind vms:ViewModelProvider.MainWindowVM.BreadcrumbItemStyle, Mode=OneWay}"
-                                               TextWrapping="NoWrap"/>
-                                </DataTemplate>
-                            </BreadcrumbBar.ItemTemplate>
-                        </BreadcrumbBar>
+                    <!-- Header chevron flyout -->
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            x:Name="RulesHeaderFlyoutButton"
+                            Margin="0,10,16,5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Visibility="{x:Bind ViewModel.HeaderFlyoutVisibility, Mode=OneWay}"
+                            ToolTipService.ToolTip="Attack Surface Reduction">
+                        <Button.Content>
+                            <FontIcon Glyph="&#xE70D;" />
+                        </Button.Content>
+                        <Button.Flyout>
+                            <Flyout Placement="BottomEdgeAlignedRight">
+                                <StackPanel Spacing="8" MaxWidth="400">
+                                    <TextBlock Text="{x:Bind ViewModel.PageHeaderTitle, Mode=OneWay}"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   TextWrapping="WrapWholeWords"
+                                                   TextAlignment="Start"
+                                                   IsTextSelectionEnabled="True"
+                                                   Margin="0,0,0,4"/>
 
-                        <!-- Header chevron flyout -->
-                        <Button Grid.Row="0"
-                                Grid.Column="1"
-                                x:Name="RulesHeaderFlyoutButton"
-                                Margin="0,10,16,5"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Top"
-                                Visibility="{x:Bind ViewModel.HeaderFlyoutVisibility, Mode=OneWay}"
-                                ToolTipService.ToolTip="Attack Surface Reduction">
-                            <Button.Content>
-                                <FontIcon Glyph="&#xE70D;" />
-                            </Button.Content>
-                            <Button.Flyout>
-                                <Flyout Placement="BottomEdgeAlignedRight">
-                                    <StackPanel Spacing="8" MaxWidth="400">
-                                        <TextBlock Text="{x:Bind ViewModel.PageHeaderTitle, Mode=OneWay}"
-                                                       Style="{StaticResource BodyTextBlockStyle}"
-                                                       TextWrapping="WrapWholeWords"
-                                                       TextAlignment="Start"
-                                                       IsTextSelectionEnabled="True"
-                                                       Margin="0,0,0,4"/>
-
-                                        <HyperlinkButton x:Uid="GuideButtonAtTop"
-                                                             NavigateUri="{x:Bind ViewModel.PageHeaderGuideUri, Mode=OneWay}"
-                                                             Visibility="{x:Bind ViewModel.GuideButtonVisibility, Mode=OneWay}">
-                                            <HyperlinkButton.ContentTemplate>
-                                                <DataTemplate x:DataType="x:String">
-                                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                                        <FontIcon Glyph="&#xE7BE;" FontSize="16"/>
-                                                        <TextBlock Text="{x:Bind}"/>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </HyperlinkButton.ContentTemplate>
-                                        </HyperlinkButton>
-                                    </StackPanel>
-                                </Flyout>
-                            </Button.Flyout>
-                        </Button>
-                    </Grid>
-
-                    <!-- Inline header row (wide widths) -->
-                    <controls:WrapPanel Grid.Row="1"
-                                        Margin="20,10,10,0"
-                                        Visibility="{x:Bind ViewModel.HeaderInlineVisibility, Mode=OneWay}"
-                                        Style="{StaticResource PageHeaderWrapPanelStyle}">
-                        <TextBlock Text="{x:Bind ViewModel.PageHeaderTitle, Mode=OneWay}"
-                                   TextWrapping="WrapWholeWords"
-                                   IsTextSelectionEnabled="True"
-                                   Style="{StaticResource BodyTextBlockStyle}" />
-                        <HyperlinkButton x:Uid="GuideButtonAtTop"
-                                         NavigateUri="{x:Bind ViewModel.PageHeaderGuideUri, Mode=OneWay}"
-                                         Visibility="{x:Bind ViewModel.GuideButtonVisibility, Mode=OneWay}">
-                            <HyperlinkButton.ContentTemplate>
-                                <DataTemplate x:DataType="x:String">
-                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <FontIcon Glyph="&#xE7BE;" FontSize="16"/>
-                                        <TextBlock Text="{x:Bind}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </HyperlinkButton.ContentTemplate>
-                        </HyperlinkButton>
-                    </controls:WrapPanel>
-
-                    <!-- Note the use of a TwoWay binding here, this is required for this control to work.  -->
-                    <controls:PropertySizer HorizontalAlignment="Left"
-                                            Grid.Row="2"
-                                            Binding="{x:Bind MainNavigation.OpenPaneLength, Mode=TwoWay}"
-                                            Maximum="640"
-                                            Minimum="60"
-                                            Visibility="{x:Bind MainNavigation.IsPaneOpen, Mode=OneWay}" />
-
-                    <!-- Global margin settings for every page's content -->
-                    <Frame x:Name="ContentFrame"
-                           Margin="15,10,15,10"
-                           Grid.Row="2"
-                           AutomationProperties.LandmarkType="Main" />
-
+                                    <HyperlinkButton x:Uid="GuideButtonAtTop"
+                                                         NavigateUri="{x:Bind ViewModel.PageHeaderGuideUri, Mode=OneWay}"
+                                                         Visibility="{x:Bind ViewModel.GuideButtonVisibility, Mode=OneWay}">
+                                        <HyperlinkButton.ContentTemplate>
+                                            <DataTemplate x:DataType="x:String">
+                                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                                    <FontIcon Glyph="&#xE7BE;" FontSize="16"/>
+                                                    <TextBlock Text="{x:Bind}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </HyperlinkButton.ContentTemplate>
+                                    </HyperlinkButton>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
                 </Grid>
-            </SplitView>
+
+                <!-- Inline header row (wide widths) -->
+                <controls:WrapPanel Grid.Row="1"
+                                    Margin="20,10,10,0"
+                                    Visibility="{x:Bind ViewModel.HeaderInlineVisibility, Mode=OneWay}"
+                                    Style="{StaticResource PageHeaderWrapPanelStyle}">
+                    <TextBlock Text="{x:Bind ViewModel.PageHeaderTitle, Mode=OneWay}"
+                               TextWrapping="WrapWholeWords"
+                               IsTextSelectionEnabled="True"
+                               Style="{StaticResource BodyTextBlockStyle}" />
+                    <HyperlinkButton x:Uid="GuideButtonAtTop"
+                                     NavigateUri="{x:Bind ViewModel.PageHeaderGuideUri, Mode=OneWay}"
+                                     Visibility="{x:Bind ViewModel.GuideButtonVisibility, Mode=OneWay}">
+                        <HyperlinkButton.ContentTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon Glyph="&#xE7BE;" FontSize="16"/>
+                                    <TextBlock Text="{x:Bind}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </HyperlinkButton.ContentTemplate>
+                    </HyperlinkButton>
+                </controls:WrapPanel>
+
+                <!-- Note the use of a TwoWay binding here, this is required for this control to work.  -->
+                <controls:PropertySizer HorizontalAlignment="Left"
+                                        Grid.Row="2"
+                                        Binding="{x:Bind MainNavigation.OpenPaneLength, Mode=TwoWay}"
+                                        Maximum="640"
+                                        Minimum="60"
+                                        Visibility="{x:Bind MainNavigation.IsPaneOpen, Mode=OneWay}" />
+
+                <!-- Global margin settings for every page's content -->
+                <Frame x:Name="ContentFrame"
+                       Margin="15,10,15,10"
+                       Grid.Row="2"
+                       AutomationProperties.LandmarkType="Main" />
+
+            </Grid>
 
         </NavigationView>
 

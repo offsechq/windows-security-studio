@@ -62,7 +62,8 @@ internal sealed partial class MainWindowVM : ViewModelBase
 		typeof(Pages.Settings),
 		typeof(Pages.ConfigurePolicyRuleOptions),
 		typeof(Pages.ViewFileCertificates),
-		typeof(Pages.Home)
+		typeof(Pages.Home),
+		typeof(Pages.PolicyContext)
 		];
 
 
@@ -237,6 +238,12 @@ internal sealed partial class MainWindowVM : ViewModelBase
 			titles: [GlobalVars.GetStr("HomeNavItem/Content")],
 			pages: [typeof(Pages.Home)]
 		);
+
+		breadCrumbMappingsV2[typeof(Pages.PolicyContext)] = new PageTitleMap
+		(
+			titles: ["Policy Context"],
+			pages: [typeof(Pages.PolicyContext)]
+		);
 	}
 
 	// This collection is bound to the BreadCrumbBar's ItemsSource in the XAML
@@ -271,7 +278,8 @@ internal sealed partial class MainWindowVM : ViewModelBase
 		{ "ViewFileCertificates", typeof(Pages.ViewFileCertificates) },
 		{ "PolicyEditor", typeof(Pages.PolicyEditor) },
 		{ "Update", typeof(Pages.UpdatePage) },
-		{ "Home", typeof(Pages.Home) }
+		{ "Home", typeof(Pages.Home) },
+		{ "PolicyContext", typeof(Pages.PolicyContext) }
 	}.ToFrozenDictionary<string, Type>(StringComparer.OrdinalIgnoreCase);
 
 	/// <summary>

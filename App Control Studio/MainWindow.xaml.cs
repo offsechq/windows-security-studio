@@ -141,7 +141,6 @@ internal sealed partial class MainWindow : Window
 		RectInt32 backRect = MainWindowVM.CalculatePixelRect(BackButtonTitleBar, scale);
 		RectInt32 menuRect = MainWindowVM.CalculatePixelRect(HamburgerMenuButton, scale);
 		RectInt32 searchRect = MainWindowVM.CalculatePixelRect(TitleBarSearchBox, scale);
-		RectInt32 sidebarRect = MainWindowVM.CalculatePixelRect(SidebarButton, scale);
 
 		// If RTL, flip X around the full window width in pixels
 		double windowWidthPx = RootGrid.ActualWidth * scale;
@@ -151,7 +150,6 @@ internal sealed partial class MainWindow : Window
 			backRect = MainWindowVM.FlipHorizontally(backRect, windowWidthPx);
 			menuRect = MainWindowVM.FlipHorizontally(menuRect, windowWidthPx);
 			searchRect = MainWindowVM.FlipHorizontally(searchRect, windowWidthPx);
-			sidebarRect = MainWindowVM.FlipHorizontally(sidebarRect, windowWidthPx);
 		}
 
 		InputNonClientPointerSource nonClient = InputNonClientPointerSource.GetForWindowId(AppWindow.Id);
@@ -160,7 +158,7 @@ internal sealed partial class MainWindow : Window
 
 		nonClient.SetRegionRects(
 			NonClientRegionKind.Passthrough,
-			[backRect, menuRect, searchRect, sidebarRect]
+			[backRect, menuRect, searchRect]
 		);
 	}
 
@@ -582,12 +580,6 @@ internal sealed partial class MainWindow : Window
 
 			DocumentationNavigationViewItemHeader.Content = GlobalVars.GetStr("DocumentationNavigationViewItemHeader/Content");
 
-			SidebarTextBlock.Text = GlobalVars.GetStr("SidebarTextBlock/Text");
-
-			SidebarMainCaptionTextBlock.Text = GlobalVars.GetStr("SidebarMainCaptionTextBlock/Text");
-
-			SidebarHelpHyperlinkTextBlock.Text = GlobalVars.GetStr("SidebarHelpHyperlinkTextBlock/Text");
-
 			MicrosoftSecurityBaselineNavItem.Content = GlobalVars.GetStr("MicrosoftSecurityBaselineNavItem/Content");
 			AutomationProperties.SetHelpText(MicrosoftSecurityBaselineNavItem, GlobalVars.GetStr("MicrosoftSecurityBaselineNavItem/AutomationProperties/HelpText"));
 			ToolTipService.SetToolTip(MicrosoftSecurityBaselineNavItem, GlobalVars.GetStr("MicrosoftSecurityBaselineNavItem/ToolTipService/ToolTip"));
@@ -699,41 +691,9 @@ internal sealed partial class MainWindow : Window
 			AutomationProperties.SetHelpText(ValidatePoliciesNavItem, GlobalVars.GetStr("ValidatePoliciesNavItem/AutomationProperties/HelpText"));
 			ToolTipService.SetToolTip(ValidatePoliciesNavItem, GlobalVars.GetStr("ValidatePoliciesNavItem/ToolTipService/ToolTip"));
 
-			SidebarPinnedPolicyPathTextBlock.Text = GlobalVars.GetStr("SidebarPinnedPolicyPathTextBlock/Text");
-
-			SidebarPolicyPathPlaceHolder.PlaceholderText = GlobalVars.GetStr("SidebarPolicyPathPlaceHolder/PlaceholderText");
-
-			AutomationProperties.SetHelpText(SidebarBrowseButton, GlobalVars.GetStr("SidebarBrowseButton/AutomationProperties/HelpText"));
-			ToolTipService.SetToolTip(SidebarBrowseButton, GlobalVars.GetStr("SidebarBrowseButton/ToolTipService/ToolTip"));
-
-			BrowseTextBlock.Text = GlobalVars.GetStr("BrowseTextBlock/Text");
-
-			AutomationProperties.SetHelpText(SidebarClearButton, GlobalVars.GetStr("SidebarClearButton/AutomationProperties/HelpText"));
-			ToolTipService.SetToolTip(SidebarClearButton, GlobalVars.GetStr("SidebarClearButton/ToolTipService/ToolTip"));
-
-			ClearTextBlock.Text = GlobalVars.GetStr("ClearTextBlock/Text");
-
-			AutomationProperties.SetHelpText(SidebarPolicySelectAssignmentButton, GlobalVars.GetStr("SidebarPolicySelectAssignmentButton/AutomationProperties/HelpText"));
-			ToolTipService.SetToolTip(SidebarPolicySelectAssignmentButton, GlobalVars.GetStr("SidebarPolicySelectAssignmentButton/ToolTipService/ToolTip"));
-
-			SelectTextBlock.Text = GlobalVars.GetStr("SelectTextBlock/Text");
-
-			SidebarAutomaticAssignmentSettingsCard.Header = GlobalVars.GetStr("SidebarAutomaticAssignmentSettingsCard/Header");
-			SidebarAutomaticAssignmentSettingsCard.Description = GlobalVars.GetStr("SidebarAutomaticAssignmentSettingsCard/Description");
-			AutomationProperties.SetHelpText(SidebarAutomaticAssignmentSettingsCard, GlobalVars.GetStr("SidebarAutomaticAssignmentSettingsCard/AutomationProperties/HelpText"));
-			ToolTipService.SetToolTip(SidebarAutomaticAssignmentSettingsCard, GlobalVars.GetStr("SidebarAutomaticAssignmentSettingsCard/ToolTipService/ToolTip"));
-
-			OpenConfigDirectoryButtonText.Text = GlobalVars.GetStr("OpenConfigDirectoryButtonText/Text");
-
 			MSFTDocsNavItem.Content = GlobalVars.GetStr("MSFTDocsNavItem/Content");
 			AutomationProperties.SetHelpText(MSFTDocsNavItem, GlobalVars.GetStr("MSFTDocsNavItem/AutomationProperties/HelpText"));
 			ToolTipService.SetToolTip(MSFTDocsNavItem, GlobalVars.GetStr("MSFTDocsNavItem/ToolTipService/ToolTip"));
-
-			AutomationProperties.SetHelpText(OpenConfigDirectoryButton, GlobalVars.GetStr("OpenConfigDirectoryButton/AutomationProperties/HelpText"));
-			ToolTipService.SetToolTip(OpenConfigDirectoryButton, GlobalVars.GetStr("OpenConfigDirectoryButton/ToolTipService/ToolTip"));
-
-			AutomaticAssignmentSidebarToggleSwitch.OnContent = GlobalVars.GetStr("ToggleSwitchGeneral/OnContent");
-			AutomaticAssignmentSidebarToggleSwitch.OffContent = GlobalVars.GetStr("ToggleSwitchGeneral/OffContent");
 #endif
 
 			Logger.Write("MainWindow localized text refreshed successfully");
