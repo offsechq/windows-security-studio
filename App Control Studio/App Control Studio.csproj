@@ -49,11 +49,12 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AssemblyName>AppControlManager</AssemblyName>
     <!-- https://learn.microsoft.com/dotnet/core/deploying/native-aot/optimizing -->
-    <FileVersion>2.0.61.0</FileVersion>
-    <AssemblyVersion>$(FileVersion)</AssemblyVersion>
+    <!-- https://learn.microsoft.com/dotnet/core/deploying/native-aot/optimizing -->
+    <Version>2.0.61.0</Version>
+    <FileVersion>$(Version)</FileVersion>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
     <StartupObject>AppControlManager.Program</StartupObject>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>$(FileVersion)</Version>
     <Copyright>© 2024-Present</Copyright>
     <Title>App Control Studio</Title>
     <!-- https://learn.microsoft.com/dotnet/standard/garbage-collection/workstation-server-gc -->
