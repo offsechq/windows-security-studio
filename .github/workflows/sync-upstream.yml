@@ -2,8 +2,8 @@ name: Check for Upstream Updates
 
 on:
   schedule:
-    # Runs every week on Monday at midnight UTC
-    - cron: "0 0 * * 1"
+    # Runs monthly on the 1st at midnight UTC
+    - cron: "0 0 1 * *"
   workflow_dispatch: # Allows manual trigger
 
 jobs:
@@ -31,17 +31,31 @@ jobs:
             echo "✅ Already up to date with upstream!"
           else
             echo "📦 Upstream has $COMMITS_BEHIND new commit(s)"
-            echo ""
-            echo "## Recent upstream commits:"
-            git log --oneline main..upstream/main -n 20
-            echo ""
-            echo "---"
-            echo "⚠️ NOTE: This is a rebranded fork. Directory names have changed:"
-            echo "  - 'AppControl Manager' → 'App Control Studio'"
-            echo "  - 'Harden Windows Security' → 'System Security Studio'"
-            echo ""
-            echo "Review upstream changes and manually apply relevant updates."
-            echo "Upstream repo: https://github.com/HotCakeX/Harden-Windows-Security"
+
+            # Get detailed commit info for the issue body
+            echo "## Generating detailed commit info..."
+
+            # Recent commits with full details
+            COMMIT_DETAILS=$(git log --pretty=format:"- [%h](https://github.com/HotCakeX/Harden-Windows-Security/commit/%H) %s (%an, %ar)" main..upstream/main -n 30)
+            echo "commit_details<<EOF" >> $GITHUB_OUTPUT
+            echo "$COMMIT_DETAILS" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+
+            # File change summary
+            FILES_CHANGED=$(git diff --stat main..upstream/main | tail -1)
+            echo "files_changed=$FILES_CHANGED" >> $GITHUB_OUTPUT
+
+            # Categorize changes by directory
+            echo "## Categorizing changes..."
+            APPCONTROL_CHANGES=$(git diff --name-only main..upstream/main | grep -c "AppControl Manager" || echo "0")
+            HSS_CHANGES=$(git diff --name-only main..upstream/main | grep -c "Harden-Windows-Security" || echo "0")
+            WIKI_CHANGES=$(git diff --name-only main..upstream/main | grep -c "Wiki" || echo "0")
+            OTHER_CHANGES=$(git diff --name-only main..upstream/main | grep -v "AppControl Manager" | grep -v "Harden-Windows-Security" | grep -v "Wiki" | wc -l || echo "0")
+
+            echo "appcontrol_changes=$APPCONTROL_CHANGES" >> $GITHUB_OUTPUT
+            echo "hss_changes=$HSS_CHANGES" >> $GITHUB_OUTPUT
+            echo "wiki_changes=$WIKI_CHANGES" >> $GITHUB_OUTPUT
+            echo "other_changes=$OTHER_CHANGES" >> $GITHUB_OUTPUT
           fi
 
       - name: Create issue for review
@@ -50,6 +64,12 @@ jobs:
         with:
           script: |
             const commits = ${{ steps.check.outputs.commits_behind }};
+            const commitDetails = `${{ steps.check.outputs.commit_details }}`;
+            const filesChanged = `${{ steps.check.outputs.files_changed }}`;
+            const appcontrolChanges = `${{ steps.check.outputs.appcontrol_changes }}`;
+            const hssChanges = `${{ steps.check.outputs.hss_changes }}`;
+            const wikiChanges = `${{ steps.check.outputs.wiki_changes }}`;
+            const otherChanges = `${{ steps.check.outputs.other_changes }}`;
 
             // Check if an issue already exists
             const issues = await github.rest.issues.listForRepo({
@@ -64,26 +84,60 @@ jobs:
               return;
             }
 
+            const body = [
+              '## 📊 Summary',
+              '',
+              `The upstream repository has **${commits} new commit(s)** since our last sync.`,
+              '',
+              `**Files changed:** ${filesChanged}`,
+              '',
+              '### 📁 Changes by Area',
+              '',
+              '| Area | Files Changed | Maps To |',
+              '|------|---------------|---------|',
+              `| AppControl Manager | ${appcontrolChanges} | \`App Control Studio\` |`,
+              `| Harden-Windows-Security | ${hssChanges} | \`System Security Studio\` |`,
+              `| Wiki/Docs | ${wikiChanges} | Wiki |`,
+              `| Other (root, workflows, etc.) | ${otherChanges} | Various |`,
+              '',
+              '---',
+              '',
+              '## 📝 Recent Commits (up to 30)',
+              '',
+              commitDetails,
+              '',
+              '---',
+              '',
+              '## 🔗 Quick Links',
+              '',
+              '- [Compare changes](https://github.com/HotCakeX/Harden-Windows-Security/compare/main...OFFSECHQ:windows-security-studio:main)',
+              '- [Upstream commits](https://github.com/HotCakeX/Harden-Windows-Security/commits/main)',
+              '- [Upstream releases](https://github.com/HotCakeX/Harden-Windows-Security/releases)',
+              '',
+              '---',
+              '',
+              '## ⚠️ Rebranding Notes',
+              '',
+              'This is a **rebranded fork**. Directory mappings:',
+              '- `AppControl Manager` → `App Control Studio`',
+              '- `Harden-Windows-Security` → `System Security Studio`',
+              '',
+              '## ✅ Review Checklist',
+              '',
+              '- [ ] Review commits for bug fixes',
+              '- [ ] Review commits for new features',
+              '- [ ] Review dependency updates',
+              '- [ ] Apply relevant changes to rebranded directories',
+              '- [ ] Close this issue when done',
+              '',
+              '---',
+              '*This issue was automatically created by the monthly upstream check workflow.*'
+            ].join('\n');
+
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `🔄 Upstream has ${commits} new commit(s) to review`,
-              body: `The upstream repository has new changes that may need to be manually applied.
-
-            ## ⚠️ Important
-
-            This is a **rebranded fork**. Automatic syncing is disabled because:
-            - \`AppControl Manager\` has been renamed to \`App Control Studio\`
-            - \`Harden Windows Security\` has been renamed to \`System Security Studio\`
-
-            ## Steps to sync manually
-
-            1. Review upstream commits: https://github.com/HotCakeX/Harden-Windows-Security/commits/main
-            2. Identify relevant changes (dependency updates, bug fixes, new features)
-            3. Manually apply changes to the corresponding rebranded directories
-            4. Close this issue once reviewed
-
-            ---
-            *This issue was automatically created by the upstream check workflow.*`,
+              title: `🔄 Monthly Sync: Upstream has ${commits} new commit(s)`,
+              body: body,
               labels: ['upstream-sync']
             });
