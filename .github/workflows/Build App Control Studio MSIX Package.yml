@@ -1141,6 +1141,9 @@ jobs:
           # Create the pull request
           gh pr create --title $CommitMessageAndPRTitle --body $PRBody --base main --label 'Automated 🤖' --assignee OFFSECHQ
 
+          # Auto-merge the pull request
+          gh pr merge "$NewBranchName" --squash --auto --delete-branch
+
       - name: Add Body Text to the Draft Release
         shell: pwsh
         run: |
