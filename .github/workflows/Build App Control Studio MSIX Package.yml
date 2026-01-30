@@ -949,7 +949,6 @@ jobs:
 
           Copy-Item -Path "${{ env.MSIXBundle_PATH }}" -Destination $InstallKitDir
           Copy-Item -Path "${{ env.CERT_PATH }}" -Destination $InstallKitDir
-          Copy-Item -Path "Install.ps1" -Destination $InstallKitDir
           Copy-Item -Path "Install.cmd" -Destination $InstallKitDir
 
           $ZipName = "App.Control.Studio_Install_Kit_v${{ env.PACKAGE_VERSION }}.zip"
@@ -962,6 +961,7 @@ jobs:
           $Assets = @(
               @{ Path = $ZipPath; Name = $ZipName }
               @{ Path = "${{ env.MSIXBundle_PATH }}"; Name = $StandaloneBundleName }
+              @{ Path = "${{ env.CERT_PATH }}"; Name = 'OFFSECHQ_CodeSigning.cer' }
               @{ Path = "${{ env.X64MSBuildLog_PATH }}"; Name = 'X64MSBuildLog.binlog' }
               @{ Path = "${{ env.ARM64MSBuildLog_PATH }}"; Name = 'ARM64MSBuildLog.binlog' }
               @{ Path = "${{ env.X64Symbol_PATH }}"; Name = "${{ env.X64Symbol_NAME }}" }
