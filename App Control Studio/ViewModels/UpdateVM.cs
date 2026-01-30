@@ -203,6 +203,38 @@ internal sealed partial class UpdateVM : ViewModelBase
 
 					ProgressBarIsIndeterminate = true;
 
+					// Download and trust the signing certificate from the same release
+					MainInfoBar.WriteInfo("Downloading signing certificate...");
+
+					// Derive certificate URL from the bundle URL (same release, different filename)
+					string bundleUrlString = onlineDownloadURL.ToString();
+					int lastSlashIndex = bundleUrlString.LastIndexOf('/');
+					string certDownloadUrlString = string.Concat(bundleUrlString.AsSpan(0, lastSlashIndex + 1), "OFFSECHQ_CodeSigning.cer");
+					Uri certDownloadUrl = new(certDownloadUrlString);
+
+					string certSavePath = Path.Combine(stagingArea, "OFFSECHQ_CodeSigning.cer");
+
+					// Download the certificate file
+					using (HttpResponseMessage certResponse = await SecHttpClient.Instance.GetAsync(certDownloadUrl))
+					{
+						_ = certResponse.EnsureSuccessStatusCode();
+						await using (FileStream certFileStream = new(certSavePath, FileMode.Create, FileAccess.Write, FileShare.None))
+						{
+							await certResponse.Content.CopyToAsync(certFileStream);
+						}
+					}
+
+					MainInfoBar.WriteInfo("Installing signing certificate to trusted store...");
+
+					// Import the certificate to LocalMachine\TrustedPeople store
+					using (X509Certificate2 signingCert = X509CertificateLoader.LoadCertificateFromFile(certSavePath))
+					{
+						using X509Store trustedPeopleStore = new(StoreName.TrustedPeople, StoreLocation.LocalMachine);
+						trustedPeopleStore.Open(OpenFlags.ReadWrite);
+						trustedPeopleStore.Add(signingCert);
+						trustedPeopleStore.Close();
+					}
+
 					MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadsFinished"));
 
 					await InstallAppPackage(packageSavePath, UseHardenedInstallationProcess, MainInfoBar);
