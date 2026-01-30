@@ -1008,3 +1008,6 @@ jobs:
 
           # Create the pull request
           gh pr create --title $CommitMessageAndPRTitle --body $PRBody --base main --label 'Automated 🤖' --assignee OFFSECHQ
+
+          # Enable auto-merge so the PR merges automatically once checks pass
+          gh pr merge --auto --squash --delete-branch
