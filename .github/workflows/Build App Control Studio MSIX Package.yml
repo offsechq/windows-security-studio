@@ -134,6 +134,41 @@ jobs:
               [string]$PackagePhonePublisherId = ''
               [string]$PackagePublisherDisplayName = ''
 
+              $PackagePublisherDisplayName = ''
+              }
+
+              $ErrorActionPreference = 'Stop'
+              # Start the stopwatch
+              $Stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+
+              # --- Version Sync Logic ---
+              Write-Host "Syncing Package.appxmanifest version with .csproj..." -ForegroundColor Cyan
+              $csprojPath = "App Control Studio.csproj"
+              $manifestPath = "Package.appxmanifest"
+
+              if (Test-Path $csprojPath) {
+                  $csprojContent = Get-Content $csprojPath -Raw
+                  if ($csprojContent -match '<Version>(.*?)</Version>') {
+                      $appVersion = $matches[1]
+                      Write-Host "Found version in csproj: $appVersion"
+                      
+                      if (Test-Path $manifestPath) {
+                          $manifestContent = Get-Content $manifestPath -Raw
+                          # Update the Version attribute in the Identity tag
+                          $newManifestContent = $manifestContent -replace 'Version="\d+\.\d+\.\d+\.\d+"', "Version=""$appVersion"""
+                          Set-Content $manifestPath -Value $newManifestContent -Encoding UTF8
+                          Write-Host "Success: Updated Package.appxmanifest to version $appVersion" -ForegroundColor Green
+                      } else {
+                          Write-Warning "Package.appxmanifest not found at $manifestPath"
+                      }
+                  } else {
+                      Write-Warning "Could not extract Version from .csproj"
+                  }
+              } else {
+                  Write-Warning ".csproj file not found at $csprojPath"
+              }
+              # --------------------------
+
               Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1 -Force
 
               if ($Type -eq 'Store') {
