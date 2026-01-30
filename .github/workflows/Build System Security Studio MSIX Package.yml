@@ -751,14 +751,22 @@ jobs:
           $RepoUrl = "https://api.github.com/repos/${{ github.repository }}"
           $TagName = "v${{ env.PACKAGE_VERSION }}"
 
-          # Find the release by tag via GitHub REST API
+          # First, try to find a published release by tag
           $Response = Invoke-RestMethod -Uri "$RepoUrl/releases/tags/$TagName" -Headers $Headers -SkipHttpErrorCheck -StatusCodeVariable "StatusCode"
 
           if ($StatusCode -eq 200) {
               $TargetRelease = $Response
+              Write-Host -Object "Found existing published release for tag $TagName" -ForegroundColor Green
           }
           else {
-              $TargetRelease = $null
+              # Published release not found, check for a draft release with this tag
+              Write-Host -Object "No published release found for tag $TagName. Checking for draft releases..." -ForegroundColor Yellow
+              $AllReleases = Invoke-RestMethod -Uri "$RepoUrl/releases" -Headers $Headers
+              $TargetRelease = $AllReleases | Where-Object { $_.tag_name -eq $TagName } | Select-Object -First 1
+              
+              if ($TargetRelease) {
+                  Write-Host -Object "Found existing draft release for tag $TagName (ID: $($TargetRelease.id))" -ForegroundColor Green
+              }
           }
 
           if (!$TargetRelease) {
@@ -766,7 +774,7 @@ jobs:
               
               $ReleaseName = "System Security Studio v${{ env.PACKAGE_VERSION }}"
               
-              # Create a new pre-release (Published but marked as Pre-release)
+              # Create a new release (Published and marked as Latest)
               $Body = @{
                   tag_name = $TagName
                   name = $ReleaseName
@@ -776,7 +784,7 @@ jobs:
               } | ConvertTo-Json
               
               $TargetRelease = Invoke-RestMethod -Uri "$RepoUrl/releases" -Method Post -Headers $Headers -Body $Body -ContentType "application/json"
-              Write-Host -Object "Created new pre-release: $ReleaseName" -ForegroundColor Green
+              Write-Host -Object "Created new release: $ReleaseName" -ForegroundColor Green
           }
 
           # Capture the release ID and tag
