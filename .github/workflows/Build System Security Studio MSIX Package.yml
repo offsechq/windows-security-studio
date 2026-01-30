@@ -144,20 +144,38 @@ jobs:
 
                   winget source update
 
-                  Write-Host -Object "`nInstalling Rust toolchain" -ForegroundColor Magenta
-                  $null = winget install --id Rustlang.Rustup --exact --accept-package-agreements --accept-source-agreements --uninstall-previous --force --source winget
-                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed to install the Rust toolchain: $LASTEXITCODE") }
+                  # Smart install - only install if not already present
+                  Write-Host -Object "`nChecking Rust toolchain..." -ForegroundColor Magenta
+                  if (Get-Command rustc -ErrorAction SilentlyContinue) {
+                      Write-Host -Object "Rust already installed: $(rustc --version)" -ForegroundColor Green
+                  } else {
+                      Write-Host -Object "Installing Rust toolchain..." -ForegroundColor Yellow
+                      $null = winget install --id Rustlang.Rustup --exact --accept-package-agreements --accept-source-agreements --force --source winget
+                      if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed to install the Rust toolchain: $LASTEXITCODE") }
+                  }
 
-                  Write-Host -Object "`nInstalling .NET SDK" -ForegroundColor Magenta
-                  $null = winget install --id Microsoft.DotNet.SDK.10 --exact --accept-package-agreements --accept-source-agreements --uninstall-previous --force --source winget
-                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed to install .NET SDK: $LASTEXITCODE") }
+                  Write-Host -Object "`nChecking .NET SDK..." -ForegroundColor Magenta
+                  $dotnetVersion = dotnet --version 2>$null
+                  if ($dotnetVersion -and $dotnetVersion -match '^10\.') {
+                      Write-Host -Object "NET SDK 10 already installed: $dotnetVersion" -ForegroundColor Green
+                  } else {
+                      Write-Host -Object "Installing .NET SDK 10..." -ForegroundColor Yellow
+                      $null = winget install --id Microsoft.DotNet.SDK.10 --exact --accept-package-agreements --accept-source-agreements --force --source winget
+                      if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed to install .NET SDK: $LASTEXITCODE") }
+                  }
 
-                  Write-Host -Object "`nInstalling Visual Studio Build Tools" -ForegroundColor Magenta
-                  # Using this until version 18 build tools are added to Winget
-                  Invoke-RestMethod -Uri "https://aka.ms/vs/18/insiders/vs_BuildTools.exe" -OutFile "vs_BuildTools.exe"
-                  Start-Process -Wait -FilePath .\vs_BuildTools.exe -ArgumentList '--force --wait --passive --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Workload.MSBuildTools --add Microsoft.VisualStudio.Workload.UniversalBuildTools --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.26100 --includeRecommended --add Microsoft.VisualStudio.Component.VC.Tools.ARM64'
-
-                  if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New('Failed to install Visual Studio Build Tools') }
+                  Write-Host -Object "`nChecking Visual Studio Build Tools..." -ForegroundColor Magenta
+                  # Check if VS Build Tools or VS is installed via vswhere
+                  $vsInstall = & 'C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe' -prerelease -latest -property installationPath 2>$null
+                  if ($vsInstall -and (Test-Path "$vsInstall\Common7\Tools\vsdevcmd.bat")) {
+                      Write-Host -Object "Visual Studio/Build Tools already installed at: $vsInstall" -ForegroundColor Green
+                  } else {
+                      Write-Host -Object "Installing Visual Studio Build Tools..." -ForegroundColor Yellow
+                      # Using this until version 18 build tools are added to Winget
+                      Invoke-RestMethod -Uri "https://aka.ms/vs/18/insiders/vs_BuildTools.exe" -OutFile "vs_BuildTools.exe"
+                      Start-Process -Wait -FilePath .\vs_BuildTools.exe -ArgumentList '--force --wait --passive --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Workload.MSBuildTools --add Microsoft.VisualStudio.Workload.UniversalBuildTools --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.26100 --includeRecommended --add Microsoft.VisualStudio.Component.VC.Tools.ARM64'
+                      if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New('Failed to install Visual Studio Build Tools') }
+                  }
               }
 
               # Refresh the environment variables so the current session detects the new dotnet installation
