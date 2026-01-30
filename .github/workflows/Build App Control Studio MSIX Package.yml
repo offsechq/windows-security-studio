@@ -134,8 +134,6 @@ jobs:
               [string]$PackagePhonePublisherId = ''
               [string]$PackagePublisherDisplayName = ''
 
-              $PackagePublisherDisplayName = ''
-              }
 
               $ErrorActionPreference = 'Stop'
               # Start the stopwatch
@@ -190,9 +188,7 @@ jobs:
                   $PackagePublisherDisplayName = 'OFFSECHQ'
               }
 
-              $ErrorActionPreference = 'Stop'
-              # Start the stopwatch
-              $Stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+
 
               [System.String]$script:AppControlManagerDirectory
 

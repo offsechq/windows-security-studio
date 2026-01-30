@@ -79,7 +79,7 @@ jobs:
               $ErrorActionPreference = 'Stop'
               $Stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 
-              $Stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+
 
               # --- Version Sync Logic ---
               Write-Host "Syncing Package.appxmanifest version with .csproj..." -ForegroundColor Cyan
