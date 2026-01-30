@@ -813,15 +813,19 @@ jobs:
 
                   # Saving the details of the log files
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "X64MSBuildLog_PATH=$((Resolve-Path -Path .\X64MSBuildLog.binlog).Path)"
-                  Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64MSBuildLog_PATH=$((Resolve-Path -Path .\ARM64MSBuildLog.binlog).Path)"
+                  if (!$X64ONLY) {
+                      Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64MSBuildLog_PATH=$((Resolve-Path -Path .\ARM64MSBuildLog.binlog).Path)"
+                  }
 
                   # Saving the details of the X64 symbol file
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "X64Symbol_PATH=$FinalMSIXX64SymbolPath"
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "X64Symbol_NAME=$FinalMSIXX64SymbolName"
 
-                  # Saving the details of the ARM64 symbol file
-                  Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64Symbol_PATH=$FinalMSIXARM64SymbolPath"
-                  Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64Symbol_NAME=$FinalMSIXARM64SymbolName"
+                  if (!$X64ONLY) {
+                      # Saving the details of the ARM64 symbol file
+                      Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64Symbol_PATH=$FinalMSIXARM64SymbolPath"
+                      Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "ARM64Symbol_NAME=$FinalMSIXARM64SymbolName"
+                  }
 
                   # https://github.com/microsoft/sbom-tool
                 # Generating SBOM - only download if not cached
