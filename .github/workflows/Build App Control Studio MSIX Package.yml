@@ -1167,6 +1167,7 @@ jobs:
         run: |
           $ReleaseId = "${{ needs.build.outputs.DRAFT_RELEASE_ID }}"
           $Repo = "${{ github.repository }}"
+          $DraftTag = "${{ needs.build.outputs.DRAFT_RELEASE_TAG }}"
 
           [string]$Note = @"
 
