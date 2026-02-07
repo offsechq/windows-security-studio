@@ -99,7 +99,6 @@
                     x:Name="HamburgerMenuButton"
                     Grid.Column="1"
                     Style="{StaticResource PaneToggleButtonStyle}"
-                    Margin="10,0,0,0"
                     Click="{x:Bind ViewModel.HamburgerMenuButton_Click}" />
 
             <!-- App icon -->
