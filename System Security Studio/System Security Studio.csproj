@@ -197,7 +197,6 @@
 		<Compile Include="..\App Control Studio\Pages\Home.xaml.cs" Link="Pages\Home.xaml.cs" />
 		<Compile Include="..\App Control Studio\Pages\Logs.xaml.cs" Link="Pages\Logs.xaml.cs" />
 		<Compile Include="..\App Control Studio\Pages\Settings.xaml.cs" Link="Pages\Settings.xaml.cs" />
-		<Compile Include="..\App Control Studio\Pages\UpdatePage.xaml.cs" Link="Pages\UpdatePage.xaml.cs" />
 		<Compile Include="..\App Control Studio\ViewModels\HomeVM.cs" Link="ViewModels\HomeVM.cs" />
 		<Compile Include="..\App Control Studio\ViewModels\LogsVM.cs" Link="ViewModels\LogsVM.cs" />
 		<Compile Include="..\App Control Studio\ViewModels\MainWindowVM-Shared.cs" Link="ViewModels\MainWindowVM-Shared.cs" />

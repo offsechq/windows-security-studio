@@ -374,18 +374,7 @@
                 <NavigationViewItem x:Name="LogsNavItem" x:Uid="LogsNavItem" Icon="{x:Bind ViewModel.LogsIcon, Mode=OneWay}" Tag="Logs" />
             </NavigationView.MenuItems>
 
-            <NavigationView.FooterMenuItems>
-                <NavigationViewItem x:Name="UpdateNavItem" x:Uid="UpdateNavItem" Icon="{x:Bind ViewModel.UpdateIcon, Mode=OneWay}" Tag="Update">
-                    <NavigationViewItem.InfoBadge>
-                        <InfoBadge Opacity="{x:Bind ViewModel.InfoBadgeOpacity, Mode=OneWay}"
-                                   Style="{ThemeResource AttentionIconInfoBadgeStyle}">
-                            <InfoBadge.IconSource>
-                                <FontIconSource Glyph="&#xEA6A;"/>
-                            </InfoBadge.IconSource>
-                        </InfoBadge>
-                    </NavigationViewItem.InfoBadge>
-                </NavigationViewItem>
-            </NavigationView.FooterMenuItems>
+
 
             <!-- The area where the main window content are displayed -->
             <Grid>

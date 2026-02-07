@@ -352,6 +352,18 @@
     <data name="LanguageTextBlock.Text" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="UpdateSectionHeaderTextBlock.Text" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateSectionSettingsExpander.Header" xml:space="preserve">
+    <value>Keep Your App Up to Date</value>
+  </data>
+  <data name="UpdateSectionSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Check for updates and manage update preferences</value>
+  </data>
+  <data name="UpdateSectionSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
+    <value>Check for updates and manage update preferences</value>
+  </data>
     <data name="LanguageSettingSettingsExpander.Header" xml:space="preserve">
     <value>Switch between different supported user interface languages and layouts.</value>
   </data>

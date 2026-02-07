@@ -131,16 +131,10 @@ internal sealed partial class MainWindowVM : ViewModelBase
 			pages: [typeof(Pages.Simulation)]
 		);
 
-		breadCrumbMappingsV2[typeof(Pages.UpdatePage)] = new PageTitleMap
-		(
-			titles: [GlobalVars.GetStr("UpdateNavItem/Content"), GlobalVars.GetStr("UpdatePageCustomMSIXPath")],
-			pages: [typeof(Pages.UpdatePage), typeof(Pages.UpdatePageCustomMSIXPath)]
-		);
-
 		breadCrumbMappingsV2[typeof(Pages.UpdatePageCustomMSIXPath)] = new PageTitleMap
 		(
-			titles: [GlobalVars.GetStr("UpdateNavItem/Content"), GlobalVars.GetStr("UpdatePageCustomMSIXPath")],
-			pages: [typeof(Pages.UpdatePage), typeof(Pages.UpdatePageCustomMSIXPath)]
+			titles: [GlobalVars.GetStr("SettingsNavItem/Content"), GlobalVars.GetStr("UpdatePageCustomMSIXPath")],
+			pages: [typeof(Pages.Settings), typeof(Pages.UpdatePageCustomMSIXPath)]
 		);
 
 		breadCrumbMappingsV2[typeof(Pages.DeploymentPage)] = new PageTitleMap
@@ -277,7 +271,6 @@ internal sealed partial class MainWindowVM : ViewModelBase
 		{ "ValidatePolicies", typeof(Pages.ValidatePolicy) },
 		{ "ViewFileCertificates", typeof(Pages.ViewFileCertificates) },
 		{ "PolicyEditor", typeof(Pages.PolicyEditor) },
-		{ "Update", typeof(Pages.UpdatePage) },
 		{ "Home", typeof(Pages.Home) },
 		{ "PolicyContext", typeof(Pages.PolicyContext) }
 	}.ToFrozenDictionary<string, Type>(StringComparer.OrdinalIgnoreCase);
@@ -316,7 +309,6 @@ internal sealed partial class MainWindowVM : ViewModelBase
 		NavigationPageToItemContentMapForSearch[GlobalVars.GetStr("MergePoliciesNavItem/Content")] = typeof(Pages.MergePolicies);
 		NavigationPageToItemContentMapForSearch[GlobalVars.GetStr("ValidatePoliciesNavItem/Content")] = typeof(Pages.ValidatePolicy);
 		NavigationPageToItemContentMapForSearch[GlobalVars.GetStr("PolicyEditorNavItem/Content")] = typeof(Pages.PolicyEditor);
-		NavigationPageToItemContentMapForSearch[GlobalVars.GetStr("UpdateNavItem/Content")] = typeof(Pages.UpdatePage);
 		NavigationPageToItemContentMapForSearch[GlobalVars.GetStr("UpdatePageCustomMSIXPath")] = typeof(Pages.UpdatePageCustomMSIXPath);
 		NavigationPageToItemContentMapForSearch[GlobalVars.GetStr("HomeNavItem/Content")] = typeof(Pages.Home);
 	}

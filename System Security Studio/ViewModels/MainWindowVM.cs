@@ -39,7 +39,6 @@ internal sealed partial class MainWindowVM : ViewModelBase
 	internal List<Type> UnelevatedPages = [
 		typeof(Pages.Logs),
 		typeof(Pages.Settings),
-		typeof(Pages.UpdatePage),
 		typeof(Pages.GitHubDocumentation),
 		typeof(Pages.GroupPolicyEditor),
 		typeof(Pages.Protects.NonAdmin),
@@ -66,16 +65,10 @@ internal sealed partial class MainWindowVM : ViewModelBase
 			pages: [typeof(Pages.Logs)]
 		);
 
-		breadCrumbMappingsV2[typeof(Pages.UpdatePage)] = new PageTitleMap
-		(
-			titles: [GlobalVars.GetStr("UpdateNavItem/Content"), GlobalVars.GetStr("UpdatePageCustomMSIXPath")],
-			pages: [typeof(Pages.UpdatePage), typeof(Pages.UpdatePageCustomMSIXPath)]
-		);
-
 		breadCrumbMappingsV2[typeof(Pages.UpdatePageCustomMSIXPath)] = new PageTitleMap
 		(
-			titles: [GlobalVars.GetStr("UpdateNavItem/Content"), GlobalVars.GetStr("UpdatePageCustomMSIXPath")],
-			pages: [typeof(Pages.UpdatePage), typeof(Pages.UpdatePageCustomMSIXPath)]
+			titles: [GlobalVars.GetStr("SettingsNavItem/Content"), GlobalVars.GetStr("UpdatePageCustomMSIXPath")],
+			pages: [typeof(Pages.Settings), typeof(Pages.UpdatePageCustomMSIXPath)]
 		);
 
 		breadCrumbMappingsV2[typeof(Pages.GitHubDocumentation)] = new PageTitleMap
@@ -273,7 +266,6 @@ internal sealed partial class MainWindowVM : ViewModelBase
 		{ "Logs", typeof(Pages.Logs) },
 		{ "GitHubDocs", typeof(Pages.GitHubDocumentation) },
 		{ "Settings", typeof(Pages.Settings) },
-		{ "Update", typeof(Pages.UpdatePage) },
 		{ "GroupPolicyEditor", typeof(Pages.GroupPolicyEditor) },
 		{ "MicrosoftDefender", typeof(Pages.Protects.MicrosoftDefender) },
 		{ "ASR", typeof(Pages.Protects.ASR) },
@@ -315,7 +307,6 @@ internal sealed partial class MainWindowVM : ViewModelBase
 
 		NavigationPageToItemContentMapForSearch[typeof(Pages.Protect)] = GlobalVars.GetStr("ProtectNavigationViewItem/Content");
 		NavigationPageToItemContentMapForSearch[typeof(Pages.Logs)] = GlobalVars.GetStr("LogsNavItem/Content");
-		NavigationPageToItemContentMapForSearch[typeof(Pages.UpdatePage)] = GlobalVars.GetStr("UpdateNavItem/Content");
 		NavigationPageToItemContentMapForSearch[typeof(Pages.GitHubDocumentation)] = GlobalVars.GetStr("GitHubDocsNavItem/Content");
 		NavigationPageToItemContentMapForSearch[typeof(Pages.Settings)] = GlobalVars.GetStr("SettingsNavItem/Content");
 		NavigationPageToItemContentMapForSearch[typeof(Pages.GroupPolicyEditor)] = GlobalVars.GetStr("GroupPolicyEditorNavItem/Content");

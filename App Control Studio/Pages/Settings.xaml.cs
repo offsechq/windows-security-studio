@@ -33,6 +33,11 @@ internal sealed partial class Settings : Page, CommonCore.UI.IPageHeaderProvider
 	private SettingsVM ViewModel => ViewModelProvider.SettingsVM;
 	private MainWindowVM ViewModelMainWindow { get; } = ViewModelProvider.MainWindowVM;
 
+	/// <summary>
+	/// ViewModel for the Update section integrated into Settings.
+	/// </summary>
+	private ViewModels.UpdateVM ViewModelUpdate => ViewModelProvider.UpdateVM;
+
 	internal Settings()
 	{
 		InitializeComponent();

@@ -480,10 +480,6 @@ internal sealed partial class MainWindow : Window
 			AutomationProperties.SetHelpText(LogsNavItem, GlobalVars.GetStr("LogsNavItem/AutomationProperties/HelpText"));
 			ToolTipService.SetToolTip(LogsNavItem, GlobalVars.GetStr("LogsNavItem/ToolTipService/ToolTip"));
 
-			UpdateNavItem.Content = GlobalVars.GetStr("UpdateNavItem/Content");
-			AutomationProperties.SetHelpText(UpdateNavItem, GlobalVars.GetStr("UpdateNavItem/AutomationProperties/HelpText"));
-			ToolTipService.SetToolTip(UpdateNavItem, GlobalVars.GetStr("UpdateNavItem/ToolTipService/ToolTip"));
-
 #if HARDEN_SYSTEM_SECURITY
 
 			TitleBarSearchBox.PlaceholderText = GlobalVars.GetStr("MainSearchAutoSuggestBox/PlaceholderText");
