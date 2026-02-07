@@ -477,22 +477,4 @@ internal sealed partial class SettingsVM : ViewModelBase
 
 #endif
 
-	#region App Border Color Customization
-	internal void StartRainbowAnimation() => CustomUIElements.AppWindowBorderCustomization.StartAnimatedFrame();
-	internal void StopRainbowAnimation() => CustomUIElements.AppWindowBorderCustomization.StopAnimatedFrame();
-	internal void ColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
-	{
-		R = args.NewColor.R;
-		G = args.NewColor.G;
-		B = args.NewColor.B;
-	}
-	private byte R;
-	private byte G;
-	private byte B;
-
-	internal void StartCustomColorAnimation() => CustomUIElements.AppWindowBorderCustomization.SetBorderColor(R, G, B);
-	internal void StopCustomColorAnimation() => CustomUIElements.AppWindowBorderCustomization.ResetBorderColor();
-
-	#endregion
-
 }

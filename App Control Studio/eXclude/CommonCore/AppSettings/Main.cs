@@ -40,7 +40,6 @@ internal sealed partial class Main : ViewModelBase
 		_localSettings = LocalSettings;
 
 		// Load each setting from App storage (if present) or use the default value.
-		SoundSetting = ReadValue(nameof(SoundSetting), SoundSetting);
 		NavViewBackground = ReadValue(nameof(NavViewBackground), NavViewBackground);
 		NavViewPaneDisplayMode = ReadValue(nameof(NavViewPaneDisplayMode), NavViewPaneDisplayMode);
 		AppTheme = ReadValue(nameof(AppTheme), AppTheme);
@@ -64,8 +63,6 @@ internal sealed partial class Main : ViewModelBase
 		AutoResizeListViewColumns = ReadValue(nameof(AutoResizeListViewColumns), AutoResizeListViewColumns);
 		ListViewFontFamily = ReadValue(nameof(ListViewFontFamily), ListViewFontFamily);
 		SelectedSignInMethodForMSGraph = ReadValue(nameof(SelectedSignInMethodForMSGraph), SelectedSignInMethodForMSGraph);
-		IsAnimatedRainbowEnabled = ReadValue(nameof(IsAnimatedRainbowEnabled), IsAnimatedRainbowEnabled);
-		CustomAppWindowsBorder = ReadValue(nameof(CustomAppWindowsBorder), CustomAppWindowsBorder);
 		UseV2CIManagement = ReadValue(nameof(UseV2CIManagement), UseV2CIManagement);
 		AppCloseConfirmationBehavior = ReadValue(nameof(AppCloseConfirmationBehavior), AppCloseConfirmationBehavior);
 	}
@@ -108,24 +105,6 @@ internal sealed partial class Main : ViewModelBase
 	}
 
 	/// <summary>
-	/// Whether the app emits sounds during navigation or not
-	/// </summary>
-	internal bool SoundSetting
-	{
-		get; set
-		{
-			if (SP(ref field, value))
-			{
-				SaveValue(nameof(SoundSetting), field);
-
-				// Set the sound settings
-				ElementSoundPlayer.State = field ? ElementSoundPlayerState.On : ElementSoundPlayerState.Off;
-				ElementSoundPlayer.SpatialAudioMode = field ? ElementSpatialAudioMode.On : ElementSpatialAudioMode.Off;
-			}
-		}
-	}
-
-	/// <summary>
 	/// If on, the extra layer is removed from the NavigationView's background, giving the entire app a darker look.
 	/// </summary>
 	internal bool NavViewBackground
@@ -140,7 +119,7 @@ internal sealed partial class Main : ViewModelBase
 				NavigationBackgroundManager.OnNavigationBackgroundChanged(field);
 			}
 		}
-	}
+	} = true;
 
 	/// <summary>
 	/// The display mode of the main NavigationView, whether it's on top or on the left side
@@ -238,7 +217,7 @@ internal sealed partial class Main : ViewModelBase
 				SaveValue(nameof(MainWindowIsMaximized), field);
 			}
 		}
-	}
+	} = true;
 
 	/// <summary>
 	/// Whether clicks/taps on ListView items will cause the selected row to be vertically centered.
@@ -454,34 +433,6 @@ internal sealed partial class Main : ViewModelBase
 			}
 		}
 	} = (int)SignInMethods.WebBrowser;
-
-	/// <summary>
-	/// Whether the app's window is using animated rainbow effect.
-	/// </summary>
-	internal bool IsAnimatedRainbowEnabled
-	{
-		get; set
-		{
-			if (SP(ref field, value))
-			{
-				SaveValue(nameof(IsAnimatedRainbowEnabled), field);
-			}
-		}
-	}
-
-	/// <summary>
-	/// Custom color of the app's window.
-	/// </summary>
-	internal string CustomAppWindowsBorder
-	{
-		get; set
-		{
-			if (SP(ref field, value))
-			{
-				SaveValue(nameof(CustomAppWindowsBorder), field);
-			}
-		}
-	} = string.Empty;
 
 	/// <summary>
 	/// Whether to use the new mechanisms for Code Integrity policy management on the system.

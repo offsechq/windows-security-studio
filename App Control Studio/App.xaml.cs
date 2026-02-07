@@ -178,18 +178,6 @@ public partial class App : Application
 			Logger.Write(ex);
 		}
 
-		try
-		{
-			// Check for the SoundSetting in the local settings
-			ElementSoundPlayer.State = Settings.SoundSetting ? ElementSoundPlayerState.On : ElementSoundPlayerState.Off;
-			ElementSoundPlayer.SpatialAudioMode = Settings.SoundSetting ? ElementSpatialAudioMode.On : ElementSpatialAudioMode.Off;
-		}
-		catch (Exception ex)
-		{
-			Logger.Write("Failed to set the sound settings");
-			Logger.Write(ex);
-		}
-
 		// Subscribing to ProcessExit because Window_Closed doesn't run when "Application.Current.Exit();" is used.
 		AppDomain.CurrentDomain.ProcessExit += (s, e) => AppCleanUp();
 	}
@@ -276,13 +264,6 @@ public partial class App : Application
 	private static void AppCleanUp()
 	{
 		if (Interlocked.Exchange(ref CleanUpHappened, 1) == 1) return;
-
-		try
-		{
-			// Stop any active custom border
-			CustomUIElements.AppWindowBorderCustomization.StopAnimatedFrameForAppShutdown();
-		}
-		catch { }
 
 		// Clean up the staging area
 		if (IsElevated && Directory.Exists(GlobalVars.StagingArea))

@@ -18,8 +18,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Windows.Media.Core;
-using Windows.Media.Playback;
 using System.Threading.Tasks;
 using Windows.System;
 using Windows.ApplicationModel.UserActivities;
@@ -132,12 +130,6 @@ internal abstract class ViewModelBase : INotifyPropertyChanged
 		else
 		{
 			_ = App.AppDispatcher.TryEnqueue(() => OnPropertyChanged(propertyName));
-		}
-
-		if (App.Settings.SoundSetting && !string.IsNullOrEmpty(field))
-		{
-			TypeWriterMediaPlayer.Position = TypeWriterAudioStartTime;
-			TypeWriterMediaPlayer.Play();
 		}
 
 		return true;
@@ -431,23 +423,6 @@ internal abstract class ViewModelBase : INotifyPropertyChanged
 		{
 			Logger.Write(ex);
 		}
-	}
-
-	private static readonly MediaPlayer TypeWriterMediaPlayer = new()
-	{
-		Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/Audio/TypeWriter.wav")),
-		// https://learn.microsoft.com/uwp/api/windows.media.systemmediatransportcontrols
-		CommandManager = { IsEnabled = false } // Disable System Media Transport Controls (SMTC) to prevent the audio from being displayed by the OS.
-	};
-
-	private static readonly TimeSpan TypeWriterAudioStartTime = TimeSpan.FromMilliseconds(167);
-
-	internal static void EmitTypingSound()
-	{
-		if (!App.Settings.SoundSetting) return;
-
-		TypeWriterMediaPlayer.Position = TypeWriterAudioStartTime;
-		TypeWriterMediaPlayer.Play();
 	}
 
 	/// <summary>

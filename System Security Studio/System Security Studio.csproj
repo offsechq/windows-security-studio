@@ -182,7 +182,6 @@
 		<Compile Include="..\App Control Studio\CustomUIElements\SettingsCardV2.cs" Link="CustomUIElements\SettingsCardV2.cs" />
 		<Compile Include="..\App Control Studio\CustomUIElements\SettingsCardV3.cs" Link="CustomUIElements\SettingsCardV3.cs" />
 		<Compile Include="..\App Control Studio\CustomUIElements\StickyHeaderBehaviorV2.cs" Link="CustomUIElements\StickyHeaderBehaviorV2.cs" />
-		<Compile Include="..\App Control Studio\CustomUIElements\AppWindowBorderCustomization.cs" Link="CustomUIElements\AppWindowBorderCustomization.cs" />
 		<Compile Include="..\App Control Studio\IncrementalCollection\GenericIncrementalCollection.cs" Link="IncrementalCollection\GenericIncrementalCollection.cs" />
 		<Compile Include="..\App Control Studio\IncrementalCollection\IncrementalCollection.cs" Link="IncrementalCollection\IncrementalCollection.cs" />
 		<Compile Include="..\App Control Studio\MainWindow.xaml.cs" Link="MainWindow.xaml.cs" />

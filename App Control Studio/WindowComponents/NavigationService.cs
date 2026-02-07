@@ -258,9 +258,6 @@ internal sealed class NavigationService
 			}
 		}
 
-		// Play a sound
-		ElementSoundPlayer.Play(ElementSoundKind.MoveNext);
-
 		// Navigate to the new page
 		_ = _frame.Navigate(nextNavPageType, null, new DrillInNavigationTransitionInfo());
 
@@ -450,8 +447,6 @@ internal sealed class NavigationService
 	{
 		if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
 		{
-			ViewModelBase.EmitTypingSound();
-
 			// Get the text user entered in the search box
 			string query = sender.Text.Trim();
 
