@@ -17,12 +17,12 @@
             <!-- Base Border Style for Cards -->
             <Style x:Key="OverviewCardBorderStyle" TargetType="Border">
                 <Setter Property="CornerRadius" Value="8"/>
-                <Setter Property="Padding" Value="10"/>
+                <Setter Property="Padding" Value="14"/>
                 <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
                 <Setter Property="BorderBrush" Value="{ThemeResource ControlStrokeColorDefaultBrush}"/>
                 <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="Width" Value="274"/>
-                <Setter Property="Height" Value="96"/>
+                <Setter Property="Width" Value="280"/>
+                <Setter Property="Height" Value="104"/>
                 <Setter Property="Margin" Value="0,0,8,8"/>
             </Style>
 
@@ -32,9 +32,9 @@
                 <Setter Property="BorderBrush" Value="{ThemeResource ControlStrokeColorDefaultBrush}"/>
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="CornerRadius" Value="8"/>
-                <Setter Property="Padding" Value="10"/>
-                <Setter Property="Width" Value="274"/>
-                <Setter Property="Height" Value="96"/>
+                <Setter Property="Padding" Value="14"/>
+                <Setter Property="Width" Value="280"/>
+                <Setter Property="Height" Value="104"/>
                 <Setter Property="Margin" Value="0,0,8,8"/>
                 <!-- It's important to stretch content so the inner Grid fills the button like it does the Border -->
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -92,13 +92,12 @@
             </Grid.RowDefinitions>
 
             <!-- Header Section -->
-            <!-- Header Section -->
             <controls:WrapPanel Style="{StaticResource PageHeaderWrapPanelStyle}">
                 <TextBlock Text="App Control Studio" 
                            Style="{ThemeResource TitleTextBlockStyle}"
                            FontSize="32" 
                            FontWeight="SemiBold"/>
-                <TextBlock Text="Secure, Manage and Harden your Windows Infrastructure" 
+                <TextBlock Text="Design, deploy and manage application control policies for Windows" 
                            Style="{ThemeResource BodyTextBlockStyle}"
                            Opacity="0.7"
                            FontSize="14"/>
@@ -128,8 +127,8 @@
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VariableSizedWrapGrid Orientation="Horizontal"
-                                                       ItemWidth="282"
-                                                       ItemHeight="104"/>
+                                                       ItemWidth="288"
+                                                       ItemHeight="112"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
 
@@ -518,8 +517,8 @@
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VariableSizedWrapGrid Orientation="Horizontal"
-                                                       ItemWidth="282"
-                                                       ItemHeight="104"/>
+                                                       ItemWidth="288"
+                                                       ItemHeight="112"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
 
