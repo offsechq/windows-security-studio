@@ -8,11 +8,17 @@ cd /d "%~dp0"
 
 :: Check if running as admin
 net session >nul 2>&1
-if %errorlevel% neq 0 (
-    echo Requesting Administrator privileges...
-    powershell -Command "Start-Process cmd -ArgumentList '/c cd /d \"%~dp0\" && \"%~f0\"' -Verb RunAs"
-    exit /b
-)
+if %errorlevel% neq 0 goto :elevate
+goto :continue
+
+:elevate
+echo Requesting Administrator privileges...
+set "SCRIPT_DIR=%~dp0"
+set "SCRIPT_PATH=%~f0"
+powershell -Command "Start-Process cmd -ArgumentList '/c cd /d \"%SCRIPT_DIR%\" && \"%SCRIPT_PATH%\"' -Verb RunAs"
+exit /b
+
+:continue
 
 echo.
 echo === Windows Security Studio Installer ===
