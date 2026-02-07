@@ -211,64 +211,14 @@
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
 
-                            <controls:WrapPanel Margin="-12,0,0,0" Orientation="Horizontal" HorizontalSpacing="13">
-
-                                <StackPanel Orientation="Vertical">
-                                    <HyperlinkButton x:Uid="GitHubRepoHyperLinkButton" NavigateUri="https://github.com/OFFSECHQ/windows-security-studio" />
-                                    <HyperlinkButton x:Uid="MicrosoftStorePageHyperLinkButton" NavigateUri="https://apps.microsoft.com/detail/9P7GGFL7DX57" />
-                                </StackPanel>
-
-                                <StackPanel Orientation="Vertical">
-                                    <HyperlinkButton x:Uid="SpyNetGirlWebsiteHyperLinkButton" NavigateUri="https://spynetgirl.github.io/" />
-                                    <HyperlinkButton x:Uid="YouTubeChannelHyperLinkButton" NavigateUri="https://www.youtube.com/@hotcakex" />
-                                    <HyperlinkButton x:Uid="DonationHyperLinkButton" FontWeight="ExtraBold" NavigateUri="https://github.com/OFFSECHQ/windows-security-studio?tab=readme-ov-file#donations-" />
-                                </StackPanel>
-
-                                <StackPanel Orientation="Vertical">
-                                    <HyperlinkButton Content="X" NavigateUri="https://x.com/CyberCakeX" />
-                                </StackPanel>
-
-                            </controls:WrapPanel>
+                            <StackPanel Orientation="Vertical">
+                                <HyperlinkButton x:Uid="GitHubRepoHyperLinkButton" NavigateUri="https://github.com/OFFSECHQ/windows-security-studio" />
+                                <HyperlinkButton Content="OFFSECHQ" NavigateUri="https://offsechq.com" />
+                            </StackPanel>
 
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
-
-                <controls:WrapPanel Orientation="Horizontal" HorizontalSpacing="10" VerticalSpacing="10" Margin="0,8,0,0">
-                    <HyperlinkButton x:Uid="SendFeedbackHyperLinkButton" NavigateUri="https://github.com/OFFSECHQ/windows-security-studio/issues/new/choose">
-                        <HyperlinkButton.ContentTemplate>
-                            <DataTemplate x:DataType="x:String">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <FontIcon Glyph="&#xED15;" FontSize="16"/>
-                                    <TextBlock Text="{x:Bind}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </HyperlinkButton.ContentTemplate>
-                    </HyperlinkButton>
-
-                    <HyperlinkButton x:Uid="Icons8WebsiteHyperLinkButton" NavigateUri="https://icons8.com">
-                        <HyperlinkButton.ContentTemplate>
-                            <DataTemplate x:DataType="x:String">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <FontIcon Glyph="&#xED58;" FontSize="16"/>
-                                    <TextBlock Text="{x:Bind}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </HyperlinkButton.ContentTemplate>
-                    </HyperlinkButton>
-
-                    <HyperlinkButton x:Uid="SourceCodeHyperLinkButton" NavigateUri="https://github.com/OFFSECHQ/windows-security-studio/tree/main/System%20Security%20Studio">
-                        <HyperlinkButton.ContentTemplate>
-                            <DataTemplate x:DataType="x:String">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <FontIcon Glyph="&#xE943;" FontSize="16"/>
-                                    <TextBlock Text="{x:Bind}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </HyperlinkButton.ContentTemplate>
-                    </HyperlinkButton>
-
-                </controls:WrapPanel>
 
             </StackPanel>
 
