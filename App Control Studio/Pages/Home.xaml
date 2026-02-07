@@ -57,7 +57,7 @@
             <Style x:Key="CardHeaderStackStyle" TargetType="StackPanel">
                 <Setter Property="Orientation" Value="Horizontal"/>
                 <Setter Property="Spacing" Value="12"/>
-                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
             </Style>
 
             <!-- Header TextBlock Style (inherits from BodyStrong but adds vertical alignment) -->
@@ -71,9 +71,9 @@
                 <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}"/>
                 <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
                 <Setter Property="TextWrapping" Value="Wrap"/>
-                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="TextAlignment" Value="Left"/>
             </Style>
 
         </ResourceDictionary>
