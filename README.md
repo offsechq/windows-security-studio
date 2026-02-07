@@ -70,8 +70,9 @@ A comprehensive system hardening utility that applies, verifies, and manages sec
 
 ### From a Release
 
-1. Download the latest `.msixbundle` from [Releases](https://github.com/OFFSECHQ/windows-security-studio/releases).
-2. Run the included `Install.cmd` — it auto-elevates, installs the code-signing certificate, and sideloads the package.
+1. Download the latest installation kit `.zip` from [Releases](https://github.com/OFFSECHQ/windows-security-studio/releases).
+2. Extract the archive — it contains the `.msixbundle`, code-signing certificate, and `Install.bat`.
+3. Run `Install.bat` — it auto-elevates, installs the certificate, and sideloads the package.
 
 ### Build from Source
 
@@ -130,21 +131,6 @@ For maximum protection alongside these tools:
 
 ---
 
-## Contributing
-
-Contributions are welcome. Please review the repository guidelines before submitting a pull request:
-
-- Use the latest .NET, C#, Rust, and C++ language features.
-- All code must be compatible with Native AOT compilation.
-- Use explicit types — no `var` in C#, annotate `let` bindings in Rust.
-- Do not add external dependencies.
-- Comment meaningful changes; do not remove existing valid comments.
-
----
-
 ## License
 
-This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
-
-Original work © Violet Hansen ([HotCakeX](https://github.com/HotCakeX))
-Fork modifications © [OFFSECHQ](https://github.com/OFFSECHQ)
+MIT — see [LICENSE](LICENSE). Based on original work by [Violet Hansen](https://github.com/HotCakeX).
