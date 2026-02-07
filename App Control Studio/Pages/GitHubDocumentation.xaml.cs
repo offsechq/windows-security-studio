@@ -64,10 +64,10 @@ internal sealed partial class GitHubDocumentation : Page
 	private void ReloadButton_Click() => GitHubDocumentationWebView2.Reload();
 
 #if APP_CONTROL_MANAGER
-	private static readonly Uri URLToUse = new("https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction");
+	private static readonly Uri URLToUse = new("https://github.com/offsechq/windows-security-studio/wiki");
 #endif
 #if HARDEN_SYSTEM_SECURITY
-	private static readonly Uri URLToUse = new("https://github.com/HotCakeX/Harden-Windows-Security");
+	private static readonly Uri URLToUse = new("https://github.com/offsechq/windows-security-studio/wiki");
 #endif
 
 	/// <summary>
