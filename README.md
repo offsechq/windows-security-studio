@@ -1,79 +1,150 @@
+<div align="center">
+
 # Windows Security Studio
 
-**Comprehensive Windows security hardening using official Microsoft methods.**
+**Enterprise-grade Windows security hardening using official Microsoft methods.**
 
-This repository hosts the source code and documentation for tools designed to secure Windows personal and enterprise devices against advanced threats without relying on third-party security software.
+Harden personal and enterprise Windows devices against advanced threats — no third-party security software required.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/Build%20App%20Control%20Studio%20MSIX%20Package.yml/badge.svg)](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/Build%20App%20Control%20Studio%20MSIX%20Package.yml)
 [![Build System Security Studio](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/Build%20System%20Security%20Studio%20MSIX%20Package.yml/badge.svg)](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/Build%20System%20Security%20Studio%20MSIX%20Package.yml)
 
----
+[Documentation](https://github.com/OFFSECHQ/windows-security-studio/wiki) · [Report a Bug](https://github.com/OFFSECHQ/windows-security-studio/issues) · [Releases](https://github.com/OFFSECHQ/windows-security-studio/releases)
 
-## Key Components
-
-### 1. System Security Studio
-
-A powerful utility to harden your Windows Operating System. It utilizes built-in Windows security features to fine-tune the system toward a maximum security state.
-
-- **Target Audience**: Personal users, Enterprise admins.
-- **Features**: Apply Intune security policies, verify compliance, remove bloatware, and visualize security posture.
-- **Documentation**: [System Security Studio Wiki](https://github.com/OFFSECHQ/windows-security-studio/wiki/System-Security-Studio)
-
-### 2. App Control Studio
-
-A modern interface for managing Windows Application Control (formerly WDAC).
-
-- **Target Audience**: Users requiring strict application execution policies (Zero Trust).
-- **Features**: Configure and deploy Application Control policies to prevent unauthorized code execution.
-- **Documentation**: [App Control Studio Wiki](https://github.com/OFFSECHQ/windows-security-studio/wiki/App-Control-Studio)
+</div>
 
 ---
 
-## Philosophy
+## Overview
 
-- **Official Methods Only**: We rely exclusively on documented, supported Microsoft security features.
-- **No Third-Party Bloat**: No external "black box" agents or drivers.
-- **Defense in Depth**: Creates multiple layers of security (ASR, Exploit Protection, App Control, etc.).
-- **Verifiable**: Open Source and transparent. All packages are built from this repository.
+Windows Security Studio is a suite of native WinUI 3 desktop applications that leverage built-in Windows security features to bring your system to a maximum security state. Both apps are compiled with **Native AOT** for fast startup and minimal footprint, and distributed as signed **MSIX** packages.
+
+> This is a maintained fork of [HotCakeX/Harden-Windows-Security](https://github.com/HotCakeX/Harden-Windows-Security) by **OFFSECHQ**. A weekly GitHub Actions workflow monitors upstream changes and creates issues for manual review before merging.
+
+---
+
+## Applications
+
+### App Control Studio
+
+A modern interface for managing **Windows Defender Application Control (WDAC)** — the zero-trust application allowlisting technology built into Windows.
+
+| Capability | Description |
+|---|---|
+| **Policy Creation** | Build base, supplemental, and deny policies from file/folder scans or event logs |
+| **Policy Editor** | Visually inspect and modify CI policy XML, configure rule options |
+| **Simulation** | Test policies against files before deployment using hash, certificate, and signer analysis |
+| **Deployment** | Deploy and remove policies locally or via Microsoft Intune |
+| **MDE Integration** | Create policies from Microsoft Defender for Endpoint Advanced Hunting data |
+| **Certificate Tools** | View file certificates, generate code-signing certificates, compute CI hashes |
+| **Policy Merge & Validation** | Merge multiple policies and validate policy XML integrity |
+
+[App Control Studio Documentation →](https://github.com/OFFSECHQ/windows-security-studio/wiki/App-Control-Studio)
+
+### System Security Studio
+
+A comprehensive system hardening utility that applies, verifies, and manages security configurations across 19 categories of Windows security controls.
+
+| Category | What It Covers |
+|---|---|
+| **Microsoft Security Baselines** | Apply and override Microsoft-recommended security baselines |
+| **Microsoft 365 Apps Baseline** | Harden Office application security settings |
+| **Microsoft Defender** | Configure real-time protection, cloud analysis, and ASR rules |
+| **Attack Surface Reduction** | Enable exploit mitigations and reduce the OS attack surface |
+| **BitLocker** | Full-volume encryption configuration and compliance verification |
+| **Device Guard** | Credential Guard, VBS, HVCI, and kernel-mode integrity |
+| **TLS & Networking** | Enforce modern cipher suites, disable legacy protocols |
+| **Windows Firewall** | Block LOLBins, apply country-based IP blocking |
+| **UAC & Lock Screen** | Elevate User Account Control and lock-screen hardening |
+| **Certificate Checking** | Validate certificate chain integrity |
+| **Audit Policies** | Configure advanced security audit logging |
+| **Optional Windows Features** | Remove unnecessary OS components and bloatware |
+| **Intune / CSP** | Retrieve and inspect MDM-applied policies |
+
+[System Security Studio Documentation →](https://github.com/OFFSECHQ/windows-security-studio/wiki/System-Security-Studio)
+
+---
+
+## Installation
+
+### From a Release
+
+1. Download the latest `.msixbundle` from [Releases](https://github.com/OFFSECHQ/windows-security-studio/releases).
+2. Run the included `Install.cmd` — it auto-elevates, installs the code-signing certificate, and sideloads the package.
+
+### Build from Source
+
+Both apps target **.NET 10** with **Native AOT** and **WinUI 3** (Windows App SDK). Rust interop is used in App Control Studio.
+
+```
+# App Control Studio
+cd "App Control Studio"
+.\Build-AppControlStudio.ps1
+
+# System Security Studio
+cd "System Security Studio"
+.\Build-SystemSecurityStudio.ps1
+```
+
+**Prerequisites**: Visual Studio 2022 17.12+, .NET 10 SDK, Windows App SDK, Rust toolchain (for App Control Studio).
+
+---
+
+## Design Principles
+
+| Principle | Detail |
+|---|---|
+| **Official Methods Only** | Exclusively uses documented, supported Microsoft security features — no undocumented registry hacks or third-party drivers |
+| **Native AOT** | Both apps are fully AOT-compiled with Control Flow Guard and CET Shadow Stack for maximum runtime security |
+| **Defense in Depth** | Layers ASR, Exploit Protection, App Control, Device Guard, BitLocker, Firewall, and more into a unified workflow |
+| **Transparent & Verifiable** | Open source. MSIX packages are built via GitHub Actions with full build logs and reproducible pipelines |
+| **Self-Contained** | MSIX bundles include the .NET runtime and Windows App SDK — no external dependencies to install |
 
 ---
 
 ## Security Recommendations
 
-For a truly secure environment, we recommend adhering to the following best practices in addition to using our tools:
+For maximum protection alongside these tools:
 
-1.  **Use Official Media**: Always install Windows from official Microsoft sources. Avoid modified ISOs.
-2.  **Hardware Security**: Prefer Secured-Core PCs (e.g., Microsoft Surface) with TPM 2.0 and DFCI support.
-3.  **Account Security**: Use standard user accounts for daily tasks; use Microsoft Entra ID or Microsoft Accounts with MFA/Passkeys.
-4.  **Network**: Use DNS over HTTPS (DoH) and avoid unnecessary VPNs unless required for specific privacy needs.
-5.  **Browser**: Use Microsoft Edge for hardware-enforced stack protection and SmartScreen integration.
+- **Official Media** — Install Windows from official Microsoft sources only. Never use modified ISOs.
+- **Hardware** — Prefer Secured-Core PCs with TPM 2.0 and DFCI support.
+- **Accounts** — Use standard user accounts day-to-day; authenticate with Microsoft Entra ID or Microsoft Accounts with MFA / Passkeys.
+- **Network** — Enable DNS over HTTPS (DoH); avoid unnecessary VPN services.
+- **Browser** — Use Microsoft Edge for hardware-enforced stack protection and SmartScreen integration.
 
-[View full Security Recommendations in Wiki](https://github.com/OFFSECHQ/windows-security-studio/wiki)
-
----
-
-## Fork Information
-
-This is a fork of [HotCakeX/Harden-Windows-Security](https://github.com/HotCakeX/Harden-Windows-Security), maintained by **OFFSECHQ**.
-
-This fork uses a **notification-based approach**:
-
-- A weekly workflow checks for upstream updates
-- If updates exist, a GitHub issue is created for manual review
-- Relevant changes are applied to the rebranded directories
+[Full security guidance →](https://github.com/OFFSECHQ/windows-security-studio/wiki)
 
 ---
 
-## Support
+## Tech Stack
 
-- **Wiki**: [Comprehensive Documentation](https://github.com/OFFSECHQ/windows-security-studio/wiki)
-- **Issues**: [Report bugs](https://github.com/OFFSECHQ/windows-security-studio/issues)
-- **Upstream**: [Original Repository](https://github.com/HotCakeX/Harden-Windows-Security)
+| Layer | Technology |
+|---|---|
+| UI Framework | WinUI 3 (Windows App SDK) |
+| Language | C# (.NET 10, preview language features) |
+| Compilation | Native AOT with full trimming |
+| Interop | Rust (App Control Studio), C++ |
+| Packaging | MSIX / MSIXBundle |
+| Platform | Windows 10 22H2+ (build 22621), x64 |
+
+---
+
+## Contributing
+
+Contributions are welcome. Please review the repository guidelines before submitting a pull request:
+
+- Use the latest .NET, C#, Rust, and C++ language features.
+- All code must be compatible with Native AOT compilation.
+- Use explicit types — no `var` in C#, annotate `let` bindings in Rust.
+- Do not add external dependencies.
+- Comment meaningful changes; do not remove existing valid comments.
+
+---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
 
-Original work © Violet Hansen (HotCakeX)  
-Fork modifications © OFFSECHQ
+Original work © Violet Hansen ([HotCakeX](https://github.com/HotCakeX))
+Fork modifications © [OFFSECHQ](https://github.com/OFFSECHQ)
