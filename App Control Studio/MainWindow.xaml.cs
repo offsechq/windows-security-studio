@@ -49,9 +49,6 @@ internal sealed partial class MainWindow : Window
 
 	private MainWindowVM ViewModel => ViewModelProvider.MainWindowVM;
 	private CommonCore.AppSettings.Main AppSettings => App.Settings;
-#if APP_CONTROL_MANAGER
-	private SidebarVM sidebarVM => ViewModelProvider.SidebarVM;
-#endif
 
 	internal static Grid? RootGridPub { get; private set; }
 

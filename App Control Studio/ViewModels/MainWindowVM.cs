@@ -449,6 +449,11 @@ internal sealed partial class MainWindowVM : ViewModelBase
 	internal IconElement? LogsIcon { get; set => SP(ref field, value); }
 
 	/// <summary>
+	/// Icon for the Policy Context navigation item.
+	/// </summary>
+	internal IconElement? PolicyContextIcon { get; set => SP(ref field, value); }
+
+	/// <summary>
 	/// Icon for the Update navigation item in the footer.
 	/// </summary>
 	internal IconElement? UpdateIcon { get; set => SP(ref field, value); }
@@ -577,6 +582,8 @@ internal sealed partial class MainWindowVM : ViewModelBase
 						Margin = new Thickness(0, -8, -8, -8),
 						Source = new Timeline()
 					};
+
+					PolicyContextIcon = new FontIcon { Glyph = "\uE8B7" };
 
 					GitHubDocsIcon = new AnimatedIcon
 					{
@@ -723,6 +730,12 @@ internal sealed partial class MainWindowVM : ViewModelBase
 						Foreground = accentBrush
 					};
 
+					PolicyContextIcon = new FontIcon
+					{
+						Glyph = "\uE8B7",
+						Foreground = accentBrush
+					};
+
 					GitHubDocsIcon = new FontIcon
 					{
 						Glyph = "\uE8A5",
@@ -810,6 +823,7 @@ internal sealed partial class MainWindowVM : ViewModelBase
 					GetCodeIntegrityHashesIcon = new FontIcon { Glyph = "\uE950" };
 					GetSecurePolicySettingsIcon = new FontIcon { Glyph = "\uF404" };
 					LogsIcon = new FontIcon { Glyph = "\uF5A0" };
+					PolicyContextIcon = new FontIcon { Glyph = "\uE8B7" };
 					GitHubDocsIcon = new FontIcon { Glyph = "\uE8A5" };
 					MSFTDocsIcon = new FontIcon { Glyph = "\uE8A5" };
 					UpdateIcon = new FontIcon { Glyph = "\uEB52" };

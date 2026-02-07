@@ -17,7 +17,6 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
 using System.Runtime;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -114,16 +113,6 @@ internal sealed partial class MainWindowVM : ViewModelBase
 	internal double InfoBadgeOpacity { get; set => SP(ref field, value); }
 
 	/// <summary>
-	/// Whether the sidebar pane is open or closed
-	/// </summary>
-	internal bool SidebarPaneIsOpen { get; set => SP(ref field, value); }
-
-	/// <summary>
-	///  Adjust the elevation of the border to achieve the shadow effect
-	/// </summary>
-	internal Vector3 BorderTranslation { get; set => SP(ref field, value); } = new(0, 0, 500);
-
-	/// <summary>
 	/// Whether the main NavigationView's pane is open or closed
 	/// </summary>
 	internal bool MainNavigationIsPaneOpen { get; set => SP(ref field, value); }
@@ -132,11 +121,6 @@ internal sealed partial class MainWindowVM : ViewModelBase
 	/// The width of the TitleColumn in the main window's custom title bar
 	/// </summary>
 	internal GridLength TitleColumnWidth { get; set => SP(ref field, value); } = GridLength.Auto;
-
-	/// <summary>
-	/// Event handler for the main Sidebar button click
-	/// </summary>
-	internal void SidebarButton_Click() => SidebarPaneIsOpen = !SidebarPaneIsOpen;
 
 	/// <summary>
 	/// Event handler triggered when the UpdateAvailable event is raised, indicating an update is available.
