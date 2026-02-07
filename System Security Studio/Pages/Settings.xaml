@@ -189,14 +189,6 @@
                                           x:Uid="ToggleSwitchGeneral"/>
                         </customUI:SettingsCardV2>
 
-                        <controls:SettingsCard Click="{x:Bind ViewModelUpdate.LaunchRating}"
-                                               Visibility="{x:Bind ViewModelUpdate.RatingsSectionVisibility, Mode=OneWay}"
-                                               HeaderIcon="{ui:FontIcon Glyph=&#xEC24;}"
-                                               x:Uid="RateAndReviewSettingsCard"
-                                               IsClickEnabled="True"
-                                               ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
-                                               IsActionIconVisible="True" />
-
                         <controls:SettingsCard x:Uid="InstallAppPackagesSettingsCard"
                                                HeaderIcon="{ui:FontIcon Glyph=&#xE83B;}"
                                                IsClickEnabled="True"
