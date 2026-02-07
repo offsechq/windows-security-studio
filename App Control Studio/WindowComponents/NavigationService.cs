@@ -392,40 +392,6 @@ internal sealed class NavigationService
 	}
 
 	/// <summary>
-	/// Event handler for when the back button is pressed
-	/// </summary>
-	internal void BackButtonTitleBar_Click()
-	{
-		if (_frame is null) return;
-
-		if (_frame.CanGoBack)
-		{
-
-			// Don't go back if the nav pane is overlayed.
-			/*
-                if (MainNavigation.IsPaneOpen &&
-                    (MainNavigation.DisplayMode == NavigationViewDisplayMode.Compact ||
-                     MainNavigation.DisplayMode == NavigationViewDisplayMode.Minimal))
-                */
-
-			// Play sound for back navigation
-			ElementSoundPlayer.Play(ElementSoundKind.GoBack);
-
-			// Go back to the previous page
-			_frame.GoBack(new DrillInNavigationTransitionInfo());
-
-			// Get the current page after navigating back
-			Type currentPage = _frame.CurrentSourcePageType;
-
-#if APP_CONTROL_MANAGER
-			// For page Interface and light augmentation
-			AffectPagesAnimatedIconsVisibilities(_frame);
-#endif
-			SetCrumbBar(currentPage);
-		}
-	}
-
-	/// <summary>
 	/// Event handler for when a suggestion is chosen in the AutoSuggestBox
 	/// </summary>
 	/// <param name="sender"></param>

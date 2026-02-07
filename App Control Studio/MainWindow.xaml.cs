@@ -138,7 +138,6 @@ internal sealed partial class MainWindow : Window
 		}
 
 		// Compute each element's rect
-		RectInt32 backRect = MainWindowVM.CalculatePixelRect(BackButtonTitleBar, scale);
 		RectInt32 menuRect = MainWindowVM.CalculatePixelRect(HamburgerMenuButton, scale);
 		RectInt32 searchRect = MainWindowVM.CalculatePixelRect(TitleBarSearchBox, scale);
 
@@ -147,7 +146,6 @@ internal sealed partial class MainWindow : Window
 
 		if (isRtl)
 		{
-			backRect = MainWindowVM.FlipHorizontally(backRect, windowWidthPx);
 			menuRect = MainWindowVM.FlipHorizontally(menuRect, windowWidthPx);
 			searchRect = MainWindowVM.FlipHorizontally(searchRect, windowWidthPx);
 		}
@@ -158,7 +156,7 @@ internal sealed partial class MainWindow : Window
 
 		nonClient.SetRegionRects(
 			NonClientRegionKind.Passthrough,
-			[backRect, menuRect, searchRect]
+			[menuRect, searchRect]
 		);
 	}
 
