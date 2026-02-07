@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AppControlManager.Pages.ViewOnlinePolicies"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:others="using:AppControlManager.Others"
+    xmlns:VM="using:AppControlManager.ViewModels"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:customUI="using:AppControlManager.CustomUIElements"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:MSGraph="using:CommonCore.MicrosoftGraph"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
+    xmlns:animatedvisuals="using:AnimatedVisuals"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <customUI:InfoBarV2 Grid.Row="0"
+            IsOpen="{x:Bind ViewModel.MainInfoBarIsOpen, Mode=TwoWay}"
+            Message="{x:Bind ViewModel.MainInfoBarMessage, Mode=OneWay}"
+            Severity="{x:Bind ViewModel.MainInfoBarSeverity, Mode=OneWay}"
+            IsClosable="{x:Bind ViewModel.MainInfoBarIsClosable, Mode=OneWay}" />
+
+        <Border Grid.Row="1" Margin="0,0,0,5" Style="{StaticResource GridCardStyle}" Padding="10">
+
+            <controls:WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" HorizontalSpacing="12" VerticalSpacing="12">
+
+                <customUI:GraphAuthPanel Host="{x:Bind ViewModel}" />
+
+                <Button HorizontalAlignment="Center"
+                        IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                        Click="{x:Bind ViewModel.GetOnlinePolicies}"
+                        VerticalAlignment="Center"
+                        x:Uid="RetrieveOnlinePoliciesButton">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <AnimatedIcon Height="25" Width="25" Margin="-5,-5,0,-5">
+                                <AnimatedIcon.Source>
+                                    <animatedvisuals:Refresh/>
+                                </AnimatedIcon.Source>
+                            </AnimatedIcon>
+                            <TextBlock x:Uid="RetrieveOnlinePoliciesTextBlock" Margin="5,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+
+                <!-- Total chip -->
+                <Border CornerRadius="8"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Padding="10,6"
+                        BorderThickness="1"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                    <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE8A9;" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                        <TextBlock VerticalAlignment="Center">
+                            <Run x:Uid="TotalText" />
+                            <Run Text="{x:Bind ViewModel.AllPolicies.Count, Mode=OneWay}" FontWeight="SemiBold" />
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Button HorizontalAlignment="Center"
+                        IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                        Click="{x:Bind ViewModel.DeployManagedInstallerPolicy_Click}"
+                        VerticalAlignment="Center"
+                        x:Uid="CreateManagedInstallerButton"/>
+
+                <Button IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                        Click="{x:Bind ViewModel.RemovePolicy_Click}" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTipService.ToolTip="Remove any non-system policy from the system">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <AnimatedIcon Height="25" Width="25" Margin="-5,-5,0,-5">
+                                <AnimatedIcon.Source>
+                                    <animatedvisuals:TrashCan/>
+                                </AnimatedIcon.Source>
+                            </AnimatedIcon>
+                            <TextBlock Text="Remove Policy" Margin="5,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+
+                <TextBox Text="{x:Bind ViewModel.SearchBoxTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         x:Uid="SearchPoliciesTextBox"
+                         IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                         TextChanged="{x:Bind ViewModel.SearchBox_TextChanged}"
+                         VerticalAlignment="Center" />
+
+            </controls:WrapPanel>
+
+        </Border>
+
+        <customUI:ListViewV2 RegistryKey="Online_Deployed_Policies"
+                             Grid.Row="2"
+                             SelectionMode="Single"
+                             IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                             SelectedIndex="{x:Bind ViewModel.ListViewSelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             SelectedItem="{x:Bind ViewModel.ListViewSelectedPolicy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             ItemsSource="{x:Bind ViewModel.AllPolicies, Mode=OneWay}">
+
+            <customUI:ListViewV2.Header>
+
+                <Border CornerRadius="5" Background="Black" customUI:StickyHeaderBehaviorV2.IsEnabled="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <!-- TwoWay binding needed of course but the MinWidth constraints make them look better on the UI when resizing so it won't get too small -->
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth1, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth2, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth3, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth4, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth5, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth6, Mode=TwoWay}" MinWidth="50" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Header Buttons -->
+                        <Button x:Uid="PolicyIDColumnHeaderBtn" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Grid.Column="0" Margin="10,0,0,0" Style="{StaticResource ListViewHeaderButton}" Tag="PolicyID" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}"/>
+                        <Button x:Uid="BasePolicyIDColumnHeaderBtn" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Grid.Column="1" Margin="0" Style="{StaticResource ListViewHeaderButton}" Tag="BasePolicyID" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}"/>
+                        <Button x:Uid="FriendlyNameColumnHeaderBtn" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Grid.Column="2" Margin="0" Style="{StaticResource ListViewHeaderButton}" Tag="FriendlyName" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}"/>
+                        <Button x:Uid="VersionColumnHeaderBtn" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Grid.Column="3" Margin="0" Style="{StaticResource ListViewHeaderButton}" Tag="Version" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}"/>
+                        <Button x:Uid="IsSignedPolicyColumnHeaderBtn" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Grid.Column="4" Margin="0" Style="{StaticResource ListViewHeaderButton}" Tag="IsSignedPolicy" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}"/>
+                        <Button x:Uid="PolicyOptionsColumnHeaderBtn" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Grid.Column="5" Margin="0" Style="{StaticResource ListViewHeaderButton}" Tag="PolicyOptions" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}"/>
+
+                        <!-- GridSplitters between columns -->
+                        <controls:GridSplitter Grid.Column="1" />
+                        <controls:GridSplitter Grid.Column="2" />
+                        <controls:GridSplitter Grid.Column="3" />
+                        <controls:GridSplitter Grid.Column="4" />
+                        <controls:GridSplitter Grid.Column="5" />
+                    </Grid>
+                </Border>
+            </customUI:ListViewV2.Header>
+
+            <!-- DataTemplate for ListView items -->
+            <customUI:ListViewV2.ItemTemplate>
+                <DataTemplate x:DataType="others:CiPolicyInfo" xmlns:VMs="using:AppControlManager.ViewModels">
+                    <!-- Setting Background="Transparent" on the Grid makes it hit-test visible, meaning that even areas without any child elements (like empty spaces in the column) will respond to pointer events.  -->
+                    <Grid Background="Transparent">
+
+                        <Grid.ContextFlyout>
+                            <MenuFlyout>
+
+                                <MenuFlyoutItem x:Uid="CopyRow" Click="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.CopySelectedPolicies_Click}">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="C" Modifiers="Control" Invoked="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.CopySelectedPolicies_Click}"/>
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE8C8;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+
+                                <MenuFlyoutSubItem x:Uid="CopyIndividualItems">
+                                    <MenuFlyoutSubItem.Icon>
+                                        <FontIcon Glyph="&#xE8C8;" />
+                                    </MenuFlyoutSubItem.Icon>
+
+                                    <MenuFlyoutSubItem.Items>
+
+                                        <MenuFlyoutItem x:Uid="PolicyIDHeader" Tag="PolicyID" Click="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="BasePolicyIDHeader" Tag="BasePolicyID" Click="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="FriendlyNameHeader" Tag="FriendlyName" Click="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="VersionHeader" Tag="Version" Click="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="IsSignedPolicyHeader" Tag="IsSignedPolicy" Click="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="PolicyOptionsHeader" Tag="PolicyOptions" Click="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                    </MenuFlyoutSubItem.Items>
+
+                                </MenuFlyoutSubItem>
+                            </MenuFlyout>
+                        </Grid.ContextFlyout>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.ColumnWidth1, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.ColumnWidth2, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.ColumnWidth3, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.ColumnWidth4, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.ColumnWidth5, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.ColumnWidth6, Mode=OneWay}" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind PolicyID}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="0"/>
+                        <TextBlock Text="{x:Bind BasePolicyID}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="1"/>
+                        <TextBlock Text="{x:Bind FriendlyName}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="2"/>
+                        <TextBlock Text="{x:Bind VersionString}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="3"/>
+                        <TextBlock Text="{x:Bind IsSignedPolicy}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="4"/>
+                        <TextBlock Text="{x:Bind PolicyOptionsDisplay}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewOnlinePoliciesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="5"/>
+                    </Grid>
+                </DataTemplate>
+            </customUI:ListViewV2.ItemTemplate>
+        </customUI:ListViewV2>
+
+    </Grid>
+</Page>

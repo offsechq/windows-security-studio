@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="HardenSystemSecurity.Pages.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CC="using:CommonCore.Others"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:customUI="using:AppControlManager.CustomUIElements"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}">
+
+    <ScrollViewer>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <customUI:InfoBarV2 Grid.Row="0"
+                                Margin="0,0,0,5"
+                                IsOpen="{x:Bind ViewModel.MainInfoBarIsOpen, Mode=TwoWay}"
+                                Message="{x:Bind ViewModel.MainInfoBarMessage, Mode=OneWay}"
+                                Severity="{x:Bind ViewModel.MainInfoBarSeverity, Mode=OneWay}"
+                                IsClosable="{x:Bind ViewModel.MainInfoBarIsClosable, Mode=OneWay}"/>
+
+            <StackPanel HorizontalAlignment="Stretch"
+                    Spacing="{StaticResource SettingsCardSpacing}" Grid.Row="1">
+                <win:StackPanel.ChildrenTransitions>
+                    <win:EntranceThemeTransition FromVerticalOffset="50" />
+                    <win:RepositionThemeTransition IsStaggeringEnabled="False" />
+                </win:StackPanel.ChildrenTransitions>
+
+                <!-- Appearance section -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" x:Uid="Appearance" />
+                <controls:SettingsExpander x:Uid="AppearanceSectionSettingsExpander" IsExpanded="True" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+
+                    <controls:SettingsExpander.Items>
+
+                        <customUI:SettingsCardV2 x:Uid="DarkerBackGroundSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xF0E8;}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.AppSettings.NavViewBackground, Mode=TwoWay}"
+                                      x:Uid="ToggleSwitchGeneral"/>
+                        </customUI:SettingsCardV2>
+
+                        <customUI:SettingsCardV2 x:Uid="BackgroundStyleSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xEF1F;}">
+                            <ComboBox
+                            ItemsSource="{x:Bind ViewModelMainWindow.BackDropOptions, Mode=OneTime}"
+                            SelectedIndex="{x:Bind ViewModelMainWindow.BackDropComboBoxSelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </customUI:SettingsCardV2>
+
+                        <customUI:SettingsCardV2 x:Uid="AppThemeSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.AppThemeComboBoxSelectedIndex, Mode=TwoWay}">
+                                <x:String>Use System Setting</x:String>
+                                <x:String>Dark</x:String>
+                                <x:String>Light</x:String>
+                            </ComboBox>
+                        </customUI:SettingsCardV2>
+
+                        <customUI:SettingsCardV2 x:Uid="MainNavigationIconsSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xE8D3;}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.IconsStylesComboBoxSelectedIndex, Mode=TwoWay}">
+                                <x:String>Animated</x:String>
+                                <x:String>Windows Accent</x:String>
+                                <x:String>Monochromatic</x:String>
+                            </ComboBox>
+                        </customUI:SettingsCardV2>
+
+                        <customUI:SettingsCardV2 x:Uid="MainNavigationLocationSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xE90C;}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.NavigationMenuLocationComboBoxSelectedIndex, Mode=TwoWay}">
+                                <x:String>Left</x:String>
+                                <x:String>Top</x:String>
+                            </ComboBox>
+                        </customUI:SettingsCardV2>
+
+                        <customUI:SettingsCardV2 x:Uid="AppWindowBorderColorSettingsCard"
+                                                 HeaderIcon="{ui:FontIcon Glyph=&#xEF3C;}">
+
+                            <StackPanel HorizontalAlignment="Center">
+                                <ComboBox x:Name="BorderTypeSelection"
+                                          Margin="0,0,0,8"
+                                          HorizontalAlignment="Center"
+                                          SelectedIndex="0">
+                                    <x:String>Rainbow</x:String>
+                                    <x:String>Custom Color</x:String>
+                                </ComboBox>
+
+                                <!-- SwitchPresenter binds to a value -->
+                                <controls:SwitchPresenter Value="{x:Bind BorderTypeSelection.SelectedItem, Mode=OneWay}">
+                                    <!--And then only dynamically displays the Case with the matching Value -->
+
+                                    <controls:Case Value="Rainbow">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                                            <Button x:Uid="RainbowBorderAnimationStartButton" Click="{x:Bind ViewModel.StartRainbowAnimation}" />
+                                            <Button x:Uid="RainbowBorderAnimationStopButton" Click="{x:Bind ViewModel.StopRainbowAnimation}" />
+                                        </StackPanel>
+                                    </controls:Case>
+
+                                    <controls:Case Value="Custom Color">
+
+                                        <controls:WrapPanel Orientation="Vertical"
+                                                            HorizontalSpacing="10"
+                                                            VerticalSpacing="10">
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        HorizontalAlignment="Center"
+                                                        Spacing="10">
+                                                <Button x:Uid="SetBorderColorButton" Click="{x:Bind ViewModel.StartCustomColorAnimation}" />
+                                                <Button x:Uid="ResetBorderColorButton" Click="{x:Bind ViewModel.StopCustomColorAnimation}" />
+
+                                            </StackPanel>
+
+                                            <ColorPicker ColorSpectrumShape="Ring"
+                                                         IsMoreButtonVisible="False"
+                                                         IsColorSliderVisible="False"
+                                                         IsColorChannelTextInputVisible="False"
+                                                         IsHexInputVisible="False"
+                                                         IsAlphaEnabled="False"
+                                                         ColorChanged="{x:Bind ViewModel.ColorPicker_ColorChanged}"
+                                                         IsAlphaSliderVisible="False"
+                                                         IsAlphaTextInputVisible="False" />
+
+                                        </controls:WrapPanel>
+
+                                    </controls:Case>
+                                </controls:SwitchPresenter>
+
+                            </StackPanel>
+
+                        </customUI:SettingsCardV2>
+
+                    </controls:SettingsExpander.Items>
+
+                </controls:SettingsExpander>
+
+                <!-- Behavior section -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" x:Uid="Behavior" />
+                <controls:SettingsExpander IsExpanded="True" x:Uid="BehaviorSettingSettingsExpander" HeaderIcon="{ui:FontIcon Glyph=&#xE9E9;}">
+                    <controls:SettingsExpander.Items>
+                        <customUI:SettingsCardV2 x:Uid="ListViewsCenterVerticallyUponSelectionSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xE8E3;}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.AppSettings.ListViewsVerticalCentering, Mode=TwoWay}"
+                                      x:Uid="ToggleSwitchGeneral"/>
+                        </customUI:SettingsCardV2>
+                        <customUI:SettingsCardV2 x:Uid="PromptForElevationSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xE7EF;}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.AppSettings.PromptForElevationOnStartup, Mode=TwoWay}"
+                                      x:Uid="ToggleSwitchGeneral"/>
+                        </customUI:SettingsCardV2>
+                        <customUI:SettingsCardV2 x:Uid="ScreenShieldSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xEE3F;}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.AppSettings.ScreenShield, Mode=TwoWay}"
+                                      x:Uid="ToggleSwitchGeneral"/>
+                        </customUI:SettingsCardV2>
+                        <customUI:SettingsCardV2 x:Uid="PublishUserActivityInTheOSSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xEC5B;}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.AppSettings.PublishUserActivityInTheOS, Mode=TwoWay}"
+                                      x:Uid="ToggleSwitchGeneral"/>
+                        </customUI:SettingsCardV2>
+                        <customUI:SettingsCardV2 x:Uid="ShowLinkPreviewsForSecurityItemsSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xF6FA;}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.AppSettings.LinkPreviewsForSecurityMeasure, Mode=TwoWay}"
+                                          x:Uid="ToggleSwitchGeneral"/>
+                        </customUI:SettingsCardV2>
+                        <customUI:SettingsCardV2 x:Uid="StickyHeadersForListViewsSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xE879;}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.AppSettings.StickyHeadersForListViews, Mode=TwoWay}"
+                                          x:Uid="ToggleSwitchGeneral"/>
+                        </customUI:SettingsCardV2>
+
+                        <customUI:SettingsCardV2 x:Uid="AppCloseConfirmationSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xE7E8;}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.AppSettings.AppCloseConfirmationBehavior, Mode=TwoWay}">
+                                <ComboBoxItem x:Uid="AppCloseConfirmationOptionAlwaysSettingsCard" />
+                                <ComboBoxItem x:Uid="AppCloseConfirmationOptionAutomaticSettingsCard" />
+                                <ComboBoxItem x:Uid="AppCloseConfirmationOptionNeverSettingsCard" />
+                            </ComboBox>
+                        </customUI:SettingsCardV2>
+
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!-- Language section -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" x:Uid="LanguageTextBlock" />
+                <controls:SettingsExpander IsExpanded="True" x:Uid="LanguageSettingSettingsExpander" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
+
+                    <controls:SettingsExpander.Items>
+                        <customUI:SettingsCardV2 x:Uid="LanguageSelectionSettingsCard"
+                                             HeaderIcon="{ui:FontIcon Glyph=&#xF69E;}">
+                            <ComboBox ItemsSource="{x:Bind ViewModel.LanguageOptions}" SelectedIndex="{x:Bind ViewModel.LanguageComboBoxSelectedIndex, Mode=TwoWay}">
+
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="CC:LanguageOption">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <Ellipse Width="24" Height="24">
+                                                <Ellipse.Fill>
+                                                    <ImageBrush ImageSource="{x:Bind Image}" Stretch="UniformToFill"/>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <TextBlock Text="{x:Bind Name}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+
+                            </ComboBox>
+                        </customUI:SettingsCardV2>
+                        <customUI:SettingsCardV2 x:Uid="UIFlowDirectionSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xE9AB;}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.UIFlowDirectionToggleSwitch, Mode=TwoWay}"
+                                      Toggled="{x:Bind ViewModel.FlowDirectionToggleSwitch_Toggled}"
+                                      x:Uid="UIFlowDirectionToggleSwitch" />
+                        </customUI:SettingsCardV2>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!-- Sound section -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" x:Uid="Sound" />
+                <customUI:SettingsCardV2 x:Uid="AppSoundSettingSettingsCard" HeaderIcon="{ui:FontIcon Glyph=&#xEC4F;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.AppSettings.SoundSetting, Mode=TwoWay}"
+                              x:Uid="ToggleSwitchGeneral"/>
+                </customUI:SettingsCardV2>
+
+                <!-- About section -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                       x:Uid="About" />
+                <controls:SettingsExpander Header="System Security Studio"
+                                       IsExpanded="True"
+                                       Description="{x:Bind ViewModel.CopyRightSettingsExpanderDescription, Mode=OneTime}"
+                                       HeaderIcon="{ui:BitmapIcon Source=ms-appx:///Assets/Square44x44Logo.altform-lightunplated_targetsize-256.png}">
+                    <TextBlock Text="{x:Bind ViewModel.VersionTextBlockText, Mode=OneTime}" win:IsTextSelectionEnabled="True"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
+
+                            <controls:WrapPanel Margin="-12,0,0,0" Orientation="Horizontal" HorizontalSpacing="13">
+
+                                <StackPanel Orientation="Vertical">
+                                    <HyperlinkButton x:Uid="GitHubRepoHyperLinkButton" NavigateUri="https://github.com/OFFSECHQ/windows-security-studio" />
+                                    <HyperlinkButton x:Uid="MicrosoftStorePageHyperLinkButton" NavigateUri="https://apps.microsoft.com/detail/9P7GGFL7DX57" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical">
+                                    <HyperlinkButton x:Uid="SpyNetGirlWebsiteHyperLinkButton" NavigateUri="https://spynetgirl.github.io/" />
+                                    <HyperlinkButton x:Uid="YouTubeChannelHyperLinkButton" NavigateUri="https://www.youtube.com/@hotcakex" />
+                                    <HyperlinkButton x:Uid="DonationHyperLinkButton" FontWeight="ExtraBold" NavigateUri="https://github.com/OFFSECHQ/windows-security-studio?tab=readme-ov-file#donations-" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical">
+                                    <HyperlinkButton Content="X" NavigateUri="https://x.com/CyberCakeX" />
+                                </StackPanel>
+
+                            </controls:WrapPanel>
+
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <controls:WrapPanel Orientation="Horizontal" HorizontalSpacing="10" VerticalSpacing="10" Margin="0,8,0,0">
+                    <HyperlinkButton x:Uid="SendFeedbackHyperLinkButton" NavigateUri="https://github.com/OFFSECHQ/windows-security-studio/issues/new/choose">
+                        <HyperlinkButton.ContentTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon Glyph="&#xED15;" FontSize="16"/>
+                                    <TextBlock Text="{x:Bind}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </HyperlinkButton.ContentTemplate>
+                    </HyperlinkButton>
+
+                    <HyperlinkButton x:Uid="Icons8WebsiteHyperLinkButton" NavigateUri="https://icons8.com">
+                        <HyperlinkButton.ContentTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon Glyph="&#xED58;" FontSize="16"/>
+                                    <TextBlock Text="{x:Bind}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </HyperlinkButton.ContentTemplate>
+                    </HyperlinkButton>
+
+                    <HyperlinkButton x:Uid="SourceCodeHyperLinkButton" NavigateUri="https://github.com/OFFSECHQ/windows-security-studio/tree/main/System%20Security%20Studio">
+                        <HyperlinkButton.ContentTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon Glyph="&#xE943;" FontSize="16"/>
+                                    <TextBlock Text="{x:Bind}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </HyperlinkButton.ContentTemplate>
+                    </HyperlinkButton>
+
+                </controls:WrapPanel>
+
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</Page>

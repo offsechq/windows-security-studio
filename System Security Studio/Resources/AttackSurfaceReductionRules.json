@@ -1,0 +1,411 @@
+[
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR",
+        "ValueName": "ExploitGuard_ASR_Rules",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "ExploitGuard_ASR_Rules-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-227b-7f96-a07a-3cc13102be05"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "56a863a9-875e-4185-98a7-b882c64b5ce5",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "56a863a9-875e-4185-98a7-b882c64b5ce5-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2283-7583-9d3d-eef55fc17142"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2283-7aef-aada-c8eb7f1b003b"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "d4f940ab-401b-4efc-aadc-ad5f3c50688a",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "d4f940ab-401b-4efc-aadc-ad5f3c50688a-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2283-792e-8d1c-98ade50b6ce5"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2284-7370-8376-2e59d4907a56"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "be9ba2d9-53ea-4cdc-84e5-9b1eeee46550",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "be9ba2d9-53ea-4cdc-84e5-9b1eeee46550-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2284-7fcf-a1c2-71b08f5a598d"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "01443614-cd74-433a-b99e-2ecdc07bfc25",
+        "Type": 1,
+        "Size": 4,
+        "Data": "NgAAAA==",
+        "RegValue": "6",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "01443614-cd74-433a-b99e-2ecdc07bfc25-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-2284-796c-8eac-268868014e05"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "5beb7efe-fd9a-4556-801d-275e5ffc04cc",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "5beb7efe-fd9a-4556-801d-275e5ffc04cc-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2284-7171-8e55-2fd43b1d9e5b"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "d3e037e1-3eb8-44c8-a917-57927947596d",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "d3e037e1-3eb8-44c8-a917-57927947596d-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2284-7ffe-8cb2-d4f0ebf8d250"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "3b576869-a4ec-4529-8536-b80a7769e899",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "3b576869-a4ec-4529-8536-b80a7769e899-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2285-7933-bef9-6d56b4390648"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2285-7218-89fc-79d12cb1943f"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "26190899-1602-49e8-8b27-eb1d0a1ce869",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "26190899-1602-49e8-8b27-eb1d0a1ce869-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2285-7c27-8822-10b47a92ae8e"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "e6db77e5-3df2-4cf1-b95a-636979351e5b",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "e6db77e5-3df2-4cf1-b95a-636979351e5b-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2285-7d1b-b362-d0d5203607b1"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "d1e49aac-8f56-4280-b9ba-993a6d77406c",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "d1e49aac-8f56-4280-b9ba-993a6d77406c-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            2,
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-2285-7856-afa4-39b8afe0b180"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2286-71de-b501-0114ce160a30"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "92e97fa1-2edf-4476-bdd6-9dd0b4dddc7b",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "92e97fa1-2edf-4476-bdd6-9dd0b4dddc7b-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2286-7d14-8547-ae6671582dd4"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "c1db55ab-c21a-4637-bb3f-a12568109d35",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "c1db55ab-c21a-4637-bb3f-a12568109d35-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2287-7980-8f29-77221ade4a59"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "33ddedf1-c6e0-47cb-833e-de6133960387",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "33ddedf1-c6e0-47cb-833e-de6133960387-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-2287-7228-9b82-ca1c483e3d05"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "c0033c00-d16d-4114-a5a0-dc9b3a7d2ceb",
+        "Type": 1,
+        "Size": 4,
+        "Data": "NgAAAA==",
+        "RegValue": "6",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "c0033c00-d16d-4114-a5a0-dc9b3a7d2ceb-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            2,
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-2287-7d1b-81e1-e3eeea8cf336"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\ASR\\Rules",
+        "ValueName": "a8f5898e-1dc8-49a9-9878-85004b8a61e6",
+        "Type": 1,
+        "Size": 4,
+        "Data": "MQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "a8f5898e-1dc8-49a9-9878-85004b8a61e6-ASR",
+        "URL": "https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-reference",
+        "Category": 3,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2288-73df-a213-f4491efbabf8"
+    }
+]

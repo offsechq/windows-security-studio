@@ -1,0 +1,341 @@
+[
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge\\Recommended",
+        "ValueName": "BlockThirdPartyCookies",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "BlockThirdPartyCookiesRecommended-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245c-7915-80a8-42e06eb15599"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "ValueName": "DnsOverHttpsMode",
+        "Type": 1,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "automatic",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DnsOverHttpsModeEdge-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-245d-70b5-b821-46edb81a7afd"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "ValueName": "EncryptedClientHelloEnabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "EncryptedClientHelloEnabledEdge-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245d-7870-a90c-8b9e89bede12"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "ValueName": "BasicAuthOverHttpEnabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "BasicAuthOverHttpEnabledEdge-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-245d-7cd6-bb97-2d07cb3b4d9b"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "ValueName": "ExperimentationAndConfigurationServiceControl",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "2",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "ExperimentationAndConfigurationServiceControlEdge-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            0,
+            1,
+            2,
+            3,
+            4
+        ],
+        "ID": "019a8dfa-245d-7adf-90ec-8be2fc3205a8"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "ValueName": "AudioSandboxEnabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "AudioSandboxEnabledEdge-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-245e-7e24-ba82-cab3ba9957df"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge\\Recommended",
+        "ValueName": "DefaultShareAdditionalOSRegionSetting",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "2",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DefaultShareAdditionalOSRegionSettingEdge-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            0,
+            1,
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245e-7ebe-b8c9-84a2aa63fa7e"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge\\TLSCipherSuiteDenyList",
+        "ValueName": "1",
+        "Type": 1,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0xc013",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "TLSCipherSuiteDenyList1-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245e-72fe-bdc3-b344f1830eb9"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge\\TLSCipherSuiteDenyList",
+        "ValueName": "2",
+        "Type": 1,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0xc014",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "TLSCipherSuiteDenyList2-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245e-71f0-a20f-07a85b192eb3"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge\\TLSCipherSuiteDenyList",
+        "ValueName": "3",
+        "Type": 1,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0x0035",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "TLSCipherSuiteDenyList3-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245e-7d3e-9bec-fcfd217fdc9e"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge\\TLSCipherSuiteDenyList",
+        "ValueName": "4",
+        "Type": 1,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0x002f",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "TLSCipherSuiteDenyList4-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245f-721b-8ac9-5d8b3e511cba"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge\\TLSCipherSuiteDenyList",
+        "ValueName": "5",
+        "Type": 1,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0x009c",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "TLSCipherSuiteDenyList5-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245f-7942-a7bc-e23b734b1818"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge\\TLSCipherSuiteDenyList",
+        "ValueName": "6",
+        "Type": 1,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0x009d",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "TLSCipherSuiteDenyList6-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245f-7277-bba9-451f218089da"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "ValueName": "DefaultWebUsbGuardSetting",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "2",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DefaultWebUsbGuardSettingEdge-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-245f-7f71-ac20-65ce6c7a2658"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "ValueName": "DefaultWindowManagementSetting",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "2",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DefaultWindowManagementSettingEdge-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-245f-7346-b42e-c77f0f111436"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "ValueName": "DynamicCodeSettings",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DynamicCodeSettingsEdge-Edge",
+        "URL": "https://learn.microsoft.com/deployedge/configure-edge-with-mdm",
+        "Category": 14,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2460-70c9-8579-bfcf1b4a6122"
+    }
+]

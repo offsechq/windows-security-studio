@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<Version>$(FileVersion)</Version>
+		<FileVersion>1.0.0.0</FileVersion>
+		<AssemblyVersion>$(FileVersion)</AssemblyVersion>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<StackTraceSupport>false</StackTraceSupport>
+		<PublishAot>True</PublishAot>
+		<PublishTrimmed>True</PublishTrimmed>
+		<TrimMode>full</TrimMode>
+		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+		<SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
+		<ILLinkTreatWarningsAsErrors>true</ILLinkTreatWarningsAsErrors>
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
+		<MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+		<OptimizationPreference>Speed</OptimizationPreference>
+		<Title>Partner Center</Title>
+		<Copyright>Violet Hansen</Copyright>
+		<Description>Partner Center</Description>
+		<DebugType>none</DebugType>
+		<PackageTags>Partner Center, Microsoft</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="runtime.win-arm64.Microsoft.DotNet.ILCompiler" Version="10.0.2" />
+		<PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler" Version="10.0.2" />
+	</ItemGroup>
+
+</Project>
