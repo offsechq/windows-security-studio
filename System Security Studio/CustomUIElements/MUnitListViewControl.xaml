@@ -1,0 +1,651 @@
+<UserControl
+    x:Class="AppControlManager.CustomUIElements.MUnitListViewControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppControlManager.CustomUIElements"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:protect="using:HardenSystemSecurity.Protect"
+    xmlns:ani="using:CommunityToolkit.WinUI.Animations"
+    xmlns:customUI="using:AppControlManager.CustomUIElements"
+    Loaded="{x:Bind MUnitListViewControl_Loaded}"
+    Unloaded="{x:Bind MUnitListViewControl_Unloaded}"
+    xmlns:animatedvisuals="using:AnimatedVisuals">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <!-- For the ListView Grouping -->
+            <CollectionViewSource x:Name="ProtectionCategoriesCollectionViewSource"
+                          Source="{x:Bind ListViewItemsSource, Mode=OneWay}"
+                          IsSourceGrouped="True"/>
+
+            <!-- Defines a single MUnit that is displayed in the ListView -->
+            <DataTemplate x:Key="MUnitListViewTemplate"
+                          x:DataType="protect:MUnit">
+                <Border BorderThickness="1"
+                        BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                        CornerRadius="8"
+                        Padding="12"
+                        Margin="0,4,0,4"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                    <ani:Implicit.HideAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                        <ani:TranslationAnimation Duration="0:0:0.3" To="0,-20,0"/>
+                    </ani:Implicit.HideAnimations>
+                    <ani:Implicit.ShowAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                        <ani:TranslationAnimation Duration="0:0:0.5" From="0,-20,0" To="0,0,0"/>
+                    </ani:Implicit.ShowAnimations>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Status Indicator and SubCategory Label -->
+                        <Grid Grid.Row="0" Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Status Indicator -->
+                            <customUI:StatusIndicatorV2 Grid.Column="0"
+                                            Status="{x:Bind StatusState, Mode=OneWay}"
+                                            VerticalAlignment="Center"
+                                            Margin="12,0,12,0"/>
+
+                            <!-- SubCategory Label (only if not null) -->
+                            <Border Grid.Column="2"
+                                    BorderThickness="1"
+                                    CornerRadius="12"
+                                    Padding="8,4"
+                                    VerticalAlignment="Center"
+                                    Visibility="{x:Bind HasSubCategory, Mode=OneWay}">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#0f0c29" Offset="0"/>
+                                        <GradientStop Color="#302b63" Offset="0.5"/>
+                                        <GradientStop Color="#24243e" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <TextBlock Text="{x:Bind SubCategoryName, Mode=OneWay}"
+                               FontSize="11"
+                               FontWeight="SemiBold"
+                               Foreground="White"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- Security Measure Name -->
+                        <TextBlock Grid.Row="1"
+                       Text="{x:Bind Name}"
+                       ToolTipService.ToolTip="{x:Bind Name}"
+                       AutomationProperties.HelpText="{x:Bind Name}"
+                       TextWrapping="WrapWholeWords"
+                       x:Phase="1"
+                       Style="{ThemeResource SubtitleTextBlockStyle}"
+                       Margin="0,0,0,8"/>
+
+                        <!-- Separator -->
+                        <Border Grid.Row="2"
+                                Height="1"
+                                Background="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                                Margin="0,0,0,12"/>
+
+                        <!-- Action Buttons Row and LinkButton -->
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Link Button on the left -->
+                            <customUI:LinkButtonV2 Grid.Column="0"
+                                       LinkUrl="{x:Bind URL}"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Visibility="{x:Bind HasURL, Mode=OneWay}"/>
+
+                            <!-- Intent circles (auto-collapses when none) -->
+                            <customUI:IntentCircles Grid.Column="1"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    Margin="12,0,0,0"
+                                                    ItemsSource="{x:Bind DeviceIntents}"/>
+
+                            <!-- Action Buttons on the right -->
+                            <StackPanel Grid.Column="2"
+                                        Orientation="Horizontal"
+                                        Spacing="8"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center">
+
+                                <Button Click="{x:Bind ApplyMUnit}">
+                                    <ani:Implicit.HideAnimations>
+                                        <ani:ScaleAnimation Duration="0:0:0.2" To="0.9"/>
+                                    </ani:Implicit.HideAnimations>
+                                    <ani:Implicit.ShowAnimations>
+                                        <ani:ScaleAnimation Duration="0:0:0.2" From="0.9" To="1.0"/>
+                                    </ani:Implicit.ShowAnimations>
+                                    <StackPanel Orientation="Horizontal" Spacing="4">
+
+                                        <AnimatedIcon Height="18" Width="18">
+                                            <AnimatedIcon.Source>
+                                                <animatedvisuals:Spinner/>
+                                            </AnimatedIcon.Source>
+                                        </AnimatedIcon>
+
+                                        <TextBlock x:Uid="ApplyText"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Click="{x:Bind VerifyMUnit}">
+                                    <ani:Implicit.HideAnimations>
+                                        <ani:ScaleAnimation Duration="0:0:0.2" To="0.9"/>
+                                    </ani:Implicit.HideAnimations>
+                                    <ani:Implicit.ShowAnimations>
+                                        <ani:ScaleAnimation Duration="0:0:0.2" From="0.9" To="1.0"/>
+                                    </ani:Implicit.ShowAnimations>
+                                    <StackPanel Orientation="Horizontal" Spacing="4">
+
+                                        <AnimatedIcon Height="18" Width="18">
+                                            <AnimatedIcon.Source>
+                                                <animatedvisuals:Verify/>
+                                            </AnimatedIcon.Source>
+                                        </AnimatedIcon>
+
+                                        <TextBlock x:Uid="VerifyText"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Click="{x:Bind RemoveMUnit}">
+                                    <ani:Implicit.HideAnimations>
+                                        <ani:ScaleAnimation Duration="0:0:0.2" To="0.9"/>
+                                    </ani:Implicit.HideAnimations>
+                                    <ani:Implicit.ShowAnimations>
+                                        <ani:ScaleAnimation Duration="0:0:0.2" From="0.9" To="1.0"/>
+                                    </ani:Implicit.ShowAnimations>
+                                    <StackPanel Orientation="Horizontal" Spacing="4">
+
+                                        <AnimatedIcon Height="18" Width="18">
+                                            <AnimatedIcon.Source>
+                                                <animatedvisuals:Caution/>
+                                            </AnimatedIcon.Source>
+                                        </AnimatedIcon>
+
+                                        <TextBlock x:Uid="RemoveText"
+                                                   FontWeight="SemiBold"
+                                                   VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <!-- Control Bar with Search and Buttons -->
+        <Border Grid.Row="0" Margin="0,0,0,5" Style="{StaticResource GridCardStyle}" Padding="10">
+            <ani:Implicit.HideAnimations>
+                <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                <ani:TranslationAnimation Duration="0:0:0.3" To="0,-30,0"/>
+            </ani:Implicit.HideAnimations>
+            <ani:Implicit.ShowAnimations>
+                <ani:OpacityAnimation Duration="0:0:0.6" From="0.0" To="1.0"/>
+                <ani:TranslationAnimation Duration="0:0:0.6" From="0,-30,0" To="0,0,0"/>
+            </ani:Implicit.ShowAnimations>
+
+            <controls:WrapPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                HorizontalSpacing="15"
+                                VerticalSpacing="15">
+
+                <!-- Search Box -->
+                <Border MinWidth="200">
+                    <ani:Implicit.HideAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.3" To="0.95"/>
+                    </ani:Implicit.HideAnimations>
+                    <ani:Implicit.ShowAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.5" From="0.95" To="1.0"/>
+                    </ani:Implicit.ShowAnimations>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <FontIcon Grid.Column="0"
+                                  FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                  Glyph="&#xE721;"
+                                  FontSize="16"
+                                  VerticalAlignment="Center"
+                                  Margin="8,0,8,0"/>
+
+                        <TextBox Grid.Column="1"
+                                 x:Name="SearchBox"
+                                 IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                                 x:Uid="SearchSecurityMeasuresPlaceHolder"
+                                 Text="{x:Bind GetSearchKeyword(), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, BindBack=SetSearchKeyword}"
+                                 VerticalAlignment="Center"
+                                 BorderThickness="0"
+                                 Margin="0,0,8,0"/>
+                    </Grid>
+                </Border>
+
+                <!-- Total and Filtered Count Button with Status Details Flyout -->
+                <Button x:Name="CountsButton"
+                        Background="{ThemeResource SubtleFillColorSecondaryBrush}"
+                        CornerRadius="6"
+                        Padding="12,8"
+                        BorderThickness="0">
+                    <ani:Implicit.HideAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.3" To="0.95"/>
+                    </ani:Implicit.HideAnimations>
+                    <ani:Implicit.ShowAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.5" From="0.95" To="1.0"/>
+                    </ani:Implicit.ShowAnimations>
+
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <TextBlock VerticalAlignment="Center"
+                                   FontSize="14"
+                                   FontWeight="SemiBold">
+                            <Run x:Uid="TotalText"/>
+                            <Run Text="{x:Bind ViewModel.TotalItemsCount, Mode=OneWay}"/>
+                            <Run Text=" | Displayed: "/>
+                            <Run Text="{x:Bind ViewModel.FilteredItemsCount, Mode=OneWay}"/>
+                        </TextBlock>
+
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                  Glyph="&#xE70D;"
+                                  FontSize="12"
+                                  VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Button.Flyout>
+                        <Flyout Placement="Bottom">
+                            <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                    CornerRadius="8"
+                                    Padding="16"
+                                    MinWidth="280">
+                                <StackPanel Spacing="12">
+
+                                    <!-- Flyout Header -->
+                                    <TextBlock x:Uid="StatusOverviewText"
+                                               FontSize="16"
+                                               FontWeight="SemiBold"
+                                               HorizontalAlignment="Center"
+                                               Margin="0,0,0,8"/>
+
+                                    <!-- Applied Status (checkable) -->
+                                    <CheckBox IsChecked="{x:Bind GetShowApplied(), Mode=TwoWay, BindBack=SetShowApplied}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Stretch"
+                                              HorizontalContentAlignment="Stretch">
+                                        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Ellipse Grid.Column="0"
+                                                     Width="12"
+                                                     Height="12"
+                                                     Fill="#28A745"
+                                                     VerticalAlignment="Center"/>
+
+                                            <TextBlock Grid.Column="1"
+                                                       Text="Applied"
+                                                       FontSize="14"
+                                                       VerticalAlignment="Center"
+                                                       Margin="12,0,0,0"/>
+
+                                            <TextBlock Grid.Column="2"
+                                                       Text="{x:Bind ViewModel.AppliedItemsCount, Mode=OneWay}"
+                                                       FontSize="14"
+                                                       FontWeight="SemiBold"
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </CheckBox>
+
+                                    <!-- Not Applied Status (checkable) -->
+                                    <CheckBox IsChecked="{x:Bind GetShowNotApplied(), Mode=TwoWay, BindBack=SetShowNotApplied}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Stretch"
+                                              HorizontalContentAlignment="Stretch">
+                                        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Ellipse Grid.Column="0"
+                                                     Width="12"
+                                                     Height="12"
+                                                     Fill="#DC3545"
+                                                     VerticalAlignment="Center"/>
+
+                                            <TextBlock Grid.Column="1"
+                                                       Text="Not Applied"
+                                                       FontSize="14"
+                                                       VerticalAlignment="Center"
+                                                       Margin="12,0,0,0"/>
+
+                                            <TextBlock Grid.Column="2"
+                                                       Text="{x:Bind ViewModel.NotAppliedItemsCount, Mode=OneWay}"
+                                                       FontSize="14"
+                                                       FontWeight="SemiBold"
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </CheckBox>
+
+                                    <!-- Undetermined Status (N/A) (checkable) -->
+                                    <CheckBox IsChecked="{x:Bind GetShowUndetermined(), Mode=TwoWay, BindBack=SetShowUndetermined}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Stretch"
+                                              HorizontalContentAlignment="Stretch">
+                                        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Ellipse Grid.Column="0"
+                                                     Width="12"
+                                                     Height="12"
+                                                     Fill="#FFC107"
+                                                     VerticalAlignment="Center"/>
+
+                                            <TextBlock Grid.Column="1"
+                                                       Text="Undetermined (N/A)"
+                                                       FontSize="14"
+                                                       VerticalAlignment="Center"
+                                                       Margin="12,0,0,0"/>
+
+                                            <TextBlock Grid.Column="2"
+                                                       Text="{x:Bind ViewModel.UndeterminedItemsCount, Mode=OneWay}"
+                                                       FontSize="14"
+                                                       FontWeight="SemiBold"
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </CheckBox>
+
+                                </StackPanel>
+                            </Border>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+
+                <ProgressRing IsActive="True"
+                              Visibility="{x:Bind ViewModel.ProgressBarVisibility, Mode=OneWay}"
+                              VerticalAlignment="Center">
+                    <ani:Implicit.HideAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.3" To="0.8"/>
+                    </ani:Implicit.HideAnimations>
+                    <ani:Implicit.ShowAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.5" From="0.8" To="1.0"/>
+                    </ani:Implicit.ShowAnimations>
+                </ProgressRing>
+
+                <!-- Apply All Button -->
+                <customUI:AnimatedCancellableButton
+                    x:Uid="AnimatedApplyAllButton"
+                    CancelMethod="{x:Bind ViewModel.ApplyAllCancellableButton.Cancel, Mode=OneWay}"
+                    ExternalOperationInProgress="{x:Bind ViewModel.ApplyAllCancellableButton.IsOperationInProgress, Mode=OneWay}"
+                    ExternalIsCancelState="{x:Bind ViewModel.ApplyAllCancellableButton.IsCancelState, Mode=OneWay}"
+                    ExternalIsCancellingState="{x:Bind ViewModel.ApplyAllCancellableButton.IsCancellingState, Mode=OneWay}"
+                    ExternalIsAnimating="{x:Bind ViewModel.ApplyAllCancellableButton.IsAnimating, Mode=OneWay}"
+                    ExternalButtonContent="{x:Bind ViewModel.ApplyAllCancellableButton.ButtonContent, Mode=OneWay}"
+                    ExternalOriginalText="{x:Bind ViewModel.ApplyAllCancellableButton.OriginalText, Mode=OneWay}"
+                    ExternalInternalIsCancelState="{x:Bind ViewModel.ApplyAllCancellableButton.InternalIsCancelState, Mode=OneWay}"
+                    ExternalInternalIsCancellingState="{x:Bind ViewModel.ApplyAllCancellableButton.InternalIsCancellingState, Mode=OneWay}"
+                    ExternalInternalIsAnimating="{x:Bind ViewModel.ApplyAllCancellableButton.InternalIsAnimating, Mode=OneWay}"
+                    ExternalInternalIsOperationInProgress="{x:Bind ViewModel.ApplyAllCancellableButton.InternalIsOperationInProgress, Mode=OneWay}"
+                    ExternalInternalSuppressExternalClick="{x:Bind ViewModel.ApplyAllCancellableButton.InternalSuppressExternalClick, Mode=OneWay}"
+                    ExternalShadowAnimationRunning="{x:Bind ViewModel.ApplyAllCancellableButton.ShadowAnimationRunning, Mode=OneWay}"
+                    ExternalOperationStarted="{x:Bind ViewModel.ApplyAllCancellableButton.OperationStarted, Mode=OneWay}"
+                    Click="{x:Bind ApplyAllMUnits}"
+                    IsEnabled="{x:Bind ComputeApplyAllEnabled(ViewModel.ApplyAllCancellableButton.IsOperationInProgress, ViewModel.VerifyAllCancellableButton.IsOperationInProgress, ViewModel.RemoveAllCancellableButton.IsOperationInProgress, AnyItemOperationInProgress), Mode=OneWay}">
+
+                    <ani:Implicit.HideAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.3" To="0.9"/>
+                    </ani:Implicit.HideAnimations>
+                    <ani:Implicit.ShowAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.5" From="0.9" To="1.0"/>
+                    </ani:Implicit.ShowAnimations>
+
+                </customUI:AnimatedCancellableButton>
+
+                <!-- Verify All Button -->
+                <customUI:AnimatedCancellableButton
+                    x:Uid="VerifyAllButton"
+                    CancelMethod="{x:Bind ViewModel.VerifyAllCancellableButton.Cancel, Mode=OneWay}"
+                    ExternalOperationInProgress="{x:Bind ViewModel.VerifyAllCancellableButton.IsOperationInProgress, Mode=OneWay}"
+                    ExternalIsCancelState="{x:Bind ViewModel.VerifyAllCancellableButton.IsCancelState, Mode=OneWay}"
+                    ExternalIsCancellingState="{x:Bind ViewModel.VerifyAllCancellableButton.IsCancellingState, Mode=OneWay}"
+                    ExternalIsAnimating="{x:Bind ViewModel.VerifyAllCancellableButton.IsAnimating, Mode=OneWay}"
+                    ExternalButtonContent="{x:Bind ViewModel.VerifyAllCancellableButton.ButtonContent, Mode=OneWay}"
+                    ExternalOriginalText="{x:Bind ViewModel.VerifyAllCancellableButton.OriginalText, Mode=OneWay}"
+                    ExternalInternalIsCancelState="{x:Bind ViewModel.VerifyAllCancellableButton.InternalIsCancelState, Mode=OneWay}"
+                    ExternalInternalIsCancellingState="{x:Bind ViewModel.VerifyAllCancellableButton.InternalIsCancellingState, Mode=OneWay}"
+                    ExternalInternalIsAnimating="{x:Bind ViewModel.VerifyAllCancellableButton.InternalIsAnimating, Mode=OneWay}"
+                    ExternalInternalIsOperationInProgress="{x:Bind ViewModel.VerifyAllCancellableButton.InternalIsOperationInProgress, Mode=OneWay}"
+                    ExternalInternalSuppressExternalClick="{x:Bind ViewModel.VerifyAllCancellableButton.InternalSuppressExternalClick, Mode=OneWay}"
+                    ExternalShadowAnimationRunning="{x:Bind ViewModel.VerifyAllCancellableButton.ShadowAnimationRunning, Mode=OneWay}"
+                    ExternalOperationStarted="{x:Bind ViewModel.VerifyAllCancellableButton.OperationStarted, Mode=OneWay}"
+                    Click="{x:Bind VerifyAllMUnits}"
+                    IsEnabled="{x:Bind ComputeVerifyAllEnabled(ViewModel.VerifyAllCancellableButton.IsOperationInProgress, ViewModel.ApplyAllCancellableButton.IsOperationInProgress, ViewModel.RemoveAllCancellableButton.IsOperationInProgress, AnyItemOperationInProgress), Mode=OneWay}">
+
+                    <ani:Implicit.HideAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.3" To="0.9"/>
+                    </ani:Implicit.HideAnimations>
+                    <ani:Implicit.ShowAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.5" From="0.9" To="1.0"/>
+                    </ani:Implicit.ShowAnimations>
+
+                </customUI:AnimatedCancellableButton>
+
+                <!-- Remove All Button -->
+                <customUI:AnimatedCancellableButton
+                    x:Uid="AnimatedRemoveAllButton"
+                    CancelMethod="{x:Bind ViewModel.RemoveAllCancellableButton.Cancel, Mode=OneWay}"
+                    ExternalOperationInProgress="{x:Bind ViewModel.RemoveAllCancellableButton.IsOperationInProgress, Mode=OneWay}"
+                    ExternalIsCancelState="{x:Bind ViewModel.RemoveAllCancellableButton.IsCancelState, Mode=OneWay}"
+                    ExternalIsCancellingState="{x:Bind ViewModel.RemoveAllCancellableButton.IsCancellingState, Mode=OneWay}"
+                    ExternalIsAnimating="{x:Bind ViewModel.RemoveAllCancellableButton.IsAnimating, Mode=OneWay}"
+                    ExternalButtonContent="{x:Bind ViewModel.RemoveAllCancellableButton.ButtonContent, Mode=OneWay}"
+                    ExternalOriginalText="{x:Bind ViewModel.RemoveAllCancellableButton.OriginalText, Mode=OneWay}"
+                    ExternalInternalIsCancelState="{x:Bind ViewModel.RemoveAllCancellableButton.InternalIsCancelState, Mode=OneWay}"
+                    ExternalInternalIsCancellingState="{x:Bind ViewModel.RemoveAllCancellableButton.InternalIsCancellingState, Mode=OneWay}"
+                    ExternalInternalIsAnimating="{x:Bind ViewModel.RemoveAllCancellableButton.InternalIsAnimating, Mode=OneWay}"
+                    ExternalInternalIsOperationInProgress="{x:Bind ViewModel.RemoveAllCancellableButton.InternalIsOperationInProgress, Mode=OneWay}"
+                    ExternalInternalSuppressExternalClick="{x:Bind ViewModel.RemoveAllCancellableButton.InternalSuppressExternalClick, Mode=OneWay}"
+                    ExternalShadowAnimationRunning="{x:Bind ViewModel.RemoveAllCancellableButton.ShadowAnimationRunning, Mode=OneWay}"
+                    ExternalOperationStarted="{x:Bind ViewModel.RemoveAllCancellableButton.OperationStarted, Mode=OneWay}"
+                    Click="{x:Bind RemoveAllMUnits}"
+                    IsEnabled="{x:Bind ComputeRemoveAllEnabled(ViewModel.RemoveAllCancellableButton.IsOperationInProgress, ViewModel.ApplyAllCancellableButton.IsOperationInProgress, ViewModel.VerifyAllCancellableButton.IsOperationInProgress, AnyItemOperationInProgress), Mode=OneWay}">
+
+                    <ani:Implicit.HideAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.3" To="0.9"/>
+                    </ani:Implicit.HideAnimations>
+                    <ani:Implicit.ShowAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.5" From="0.9" To="1.0"/>
+                    </ani:Implicit.ShowAnimations>
+
+                </customUI:AnimatedCancellableButton>
+
+                <DropDownButton x:Uid="ManageSelectionsDropDownButton">
+                    <ani:Implicit.HideAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.3" To="0.9"/>
+                    </ani:Implicit.HideAnimations>
+                    <ani:Implicit.ShowAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.5" From="0.9" To="1.0"/>
+                    </ani:Implicit.ShowAnimations>
+
+                    <DropDownButton.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                            <MenuFlyoutItem x:Uid="SelectAllMenuFlyoutItem" IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind SelectAllMenuFlyoutItem_Click}">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE8B3;"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+
+                            <MenuFlyoutItem x:Uid="RemoveSelectionsMenuFlyoutItem" IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind RemoveSelectionsMenuFlyoutItem_Click}">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE8E6;"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+
+                            <MenuFlyoutSeparator/>
+
+                            <MenuFlyoutItem x:Uid="ApplySelectedMenuFlyoutItem" IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind ApplySelectedMUnits}" >
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xEC61;"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+
+                            <MenuFlyoutItem x:Uid="VerifySelectedMenuFlyoutItem" IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind VerifySelectedMUnits}" >
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xF0B9;"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+
+                            <MenuFlyoutItem x:Uid="RemoveSelectedMenuFlyoutItem" IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind RemoveSelectedMUnits}" >
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xEDAE;"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+
+                <!-- Export to JSON Button -->
+                <Button x:Uid="ExportToJsonButton"
+                        IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                        Click="{x:Bind ExportToJson_Click}">
+                    <Button.ContentTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon Glyph="&#xE74E;" FontSize="16"/>
+                                <TextBlock Text="{x:Bind}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+
+                <!-- Selected Items Count -->
+                <Border Background="#aa4b6b"
+                        CornerRadius="12"
+                        Padding="12,8">
+                    <ani:Implicit.HideAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.3" To="0.95"/>
+                    </ani:Implicit.HideAnimations>
+                    <ani:Implicit.ShowAnimations>
+                        <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                        <ani:ScaleAnimation Duration="0:0:0.5" From="0.95" To="1.0"/>
+                    </ani:Implicit.ShowAnimations>
+
+                    <TextBlock FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="WhiteSmoke"
+                               VerticalAlignment="Center">
+                        <Run x:Uid="SelectedItemText" />
+                        <Run Text="{x:Bind ViewModel.SelectedItemsCount, Mode=OneWay}"/>
+                    </TextBlock>
+                </Border>
+
+            </controls:WrapPanel>
+        </Border>
+
+        <ListView Grid.Row="1"
+                  x:Name="MainListView"
+                  Loaded="{x:Bind RestoreSelectionFromViewModel}"
+                  CornerRadius="10"
+                  BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                  ItemTemplate="{StaticResource MUnitListViewTemplate}"
+                  ItemsSource="{x:Bind ProtectionCategoriesCollectionViewSource.View, Mode=OneWay}"
+                  SelectionChanged="{x:Bind MainListView_SelectionChanged}"
+                  ContainerContentChanging="{x:Bind MainListView_ContainerContentChanging}"
+                  SelectionMode="Multiple">
+            <ani:Implicit.HideAnimations>
+                <ani:OpacityAnimation Duration="0:0:0.4" To="0.0"/>
+                <ani:TranslationAnimation Duration="0:0:0.4" To="0,20,0"/>
+            </ani:Implicit.HideAnimations>
+            <ani:Implicit.ShowAnimations>
+                <ani:OpacityAnimation Duration="0:0:0.7" From="0.0" To="1.0"/>
+                <ani:TranslationAnimation Duration="0:0:0.7" From="0,20,0" To="0,0,0"/>
+            </ani:Implicit.ShowAnimations>
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!-- Can't use x:Bind here, setting this in the code-behind -->
+                    <!-- https://github.com/microsoft/microsoft-ui-xaml/issues/10070 -->
+                    <ItemsStackPanel />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate x:DataType="protect:GroupInfoListForMUnit">
+                            <Border AutomationProperties.AccessibilityView="Raw">
+                                <ani:Implicit.HideAnimations>
+                                    <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
+                                    <ani:TranslationAnimation Duration="0:0:0.3" To="-20,0,0"/>
+                                </ani:Implicit.HideAnimations>
+                                <ani:Implicit.ShowAnimations>
+                                    <ani:OpacityAnimation Duration="0:0:0.5" From="0.0" To="1.0"/>
+                                    <ani:TranslationAnimation Duration="0:0:0.5" From="-20,0,0" To="0,0,0"/>
+                                </ani:Implicit.ShowAnimations>
+                                <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}" AutomationProperties.AccessibilityView="Raw"/>
+                            </Border>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+
+    </Grid>
+</UserControl>

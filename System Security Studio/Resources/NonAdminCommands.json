@@ -1,0 +1,189 @@
+[
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "ValueName": "HideFileExt",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 1,
+        "PolicyAction": 0,
+        "FriendlyName": "HideFileExt-NonAdmin",
+        "URL": "https://learn.microsoft.com/openspecs/windows_protocols/ms-gppref/3c837e92-016e-4148-86e5-b4f0381a757f",
+        "Category": 17,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-26df-7083-ba8d-99ca9fbc4daa"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "ValueName": "Hidden",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 1,
+        "PolicyAction": 0,
+        "FriendlyName": "Hidden-NonAdmin",
+        "URL": "",
+        "Category": 17,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-26df-7d49-a993-76d0578a1875"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Control Panel\\International\\User Profile",
+        "ValueName": "HttpAcceptLanguageOptOut",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 1,
+        "PolicyAction": 0,
+        "FriendlyName": "HttpAcceptLanguageOptOut-NonAdmin",
+        "URL": "",
+        "Category": 17,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-26df-742b-8086-c962eea4bbb5"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\SearchSettings",
+        "ValueName": "SafeSearchMode",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 1,
+        "PolicyAction": 0,
+        "FriendlyName": "SafeSearchMode-NonAdmin",
+        "URL": "",
+        "Category": 17,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            0,
+            1,
+            2,
+            3,
+            4
+        ],
+        "ID": "019a8dfa-26df-7a28-b9d5-cd82648a1ffc"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Input\\Settings",
+        "ValueName": "EnableHwkbTextPrediction",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 1,
+        "PolicyAction": 0,
+        "FriendlyName": "EnableHwkbTextPrediction-NonAdmin",
+        "URL": "https://learn.microsoft.com/windows/apps/develop/settings/settings-windows-11#typing",
+        "Category": 17,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-26e0-7502-9bfa-c3be4370b067"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Input\\Settings",
+        "ValueName": "MultilingualEnabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 1,
+        "PolicyAction": 0,
+        "FriendlyName": "MultilingualEnabled-NonAdmin",
+        "URL": "https://learn.microsoft.com/windows/apps/develop/settings/settings-windows-11#registry-values-under-hkcusoftwaremicrosoftinputsettings",
+        "Category": 17,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-26e0-7c47-8d35-d41fc189a1f8"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Control Panel\\Accessibility\\StickyKeys",
+        "ValueName": "Flags",
+        "Type": 1,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "506",
+        "Hive": 1,
+        "PolicyAction": 0,
+        "FriendlyName": "Flags-NonAdmin",
+        "URL": "",
+        "Category": 17,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-26e0-77bd-886f-8ff65cd1b994"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\Settings",
+        "ValueName": "NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 1,
+        "PolicyAction": 0,
+        "FriendlyName": "NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK-NonAdmin",
+        "URL": "",
+        "Category": 17,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-26e0-759b-a267-75ee66182fb9"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Clipboard",
+        "ValueName": "EnableClipboardHistory",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 1,
+        "PolicyAction": 0,
+        "FriendlyName": "EnableClipboardHistory-NonAdmin",
+        "URL": "",
+        "Category": 17,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "ID": "019a8dfa-26e0-704f-9f30-389a36c9fe7b"
+    }
+]

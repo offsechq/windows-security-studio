@@ -1,0 +1,27 @@
+[package]
+name = "ResourceValidator"
+version = "1.0.0"
+description = "Performs thorough validation on resource files and related logics. See comments in the code for more info."
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+publish.workspace = true
+rust-version.workspace = true
+documentation.workspace = true
+
+[dependencies]
+regex = "*"
+quick-xml = "*"
+anyhow = "*"
+
+[[bin]]
+# Binary for X64 target.
+name = "ResourceValidator-X64"
+path = "src/main.rs"
+
+[[bin]]
+# Binary for ARM64 target.
+name = "ResourceValidator-ARM64"
+path = "src/main.rs"

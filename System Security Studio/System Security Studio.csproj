@@ -1,0 +1,467 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<!-- https://github.com/microsoft/CsWinRT/blob/master/nuget/Microsoft.Windows.CsWinRT.targets -->
+
+    <!-- Import the build props from the App Control Studio's directory -->
+    <PropertyGroup>
+        <!-- https://learn.microsoft.com/visualstudio/msbuild/customize-by-directory -->
+        <DirectoryBuildPropsPath>..\App Control Studio\Directory.Build.props</DirectoryBuildPropsPath>
+    </PropertyGroup>
+
+    <!-- Imports the Common Core -->
+    <Import Project="$(DirectoryBuildPropsPath)" />
+    <Import Project="..\App Control Studio\eXclude\CommonCore\CommonCore.projitems" Label="Shared" />
+
+	<!-- Global -->
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+
+		<!-- https://learn.microsoft.com/microsoft-edge/webview2/how-to/static -->
+		<WebView2LoaderPreference>Static</WebView2LoaderPreference>
+		<RootNamespace>HardenSystemSecurity</RootNamespace>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<UseWinUI>true</UseWinUI>
+		<EnableMsixTooling>true</EnableMsixTooling>
+
+        <!-- CsWinRT has certain requirements for it: https://github.com/microsoft/CsWinRT
+        Using the latest version as defined in the CsWinRT release notes guarantees that we use the latest CsWinRT projections features.
+
+        https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref -->
+		<WindowsSdkPackageVersion>10.0.26100.81</WindowsSdkPackageVersion>
+
+		<!--
+        By default .NET runtimes are contained in the MSIX. This line will also include the WindowsAppSDK in the MSIX file
+        so that the App will be installable on any system that neither has the .NET runtime nor the latest AppSDK
+
+        Without this, we'd have to download the latest SDK and install it manually on the user's system, which will add the relevant packages
+        and satisfy the requirements of the MSIX installer.
+        https://learn.microsoft.com/windows/apps/windows-app-sdk/downloads
+        -->
+		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+		<Description>System Security Studio application can secure and harden your system against advanced threats using security measures provided by Microsoft and already available in the Windows OS.</Description>
+		<PackageTags>System Security Studio, Harden, Windows, Firewall, Security, BitLocker, OFFSECHQ</PackageTags>
+		<PackageReleaseNotes>https://github.com/OFFSECHQ/windows-security-studio/releases</PackageReleaseNotes>
+
+		<!-- Automatically created for packing -->
+		<!-- https://learn.microsoft.com/windows/msix/app-installer/create-appinstallerfile-vs -->
+		<GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+		<AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+		<!-- This specifies what hashing algorithm must be used for the certificate that will sign the MSIX package -->
+		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+		<AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+
+		<!-- Defining custom directory in the root directory to be created if it doesn't exist. MSIX package after packing will be stored there -->
+		<!-- Defining it in each publish profile -->
+		<!-- <AppxPackageDir>MSIXOutputX64\</AppxPackageDir> -->
+
+		<AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
+		<GenerateTestArtifacts>True</GenerateTestArtifacts>
+
+		<!-- We create the bundle ourselves -->
+		<AppxBundle>Never</AppxBundle>
+
+		<AppxBundlePlatforms>x64</AppxBundlePlatforms>
+		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+		<AssemblyName>HardenSystemSecurity</AssemblyName>
+		<!-- https://learn.microsoft.com/dotnet/core/deploying/native-aot/optimizing -->
+
+
+		<Version>1.0.0.0</Version>
+		<FileVersion>$(Version)</FileVersion>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<StartupObject>HardenSystemSecurity.Program</StartupObject>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Copyright>© 2024-Present</Copyright>
+		<Title>System Security Studio</Title>
+
+		<!-- https://learn.microsoft.com/dotnet/standard/garbage-collection/workstation-server-gc -->
+		<!-- https://learn.microsoft.com/dotnet/standard/garbage-collection/background-gc -->
+		<!-- https://learn.microsoft.com/dotnet/core/runtime-config/garbage-collector -->
+
+		<!-- They double the memory usage of the app!
+            <ServerGarbageCollection>true</ServerGarbageCollection>
+            <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+        -->
+	</PropertyGroup>
+
+	<ItemGroup>
+		<DirectPInvoke Include="USER32" />
+		<DirectPInvoke Include="ADVAPI32" />
+		<DirectPInvoke Include="OLE32" />
+		<DirectPInvoke Include="NTDLL" />
+		<DirectPInvoke Include="BCRYPT" />
+	</ItemGroup>
+
+	<!-- Only for Debug -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+
+		<EnableXAMLDiagnostics>true</EnableXAMLDiagnostics>
+		<NuGetAudit>false</NuGetAudit>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+
+		<!--
+            https://learn.microsoft.com/visualstudio/code-quality/disable-code-analysis
+            This project utilizes extensive and comprehensive analyzers that can take a lot of time to complete.
+            So we disable them for debug/design time and only run them during release configuration.
+        -->
+		<RunAnalyzers>false</RunAnalyzers>
+
+	</PropertyGroup>
+
+	<!-- Only for Release -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+
+		<NuGetAudit>true</NuGetAudit>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+		<!-- There should be absolutely no trim warnings before this can be enabled
+        Otherwise there is no guarantee that the app will work as expected at all times -->
+		<!-- https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options -->
+		<PublishTrimmed>True</PublishTrimmed>
+		<TrimMode>full</TrimMode>
+		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+		<SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
+		<ILLinkTreatWarningsAsErrors>true</ILLinkTreatWarningsAsErrors>
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
+		<MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+
+		<!--
+        Will cause the "Fold identical method bodies" feature to be implicitly enabled which can also be enabled by supplying "- -methodbodyfolding" to the ILC.exe .
+        It also won't use "System.Private.StackTraceMetadata" during static code gen; supplying "- -methodbodyfolding" to the ILC.exe would not have this effect.
+        Compared to that parameter, this option reduces package size even more but removes stack trace info.
+
+        If we use "- -methodbodyfolding" parameter of the ILC.exe only, the stack traces will sometimes be nonsensical,
+        because they will have methods we're not calling (they got folded with something we're actually calling)
+
+        This is the only suported way to enable folding. Disabling stack traces means I don't care about stack, feel free to fold method bodies.
+        -->
+		<StackTraceSupport>true</StackTraceSupport>
+
+		<PublishAot>True</PublishAot>
+		<OptimizationPreference>Speed</OptimizationPreference>
+
+		<!-- https://learn.microsoft.com/dotnet/fundamentals/apicompat/package-validation/overview -->
+		<EnablePackageValidation>true</EnablePackageValidation>
+		<EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
+		<EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
+
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<NuGetAuditMode>all</NuGetAuditMode>
+		<NuGetAuditLevel>low</NuGetAuditLevel>
+		<DocumentationFile>HardenSystemSecurityAPIDocumentation.xml</DocumentationFile>
+
+		<!-- Don't need this -->
+		<GenerateTemporaryStoreCertificate>False</GenerateTemporaryStoreCertificate>
+
+		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+
+		<!-- https://learn.microsoft.com/dotnet/core/project-sdk/msbuild-props#analysismodecategory -->
+		<AnalysisModeDocumentation>All</AnalysisModeDocumentation>
+		<AnalysisModeGlobalization>All</AnalysisModeGlobalization>
+		<AnalysisModePerformance>All</AnalysisModePerformance>
+		<AnalysisModeInteroperability>All</AnalysisModeInteroperability>
+
+	</PropertyGroup>
+
+	<!-- Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK NuGet
+    package has not yet been restored. -->
+	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+		<ProjectCapability Include="Msix" />
+	</ItemGroup>
+
+	<!-- Code reuse from other projects -->
+	<ItemGroup>
+		<Compile Include="..\App Control Studio\App.xaml.cs" Link="App.xaml.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\AnimatedCancellableButton.cs" Link="CustomUIElements\AnimatedCancellableButton.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\ButtonV2.cs" Link="CustomUIElements\ButtonV2.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\ColorRadialGaugeV2.cs" Link="CustomUIElements\ColorRadialGaugeV2.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\ContentDialogV2.cs" Link="CustomUIElements\ContentDialogV2.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\InfoBarV2.cs" Link="CustomUIElements\InfoBarV2.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\ListViewV2.cs" Link="CustomUIElements\ListViewV2.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\MenuFlyoutV2.cs" Link="CustomUIElements\MenuFlyoutV2.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\SettingsCardV2.cs" Link="CustomUIElements\SettingsCardV2.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\SettingsCardV3.cs" Link="CustomUIElements\SettingsCardV3.cs" />
+		<Compile Include="..\App Control Studio\CustomUIElements\StickyHeaderBehaviorV2.cs" Link="CustomUIElements\StickyHeaderBehaviorV2.cs" />
+		<Compile Include="..\App Control Studio\IncrementalCollection\GenericIncrementalCollection.cs" Link="IncrementalCollection\GenericIncrementalCollection.cs" />
+		<Compile Include="..\App Control Studio\IncrementalCollection\IncrementalCollection.cs" Link="IncrementalCollection\IncrementalCollection.cs" />
+		<Compile Include="..\App Control Studio\MainWindow.xaml.cs" Link="MainWindow.xaml.cs" />
+		<Compile Include="..\App Control Studio\Others\AppUpdate.cs" Link="Others\AppUpdate.cs" />
+		<Compile Include="..\App Control Studio\Others\EventLogUtility.cs" Link="Others\EventLogUtility.cs" />
+		<Compile Include="..\App Control Studio\Others\ListViewHelper-Shared.cs" Link="Others\ListViewHelper-Shared.cs" />
+		<Compile Include="..\App Control Studio\Others\UniqueStringObservableCollection.cs" Link="Others\UniqueStringObservableCollection.cs" />
+		<Compile Include="..\App Control Studio\Others\UpdateAvailableEventArgs.cs" Link="Others\UpdateAvailableEventArgs.cs" />
+		<Compile Include="..\App Control Studio\Others\UpdateCheckResponse.cs" Link="Others\UpdateCheckResponse.cs" />
+		<Compile Include="..\App Control Studio\Others\AnimatedCancellableButtonInitializer.cs" Link="Others\AnimatedCancellableButtonInitializer.cs" />
+		<Compile Include="..\App Control Studio\Others\StagingArea.cs" Link="Others\StagingArea.cs" />
+		<Compile Include="..\App Control Studio\Pages\GitHubDocumentation.xaml.cs" Link="Pages\GitHubDocumentation.xaml.cs" />
+		<Compile Include="..\App Control Studio\Pages\Home.xaml.cs" Link="Pages\Home.xaml.cs" />
+		<Compile Include="..\App Control Studio\Pages\Logs.xaml.cs" Link="Pages\Logs.xaml.cs" />
+		<Compile Include="..\App Control Studio\Pages\Settings.xaml.cs" Link="Pages\Settings.xaml.cs" />
+		<Compile Include="..\App Control Studio\ViewModels\HomeVM.cs" Link="ViewModels\HomeVM.cs" />
+		<Compile Include="..\App Control Studio\ViewModels\LogsVM.cs" Link="ViewModels\LogsVM.cs" />
+		<Compile Include="..\App Control Studio\ViewModels\MainWindowVM-Shared.cs" Link="ViewModels\MainWindowVM-Shared.cs" />
+		<Compile Include="..\App Control Studio\ViewModels\SettingsVM.cs" Link="ViewModels\SettingsVM.cs" />
+		<Compile Include="..\App Control Studio\ViewModels\UpdateVM.cs" Link="ViewModels\UpdateVM.cs" />
+		<Compile Include="..\App Control Studio\ViewModels\ViewModelBase.cs" Link="ViewModels\ViewModelBase.cs" />
+		<Compile Include="..\App Control Studio\WindowComponents\Crumb.cs" Link="WindowComponents\Crumb.cs" />
+		<Compile Include="..\App Control Studio\WindowComponents\IAnimatedIconsManager.cs" Link="WindowComponents\IAnimatedIconsManager.cs" />
+		<Compile Include="..\App Control Studio\WindowComponents\NavigationService.cs" Link="WindowComponents\NavigationService.cs" />
+		<Compile Include="..\App Control Studio\WindowComponents\PageTitleMap.cs" Link="WindowComponents\PageTitleMap.cs" />
+		<Compile Include="..\App Control Studio\Others\GetAppsList.cs" Link="Others\GetAppsList.cs" />
+		<Compile Include="..\App Control Studio\ViewModels\IntuneDeploymentDetailsVM.cs" Link="ViewModels\IntuneDeploymentDetailsVM.cs" />
+		<Compile Include="..\App Control Studio\Pages\IntuneDeploymentDetails.xaml.cs" Link="Pages\IntuneDeploymentDetails.xaml.cs" />
+	</ItemGroup>
+
+	<!-- NuGet packages
+        All transitive/nested packages under the main packages are added as well
+        so they can be updated separately and receive bug/security vulnerability fixes faster
+        https://devblogs.microsoft.com/nuget/introducing-transitive-dependencies-in-visual-studio/
+     -->
+	<ItemGroup>
+
+		<!-- Main Packages - Without these packages, there will be compilation errors related to missing types -->
+		<PackageReference Include="CommunityToolkit.Labs.WinUI.Shimmer" Version="0.1.250828-build.2223" />
+		<PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.2.251219" />
+		<PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.2.251219" />
+		<PackageReference Include="CommunityToolkit.WinUI.Controls.RadialGauge" Version="8.2.251219" />
+		<PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" Version="8.2.251219" />
+		<PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.2.251219" />
+		<PackageReference Include="CommunityToolkit.WinUI.Controls.Sizers" Version="8.2.251219" />
+		<PackageReference Include="CommunityToolkit.WinUI.Lottie" Version="8.2.250604" />
+		<PackageReference Include="CommunityToolkit.WinUI.Media" Version="8.2.251219" />
+		<PackageReference Include="CommunityToolkit.WinUI.Triggers" Version="8.2.251219" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.3.2" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.79.2" />
+		<PackageReference Include="Microsoft.Identity.Client.Broker" Version="4.79.2" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.3.0-prerelease.251115.2" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.251106002" />
+		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.1" />
+        <PackageReference Include="System.Diagnostics.EventLog" Version="10.0.1" />
+
+		<!-- Transitive Packages - Without these packages, there will not be compilation error related to missing types -->
+		<PackageReference Include="CommunityToolkit.WinUI.Extensions" Version="8.2.251219" />
+		<PackageReference Include="CommunityToolkit.WinUI.Helpers" Version="8.2.251219" />
+		<PackageReference Include="CommunityToolkit.Common" Version="8.4.0" />
+		<PackageReference Include="Microsoft.IdentityModel.Abstractions" Version="8.15.0" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3650.58" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7175" />
+		<PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler" Version="10.0.2" />
+		<PackageReference Include="Microsoft.Identity.Client.NativeInterop" Version="0.19.4" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.AI" Version="1.8.39" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.Base" Version="1.8.250831001" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.DWrite" Version="1.8.25090401" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.Foundation" Version="1.8.251104000" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.InteractiveExperiences" Version="1.8.251104001" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.Runtime" Version="1.8.251106002" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.Widgets" Version="1.8.250904007" />
+		<PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="1.8.251105000" />
+        <PackageReference Include="Microsoft.WindowsAppSDK.ML" Version="1.8.2109" />
+		<PackageReference Include="System.Numerics.Tensors" Version="10.0.1" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.20250829.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+
+	</ItemGroup>
+
+	<ItemGroup>
+		<DirectPInvoke Include="rust_interop" />
+		<NativeLibrary Include="../App Control Studio/eXclude/Rust Interop Library/target/x86_64-pc-windows-msvc/release/rust_interop.lib" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<DefineConstants>$(DefineConstants);HARDEN_SYSTEM_SECURITY</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Manifest Include="$(ApplicationManifest)" />
+	</ItemGroup>
+
+	<!-- Only need these for Debug mode since we don't run the linker every time to absorb the static library -->
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<Content Include="RustInterop\rust_interop.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<!-- Remove the DLLs from the Release build output, don't need them. -->
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<Compile Remove="RustInterop\rust_interop.dll" />
+		<Content Remove="RustInterop\rust_interop.dll" />
+		<None Remove="RustInterop\rust_interop.dll" />
+	</ItemGroup>
+
+	<!-- Exclude the following files and folders from compilation, build, search, solution explorer etc. -->
+	<ItemGroup>
+		<Compile Remove="ReleaseNotes.txt" />
+		<Content Remove="ReleaseNotes.txt" />
+		<None Remove="ReleaseNotes.txt" />
+
+		<Compile Remove="X64MSBuildLog.binlog" />
+		<Content Remove="X64MSBuildLog.binlog" />
+		<None Remove="X64MSBuildLog.binlog" />
+
+		<Compile Remove="MSIXOutputX64\**" />
+		<Content Remove="MSIXOutputX64\**" />
+		<None Remove="MSIXOutputX64\**" />
+
+		<Compile Remove="MSIXBundleOutput\**" />
+		<Content Remove="MSIXBundleOutput\**" />
+		<None Remove="MSIXBundleOutput\**" />
+
+		<Compile Remove="Animated Icon Sources\**" />
+		<Content Remove="Animated Icon Sources\**" />
+		<None Remove="Animated Icon Sources\**" />
+
+		<None Remove="Resources\EventViewerCustomViews\Attack Surface Reduction rule events.xml" />
+		<None Remove="Resources\EventViewerCustomViews\Controlled Folder Access events.xml" />
+		<None Remove="Resources\EventViewerCustomViews\Exploit Protection Events.xml" />
+		<None Remove="Resources\EventViewerCustomViews\Failed Lock screen login attempts using PIN.xml" />
+		<None Remove="Resources\EventViewerCustomViews\LockScreen Unlocks and Locks.xml" />
+		<None Remove="Resources\EventViewerCustomViews\Microsoft-Windows-AppLocker And MSI and Script.xml" />
+		<None Remove="Resources\EventViewerCustomViews\Microsoft-Windows-CodeIntegrity Operational.xml" />
+		<None Remove="Resources\EventViewerCustomViews\Network Protection Events.xml" />
+		<None Remove="Resources\EventViewerCustomViews\Restarts.xml" />
+		<None Remove="Resources\EventViewerCustomViews\Sudden Shut down events.xml" />
+		<None Remove="Resources\EventViewerCustomViews\USB storage Connects &amp; Disconnects.xml" />
+
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="CppInterop\ComManager.exe">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="DISMService.exe">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="QuantumRelayHSS.exe">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\AttackSurfaceReductionRules.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\BitLockerSettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Certificate\Microsoft Root CA 2010.crt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\CountryIPsData\CountriesData.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\DeviceGuard.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EdgeBrowserConfigurations.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\Attack Surface Reduction rule events.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\Controlled Folder Access events.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\Exploit Protection Events.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\Failed Lock screen login attempts using PIN.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\LockScreen Unlocks and Locks.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\Microsoft-Windows-AppLocker And MSI and Script.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\Microsoft-Windows-CodeIntegrity Operational.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\Network Protection Events.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\Restarts.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\Sudden Shut down events.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\EventViewerCustomViews\USB storage Connects &amp; Disconnects.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Compliance\System Security Studio Device Compliance Policy.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\Attack Surface Reduction Rules.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\BitLocker.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\Device Guard.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\Exploit Protections\Settings.xml">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\Lock Screen.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\Microsoft Defender.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\Miscellaneous Configurations.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\TLS Settings.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\User Account Control.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\Windows Firewall.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\Windows Networking.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Intune Files\Hardening Policies\Windows Update.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\LockScreen.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\MicrosoftDefender.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\MiscellaneousConfigurations.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\Mitigations\ProcessMitigations.csv">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\MSFTSecBaselines_OptionalOverrides.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\NonAdminCommands.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\TLSSecurity.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\UserAccountControl.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\WindowsFirewall.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\WindowsNetworking.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\WindowsUpdateConfigurations.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Resources\WMI\WMISettings.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+</Project>

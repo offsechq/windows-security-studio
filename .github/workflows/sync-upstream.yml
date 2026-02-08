@@ -1,0 +1,243 @@
+name: Sync Upstream
+
+on:
+  schedule:
+    # Runs weekly on Monday at midnight UTC
+    - cron: "0 0 * * 1"
+  workflow_dispatch: # Allows manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write # Required for label creation
+
+jobs:
+  sync-upstream:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Fetch upstream
+        run: |
+          git remote add upstream https://github.com/HotCakeX/Harden-Windows-Security.git || true
+          git fetch upstream
+
+      - name: Determine diff range
+        id: range
+        run: |
+          # Use the last synced SHA if available, otherwise diff against merge-base
+          LAST_SHA_FILE=".github/LAST_SYNCED_UPSTREAM_SHA"
+          if [ -f "$LAST_SHA_FILE" ]; then
+            LAST_SHA=$(cat "$LAST_SHA_FILE" | tr -d '[:space:]')
+            echo "Using last synced SHA: $LAST_SHA"
+          else
+            LAST_SHA=$(git merge-base main upstream/main)
+            echo "No last synced SHA file found, using merge-base: $LAST_SHA"
+          fi
+
+          UPSTREAM_HEAD=$(git rev-parse upstream/main)
+          echo "Upstream HEAD: $UPSTREAM_HEAD"
+
+          echo "last_sha=$LAST_SHA" >> $GITHUB_OUTPUT
+          echo "upstream_head=$UPSTREAM_HEAD" >> $GITHUB_OUTPUT
+
+      - name: Check for new commits
+        id: check
+        run: |
+          LAST_SHA="${{ steps.range.outputs.last_sha }}"
+          UPSTREAM_HEAD="${{ steps.range.outputs.upstream_head }}"
+
+          if [ "$LAST_SHA" = "$UPSTREAM_HEAD" ]; then
+            echo "✅ Already up to date with upstream!"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Count commits that touched the app source directories
+          ACS_COMMITS=$(git rev-list --count "$LAST_SHA".."$UPSTREAM_HEAD" -- "AppControl Manager/")
+          SSS_COMMITS=$(git rev-list --count "$LAST_SHA".."$UPSTREAM_HEAD" -- "Harden System Security/")
+          TOTAL=$((ACS_COMMITS + SSS_COMMITS))
+
+          if [ "$TOTAL" = "0" ]; then
+            echo "✅ No relevant app changes in upstream!"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "total_commits=$TOTAL" >> $GITHUB_OUTPUT
+          echo "acs_commits=$ACS_COMMITS" >> $GITHUB_OUTPUT
+          echo "sss_commits=$SSS_COMMITS" >> $GITHUB_OUTPUT
+
+          # File change counts per app
+          ACS_FILES=$(git diff --name-only "$LAST_SHA".."$UPSTREAM_HEAD" -- "AppControl Manager/" | wc -l)
+          SSS_FILES=$(git diff --name-only "$LAST_SHA".."$UPSTREAM_HEAD" -- "Harden System Security/" | wc -l)
+          echo "acs_files=$ACS_FILES" >> $GITHUB_OUTPUT
+          echo "sss_files=$SSS_FILES" >> $GITHUB_OUTPUT
+
+      - name: Generate PR body
+        if: steps.check.outputs.has_changes == 'true'
+        run: |
+          LAST_SHA="${{ steps.range.outputs.last_sha }}"
+          UPSTREAM_HEAD="${{ steps.range.outputs.upstream_head }}"
+          TOTAL="${{ steps.check.outputs.total_commits }}"
+          ACS_COMMITS="${{ steps.check.outputs.acs_commits }}"
+          SSS_COMMITS="${{ steps.check.outputs.sss_commits }}"
+          ACS_FILES="${{ steps.check.outputs.acs_files }}"
+          SSS_FILES="${{ steps.check.outputs.sss_files }}"
+
+          # Generate commit logs to files (avoids shell injection from commit messages)
+          git log --pretty=format:"- [%h](https://github.com/HotCakeX/Harden-Windows-Security/commit/%H) %s (%an, %ar)" "$LAST_SHA".."$UPSTREAM_HEAD" -n 30 -- "AppControl Manager/" > /tmp/acs_commits.txt || true
+          git log --pretty=format:"- [%h](https://github.com/HotCakeX/Harden-Windows-Security/commit/%H) %s (%an, %ar)" "$LAST_SHA".."$UPSTREAM_HEAD" -n 30 -- "Harden System Security/" > /tmp/sss_commits.txt || true
+
+          # Generate file mapping tables
+          {
+            echo "| Upstream Path | Local Path |"
+            echo "|---|---|"
+            git diff --name-only "$LAST_SHA".."$UPSTREAM_HEAD" -- "AppControl Manager/" | head -60 | while IFS= read -r file; do
+              [ -z "$file" ] && continue
+              local_path=$(echo "$file" | sed 's|^AppControl Manager/|App Control Studio/|')
+              echo "| \`${file}\` | \`${local_path}\` |"
+            done
+          } > /tmp/acs_files.txt
+
+          {
+            echo "| Upstream Path | Local Path |"
+            echo "|---|---|"
+            git diff --name-only "$LAST_SHA".."$UPSTREAM_HEAD" -- "Harden System Security/" | head -60 | while IFS= read -r file; do
+              [ -z "$file" ] && continue
+              local_path=$(echo "$file" | sed 's|^Harden System Security/|System Security Studio/|')
+              echo "| \`${file}\` | \`${local_path}\` |"
+            done
+          } > /tmp/sss_files.txt
+
+          # Read generated content
+          ACS_COMMIT_LOG=$(cat /tmp/acs_commits.txt)
+          SSS_COMMIT_LOG=$(cat /tmp/sss_commits.txt)
+          ACS_FILE_TABLE=$(cat /tmp/acs_files.txt)
+          SSS_FILE_TABLE=$(cat /tmp/sss_files.txt)
+
+          # Write the PR body to a file to avoid shell interpolation issues
+          cat > /tmp/pr_body.md <<PREOF
+          ## Summary
+
+          Upstream has **${TOTAL} new commit(s)** in app directories since [last sync](https://github.com/HotCakeX/Harden-Windows-Security/commit/${LAST_SHA}).
+
+          | Upstream Directory | Commits | Files Changed | Local Directory |
+          |---|---|---|---|
+          | \`AppControl Manager/\` | ${ACS_COMMITS} | ${ACS_FILES} | \`App Control Studio/\` |
+          | \`Harden System Security/\` | ${SSS_COMMITS} | ${SSS_FILES} | \`System Security Studio/\` |
+
+          > Only changes in app source directories are tracked. Upstream workflows, wiki, and root-level changes are ignored.
+
+          ---
+
+          ## App Control Studio Changes
+
+          ### Commits (up to 30)
+
+          ${ACS_COMMIT_LOG}
+
+          ### Changed Files
+
+          ${ACS_FILE_TABLE}
+
+          ---
+
+          ## System Security Studio Changes
+
+          ### Commits (up to 30)
+
+          ${SSS_COMMIT_LOG}
+
+          ### Changed Files
+
+          ${SSS_FILE_TABLE}
+
+          ---
+
+          ## Quick Links
+
+          - [Full diff (${LAST_SHA:0:10}..${UPSTREAM_HEAD:0:10})](https://github.com/HotCakeX/Harden-Windows-Security/compare/${LAST_SHA}...${UPSTREAM_HEAD})
+          - [Upstream commits](https://github.com/HotCakeX/Harden-Windows-Security/commits/main)
+          - [Upstream releases](https://github.com/HotCakeX/Harden-Windows-Security/releases)
+
+          ---
+
+          ## Rebranding Notes
+
+          This is a **rebranded fork** (x64-only). Directory mappings:
+          - \`AppControl Manager/\` → \`App Control Studio/\`
+          - \`Harden System Security/\` → \`System Security Studio/\`
+
+          **Skip:** ARM64-specific changes, version bumps (we manage our own), upstream workflow changes.
+          **Focus:** Bug fixes, new features in \`.cs\` / \`.xaml\` / \`.resw\` files.
+
+          ## Review Checklist
+
+          - [ ] Review commits for bug fixes
+          - [ ] Review commits for new features
+          - [ ] Review dependency updates (NuGet, Cargo)
+          - [ ] Skip ARM64-specific changes
+          - [ ] Port relevant changes to rebranded directories
+          - [ ] Verify x64 build compiles
+          - [ ] Update version if needed
+
+          ---
+          *This PR was automatically created by the weekly upstream sync workflow.*
+          *Diff range: \`${LAST_SHA:0:10}..${UPSTREAM_HEAD:0:10}\`*
+          PREOF
+
+          # Strip the leading whitespace added by YAML indentation
+          sed -i 's/^          //' /tmp/pr_body.md
+
+      - name: Check for existing sync PR
+        if: steps.check.outputs.has_changes == 'true'
+        id: existing
+        run: |
+          OPEN_PRS=$(gh pr list --state open --label "upstream-sync" --json number --jq 'length' 2>/dev/null || echo "0")
+          if [ "$OPEN_PRS" -gt "0" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "⚠️ An open sync PR already exists. Skipping creation."
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Ensure upstream-sync label exists
+        if: steps.check.outputs.has_changes == 'true' && steps.existing.outputs.exists == 'false'
+        run: |
+          gh label create "upstream-sync" --description "Automated upstream sync PR" --color "0E8A16" 2>/dev/null || true
+
+      - name: Create sync branch and draft PR
+        if: steps.check.outputs.has_changes == 'true' && steps.existing.outputs.exists == 'false'
+        run: |
+          BRANCH_NAME="sync/upstream-$(date +%Y-%m-%d)"
+          UPSTREAM_HEAD="${{ steps.range.outputs.upstream_head }}"
+          TOTAL="${{ steps.check.outputs.total_commits }}"
+
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Create the sync branch from main
+          git checkout -b "$BRANCH_NAME" main
+
+          # Update the last synced SHA file on the branch
+          echo "$UPSTREAM_HEAD" > .github/LAST_SYNCED_UPSTREAM_SHA
+          git add .github/LAST_SYNCED_UPSTREAM_SHA
+          git commit -m "chore: update last synced upstream SHA to ${UPSTREAM_HEAD:0:10}"
+          git push origin "$BRANCH_NAME"
+
+          # Create the draft PR using the body file
+          gh pr create \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --title "🔄 Upstream Sync: ${TOTAL} new app commit(s) ($(date +%Y-%m-%d))" \
+            --body-file /tmp/pr_body.md \
+            --label "upstream-sync" \
+            --draft

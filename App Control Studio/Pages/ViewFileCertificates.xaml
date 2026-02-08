@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AppControlManager.Pages.ViewFileCertificates"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:others="using:AppControlManager.Others"
+    xmlns:customUI="using:AppControlManager.CustomUIElements"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    AllowDrop="{x:Bind ViewModel.IsNotElevated}"
+    DragOver="{x:Bind ViewModel.OnDragOver}"
+    Drop="{x:Bind ViewModel.OnDrop}"
+    FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <customUI:InfoBarV2 Grid.Row="0"
+                            IsOpen="{x:Bind ViewModel.MainInfoBarIsOpen, Mode=TwoWay}"
+                            Message="{x:Bind ViewModel.MainInfoBarMessage, Mode=OneWay}"
+                            Severity="{x:Bind ViewModel.MainInfoBarSeverity, Mode=OneWay}"
+                            IsClosable="{x:Bind ViewModel.MainInfoBarIsClosable, Mode=OneWay}" />
+
+        <StackPanel HorizontalAlignment="Stretch"
+                    Spacing="{StaticResource SettingsCardSpacing}"
+                    Grid.Row="1"
+                    Margin="0,5,0,0">
+
+            <win:StackPanel.ChildrenTransitions>
+                <win:EntranceThemeTransition FromVerticalOffset="50" />
+                <win:RepositionThemeTransition IsStaggeringEnabled="False" />
+            </win:StackPanel.ChildrenTransitions>
+
+            <customUI:SettingsCardV2 x:Uid="BrowseForFilesSettingsCard">
+
+                <Button x:Uid="FileBrowseButton"
+                        IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                        Click="{x:Bind ViewModel.BrowseForFilesSettingsCard_Click}">
+                    <Button.ContentTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon Glyph="&#xEC50;" FontSize="16"/>
+                                <TextBlock Text="{x:Bind}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+
+            </customUI:SettingsCardV2>
+
+            <customUI:SettingsCardV2 x:Uid="IncludeSecurityCatalogsSettingsCard">
+                <ToggleSwitch IsOn="{x:Bind ViewModel.IncludeSecurityCatalogsToggleSwitch, Mode=TwoWay}"
+                              x:Uid="ToggleSwitchGeneral"
+                              IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}" />
+            </customUI:SettingsCardV2>
+
+        </StackPanel>
+
+        <controls:WrapPanel Margin="10,5,10,5" Grid.Row="2" Orientation="Horizontal" HorizontalSpacing="10" VerticalSpacing="10" HorizontalAlignment="Center">
+
+            <DropDownButton x:Uid="FirmwareInfoDropdownButton"
+                            IsEnabled="{x:Bind ViewModel.IsElevated}">
+
+                <DropDownButton.ContentTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE963;" FontSize="16"/>
+                            <TextBlock Text="{x:Bind}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </DropDownButton.ContentTemplate>
+
+                <DropDownButton.Flyout>
+                    <MenuFlyout Placement="Bottom">
+
+                        <!-- Platform Key (PK) Pair -->
+                        <MenuFlyoutItem Click="{x:Bind ViewModel.GetUEFI_PK}"
+                            IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                            x:Uid="FirmwareInfoPKDropdownButton">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE964;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem Click="{x:Bind ViewModel.GetUEFI_Default_PK}"
+                            IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                            x:Uid="FirmwareInfoDefaultPKDropdownButton">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE964;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutSeparator />
+
+                        <!-- Key Exchange Key (KEK) Pair -->
+                        <MenuFlyoutItem Click="{x:Bind ViewModel.GetUEFI_KEK}"
+                            IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                            x:Uid="FirmwareInfoKEKDropdownButton">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xF211;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem Click="{x:Bind ViewModel.GetUEFI_Default_KEK}"
+                            IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                            x:Uid="FirmwareInfoDefaultKEKDropdownButton">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xF211;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutSeparator />
+
+                        <!-- Signature Database (db) Pair -->
+                        <MenuFlyoutItem Click="{x:Bind ViewModel.GetUEFI_DB}"
+                            IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                            x:Uid="FirmwareInfoDBDropdownButton">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xEB05;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem Click="{x:Bind ViewModel.GetUEFI_Default_DB}"
+                            IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                            x:Uid="FirmwareInfoDefaultDBDropdownButton">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xEB05;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutSeparator />
+
+                        <!-- Forbidden Signature Database (dbx) Pair -->
+                        <MenuFlyoutItem Click="{x:Bind ViewModel.GetUEFI_DBX}"
+                            IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                            x:Uid="FirmwareInfoForbiddenDBXDropdownButton">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xECA7;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem Click="{x:Bind ViewModel.GetUEFI_Default_DBX}"
+                            IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                            x:Uid="FirmwareInfoDefaultForbiddenDBXDropdownButton">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xECA7;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                    </MenuFlyout>
+                </DropDownButton.Flyout>
+            </DropDownButton>
+
+            <TextBox x:Uid="CertificatesSearchBox"
+                     Text="{x:Bind ViewModel.SearchBoxTextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                     VerticalAlignment="Center"
+                     VerticalContentAlignment="Center" />
+
+            <Button x:Uid="CMSDetailsButton" IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}">
+                <Button.Flyout>
+                    <Flyout Placement="Bottom">
+                        <Grid Padding="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="8"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="8"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="8"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="8"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="8"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Uid="CMSVersion" TextWrapping="WrapWholeWords" Margin="0,0,12,6" Grid.Row="0" Grid.Column="0"/>
+                            <TextBlock Text="{x:Bind ViewModel.CmsVersion, Mode=OneWay}" TextWrapping="WrapWholeWords" IsTextSelectionEnabled="True" Grid.Row="0" Grid.Column="1"/>
+
+                            <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Height="1" VerticalAlignment="Center"
+                                       Fill="{ThemeResource SurfaceStrokeColorDefaultBrush}" Opacity="0.6"/>
+
+                            <TextBlock x:Uid="CMSIsDetached" TextWrapping="WrapWholeWords" Margin="0,0,12,6" Grid.Row="2" Grid.Column="0"/>
+                            <TextBlock Text="{x:Bind ViewModel.IsDetached, Mode=OneWay}" TextWrapping="WrapWholeWords" IsTextSelectionEnabled="True" Grid.Row="2" Grid.Column="1"/>
+
+                            <Rectangle Grid.Row="3" Grid.ColumnSpan="2" Height="1" VerticalAlignment="Center"
+                                       Fill="{ThemeResource SurfaceStrokeColorDefaultBrush}" Opacity="0.6"/>
+
+                            <TextBlock x:Uid="CMSContentTypeFriendlyName" TextWrapping="WrapWholeWords" Margin="0,0,12,6" Grid.Row="4" Grid.Column="0"/>
+                            <TextBlock Text="{x:Bind ViewModel.ContentTypeFriendlyName, Mode=OneWay}" TextWrapping="WrapWholeWords" IsTextSelectionEnabled="True" Grid.Row="4" Grid.Column="1"/>
+
+                            <Rectangle Grid.Row="5" Grid.ColumnSpan="2" Height="1" VerticalAlignment="Center"
+                                       Fill="{ThemeResource SurfaceStrokeColorDefaultBrush}" Opacity="0.6"/>
+
+                            <TextBlock x:Uid="CMSContentTypeOid" TextWrapping="WrapWholeWords" Margin="0,0,12,6" Grid.Row="6" Grid.Column="0"/>
+                            <TextBlock Text="{x:Bind ViewModel.ContentTypeOid, Mode=OneWay}" TextWrapping="WrapWholeWords" IsTextSelectionEnabled="True" Grid.Row="6" Grid.Column="1"/>
+
+                            <Rectangle Grid.Row="7" Grid.ColumnSpan="2" Height="1" VerticalAlignment="Center"
+                                       Fill="{ThemeResource SurfaceStrokeColorDefaultBrush}" Opacity="0.6"/>
+
+                            <TextBlock x:Uid="CMSRawCmsDataLength" TextWrapping="WrapWholeWords" Margin="0,0,12,6" Grid.Row="8" Grid.Column="0"/>
+                            <TextBlock Text="{x:Bind ViewModel.RawCmsDataLength, Mode=OneWay}" TextWrapping="WrapWholeWords" IsTextSelectionEnabled="True" Grid.Row="8" Grid.Column="1"/>
+
+                            <Rectangle Grid.Row="9" Grid.ColumnSpan="2" Height="1" VerticalAlignment="Center"
+                                       Fill="{ThemeResource SurfaceStrokeColorDefaultBrush}" Opacity="0.6"/>
+
+                            <TextBlock x:Uid="CMSContentInfoDataLength" TextWrapping="WrapWholeWords" Margin="0,0,12,0" Grid.Row="10" Grid.Column="0"/>
+                            <TextBlock Text="{x:Bind ViewModel.ContentInfoDataLength, Mode=OneWay}" TextWrapping="WrapWholeWords" IsTextSelectionEnabled="True" Grid.Row="10" Grid.Column="1"/>
+                        </Grid>
+                    </Flyout>
+                </Button.Flyout>
+                <Button.ContentTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE779;" FontSize="16"/>
+                            <TextBlock Text="{x:Bind}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+            <Button Click="{x:Bind ViewModel.ExportToJSON}"
+                    IsEnabled="{x:Bind ViewModel.AreElementsEnabled, Mode=OneWay}"
+                    x:Uid="ExportToJSONButton">
+                <Button.ContentTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE96A;" FontSize="16"/>
+                            <TextBlock Text="{x:Bind}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+        </controls:WrapPanel>
+
+        <customUI:ListViewV2 RegistryKey="View_File_Certificates"
+                     Grid.Row="3"
+                     ItemsSource="{x:Bind ViewModel.FileCertificates, Mode=OneWay}"
+                     SelectionMode="Single">
+
+            <customUI:ListViewV2.Header>
+                <Border CornerRadius="5" Background="Black" customUI:StickyHeaderBehaviorV2.IsEnabled="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <!-- TwoWay binding needed of course but the MinWidth constraints make them look better on the UI when resizing so it won't get too small -->
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth1, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth2, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth3, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth4, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth5, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth6, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth7, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth8, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth9, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth10, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth11, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth12, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth13, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth14, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth15, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth16, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth17, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth18, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth19, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth20, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth21, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth22, Mode=TwoWay}" MinWidth="50" />
+                            <ColumnDefinition Width="{x:Bind ViewModel.ColumnWidth23, Mode=TwoWay}" MinWidth="50" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Header Buttons -->
+                        <Button x:Uid="SignerNumberColumnHeaderBtn" Grid.Column="0" Margin="10,0,0,0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="SignerNumber" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="TypeColumnHeaderBtn" Grid.Column="1" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="Type" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="SubjectCommonNameColumnHeaderBtn" Grid.Column="2" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="SubjectCN" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="IssuerCommonNameColumnHeaderBtn" Grid.Column="3" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="IssuerCN" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="NotBeforeColumnHeaderBtn" Grid.Column="4" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="NotBefore" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="NotAfterColumnHeaderBtn" Grid.Column="5" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="NotAfter" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="HashingAlgorithmColumnHeaderBtn" Grid.Column="6" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="HashingAlgorithm" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="SerialNumberColumnHeaderBtn" Grid.Column="7" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="SerialNumber" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="ThumbprintColumnHeaderBtn" Grid.Column="8" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="Thumbprint" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="TBSHashColumnHeaderBtn" Grid.Column="9" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="TBSHash" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="ExtensionOIDsColumnHeaderBtn" Grid.Column="10" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="OIDs" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="VersionColumnHeaderBtn" Grid.Column="11" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="Version" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="HasPrivateKeyColumnHeaderBtn" Grid.Column="12" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="HasPrivateKey" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="ArchivedColumnHeaderBtn" Grid.Column="13" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="Archived" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="CertificatePoliciesColumnHeaderBtn" Grid.Column="14" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="CertificatePolicies" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="AuthorityInformationAccessColumnHeaderBtn" Grid.Column="15" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="AuthorityInformationAccess" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="CRLDistributionPointsColumnHeaderBtn" Grid.Column="16" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="CRLDistributionPoints" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="BasicConstraintsColumnHeaderBtn" Grid.Column="17" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="BasicConstraints" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="KeyUsageColumnHeaderBtn" Grid.Column="18" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="KeyUsage" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="AuthorityKeyIdentifierColumnHeaderBtn" Grid.Column="19" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="AuthorityKeyIdentifier" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="SubjectKeyIdentifierColumnHeaderBtn" Grid.Column="20" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="SubjectKeyIdentifier" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="RawDataLengthColumnHeaderBtn" Grid.Column="21" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="RawDataLength" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+                        <Button x:Uid="PublicKeyLengthColumnHeaderBtn" Grid.Column="22" Margin="0" FontFamily="{x:Bind ViewModel.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewHeaderButton}" Tag="PublicKeyLength" Click="{x:Bind ViewModel.HeaderColumnSortingButton_Click}" />
+
+                        <!-- GridSplitters between columns -->
+                        <controls:GridSplitter Grid.Column="1" />
+                        <controls:GridSplitter Grid.Column="2" />
+                        <controls:GridSplitter Grid.Column="3" />
+                        <controls:GridSplitter Grid.Column="4" />
+                        <controls:GridSplitter Grid.Column="5" />
+                        <controls:GridSplitter Grid.Column="6" />
+                        <controls:GridSplitter Grid.Column="7" />
+                        <controls:GridSplitter Grid.Column="8" />
+                        <controls:GridSplitter Grid.Column="9" />
+                        <controls:GridSplitter Grid.Column="10" />
+                        <controls:GridSplitter Grid.Column="11" />
+                        <controls:GridSplitter Grid.Column="12" />
+                        <controls:GridSplitter Grid.Column="13" />
+                        <controls:GridSplitter Grid.Column="14" />
+                        <controls:GridSplitter Grid.Column="15" />
+                        <controls:GridSplitter Grid.Column="16" />
+                        <controls:GridSplitter Grid.Column="17" />
+                        <controls:GridSplitter Grid.Column="18" />
+                        <controls:GridSplitter Grid.Column="19" />
+                        <controls:GridSplitter Grid.Column="20" />
+                        <controls:GridSplitter Grid.Column="21" />
+                        <controls:GridSplitter Grid.Column="22" />
+                    </Grid>
+                </Border>
+            </customUI:ListViewV2.Header>
+            <!-- DataTemplate for ListView items -->
+            <customUI:ListViewV2.ItemTemplate>
+                <DataTemplate x:DataType="others:FileCertificateInfoCol" xmlns:VMs="using:AppControlManager.ViewModels">
+                    <!-- Setting Background="Transparent" on the Grid makes it hit-test visible, meaning that even areas without any child elements (like empty spaces in the column) will respond to pointer events.  -->
+                    <Grid Background="Transparent">
+                        <Grid.ContextFlyout>
+                            <MenuFlyout>
+
+                                <MenuFlyoutItem x:Uid="CopyRow" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopySelectedPolicies_Click}">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="C" Modifiers="Control" Invoked="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopySelectedPolicies_Click}"/>
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE8C8;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+
+                                <MenuFlyoutSubItem x:Uid="CopyIndividualItems">
+                                    <MenuFlyoutSubItem.Icon>
+                                        <FontIcon Glyph="&#xE8C8;" />
+                                    </MenuFlyoutSubItem.Icon>
+
+                                    <MenuFlyoutSubItem.Items>
+
+                                        <MenuFlyoutItem x:Uid="SignerNumberHeader" Tag="SignerNumber" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="TypeHeader" Tag="Type" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="SubjectCommonNameHeader" Tag="SubjectCN" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="IssuerCommonNameHeader" Tag="IssuerCN" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="NotBeforeHeader" Tag="NotBefore" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="NotAfterHeader" Tag="NotAfter" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="HashingAlgorithmHeader" Tag="HashingAlgorithm" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="SerialNumberHeader" Tag="SerialNumber" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="ThumbprintHeader" Tag="Thumbprint" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="TBSHashHeader" Tag="TBSHash" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="ExtensionOIDsHeader" Tag="OIDs" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="VersionHeader" Tag="Version" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="HasPrivateKeyHeader" Tag="HasPrivateKey" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="ArchivedHeader" Tag="Archived" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="CertificatePoliciesHeader" Tag="CertificatePolicies" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="AuthorityInformationAccessHeader" Tag="AuthorityInformationAccess" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="CRLDistributionPointsHeader" Tag="CRLDistributionPoints" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="BasicConstraintsHeader" Tag="BasicConstraints" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="KeyUsageHeader" Tag="KeyUsage" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="AuthorityKeyIdentifierHeader" Tag="AuthorityKeyIdentifier" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="SubjectKeyIdentifierHeader" Tag="SubjectKeyIdentifier" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="RawDataLengthHeader" Tag="RawDataLength" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                        <MenuFlyoutItem x:Uid="PublicKeyLengthHeader" Tag="PublicKeyLength" Click="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.CopyPolicyProperty_Click}">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8C8;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+
+                                    </MenuFlyoutSubItem.Items>
+
+                                </MenuFlyoutSubItem>
+                            </MenuFlyout>
+                        </Grid.ContextFlyout>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth1, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth2, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth3, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth4, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth5, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth6, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth7, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth8, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth9, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth10, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth11, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth12, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth13, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth14, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth15, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth16, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth17, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth18, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth19, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth20, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth21, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth22, Mode=OneWay}" />
+                            <ColumnDefinition Width="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.ColumnWidth23, Mode=OneWay}" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind SignerNumber}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="0"/>
+                        <TextBlock Text="{x:Bind Type}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="1"/>
+                        <TextBlock Text="{x:Bind SubjectCN}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="2"/>
+                        <TextBlock Text="{x:Bind IssuerCN}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="3"/>
+                        <TextBlock Text="{x:Bind NotBefore}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="4"/>
+                        <TextBlock Text="{x:Bind NotAfter}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="5"/>
+                        <TextBlock Text="{x:Bind HashingAlgorithm}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="6"/>
+                        <TextBlock Text="{x:Bind SerialNumber}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="7"/>
+                        <TextBlock Text="{x:Bind Thumbprint}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="8"/>
+                        <TextBlock Text="{x:Bind TBSHash}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="9"/>
+                        <TextBlock Text="{x:Bind OIDs}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="10"/>
+                        <TextBlock Text="{x:Bind Version}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="11"/>
+                        <TextBlock Text="{x:Bind HasPrivateKey}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="12"/>
+                        <TextBlock Text="{x:Bind Archived}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="13"/>
+                        <TextBlock Text="{x:Bind CertificatePolicies}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="14"/>
+                        <TextBlock Text="{x:Bind AuthorityInformationAccess}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="15"/>
+                        <TextBlock Text="{x:Bind CRLDistributionPoints}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="16"/>
+                        <TextBlock Text="{x:Bind BasicConstraints}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="17"/>
+                        <TextBlock Text="{x:Bind KeyUsage}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="18"/>
+                        <TextBlock Text="{x:Bind AuthorityKeyIdentifier}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="19"/>
+                        <TextBlock Text="{x:Bind SubjectKeyIdentifier}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="20"/>
+                        <TextBlock Text="{x:Bind RawDataLength}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="21"/>
+                        <TextBlock Text="{x:Bind PublicKeyLength}" FontFamily="{x:Bind VMs:ViewModelProvider.ViewFileCertificatesVM.AppSettings.ListViewFontFamily, Mode=OneWay}" Style="{StaticResource ListViewCellTextBlock}" Grid.Column="22"/>
+                    </Grid>
+                </DataTemplate>
+            </customUI:ListViewV2.ItemTemplate>
+        </customUI:ListViewV2>
+    </Grid>
+</Page>

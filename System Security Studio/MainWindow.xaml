@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="HardenSystemSecurity.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HardenSystemSecurity"
+    xmlns:WindowComponents="using:AppControlManager.WindowComponents"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:customUI="using:AppControlManager.CustomUIElements"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
+    xmlns:AnimatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    xmlns:animatedvisuals="using:AnimatedVisuals"
+    xmlns:CC="using:CommonCore.Others"
+    SystemBackdrop="{x:Bind ViewModel.SystemBackDropStyle, Mode=OneWay}"
+    Title="System Security Studio">
+
+    <Grid x:Name="RootGrid" FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}">
+
+        <Grid.RowDefinitions>
+            <!-- Titlebar Row -->
+            <RowDefinition Height="Auto"/>
+            <!-- NavigationView Row -->
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <!-- For the BreadCrumbBar's size -->
+            <x:Double x:Key="BreadcrumbBarChevronFontSize">30</x:Double>
+
+            <!-- Theme Shadow effect used on certain elements inside of the grid -->
+            <!-- https://learn.microsoft.com/windows/apps/design/layout/depth-shadow -->
+            <ThemeShadow x:Name="SharedShadow" />
+        </Grid.Resources>
+
+        <!-- When using this, we shouldn't set PaneDisplayMode="" property on the navigation element itself or set that property to anything other than Auto, otherwise these dynamic triggers won't work on it. -->
+        <!-- Also apparently there are hardcoded minimum width that do not allow for smaller MinWindowWidth to be set for the triggers below and they are overriden when it happens -->
+
+        <!-- VisualStateManager for responsive layout of the NavigationView -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <!-- Very narrow window state -->
+                <VisualState x:Name="DefaultState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainNavigation.PaneDisplayMode" Value="Top" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!-- Narrow window state -->
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="200" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainNavigation.PaneDisplayMode" Value="LeftCompact" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!-- Wide window state -->
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="400" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainNavigation.PaneDisplayMode" Value="Left" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <!-- Titlebar -->
+        <!-- https://learn.microsoft.com/windows/apps/develop/title-bar#full-customization-example -->
+        <Grid x:Name="AppTitleBar"
+              Loaded="{x:Bind SetRegionsForCustomTitleBar}"
+              SizeChanged="{x:Bind SetRegionsForCustomTitleBar}"
+              Height="48"
+              AutomationProperties.LandmarkType="Custom"
+              AutomationProperties.LocalizedLandmarkType="Title Bar"
+              Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition x:Name="HamburgerMenuButtonColumn" Width="Auto"/>
+                <ColumnDefinition x:Name="IconColumn" Width="Auto"/>
+                <ColumnDefinition Width="{x:Bind ViewModel.TitleColumnWidth, Mode=OneWay}" />
+                <ColumnDefinition x:Name="LeftDragColumn" Width="*"/>
+                <ColumnDefinition x:Name="SearchColumn" Width="3*"/>
+                <ColumnDefinition x:Name="RightDragColumn" Width="*" />
+                <ColumnDefinition x:Name="AccountColumn" Width="Auto"/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Menu button style, mimics the same NavigationView menu (hamburger) button's style. If the style isn't set here, we can use the built-in animated icon for the menu (hamburger) button -->
+            <Button VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    x:Name="HamburgerMenuButton"
+                    Grid.Column="1"
+                    Style="{StaticResource PaneToggleButtonStyle}"
+                    Click="{x:Bind ViewModel.HamburgerMenuButton_Click}" />
+
+            <!-- App icon -->
+            <Image x:Name="TitleBarIcon" Source="ms-appx:///Assets/StoreLogo.png" Grid.Column="2"
+                Width="16" Height="16"
+                Margin="8,0,4,0"/>
+
+            <!-- App title bar -->
+            <TextBlock x:Name="TitleBarTextBlock"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Grid.Column="3"
+                       VerticalAlignment="Center" />
+
+            <!-- Main search area at the top -->
+            <AutoSuggestBox x:Name="TitleBarSearchBox"
+                            Grid.Column="5"
+                            QueryIcon="Find"
+                            VerticalAlignment="Center"
+                            MaxWidth="600"
+                            AutomationProperties.LandmarkType="Search"
+                            ItemsSource="{x:Bind ViewModel.UnifiedSearchBarSuggestionsCollection, Mode=OneWay}"
+                            Text="{x:Bind ViewModel.UnifiedSearchBarText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            SuggestionChosen="{x:Bind Nav.SearchBox_SuggestionChosen}"
+                            x:Uid="MainSearchAutoSuggestBox"
+                            Margin="0"
+                            UpdateTextOnSelect="False">
+
+                <AutoSuggestBox.ItemTemplate>
+                    <DataTemplate x:DataType="CC:UnifiedSearchBarResult">
+                        <Grid ColumnSpacing="12" Padding="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Round image on the left -->
+                            <Border Grid.Column="0"
+                                    Width="32"
+                                    Height="32"
+                                    CornerRadius="16"
+                                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                <ContentPresenter Content="{x:Bind Icon}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+
+                            <!-- Title and subtitle on the right -->
+                            <StackPanel Grid.Column="1" Orientation="Vertical" Spacing="2">
+                                <TextBlock Text="{x:Bind Title}"
+                                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                                           TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="{x:Bind Subtitle}"
+                                           Style="{StaticResource CaptionTextBlockStyle}"
+                                           Opacity="0.8"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </AutoSuggestBox.ItemTemplate>
+            </AutoSuggestBox>
+
+        </Grid>
+
+        <!-- Doc: https://learn.microsoft.com/windows/apps/design/controls/navigationview -->
+        <NavigationView x:Name="MainNavigation"
+                        FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}"
+                        IsTabStop="True"
+                        IsPaneOpen="{x:Bind ViewModel.MainNavigationIsPaneOpen, Mode=TwoWay}"
+                        ItemInvoked="{x:Bind Nav.MainNavigation_ItemInvoked}"
+                        IsBackButtonVisible="Collapsed"
+                        IsBackEnabled="False"
+                        AlwaysShowHeader="False"
+                        AutomationProperties.LandmarkType="Navigation"
+                        Grid.Row="1"
+                        Margin="{x:Bind ViewModel.NavViewMargin, Mode=OneWay}"
+                        SelectedItem="{x:Bind ViewModel.NavViewSelectedItem, Mode=TwoWay}"
+                        IsTitleBarAutoPaddingEnabled="False"
+                        IsPaneToggleButtonVisible="False">
+
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="HomeNavItem" x:Uid="HomeNavItem" Icon="{x:Bind ViewModel.HomeIcon, Mode=OneWay}" Tag="Home" />
+
+                <!-- Protect Group -->
+                <NavigationViewItemHeader x:Name="ProtectNavigationViewItemHeader" x:Uid="ProtectNavigationViewItemHeader" />
+
+                <NavigationViewItem x:Name="ProtectNavItem" x:Uid="ProtectNavigationViewItem" Icon="{x:Bind ViewModel.ProtectIcon, Mode=OneWay}" Tag="Protect" IsExpanded="True">
+
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem x:Name="MicrosoftSecurityBaselineNavItem" x:Uid="MicrosoftSecurityBaselineNavItem" Tag="MicrosoftSecurityBaseline">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/Microsoft-Security-Baseline.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="MicrosoftBaseLinesOverridesNavItem" x:Uid="MicrosoftBaseLinesOverridesNavItem" Tag="MicrosoftBaseLinesOverrides">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/MicrosoftBaseLinesOverrides.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="Microsoft365AppsSecurityBaselineNavItem" x:Uid="Microsoft365AppsSecurityBaselineNavItem" Tag="Microsoft365AppsSecurityBaseline">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/Microsoft-365-Apps-Security-Baselines.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="MicrosoftDefenderNavItem" x:Uid="MicrosoftDefenderNavItem" Tag="MicrosoftDefender">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/WindowsDefender.png"
+                                ShowAsMonochrome="False"
+                                Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="ASRNavItem" x:Uid="ASRNavItem" Tag="ASR">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/ASRrules.png"
+                                ShowAsMonochrome="False"
+                                Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="BitLockerNavItem" x:Uid="BitLockerNavItem" Tag="BitLocker">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/Bitlocker.png"
+                                ShowAsMonochrome="False"
+                                Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="TLSSecurityNavItem" x:Uid="TLSSecurityNavItem" Tag="TLS">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/TLS.png"
+                                ShowAsMonochrome="False"
+                                Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="LockScreenNavItem" x:Uid="LockScreenNavItem" Tag="LockScreen">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/LockScreen.png"
+                                ShowAsMonochrome="False"
+                                Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="UACNavItem" x:Uid="UACNavItem" Tag="UAC">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/UAC.png"
+                                ShowAsMonochrome="False"
+                                Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="DeviceGuardNavItem" x:Uid="DeviceGuardNavItem" Tag="DeviceGuard">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/DeviceGuard.png"
+                                ShowAsMonochrome="False"
+                                Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="WindowsFirewallNavItem" x:Uid="WindowsFirewallNavItem" Tag="Firewall">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/Firewall.png"
+                                ShowAsMonochrome="False"
+                                Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="OptionalWindowsFeaturesNavItem" x:Uid="OptionalWindowsFeaturesNavItem" Tag="OptionalWindowsFeatures">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/OptionalFeatures.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="WindowsNetworkingNavItem" x:Uid="WindowsNetworkingNavItem" Tag="WinNetworking">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/Networking.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="MiscellaneousNavItem" x:Uid="MiscellaneousNavItem" Tag="Miscellaneous">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/MiscellaneousCommands.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="WindowsUpdateNavItem" x:Uid="WindowsUpdateNavItem" Tag="WinUpdate">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/WindowsUpdate.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="EdgeBrowserNavItem" x:Uid="EdgeBrowserNavItem" Tag="Edge">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/EdgeBrowser.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="CertificatesNavItem" x:Uid="CertificatesNavItem" Tag="Certificates">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/Certificate.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="CountryIPBlockingNavItem" x:Uid="CountryIPBlockingNavItem" Tag="CountryIPBlocking">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/CountryIPBlocking.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem x:Name="NonAdminCommandsNavItem" x:Uid="NonAdminCommandsNavItem" Tag="NonAdmin">
+                            <NavigationViewItem.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/NonAdmin.png"
+                                            ShowAsMonochrome="False"
+                                            Margin="-5" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="InstalledAppsManagementNavItem" x:Uid="InstalledAppsManagementNavItem" Icon="{x:Bind ViewModel.InstalledAppsManagementIcon, Mode=OneWay}" Tag="InstalledAppsManagement"/>
+                <NavigationViewItem x:Name="FileReputationNavItem" x:Uid="FileReputationNavItem" Icon="{x:Bind ViewModel.FileReputationIcon, Mode=OneWay}" Tag="FileReputation"/>
+                <NavigationViewItem x:Name="GroupPolicyEditorNavItem" x:Uid="GroupPolicyEditorNavItem" Icon="{x:Bind ViewModel.GroupPolicyEditorIcon, Mode=OneWay}" Tag="GroupPolicyEditor"/>
+                <NavigationViewItem x:Name="AuditPoliciesNavItem" x:Uid="AuditPoliciesNavItem" Icon="{x:Bind ViewModel.AuditPoliciesIcon, Mode=OneWay}" Tag="AuditPolicies"/>
+                <NavigationViewItem x:Name="CBOMNavItem" Icon="{x:Bind ViewModel.CBOMIcon, Mode=OneWay}" x:Uid="CBOMNavItem" Tag="CBOM"/>
+                <NavigationViewItem x:Name="IntuneNavItem" Icon="{x:Bind ViewModel.IntuneIcon, Mode=OneWay}" x:Uid="IntuneNavItem" Tag="Intune"/>
+                <NavigationViewItem x:Name="CSPNavItem" x:Uid="CSPNavItem" Tag="CSP">
+                    <NavigationViewItem.Icon>
+                        <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/CSP.png"
+                                    ShowAsMonochrome="False" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <!-- Quick Actions Group -->
+                <NavigationViewItemHeader Content="Quick Actions"/>
+                <NavigationViewItem x:Name="QuickActionsNavItem" Tag="QuickActions" Icon="{ui:FontIcon Glyph=&#xE771;}" Content="System Actions">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="System Utilities" Tag="SystemUtilities" Icon="{ui:FontIcon Glyph=&#xE90F;}"/>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+                <!-- Documentation Group -->
+                <NavigationViewItemHeader x:Name="DocumentationNavigationViewItemHeader" x:Uid="DocumentationNavigationViewItemHeader"/>
+                <NavigationViewItem x:Name="GitHubDocsNavItem" x:Uid="GitHubDocsNavItem" Icon="{x:Bind ViewModel.GitHubDocsIcon, Mode=OneWay}" Tag="GitHubDocs" />
+
+                <NavigationViewItemSeparator/>
+
+                <NavigationViewItem x:Name="LogsNavItem" x:Uid="LogsNavItem" Icon="{x:Bind ViewModel.LogsIcon, Mode=OneWay}" Tag="Logs" />
+            </NavigationView.MenuItems>
+
+
+
+            <!-- The area where the main window content are displayed -->
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!-- Breadcrumb + header region -->
+                <Grid Grid.Row="0" x:Name="BreadcrumbRegionGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- BreadCrumbBar -->
+                    <BreadcrumbBar Grid.Row="0"
+                                   Grid.Column="0"
+                                   x:Name="MainBreadcrumbBar"
+                                   Visibility="{x:Bind ViewModel.IsCrumbBarVisible, Mode=OneWay}"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Top"
+                                   Padding="10"
+                                   AutomationProperties.LandmarkType="Custom"
+                                   AutomationProperties.LocalizedLandmarkType="Bread Crumb Bar Navigation and Page Title"
+                                   Margin="20,10,0,0"
+                                   ItemsSource="{x:Bind ViewModel.Breadcrumbs}"
+                                   ItemClicked="{x:Bind Nav.BreadcrumbBar_ItemClicked}">
+                        <BreadcrumbBar.ItemTemplate>
+                            <DataTemplate x:DataType="WindowComponents:Crumb"
+                                          xmlns:vms="using:HardenSystemSecurity.ViewModels">
+                                <TextBlock Text="{x:Bind Label}"
+                                           Style="{x:Bind vms:ViewModelProvider.MainWindowVM.BreadcrumbItemStyle, Mode=OneWay}"
+                                           TextWrapping="NoWrap"/>
+                            </DataTemplate>
+                        </BreadcrumbBar.ItemTemplate>
+                    </BreadcrumbBar>
+
+                    <!-- Header chevron flyout -->
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            x:Name="RulesHeaderFlyoutButton"
+                            Margin="0,10,16,5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Visibility="{x:Bind ViewModel.HeaderFlyoutVisibility, Mode=OneWay}"
+                            ToolTipService.ToolTip="Attack Surface Reduction">
+                        <Button.Content>
+                            <FontIcon Glyph="&#xE70D;" />
+                        </Button.Content>
+                        <Button.Flyout>
+                            <Flyout Placement="BottomEdgeAlignedRight">
+                                <StackPanel Spacing="8" MaxWidth="400">
+                                    <TextBlock Text="{x:Bind ViewModel.PageHeaderTitle, Mode=OneWay}"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   TextWrapping="WrapWholeWords"
+                                                   TextAlignment="Start"
+                                                   IsTextSelectionEnabled="True"
+                                                   Margin="0,0,0,4"/>
+
+                                    <HyperlinkButton x:Uid="GuideButtonAtTop"
+                                                         NavigateUri="{x:Bind ViewModel.PageHeaderGuideUri, Mode=OneWay}"
+                                                         Visibility="{x:Bind ViewModel.GuideButtonVisibility, Mode=OneWay}">
+                                        <HyperlinkButton.ContentTemplate>
+                                            <DataTemplate x:DataType="x:String">
+                                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                                    <FontIcon Glyph="&#xE7BE;" FontSize="16"/>
+                                                    <TextBlock Text="{x:Bind}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </HyperlinkButton.ContentTemplate>
+                                    </HyperlinkButton>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                </Grid>
+
+                <!-- Inline header row (wide widths) -->
+                <controls:WrapPanel Grid.Row="1"
+                                    Margin="20,10,10,0"
+                                    Visibility="{x:Bind ViewModel.HeaderInlineVisibility, Mode=OneWay}"
+                                    Style="{StaticResource PageHeaderWrapPanelStyle}">
+                    <TextBlock Text="{x:Bind ViewModel.PageHeaderTitle, Mode=OneWay}"
+                               TextWrapping="WrapWholeWords"
+                               IsTextSelectionEnabled="True"
+                               Style="{StaticResource BodyTextBlockStyle}" />
+                    <HyperlinkButton x:Uid="GuideButtonAtTop"
+                                     NavigateUri="{x:Bind ViewModel.PageHeaderGuideUri, Mode=OneWay}"
+                                     Visibility="{x:Bind ViewModel.GuideButtonVisibility, Mode=OneWay}">
+                        <HyperlinkButton.ContentTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon Glyph="&#xE7BE;" FontSize="16"/>
+                                    <TextBlock Text="{x:Bind}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </HyperlinkButton.ContentTemplate>
+                    </HyperlinkButton>
+                </controls:WrapPanel>
+
+                <!-- Note the use of a TwoWay binding here, this is required for this control to work.  -->
+                <controls:PropertySizer HorizontalAlignment="Left"
+                                        Grid.Row="2"
+                                        Binding="{x:Bind MainNavigation.OpenPaneLength, Mode=TwoWay}"
+                                        Maximum="640"
+                                        Minimum="60"
+                                        Visibility="{x:Bind MainNavigation.IsPaneOpen, Mode=OneWay}" />
+
+                <!-- Global margin settings for every page's content -->
+                <Frame x:Name="ContentFrame"
+                       Margin="15,10,15,10"
+                       Grid.Row="2"
+                       AutomationProperties.LandmarkType="Main" />
+
+            </Grid>
+
+        </NavigationView>
+
+    </Grid>
+
+</Window>

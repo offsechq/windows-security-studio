@@ -1,0 +1,57 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Windows Security Studio
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: OFFSECHQ
+    affiliation: OFFSECHQ
+  - orcid: "https://orcid.org/0009-0000-6616-4938"
+    email: spynetgirl@outlook.com
+    given-names: Violet
+    family-names: Hansen
+    affiliation: Microsoft
+identifiers:
+  - type: url
+    value: >-
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/Introduction
+    description: Windows Defender Application Control Introduction
+  - type: url
+    value: >-
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-for-Fully-Managed-Devices
+    description: WDAC policy for Fully Managed device - Variant 1
+  - type: url
+    value: >-
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-for-Fully-Managed-Devices-(2nd-variant)
+    description: WDAC policy for Fully managed device - Variant 2
+  - type: url
+    value: >-
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-Fully-managed-device---Variant-3
+    description: WDAC policy for Fully managed device - Variant 3
+  - type: url
+    value: >-
+      https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-Fully-managed-device---Variant-4
+    description: WDAC policy for Fully managed device Variant 4
+repository-code: "https://github.com/OFFSECHQ/windows-security-studio"
+url: "https://github.com/OFFSECHQ/windows-security-studio"
+repository: "https://github.com/HotCakeX/Harden-Windows-Security"
+abstract: >-
+  Enterprise-grade Windows security hardening using official
+  Microsoft methods. Fork of Harden-Windows-Security maintained
+  by OFFSECHQ with professional branding.
+keywords:
+  - Microsoft
+  - Windows
+  - Windows Defender Application Control
+  - Security
+  - Cyber Security
+  - Bitlocker
+  - Encryption
+  - Operating System Security
+  - App Security
+  - System Security Administration
+license: GPL-2.0

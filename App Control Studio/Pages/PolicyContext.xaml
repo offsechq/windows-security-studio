@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AppControlManager.Pages.PolicyContext"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:customUI="using:AppControlManager.CustomUIElements"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}">
+
+    <ScrollViewer>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <customUI:InfoBarV2 Grid.Row="0"
+                                Margin="0,0,0,5"
+                                IsOpen="{x:Bind ViewModel.MainInfoBarIsOpen, Mode=TwoWay}"
+                                Message="{x:Bind ViewModel.MainInfoBarMessage, Mode=OneWay}"
+                                Severity="{x:Bind ViewModel.MainInfoBarSeverity, Mode=OneWay}"
+                                IsClosable="{x:Bind ViewModel.MainInfoBarIsClosable, Mode=OneWay}"/>
+
+            <StackPanel HorizontalAlignment="Stretch"
+                        Spacing="{StaticResource SettingsCardSpacing}"
+                        Grid.Row="1">
+                <win:StackPanel.ChildrenTransitions>
+                    <win:EntranceThemeTransition FromVerticalOffset="50" />
+                    <win:RepositionThemeTransition IsStaggeringEnabled="False" />
+                </win:StackPanel.ChildrenTransitions>
+
+                <!-- Policy Path Management Section -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                           Text="Policy Path Management" />
+
+                <controls:SettingsExpander Header="Pinned Policy Path"
+                                           Description="Set the base policy path used across the application"
+                                           IsExpanded="True"
+                                           HeaderIcon="{ui:FontIcon Glyph=&#xE8B7;}">
+
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <StackPanel Spacing="12">
+
+                                <!-- Policy Path TextBox -->
+                                <TextBox x:Name="PolicyPathTextBox"
+                                         Text="{x:Bind ViewModelMainWindow.SidebarBasePolicyPathTextBoxText, Mode=TwoWay}"
+                                         PlaceholderText="Select an XML policy file..."
+                                         IsReadOnly="True"
+                                         MinWidth="400"/>
+
+                                <!-- Action Buttons -->
+                                <controls:WrapPanel Orientation="Horizontal" HorizontalSpacing="10" VerticalSpacing="10">
+
+                                    <Button Click="{x:Bind Nav.SidebarBasePolicyBrowseButton_Click}"
+                                            Style="{StaticResource AccentButtonStyle}">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <FontIcon Glyph="&#xEC50;" FontSize="16"/>
+                                            <TextBlock Text="Browse"/>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Click="{x:Bind Nav.SidebarBasePolicyClearButton_Click}">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <FontIcon Glyph="&#xE894;" FontSize="16"/>
+                                            <TextBlock Text="Clear"/>
+                                        </StackPanel>
+                                    </Button>
+
+                                </controls:WrapPanel>
+
+                            </StackPanel>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!-- Automatic Assignment Toggle -->
+                <customUI:SettingsCardV2 Header="Automatic Assignment"
+                                         Description="Automatically assign newly created policies to the pinned policy path"
+                                         HeaderIcon="{ui:FontIcon Glyph=&#xE735;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModelMainWindow.AutomaticAssignmentSidebarToggleSwitchToggledState, Mode=TwoWay}"
+                                  Toggled="{x:Bind ViewModelMainWindow.AutomaticAssignmentSidebarToggleSwitch_Toggled}"
+                                  OnContent="On"
+                                  OffContent="Off"/>
+                </customUI:SettingsCardV2>
+
+                <!-- Library Settings Section -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                           Text="Library Settings" />
+
+                <!-- Persistent Library Toggle -->
+                <customUI:SettingsCardV2 Header="Persistent Library"
+                                         Description="When enabled, all of the policies available in the library will continue to be there even after app restarts. This functionality is provided by keeping a copy of the policies in the library in a private cache on disk. The cache is automatically deleted when the app is uninstalled."
+                                         HeaderIcon="{ui:FontIcon Glyph=&#xE73E;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.PersistentLibraryToggleState, Mode=TwoWay}"
+                                  Toggled="{x:Bind ViewModel.PersistentLibraryToggle_Toggled}"
+                                  OnContent="On"
+                                  OffContent="Off"/>
+                </customUI:SettingsCardV2>
+
+                <!-- Encrypt Persistent Policies Library Toggle -->
+                <customUI:SettingsCardV2 Header="Encrypt the Persistent Policies Library"
+                                         Description="When enabled, policy files stored in the local cache are encrypted using the Windows Data Protection API with Current User scope. This ensures that the files can only be decrypted and read by your specific Windows user account. Even other administrators on this machine will be unable to read the raw XML content of your library."
+                                         HeaderIcon="{ui:FontIcon Glyph=&#xE72E;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.EncryptPersistentPoliciesLibraryToggleState, Mode=TwoWay}"
+                                  Toggled="{x:Bind ViewModel.EncryptPersistentPoliciesLibraryToggle_Toggled}"
+                                  OnContent="On"
+                                  OffContent="Off"/>
+                </customUI:SettingsCardV2>
+
+                <!-- Encryption Scope Toggle -->
+                <customUI:SettingsCardV2 Header="Encryption Scope"
+                                         Description="Select an encryption scope: User, which allows only the current Windows account to decrypt the encrypted policy files, or Machine, which restricts decryption to this device so the files cannot be decrypted if moved to another device."
+                                         HeaderIcon="{ui:FontIcon Glyph=&#xE716;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.EncryptionScopeIsUserToggleState, Mode=TwoWay}"
+                                  Toggled="{x:Bind ViewModel.EncryptionScopeToggle_Toggled}"
+                                  OnContent="User Scope"
+                                  OffContent="Machine Scope"/>
+                </customUI:SettingsCardV2>
+
+                <!-- Quick Links Section -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                           Text="Quick Links" />
+
+                <controls:SettingsCard Header="Open Config Directory"
+                                       Description="Open the application configuration directory in File Explorer"
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xE838;}"
+                                       IsClickEnabled="True"
+                                       Click="{x:Bind ViewModel.OpenConfigDirectory}"/>
+
+                <controls:SettingsCard Header="Optimize Memory"
+                                       Description="Manually trigger garbage collection to free up memory"
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xE7F4;}"
+                                       IsClickEnabled="True"
+                                       Click="{x:Bind ViewModel.OptimizeMemory}"/>
+
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</Page>

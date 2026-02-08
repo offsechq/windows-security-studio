@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AppControlManager.Pages.BuildNewCertificate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:customUI="using:AppControlManager.CustomUIElements"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}">
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Margin="10,5,10,5"
+                    IsEnabled="{x:Bind ViewModel.ElementsAreEnabled,Mode=OneWay}"
+                    Click="{x:Bind ViewModel.BuildCertificateButton_Click}"
+                    x:Uid="BuildCertificateButton">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <ProgressRing Visibility="{x:Bind ViewModel.ProgressRingVisibility, Mode=OneWay}"
+                                      Margin="5,5,15,5"
+                                      Value="0"
+                                      IsIndeterminate="True"
+                                      Minimum="0"
+                                      Maximum="100"/>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <FontIcon Glyph="&#xEB77;" Margin="5" />
+                            <TextBlock x:Uid="BuildCertificateTextBlock" Margin="5"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <customUI:InfoBarV2
+                IsOpen="{x:Bind ViewModel.StatusInfoBarIsOpen, Mode=TwoWay}"
+                Severity="{x:Bind ViewModel.StatusInfoBarSeverity, Mode=OneWay}"
+                IsClosable="{x:Bind ViewModel.StatusInfoBarIsClosable, Mode=OneWay}"
+                Message="{x:Bind ViewModel.StatusInfoBarMessage, Mode=OneWay}"
+                Title="{x:Bind ViewModel.StatusInfoBarTitle, Mode=OneWay}"
+                Grid.Row="1">
+                <customUI:InfoBarV2.ActionButton>
+                    <Button Visibility="{x:Bind ViewModel.CopyInfoBarToClipboardButtonVisibility, Mode=OneWay}"
+                            x:Uid="CopyThumbPrintToClipboardButton"
+                            Click="{x:Bind ViewModel.CopyInfoBarToClipboardButton_Click}" />
+                </customUI:InfoBarV2.ActionButton>
+            </customUI:InfoBarV2>
+
+            <StackPanel HorizontalAlignment="Stretch" Spacing="{StaticResource SettingsCardSpacing}"
+                        Grid.Row="2" Margin="0,5,0,0">
+
+                <win:StackPanel.ChildrenTransitions>
+                    <win:EntranceThemeTransition FromVerticalOffset="50" />
+                    <win:RepositionThemeTransition IsStaggeringEnabled="False" />
+                </win:StackPanel.ChildrenTransitions>
+
+                <customUI:SettingsCardV2 x:Uid="KeySizeSettingsCard"
+                                         HeaderIcon="{ui:FontIcon Glyph=&#xF4A5;}"
+                                         IsClickEnabled="True"
+                                         IsActionIconVisible="False">
+
+                    <ComboBox SelectedItem="{x:Bind ViewModel.KeySizeComboBoxSelectedItem, Mode=TwoWay}"
+                              IsEnabled="{x:Bind ViewModel.ElementsAreEnabled,Mode=OneWay}">
+                        <x:String>4096</x:String>
+                    </ComboBox>
+
+                </customUI:SettingsCardV2>
+
+                <customUI:SettingsCardV2 x:Uid="AlgorithmSettingsCard"
+                          HeaderIcon="{ui:FontIcon Glyph=&#xF4A5;}"
+                          IsClickEnabled="True"
+                          IsActionIconVisible="False">
+
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.SelectedHashAlgorithm, Mode=TwoWay}"
+                              IsEnabled="{x:Bind ViewModel.ElementsAreEnabled,Mode=OneWay}">
+                        <x:String>SHA2_256</x:String>
+                        <x:String>SHA2_384</x:String>
+                        <x:String>SHA2_512</x:String>
+                        <x:String>SHA3_256</x:String>
+                        <x:String>SHA3_384</x:String>
+                        <x:String>SHA3_512</x:String>
+                    </ComboBox>
+
+                </customUI:SettingsCardV2>
+
+                <controls:SettingsCard x:Uid="CommonNameSettingsCard"
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xE8AC;}"
+                                       IsClickEnabled="False"
+                                       IsActionIconVisible="False">
+
+                    <TextBox x:Uid="CommonNameTextBox"
+                             Text="{x:Bind ViewModel.CommonName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             IsEnabled="{x:Bind ViewModel.ElementsAreEnabled,Mode=OneWay}"
+                             MinWidth="200"/>
+
+                </controls:SettingsCard>
+
+                <controls:SettingsCard x:Uid="ValiditySettingsCard"
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xE787;}"
+                                       IsClickEnabled="False"
+                                       IsActionIconVisible="False">
+
+                    <NumberBox Value="{x:Bind ViewModel.Validity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                               SpinButtonPlacementMode="Inline"
+                               SmallChange="10"
+                               IsEnabled="{x:Bind ViewModel.ElementsAreEnabled,Mode=OneWay}"
+                               LargeChange="100"
+                               Minimum="1"
+                               MaxHeight="3000"/>
+
+                </controls:SettingsCard>
+
+                <controls:SettingsCard x:Uid="PFXPasswordSettingsCard"
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xF78D;}"
+                                       IsClickEnabled="False"
+                                       IsActionIconVisible="False">
+
+                    <PasswordBox MinWidth="250"
+                                 PasswordChar="#"
+                                 IsEnabled="{x:Bind ViewModel.ElementsAreEnabled,Mode=OneWay}"
+                                 PasswordRevealMode="Peek"
+                                 Password="{x:Bind ViewModel.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 x:Uid="PFXEncryptionPasswordBox" />
+
+                </controls:SettingsCard>
+
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>076556fd-204b-4b34-9fb9-82e48a87e3e4</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CommonCore</Import_RootNamespace>
+  </PropertyGroup>
+  <!-- Make WinUI-only items visible under the Shared Project node in Solution Explorer.
+       This applies ONLY when the project loaded is the .shproj itself, and does not
+       impact referencing .csproj projects (so non-WinUI builds remain unaffected).
+       Without this step, we'd have to use the "Show All files" button the VS's Solution Explorer
+       and the files would have different icons. -->
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.shproj' And '$(UseWinUI)' == ''">
+    <UseWinUI>true</UseWinUI>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Atlas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CIManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConsoleHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DISM\Types.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Firmware.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hardware\GpuInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hardware\GPUInfoManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hardware\GpuInformation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Hardware\GpuInformationCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interop\NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interop\NativeMethods_RustInterop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interop\NativeTypes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interop\NativeTypes_ExploitMitigation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\DeviceHealthScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\ComJsonDeserializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\FirewallRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\GlobalVars.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\GroupInfoListForPackagedAppView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\HashMismatchInCertificateException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\HTTPHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\IExplicitDisposalOptIn.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\PackagedAppView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\RgbHex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\SecHttpClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\WindowDisplayAffinity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\LogLine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\LanguageOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\NoValidFilesSelectedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Power\PowerPlan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QuantumRelay\BinaryProtocol.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QuantumRelay\Helpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThermalMonitors\StorageTemperature.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThermalMonitors\TemperatureSampler.cs" />
+  </ItemGroup>
+  <!-- Include WinUI3 specific files so non-WinUI builds won't use these -->
+  <ItemGroup Condition="'$(UseWinUI)' == 'true'">
+    <Compile Include="$(MSBuildThisFileDirectory)Taskbar\Badge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Taskbar\JumpListMgr.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Taskbar\TaskBarProgress.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TaskTracking.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\AllCertificatesGrabber.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\AllFileSigners.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\ClipboardManagement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LLPackageReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\CertificateCreator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Signing\Helper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Signing\Main.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Signing\Structure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppSettings\AppThemeManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppSettings\Main.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppSettings\NavigationBackgroundManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppSettings\NavigationViewLocationManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\UnifiedSearchBarResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebView2Config.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\IInvisibleCrumbar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\IPageHeaderProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\AuthenticationCompanion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\Main.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\ConfigurationPolicyAssignmentsEnvelope.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\DeviceManagementConfigurationPolicy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\IntunePolicyFileItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\AssignmentPayload.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\AuthenticatedAccounts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\AuthenticationContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\DeviceConfigurationPoliciesResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\Group.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\IGraphAuthHost.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\IntuneGroupItemListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\MSGraphJsonContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\OmaSettingBase64.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\QueryPayload.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\SignInMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\ThreadSafeObservableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MicrosoftGraph\Windows10CustomConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\GetFilesFast.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\MeowOpener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\FileAccessCheck.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\FileDialogHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\GlobalVars_WINUI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\ReLaunch.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\InfoBarSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\ProcessStarter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Blueprint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Cancel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Certificate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Confetti.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Configure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\CurlyArrow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Deny.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Deployment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Document.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Dotsload.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\GitHub.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Hash.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Heart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\HeartPulse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Home.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Honeymoon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Light.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Logout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\MDE.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Merge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\MicrosoftCloud.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Refresh.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Scan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Select.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Shield.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Sidebar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\SignIn.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Simulation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\SparklingDiamond.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\StarBlack.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\StarYellow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\SupplementalPolicy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Timeline.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\TrashCan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\Validate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\View.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Animated Icons\ViewAllCertificates.cs" />
+  </ItemGroup>
+</Project>
