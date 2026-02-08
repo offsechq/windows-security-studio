@@ -18,7 +18,7 @@ Despite this potential for disruption, attackers are still constrained by the in
 
 ## System Behavior After Deploying a Signed Application Control Policy
 
-After a signed App Control policy .cip is copied to the EFI partition as part of the deployment process, we can see in [System Information](https://github.com/HotCakeX/Harden-Windows-Security/wiki/System-Information) that Application Control User-Mode is being enforced and when you try to install an application not permitted by the deployed policy, it will be successfully blocked.
+After a signed App Control policy .cip is copied to the EFI partition as part of the deployment process, we can see in [System Information](https://github.com/OFFSECHQ/windows-security-studio/wiki/System-Information) that Application Control User-Mode is being enforced and when you try to install an application not permitted by the deployed policy, it will be successfully blocked.
 
 At this point, a system restart is required. Since UEFI Secure Boot is enabled, the anti-tampering protection of the Signed App Control policy is activated, safeguarding the policy from any modifications.
 
@@ -30,9 +30,9 @@ Deploying a Signed App Control policy without restarting is the same as deployin
 
 - Deleting the .cip policy file from the EFI partition located at `\EFI\Microsoft\Boot\CIPolicies\Active` and restarting the device will result in a boot failure. Before system restart, nothing happens, and it will remain active. This is another self-protection method of a Signed App Control policy. To recover from this state, the person will need to disable Secure Boot in the UEFI firmware settings. There are only 3 scenarios at this point:
 
-  1. If, as suggested in the [Security Recommendations](https://github.com/HotCakeX/Harden-Windows-Security#security-recommendations), you set a strong password for the UEFI firmware of your hardware, they can't access the firmware. This security measure [alongside the rest of the Windows built-in security features](https://github.com/HotCakeX/Harden-Windows-Security) such as BitLocker device encryption will provide the Ultimate protection for a Windows device against threats, whether physical or originating from the Internet.
+  1. If, as suggested in the [Security Recommendations](https://github.com/OFFSECHQ/windows-security-studio#security-recommendations), you set a strong password for the UEFI firmware of your hardware, they can't access the firmware. This security measure [alongside the rest of the Windows built-in security features](https://github.com/OFFSECHQ/windows-security-studio) such as BitLocker device encryption will provide the Ultimate protection for a Windows device against threats, whether physical or originating from the Internet.
 
-  2. If UEFI firmware is not password protected, the person can disable Secure Boot and/or TPM in UEFI firmware settings, they can even flash the entire UEFI firmware memory by physically abusing the device to get past the UEFI password, but since the device is BitLocker protected, **a total Lock Down will be triggered** and the person will need to provide the 48-digit recovery key of the OS drive in order to even complete the boot process into Windows lock screen. Assuming the person also has access to the Windows PIN, they will additionally need to provide 48-digit recovery password of any subsequent BitLocker protected drive(s) in order to access them (if the drive(s) aren't set to be auto-unlocked with the OS drive). If UEFI firmware has any unpatched vulnerability, [Device Guard features](https://github.com/HotCakeX/Harden-Windows-Security?tab=readme-ov-file#device-guard) and [Pluton](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/defending-against-ransomware-with-microsoft-defender-for/ba-p/3243941) will take care of it.
+  2. If UEFI firmware is not password protected, the person can disable Secure Boot and/or TPM in UEFI firmware settings, they can even flash the entire UEFI firmware memory by physically abusing the device to get past the UEFI password, but since the device is BitLocker protected, **a total Lock Down will be triggered** and the person will need to provide the 48-digit recovery key of the OS drive in order to even complete the boot process into Windows lock screen. Assuming the person also has access to the Windows PIN, they will additionally need to provide 48-digit recovery password of any subsequent BitLocker protected drive(s) in order to access them (if the drive(s) aren't set to be auto-unlocked with the OS drive). If UEFI firmware has any unpatched vulnerability, [Device Guard features](https://github.com/OFFSECHQ/windows-security-studio?tab=readme-ov-file#device-guard) and [Pluton](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/defending-against-ransomware-with-microsoft-defender-for/ba-p/3243941) will take care of it.
 
   3. Since steps 1 and 2 are impossible to bypass for a rogue person, there will be only one option left. To completely recycle the physical device, get rid of the inaccessible hardware such as SSD and then sell the remaining hardware parts. Either way, your data remains secure and inaccessible to any unauthorized person(s) at all times.
 
@@ -134,13 +134,13 @@ In contrast, on conventional computer systems, root/administrator privileges are
 > [!TIP]
 > Continue reading:
 >
-> - [Penetration Testing and Benchmarking](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/Rationale.md#-for-penetration-testing-and-benchmarking)
+> - [Penetration Testing and Benchmarking](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Rationale.md#-for-penetration-testing-and-benchmarking)
 >
-> - [Deploying Signed App Control policies](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Deploy-App-Control-Policy)
+> - [Deploying Signed App Control policies](https://github.com/OFFSECHQ/windows-security-studio/wiki/Deploy-App-Control-Policy)
 >
-> - [Creating Code Signing Certificate via App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Build-New-Certificate)
+> - [Creating Code Signing Certificate via App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/Build-New-Certificate)
 >
-> - [Only a Small Portion of The Windows OS Security Apparatus](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Only-a-Small-Portion-of-The-Windows-OS-Security-Apparatus)
+> - [Only a Small Portion of The Windows OS Security Apparatus](https://github.com/OFFSECHQ/windows-security-studio/wiki/Only-a-Small-Portion-of-The-Windows-OS-Security-Apparatus)
 >
 > - [RuntimeEncryption of Memory With Intel® Total Memory Encryption - Multi-Key](https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2022-10/intel-total-memory-encryption-multi-key-whitepaper.pdf)
 >

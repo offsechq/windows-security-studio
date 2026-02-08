@@ -5,7 +5,7 @@ This document provides an exhaustive exploration of the processes involved in tr
 The transformations involve intricate manipulations at the byte level, precise structuring of data, and conditional logic to accommodate various policy components. This guide delves into each step of these processes, elucidating the rationale behind design choices, the versioning mechanism that governs which blocks are present, and the mechanisms that preserve data integrity throughout the conversions.
 
 > [!TIP]
-> Everything explained in this document is implemented in the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager).
+> Everything explained in this document is implemented in the [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager).
 >
 > [**Download it from the Microsoft Store**](https://apps.microsoft.com/detail/9PNG1JDDTGP8)
 

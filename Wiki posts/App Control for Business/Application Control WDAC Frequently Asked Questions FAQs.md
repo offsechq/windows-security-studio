@@ -10,7 +10,7 @@ App Control which is built deep inside of the OS kernel doesn’t need any “ag
 
 ## Can I Use Microsoft Defender For Endpoint (MDE) To Collect App Control Logs?
 
-Yes. [MDE Should definitely be used](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-to-Use-Microsoft-Defender-for-Endpoint-Advanced-Hunting-With-WDAC-App-Control) to manage your endpoints and collect Code Integrity logs used to create App Control policies. They provide very detailed CI info at scale for your entire fleet of machines. Then Intune can be used for at scale deployment of the policies after creation.
+Yes. [MDE Should definitely be used](https://github.com/OFFSECHQ/windows-security-studio/wiki/How-to-Use-Microsoft-Defender-for-Endpoint-Advanced-Hunting-With-WDAC-App-Control) to manage your endpoints and collect Code Integrity logs used to create App Control policies. They provide very detailed CI info at scale for your entire fleet of machines. Then Intune can be used for at scale deployment of the policies after creation.
 
 ## Can Supplemental Policies Have Deny Rules?
 
@@ -38,7 +38,7 @@ Smart App Control is an automated AI-based Application Control mechanism that us
 
 ## What Is The Most Secure Level To Use For Authorizing Files?
 
-For signed files, you should always use `WHQLFilePublisher` as [main level](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Rule-Levels-Comparison-and-Guide) and `FilePublisher` as fallback. For unsigned files, use `Hash` level.
+For signed files, you should always use `WHQLFilePublisher` as [main level](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Rule-Levels-Comparison-and-Guide) and `FilePublisher` as fallback. For unsigned files, use `Hash` level.
 
 ## Is There A More Automated Way To Use Application Control At Scale?
 

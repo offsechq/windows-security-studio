@@ -10,11 +10,11 @@ You can also use the Windows Copilot for asking any PowerShell related questions
 
 This is part 5 of this series, find other parts here:
 
-* [Part 1](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Basic-PowerShell-tricks-and-notes)
-* [Part 2](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Basic-PowerShell-Tricks-and-Notes-Part-2)
-* [Part 3](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Basic-PowerShell-Tricks-and-Notes-Part-3)
-* [Part 4](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Basic-PowerShell-Tricks-and-Notes-Part-4)
-* [Part 5](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Basic-PowerShell-Tricks-and-Notes-Part-5)
+* [Part 1](https://github.com/OFFSECHQ/windows-security-studio/wiki/Basic-PowerShell-tricks-and-notes)
+* [Part 2](https://github.com/OFFSECHQ/windows-security-studio/wiki/Basic-PowerShell-Tricks-and-Notes-Part-2)
+* [Part 3](https://github.com/OFFSECHQ/windows-security-studio/wiki/Basic-PowerShell-Tricks-and-Notes-Part-3)
+* [Part 4](https://github.com/OFFSECHQ/windows-security-studio/wiki/Basic-PowerShell-Tricks-and-Notes-Part-4)
+* [Part 5](https://github.com/OFFSECHQ/windows-security-studio/wiki/Basic-PowerShell-Tricks-and-Notes-Part-5)
 
 <br>
 

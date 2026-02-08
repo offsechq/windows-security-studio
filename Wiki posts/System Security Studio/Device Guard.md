@@ -11,7 +11,7 @@
 
   - This is in accordance with [Microsoft's recommendation](https://learn.microsoft.com/windows/security/hardware-security/enable-virtualization-based-protection-of-code-integrity#use-registry-keys-to-enable-memory-integrity). This option provides Secure Boot with as much protection as is supported by a given computer’s hardware. A computer with input/output memory management units (IOMMUs) will have Secure Boot with DMA protection. A computer without IOMMUs will simply have Secure Boot enabled.
 
-  - Secure boot has 2 parts, part 1 is enforced using the Group Policy by [this app](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security), but for part 2, you need to [enable Secure Boot in your UEFI firmware settings](https://support.microsoft.com/en-us/windows/windows-11-and-secure-boot-a8ff1202-c0d9-42f5-940f-843abef64fad) **if** it's not enabled by default (which is the case on older hardware).
+  - Secure boot has 2 parts, part 1 is enforced using the Group Policy by [this app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security), but for part 2, you need to [enable Secure Boot in your UEFI firmware settings](https://support.microsoft.com/en-us/windows/windows-11-and-secure-boot-a8ff1202-c0d9-42f5-940f-843abef64fad) **if** it's not enabled by default (which is the case on older hardware).
 
   - [(Kernel) DMA protection hardware requirements](https://learn.microsoft.com/windows-hardware/design/device-experiences/oem-kernel-dma-protection)
 

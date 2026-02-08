@@ -1,10 +1,12 @@
-Please follow these guidelines when contributing:
+# Copilot Instructions
+
+> **Note**: This repository does not accept external pull requests. Only repository owners and authorized bots may contribute.
 
 ## Repository Structure
 
-- `App Control Studio/`: The main directory for the App Control Studio application.
-- `App Control Studio/eXclude/`: Ignore everything in this directory, they are not part of the App Control Studio application files.
-- `System Security Studio/`: The main directory for the System Security Studio application.
+- `App Control Studio/`: Main WinUI 3 app for WDAC policy management
+- `System Security Studio/`: Main WinUI 3 app for system hardening
+- `App Control Studio/eXclude/`: Shared infrastructure (CommonCore, Rust interop, services) - used by both apps
 
 ## Key Guidelines
 

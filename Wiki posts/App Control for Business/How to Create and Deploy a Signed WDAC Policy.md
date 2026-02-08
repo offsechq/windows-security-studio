@@ -1,20 +1,20 @@
 # How to use Windows Server to Create App Control Code Signing Certificate
 
-> [!IMPORTANT] > [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) can [easily and quickly generate](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Build-New-Certificate) a Code Signing certificate to be used for signing App Control policies.
+> [!IMPORTANT] > [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) can [easily and quickly generate](https://github.com/OFFSECHQ/windows-security-studio/wiki/Build-New-Certificate) a Code Signing certificate to be used for signing App Control policies.
 >
 > This guide is only for those who want to learn how to setup a Windows Server with Active Directory and Certification Authority roles and create their own CA.
 
 ## Introduction
 
-- By deploying a **Signed** App Control for Business policy, a system will be secure and resistant to any form of tampering ([if coupled with BitLocker and other built-in security features](https://github.com/HotCakeX/Harden-Windows-Security)), in a way that **even the system administrator can't tamper or disable this security policy.**
+- By deploying a **Signed** App Control for Business policy, a system will be secure and resistant to any form of tampering ([if coupled with BitLocker and other built-in security features](https://github.com/OFFSECHQ/windows-security-studio)), in a way that **even the system administrator can't tamper or disable this security policy.**
 
 - The [**only** way for this security feature](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/deployment/disable-appcontrol-policies#removing-app-control-policies) to be turned off, modified, updated or disabled will be to have access to the certificate's private keys used to sign it.
 
-- [Refer to Microsoft's website](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/appcontrol-design-guide) or [my other wiki posts](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction) If you want to learn about App Control itself and how to create a customized App Control policy for your own environment.
+- [Refer to Microsoft's website](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/appcontrol-design-guide) or [my other wiki posts](https://github.com/OFFSECHQ/windows-security-studio/wiki/Introduction) If you want to learn about App Control itself and how to create a customized App Control policy for your own environment.
 
 - Always test and deploy your App Control policy in Audit mode or Unsigned mode first to make sure it works correctly, before deploying the Signed version of it.
 
-  - The [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-App-Control-Policy) has a **_Test Mode_** option when creating policies that will create/deploy the policies with **_Boot Audit on Failure_** and **_Advanced Boot Options Menu_** policy rule options. [You can also add those options to other policies that have already been created.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Configure-Policy-Rule-Options).
+  - The [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-App-Control-Policy) has a **_Test Mode_** option when creating policies that will create/deploy the policies with **_Boot Audit on Failure_** and **_Advanced Boot Options Menu_** policy rule options. [You can also add those options to other policies that have already been created.](https://github.com/OFFSECHQ/windows-security-studio/wiki/Configure-Policy-Rule-Options).
 
 - Keep the xml file(s) of the deployed base policy(s) in a safe place, they are needed, along with the certificate that signed them, if you decide to disable or modify the signed deployed App Control policy later on.
 
@@ -221,10 +221,10 @@ It is important to keep these 2 files, specially `.pfx` that contains the privat
 
 The [Personal Information Exchange (.pfx)](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/personal-information-exchange---pfx--files) file has great importance because it contains the Public key and **Private key** of the certificate so anyone who has access to this file [can disable](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/deployment/disable-appcontrol-policies#removing-app-control-policies) the deployed Signed App Control policy. It should never be shared with anyone outside your circle of trust. It is a password-protected file by nature.
 
-## Use [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to sign and deploy App Control policies
+## Use [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) to sign and deploy App Control policies
 
 > [!TIP]
-> App Control Studio has everything built-in for you. You can [**Deploy**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Deploy-App-Control-Policy), [**Modify**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Allow-New-Apps) and [**Remove**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/System-Information#policy-removal) Signed policies.
+> App Control Studio has everything built-in for you. You can [**Deploy**](https://github.com/OFFSECHQ/windows-security-studio/wiki/Deploy-App-Control-Policy), [**Modify**](https://github.com/OFFSECHQ/windows-security-studio/wiki/Allow-New-Apps) and [**Remove**](https://github.com/OFFSECHQ/windows-security-studio/wiki/System-Information#policy-removal) Signed policies.
 
 ## Extras
 

@@ -2,7 +2,7 @@
 
 ![App Control Studio Application's Create Policy From MDE Advanced Hunting Page](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/AppControl%20Manager%20page%20screenshots/Create%20policy%20from%20MDE%20Advanced%20Hunting.png)
 
-Use this [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) page to create App Control policies based on Microsoft Defender for Endpoint (MDE) Advanced Hunting exported CSV logs. [**Refer to this page for more information**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-to-Use-Microsoft-Defender-for-Endpoint-Advanced-Hunting-With-WDAC-App-Control).
+Use this [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) page to create App Control policies based on Microsoft Defender for Endpoint (MDE) Advanced Hunting exported CSV logs. [**Refer to this page for more information**](https://github.com/OFFSECHQ/windows-security-studio/wiki/How-to-Use-Microsoft-Defender-for-Endpoint-Advanced-Hunting-With-WDAC-App-Control).
 
 This page offers a data grid that has search functionality, sorting, removal of individual logs and copying entire rows or each cell to the clipboard.
 
@@ -24,8 +24,6 @@ Performing Advanced Hunting queries requires `ThreatHunting.Read.All` [permissio
 
 ### Cloud Tab
 
-- [![App Control Studio Menu Item](https://raw.githubusercontent.com/HotCakeX/.github/7ac3898730bc82a790f56a61e301b6663dfc9d5a/Pictures/Gifs/AppControl%20Manager%20Menu/Microsoft%20Graph.gif)](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Graph) [**Microsoft Graph Button**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Graph).
-
 - **Device Name**: Use this button to display a text box where you can enter the name of a device to filter the logs by before retrieving them. The device name will be included as part of the query that will be forwarded to the MDE Advanced Hunting API and the filtering will happen on the MDE side.
 
 - **Retrieve The Logs**: Use this button to retrieve the Advanced Hunting logs that are related to Application Control policies. The logs will be displayed in the data grid.
@@ -42,7 +40,7 @@ Performing Advanced Hunting queries requires `ThreatHunting.Read.All` [permissio
 
 - **Policy Name**: Enter the name of the policy that will be created from the MDE Advanced Hunting logs.
 
-- **Scan Level**: You can choose from different scan levels. [Refer to this page for all the information about them.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Rule-Levels-Comparison-and-Guide)
+- **Scan Level**: You can choose from different scan levels. [Refer to this page for all the information about them.](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Rule-Levels-Comparison-and-Guide)
 
 - **Actions -> Select All**: Use this option to select all the logs in the data grid.
 

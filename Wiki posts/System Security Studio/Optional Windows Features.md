@@ -15,7 +15,7 @@ Use the `Retrieve Recommended Only` option under the `Retrieve All` button to on
 
 Use the 3 apply, remove or verify buttons on this page to apply the security configurations states explained below. They enable/disable only specific Windows Features and capabilities to provide optimal security for your system:
 
-- The [Harden System Security app](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security) [disables](https://learn.microsoft.com/powershell/module/dism/disable-windowsoptionalfeature) the following rarely used features in [Windows optional features](https://learn.microsoft.com/windows/application-management/add-apps-and-features#use-windows-powershell-to-disable-specific-features) (Control Panel):
+- The [Harden System Security app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) [disables](https://learn.microsoft.com/powershell/module/dism/disable-windowsoptionalfeature) the following rarely used features in [Windows optional features](https://learn.microsoft.com/windows/application-management/add-apps-and-features#use-windows-powershell-to-disable-specific-features) (Control Panel):
 
   - PowerShell v2: because it's old and doesn't support [AMSI](https://devblogs.microsoft.com/powershell/powershell-the-blue-team/#antimalware-scan-interface-integration).
 
@@ -35,7 +35,7 @@ Use the 3 apply, remove or verify buttons on this page to apply the security con
 
   - WordPad: Old and [deprecated](https://learn.microsoft.com/windows/whats-new/deprecated-features). None of the new features of Word documents are supported in it. Recommended to use [Word Online](https://www.microsoft.com/en-us/microsoft-365/free-office-online-for-the-web), Notepad or M365 Word.
 
-  - [PowerShell ISE](https://learn.microsoft.com/powershell/scripting/windows-powershell/ise/introducing-the-windows-powershell-ise): Old PowerShell environment that doesn't support versions above 5.1. Highly recommended to use [Visual Studio Code](https://apps.microsoft.com/detail/xp9khm4bk9fz7q) for PowerShell usage and [learning](https://github.com/HotCakeX/Harden-Windows-Security/wiki#-powershell). You can even replicate the [ISE experience in Visual Studio Code](https://learn.microsoft.com/powershell/scripting/dev-cross-plat/vscode/how-to-replicate-the-ise-experience-in-vscode). You can access [Visual Studio Code online in your browser](https://vscode.dev) without the need to install anything.
+  - [PowerShell ISE](https://learn.microsoft.com/powershell/scripting/windows-powershell/ise/introducing-the-windows-powershell-ise): Old PowerShell environment that doesn't support versions above 5.1. Highly recommended to use [Visual Studio Code](https://apps.microsoft.com/detail/xp9khm4bk9fz7q) for PowerShell usage and [learning](https://github.com/OFFSECHQ/windows-security-studio/wiki#-powershell). You can even replicate the [ISE experience in Visual Studio Code](https://learn.microsoft.com/powershell/scripting/dev-cross-plat/vscode/how-to-replicate-the-ise-experience-in-vscode). You can access [Visual Studio Code online in your browser](https://vscode.dev) without the need to install anything.
 
   - Steps Recorder: it's [deprecated](https://support.microsoft.com/en-us/windows/steps-recorder-deprecation-a64888d7-8482-4965-8ce3-25fb004e975f).
 
@@ -43,7 +43,7 @@ Use the 3 apply, remove or verify buttons on this page to apply the security con
 
   - [Windows Sandbox](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-overview): install, test and use programs in a disposable virtual operating system, completely separate from your main OS
 
-  - Hyper-V: a great hybrid hypervisor (Type 1 and Type 2) to run virtual machines on. [check out this Hyper-V Wiki page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Hyper-V)
+  - Hyper-V: a great hybrid hypervisor (Type 1 and Type 2) to run virtual machines on. [check out this Hyper-V Wiki page](https://github.com/OFFSECHQ/windows-security-studio/wiki/Hyper-V)
 
 ## Network Adapters
 

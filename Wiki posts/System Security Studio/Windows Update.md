@@ -7,7 +7,7 @@ Windows updates are extremely important. They always should be installed as fast
 
 In Windows by default, devices will scan daily, automatically download and install any applicable updates at a time optimized to reduce interference with usage, and then automatically try to restart when the end user is away.
 
-**The following policies [the app](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security) configures make sure the default behavior explained above is tightly enforced.**
+**The following policies [the app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) configures make sure the default behavior explained above is tightly enforced.**
 
 - **[Group Policy]** Enables [Windows Update to download and install updates on any network](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/the-windows-update-policies-you-should-set-and-why/ba-p/3270914), metered or not; because the updates are important and should not be suppressed, **that's what bad actors would want.** **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-update#allowautowindowsupdatedownloadovermeterednetwork)
 

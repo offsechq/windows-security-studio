@@ -1,7 +1,7 @@
 # About TLS, DNS, Encryption and OPSEC concepts
 
 <p align=center>
-<img width=500 src="https://raw.githubusercontent.com/HotCakeX/Harden-Windows-Security/main/images/6.jpg" alt="About TLS, DNS, Encryption and OPSEC concepts">
+<img width=500 src="https://raw.githubusercontent.com/OFFSECHQ/windows-security-studio/main/images/6.jpg" alt="About TLS, DNS, Encryption and OPSEC concepts">
 </p>
 
 The contents here are for beginners, to learn the basics of TLS, encrypted connections and some preliminary OPSEC (Operational security) concepts.
@@ -16,7 +16,7 @@ Whether you are using Secure DNS such as DNS over HTTPS or using plain text DNS 
 E.g., in this URL, anything after the first `/` is inaccessible to the DNS server.
 
 ```
-Github.com/HotCakeX/Harden-Windows-Security
+Github.com/OFFSECHQ/windows-security-studio
 ```
 
 The DNS provider will know that you are accessing GitHub.com but won't know which repository on GitHub.com you are visiting.
@@ -142,7 +142,7 @@ If you don't use a proper VPN, SNI can still reveal the domain and sub-domain of
 
 <br>
 
-![About TLS, DNS, Encryption and OPSEC concepts](https://raw.githubusercontent.com/HotCakeX/Harden-Windows-Security/main/images/About%20TLS%2C%20DNS%2C%20Encryption%20and%20OPSEC%20concepts.png)
+![About TLS, DNS, Encryption and OPSEC concepts](https://raw.githubusercontent.com/OFFSECHQ/windows-security-studio/main/images/About%20TLS%2C%20DNS%2C%20Encryption%20and%20OPSEC%20concepts.png)
 
 <br>
 

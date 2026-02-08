@@ -4,7 +4,7 @@
 
 ## Currently Deployed Policies
 
-Use this section in [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to view details about the deployed App Control policies on the system.
+Use this section in [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) to view details about the deployed App Control policies on the system.
 
 - Search through the list of policies
 
@@ -18,7 +18,7 @@ Use this section in [App Control Studio](https://github.com/HotCakeX/Harden-Wind
 
 - View the version of each policy
 
-- Easily open the selected deployed policy in [Policy Editor](https://github.com/HotCakeX/Harden-Windows-Security/wiki/PolicyEditor) where you can view all of its details, modify it and save it to a file. This is very useful to know what rules are included in the deployed policies on your system. It also supports protected System policies that come by default with the OS.
+- Easily open the selected deployed policy in [Policy Editor](https://github.com/OFFSECHQ/windows-security-studio/wiki/PolicyEditor) where you can view all of its details, modify it and save it to a file. This is very useful to know what rules are included in the deployed policies on your system. It also supports protected System policies that come by default with the OS.
 
 > [!TIP]
 > You can view the version of the Microsoft Vulnerable Driver Block List on this page by checking the box for including System policies in the list.
@@ -61,7 +61,7 @@ Following this step, the policy will be re-signed and redeployed on the system w
 >
 > **Note that these supplemental policies are automatically removed when their associated base policy is removed from the system, so no additional action is required on your part.**
 >
-> You can view the XML source of the `AppControlManagerSupplementalPolicy` supplemental policy [here](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/AppControl%20Manager/Resources/AppControlManagerSupplementalPolicy.xml).
+> You can view the XML source of the `AppControlManagerSupplementalPolicy` supplemental policy [here](https://github.com/OFFSECHQ/windows-security-studio/blob/main/AppControl%20Manager/Resources/AppControlManagerSupplementalPolicy.xml).
 
 ### Swapping Policies
 
@@ -69,7 +69,7 @@ You can seamlessly swap any deployed policy on the System Information page. For 
 
 ## Online Policies
 
-Use the [**Microsoft Graph Button**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Graph) to sign into your account and then press the `Retrieve Online Policies` button to retrieve any available App Control and Managed Installer policies from Intune. They will be populated in the List View where you can see them in detail, sort them, search through them and manage them.
+Use the [**Microsoft Graph Button**](https://github.com/OFFSECHQ/windows-security-studio/wiki/Microsoft-Graph) to sign into your account and then press the `Retrieve Online Policies` button to retrieve any available App Control and Managed Installer policies from Intune. They will be populated in the List View where you can see them in detail, sort them, search through them and manage them.
 
 - **Remove Policy**: After selecting an Intune-deployed App Control or Managed Installer policy from the list, use this button to remove it from Intune. The devices that this policy is deployed to will have to reboot in order for the policy to be fully removed from them.
 

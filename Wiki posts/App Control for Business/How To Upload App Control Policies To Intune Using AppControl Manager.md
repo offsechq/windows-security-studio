@@ -1,8 +1,8 @@
 # How To Upload App Control Policies To Intune Using App Control Studio
 
-The [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) provides native support for Intune, enabling effortless deployment of App Control policies to your Intune-managed devices.
+The [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) provides native support for Intune, enabling effortless deployment of App Control policies to your Intune-managed devices.
 
-To do that, navigate to the [Deploy App Control Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Deploy-App-Control-Policy) page, Click the `Sign In` button. A new browser tab will open, prompting you to sign into your Entra ID account.
+To do that, navigate to the [Deploy App Control Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Deploy-App-Control-Policy) page, Click the `Sign In` button. A new browser tab will open, prompting you to sign into your Entra ID account.
 
 ![Sign In button](https://raw.githubusercontent.com/HotCakeX/.github/7ccc3793b4d21d2fe7d5a79b56d1cc78fa1d0aac/Pictures/PNG%20and%20JPG/How%20To%20Upload%20App%20Control%20Policies%20To%20Intune%20Using%20AppControl%20Manager/Sign%20In%20button.png)
 
@@ -50,4 +50,4 @@ You can remove any of the deployed policies in here. After removal from the Intu
 
 ## Have Questions or Feature Requests?
 
-Feel free to [create a new discussion](https://github.com/HotCakeX/Harden-Windows-Security/discussions) to ask questions or request for extra features that don't currently exist in the App Control Studio application.
+Feel free to [create a new discussion](https://github.com/OFFSECHQ/windows-security-studio/discussions) to ask questions or request for extra features that don't currently exist in the App Control Studio application.

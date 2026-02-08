@@ -78,7 +78,7 @@ PAW is the highest security configuration designed for extremely sensitive roles
 
 Often, the servers are considerably less secure than the PAW itself. Likewise with intermediaries, they are usually less secure than the PAW itself. Consequently, the session host and/or client is not the weakest chain link. Which also implies that the clean source principle is kept at least on the start of the chain.
 
-For more of a do-it-yourself experience, check out my harden windows security repository over at [GitHub](https://github.com/HotCakeX/Harden-Windows-Security).
+For more of a do-it-yourself experience, check out my harden windows security repository over at [GitHub](https://github.com/OFFSECHQ/windows-security-studio).
 
 <br>
 ## Azure Confidential Compute

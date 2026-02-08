@@ -3,7 +3,7 @@
 <p align="center">
 </p>
 
-The security baseline for Microsoft 365 Apps for enterprise is published twice a year, usually in June and December. Use [the Harden System Security App](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security) to effortlessly apply them onto your system.
+The security baseline for Microsoft 365 Apps for enterprise is published twice a year, usually in June and December. Use [the Harden System Security App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) to effortlessly apply them onto your system.
 
 On this page, the Harden System Security app enables you to apply the Microsoft 365 Apps Security Baselines on your system, verify compliance, and remove the applied policies.
 

@@ -4,7 +4,7 @@ App Control Studio is a modern secure app that provides easy to use graphical us
 
 It always stays up to date with the latest security patches and provides constant and consistent maintenance and support.
 
-**⚡What is App Control? [Check Out This Article ⚡](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction)**
+**⚡What is App Control? [Check Out This Article ⚡](https://github.com/OFFSECHQ/windows-security-studio/wiki/Introduction)**
 
 <br>
 
@@ -20,14 +20,14 @@ App Control Studio is available on [**the Microsoft Store**](https://apps.micros
 
 ### Use GitHub Packages
 
-Use the following PowerShell [command](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/Harden-Windows-Security.ps1) as Admin, it will automatically download the latest MSIXBundle file from this repository's release page and install it for you.
+Use the following PowerShell [command](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden-Windows-Security.ps1) as Admin, it will automatically download the latest MSIXBundle file from this repository's release page and install it for you.
 
 ```powershell
-(irm 'https://raw.githubusercontent.com/HotCakeX/Harden-Windows-Security/main/Harden-Windows-Security.ps1')+'AppControl'|iex
+(irm 'https://raw.githubusercontent.com/OFFSECHQ/windows-security-studio/main/Harden-Windows-Security.ps1')+'AppControl'|iex
 ```
 
 > [!TIP]\
-> [App Control Studio supports auto-update and has built-in updater.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Update)
+> [App Control Studio supports auto-update and has built-in updater.](https://github.com/OFFSECHQ/windows-security-studio/wiki/Update)
 
 <br>
 
@@ -41,11 +41,11 @@ winget install --id 9PNG1JDDTGP8 --exact --accept-package-agreements --accept-so
 
 ### Offline Installation for Air-gapped Systems
 
-Please [**follow this guide**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Install-Microsoft-Store-Apps-Completely-Offline) for instructions.
+Please [**follow this guide**](https://github.com/OFFSECHQ/windows-security-studio/wiki/How-To-Install-Microsoft-Store-Apps-Completely-Offline) for instructions.
 
 <br>
 
-Please feel free to open a discussion if you have any questions about the build process, security, how to use or have feedbacks. [**Source code on this repository**](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/AppControl%20Manager)
+Please feel free to open a discussion if you have any questions about the build process, security, how to use or have feedbacks. [**Source code on this repository**](https://github.com/OFFSECHQ/windows-security-studio/tree/main/AppControl%20Manager)
 
 <br>
 
@@ -56,16 +56,6 @@ Please feel free to open a discussion if you have any questions about the build 
 - Windows 11 23H2
 - Windows 11 22H2
 - Windows Server 2025
-
-<br>
-
-## Preview of the App
-
-[![App Control Studio preview](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/Gifs/AppControlManager.gif)](https://www.youtube.com/watch?v=SzMs13n7elE)
-
-<br>
-
-[![App Control Studio YouTube Video demo thumbnail](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/AppControl%20Manager%20video%20Demo%20Thumbnail.png)](https://www.youtube.com/watch?v=SzMs13n7elE)
 
 <br>
 
@@ -93,26 +83,26 @@ Please feel free to open a discussion if you have any questions about the build 
 
 ## Features Implemented So Far
 
-- [Create AppControl Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-App-Control-Policy)
-- [Create Supplemental Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Supplemental-App-Control-Policy)
-- [System Information](https://github.com/HotCakeX/Harden-Windows-Security/wiki/System-Information)
-- [Configure Policy Rule Options](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Configure-Policy-Rule-Options)
-- [Policy Editor](https://github.com/HotCakeX/Harden-Windows-Security/wiki/PolicyEditor)
-- [Simulation](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Simulation)
-- [Allow New Apps](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Allow-New-Apps)
-- [Build New Certificate](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Build-New-Certificate)
-- [Create Policy From Event Logs](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Policy-From-Event-Logs)
-- [Create Policy From MDE Advanced Hunting](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Policy-From-MDE-Advanced-Hunting)
-- [Create Deny Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Deny-App-Control-Policy)
-- [Merge App Control Policies](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Merge-App-Control-Policies)
-- [Deploy App Control Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Deploy-App-Control-Policy)
-- [Get Code Integrity Hashes](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Get-Code-Integrity-Hashes)
-- [Get Secure Policy Settings](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Get-Secure-Policy-Settings)
-- [Update](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Update)
-- [Sidebar](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Sidebar)
-- [Validate Policies](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Validate-Policies)
-- [View File Certificates](https://github.com/HotCakeX/Harden-Windows-Security/wiki/View-File-Certificates)
-- [Microsoft Graph](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Graph)
+- [Create AppControl Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-App-Control-Policy)
+- [Create Supplemental Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Supplemental-App-Control-Policy)
+- [System Information](https://github.com/OFFSECHQ/windows-security-studio/wiki/System-Information)
+- [Configure Policy Rule Options](https://github.com/OFFSECHQ/windows-security-studio/wiki/Configure-Policy-Rule-Options)
+- [Policy Editor](https://github.com/OFFSECHQ/windows-security-studio/wiki/PolicyEditor)
+- [Simulation](https://github.com/OFFSECHQ/windows-security-studio/wiki/Simulation)
+- [Allow New Apps](https://github.com/OFFSECHQ/windows-security-studio/wiki/Allow-New-Apps)
+- [Build New Certificate](https://github.com/OFFSECHQ/windows-security-studio/wiki/Build-New-Certificate)
+- [Create Policy From Event Logs](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Policy-From-Event-Logs)
+- [Create Policy From MDE Advanced Hunting](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Policy-From-MDE-Advanced-Hunting)
+- [Create Deny Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Deny-App-Control-Policy)
+- [Merge App Control Policies](https://github.com/OFFSECHQ/windows-security-studio/wiki/Merge-App-Control-Policies)
+- [Deploy App Control Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Deploy-App-Control-Policy)
+- [Get Code Integrity Hashes](https://github.com/OFFSECHQ/windows-security-studio/wiki/Get-Code-Integrity-Hashes)
+- [Get Secure Policy Settings](https://github.com/OFFSECHQ/windows-security-studio/wiki/Get-Secure-Policy-Settings)
+- [Update](https://github.com/OFFSECHQ/windows-security-studio/wiki/Update)
+- [Sidebar](https://github.com/OFFSECHQ/windows-security-studio/wiki/Sidebar)
+- [Validate Policies](https://github.com/OFFSECHQ/windows-security-studio/wiki/Validate-Policies)
+- [View File Certificates](https://github.com/OFFSECHQ/windows-security-studio/wiki/View-File-Certificates)
+- [Microsoft Graph](https://github.com/OFFSECHQ/windows-security-studio/wiki/Microsoft-Graph)
 
 _More features will come very quickly in the near future._
 
@@ -138,7 +128,7 @@ The App Control Studio fully supports the following languages. You can request f
 ## Security
 
 > [!IMPORTANT]\
-> The App Control Studio application is built publicly using a [GitHub Workflow](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/.github/workflows/Build%20AppControl%20Manager%20MSIX%20Package.yml) and uploaded to the GitHub release. The action uses [Artifact Attestation](https://github.com/HotCakeX/Harden-Windows-Security/attestations) and [SBOM (Software Bill of Materials)](https://github.com/HotCakeX/Harden-Windows-Security/network/dependencies) generation to comply with the highest [security standards](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds) such as [SLSA](https://slsa.dev/spec/v1.0/levels) level 3. The source code as well as the package is [uploaded to VirusTotal](https://github.com/HotCakeX/Harden-Windows-Security/actions/workflows/VirusTotal.yml) automatically. Also [GitHub's CodeQL Advanced workflow](https://github.com/HotCakeX/Harden-Windows-Security/actions/workflows/codeql.yml) with extended security model scans the entire repository. All of the dependencies of any project in this repository are uploaded to GitHub and are available in the [Dependency Graph](https://github.com/HotCakeX/Harden-Windows-Security/network/dependencies).
+> The App Control Studio application is built publicly using a [GitHub Workflow](https://github.com/OFFSECHQ/windows-security-studio/blob/main/.github/workflows/Build%20AppControl%20Manager%20MSIX%20Package.yml) and uploaded to the GitHub release. The action uses [Artifact Attestation](https://github.com/OFFSECHQ/windows-security-studio/attestations) and [SBOM (Software Bill of Materials)](https://github.com/OFFSECHQ/windows-security-studio/network/dependencies) generation to comply with the highest [security standards](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds) such as [SLSA](https://slsa.dev/spec/v1.0/levels) level 3. The source code as well as the package is [uploaded to VirusTotal](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/VirusTotal.yml) automatically. Also [GitHub's CodeQL Advanced workflow](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/codeql.yml) with extended security model scans the entire repository. All of the dependencies of any project in this repository are uploaded to GitHub and are available in the [Dependency Graph](https://github.com/OFFSECHQ/windows-security-studio/network/dependencies).
 
 > [!NOTE]\
 > [United States Veteran Affairs (VA) Technical Reference Model regarding App Control Studio.](https://www.oit.va.gov/Services/TRM/ToolPage.aspx?tid=16938)
@@ -173,7 +163,7 @@ The codebase is extensively and thoughtfully documented, enabling reviewers to t
 
 - Deploying, removing, modifying, or checking the status of policies also necessitates Administrator privileges to ensure secure and reliable execution of these operations.
 
-- Creating scheduled tasks that run as SYSTEM account requires Administrator privilege. This feature is used in places such as [Creating auto-update task for Microsoft Recommended driver block rules](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-App-Control-Policy) or when [Allowing new apps](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Allow-New-Apps).
+- Creating scheduled tasks that run as SYSTEM account requires Administrator privilege. This feature is used in places such as [Creating auto-update task for Microsoft Recommended driver block rules](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-App-Control-Policy) or when [Allowing new apps](https://github.com/OFFSECHQ/windows-security-studio/wiki/Allow-New-Apps).
 
 <br>
 
@@ -212,7 +202,7 @@ Everything the App Control Studio creates/generates will be saved in that direct
 
 Here is the complete list of all of the URLs the App Control Studio application connects to **_(or is mentioned in the User Interface)_** with proper justification for each of them.
 
-- **[Privacy Policy for the App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Privacy-Policy-for-the-AppControl-Manager)**
+- **[Privacy Policy for the App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/Privacy-Policy-for-the-AppControl-Manager)**
 
 <br>
 
@@ -222,15 +212,15 @@ Here is the complete list of all of the URLs the App Control Studio application 
 |                                                                           https://api.github.com/repos/MicrosoftDocs/windows-itpro-docs/commits                                                                            |                                                                  To check the latest commit details of the Microsoft Recommended Drivers Block List and display them to the user on the UI                                                                  |
 | https://raw.githubusercontent.com/MicrosoftDocs/windows-itpro-docs/refs/heads/public/windows/security/application-security/application-control/app-control-for-business/design/applications-that-can-bypass-appcontrol.md  |                                                                                                 Source for the Microsoft Recommended User-Mode Block Rules                                                                                                  |
 | https://raw.githubusercontent.com/MicrosoftDocs/windows-itpro-docs/refs/heads/public/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules.md |                                                                                                  Source for the Microsoft Recommended Drivers Block Rules                                                                                                   |
-|                                             https://raw.githubusercontent.com/HotCakeX/Harden-Windows-Security/refs/heads/main/AppControl%20Manager/MSIXBundleDownloadURL.txt                                              | The file on this repository that contains the download link to the latest version of the App Control Studio. That text file is updated via automated GitHub action workflow that securely builds and uploads the MSIXBundle package to the GitHub releases. |
-|                                                    https://raw.githubusercontent.com/HotCakeX/Harden-Windows-Security/refs/heads/main/AppControl%20Manager/version.txt                                                     |                     The latest available version of the App Control Studio application. That text file is updated via automated GitHub action workflow that securely builds and uploads the MSIXBundle package to the GitHub releases.                      |
-|                                                                           https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction                                                                            |                                                                                 The link that opens in the GitHub documentations page in the app via the built-in WebView 2                                                                                 |
+|                                             https://raw.githubusercontent.com/OFFSECHQ/windows-security-studio/refs/heads/main/AppControl%20Manager/MSIXBundleDownloadURL.txt                                              | The file on this repository that contains the download link to the latest version of the App Control Studio. That text file is updated via automated GitHub action workflow that securely builds and uploads the MSIXBundle package to the GitHub releases. |
+|                                                    https://raw.githubusercontent.com/OFFSECHQ/windows-security-studio/refs/heads/main/AppControl%20Manager/version.txt                                                     |                     The latest available version of the App Control Studio application. That text file is updated via automated GitHub action workflow that securely builds and uploads the MSIXBundle package to the GitHub releases.                      |
+|                                                                           https://github.com/OFFSECHQ/windows-security-studio/wiki/Introduction                                                                            |                                                                                 The link that opens in the GitHub documentations page in the app via the built-in WebView 2                                                                                 |
 |                                                 https://learn.microsoft.com/windows/security/application-security/application-control/app-control-for-business/appcontrol                                                  |                                                                               The link that opens in the Microsoft documentations page in the app via the built-in WebView 2                                                                                |
-|                                                                                https://github.com/HotCakeX/Harden-Windows-Security/releases                                                                                |                                                     During the update process, this link that is for the GitHub releases will be displayed on the update page as a quick way to read the release notes                                                      |
-|                                                                        https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager                                                                         |                                                                                  Will be displayed on the Update page when a new version is available and being downloaded                                                                                  |
-|                                                                           https://github.com/HotCakeX/Harden-Windows-Security/issues/new/choose                                                                            |                                                                                     Link for the "Send Feedback" button at the bottom of the about section in settings                                                                                      |
-|                                                                                    https://github.com/HotCakeX/Harden-Windows-Security                                                                                     |                                                                                        Mentioned in the Links section at the bottom of the About section in Settings                                                                                        |
-|                                                                        https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager                                                                         |                                                                                        Mentioned in the Links section at the bottom of the About section in Settings                                                                                        |
+|                                                                                https://github.com/OFFSECHQ/windows-security-studio/releases                                                                                |                                                     During the update process, this link that is for the GitHub releases will be displayed on the update page as a quick way to read the release notes                                                      |
+|                                                                        https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager                                                                         |                                                                                  Will be displayed on the Update page when a new version is available and being downloaded                                                                                  |
+|                                                                           https://github.com/OFFSECHQ/windows-security-studio/issues/new/choose                                                                            |                                                                                     Link for the "Send Feedback" button at the bottom of the about section in settings                                                                                      |
+|                                                                                    https://github.com/OFFSECHQ/windows-security-studio                                                                                     |                                                                                        Mentioned in the Links section at the bottom of the About section in Settings                                                                                        |
+|                                                                        https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager                                                                         |                                                                                        Mentioned in the Links section at the bottom of the About section in Settings                                                                                        |
 |                                                                                               https://spynetgirl.github.io/                                                                                                |                                                                                        Mentioned in the Links section at the bottom of the About section in Settings                                                                                        |
 |                                                                                             https://www.youtube.com/@hotcakex                                                                                              |                                                                                        Mentioned in the Links section at the bottom of the About section in Settings                                                                                        |
 |                                                                                                  https://x.com/CyberCakeX                                                                                                  |                                                                                        Mentioned in the Links section at the bottom of the About section in Settings                                                                                        |
@@ -341,11 +331,11 @@ explorer.exe shell:AppsFolder\VioletHansen.AppControlManager_ea7andspwdn10!App
 
 ## How To Install App Control Studio Completely Offline?
 
-1. Download [this PowerShell script](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/Harden-Windows-Security.ps1).
+1. Download [this PowerShell script](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden-Windows-Security.ps1).
 
 2. Have `SignTool.exe`. You can find it in [here](https://www.nuget.org/packages/Microsoft.Windows.SDK.BuildTools/) if you don't already have it.
 
-3. Download the latest MSIXBundle package of the App Control Studio from the [GitHub releases](https://github.com/HotCakeX/Harden-Windows-Security/releases) or build it from [the source code](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/AppControl%20Manager) yourself.
+3. Download the latest MSIXBundle package of the App Control Studio from the [GitHub releases](https://github.com/OFFSECHQ/windows-security-studio/releases) or build it from [the source code](https://github.com/OFFSECHQ/windows-security-studio/tree/main/AppControl%20Manager) yourself.
 
 4. Start an elevated PowerShell and import the script file via `Import-Module "Path to script file"`.
 
@@ -362,7 +352,7 @@ AppControl -MSIXBundlePath "Path To the MSIXBundle" -SignTool "Path to signtool.
 > [!Warning]\
 > The following only happens during GitHub installation method, when you run the one-liner script to install the App Control Studio then the steps described below will automatically run. **However, if you choose to install the App Control Studio from the [Microsoft Store](https://apps.microsoft.com/detail/9PNG1JDDTGP8) then the following steps are not necessary and will not be used.**
 
-The installation process for App Control Studio is uniquely streamlined. When you execute the PowerShell one-liner command mentioned above, it initiates [a file](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/Harden-Windows-Security.ps1) containing the `AppControl` function, which serves as the bootstrapper script. This script is thoroughly documented, with detailed explanations and justifications for each step, as outlined below:
+The installation process for App Control Studio is uniquely streamlined. When you execute the PowerShell one-liner command mentioned above, it initiates [a file](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden-Windows-Security.ps1) containing the `AppControl` function, which serves as the bootstrapper script. This script is thoroughly documented, with detailed explanations and justifications for each step, as outlined below:
 
 - The latest version of the App Control Studio MSIXBundle package is securely downloaded from the GitHub release page, where it is built publicly with full artifact attestation and SBOMs.
 
@@ -380,7 +370,7 @@ The installation process for App Control Studio is uniquely streamlined. When yo
 
 You can build the App Control Studio application directly from the source code locally on your device without using any 3rd party tools in a completely automated way.
 
-It will create the MSIXBundle file containing the X64 and ARM64 MSIX packages. You can even optionally chain it with the [Bootstrapper script](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/Harden-Windows-Security.ps1) to sign and install the application on your system at the end.
+It will create the MSIXBundle file containing the X64 and ARM64 MSIX packages. You can even optionally chain it with the [Bootstrapper script](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden-Windows-Security.ps1) to sign and install the application on your system at the end.
 
 The build process will generate complete log files and you can use the [MSBuild Structured Log Viewer](https://learn.microsoft.com/shows/visual-studio-toolbox/msbuild-structured-log-viewer) to inspect them.
 
@@ -1036,7 +1026,7 @@ function Build_ACM {
         Invoke-WebRequest -Uri 'https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-win-x64.exe' -OutFile "${Env:RUNNER_TEMP}\sbom-tool.exe"
 
         # https://github.com/microsoft/sbom-tool/blob/main/docs/sbom-tool-arguments.md
-        . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc .\ -pn 'App Control Studio' -ps 'Violet Hansen' -pv $MSIXVersion -nsb 'https://github.com/HotCakeX/Harden-Windows-Security' -V Verbose -gt true -li true -pm true -D true -lto 80
+        . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc .\ -pn 'App Control Studio' -ps 'Violet Hansen' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
 
         # Saving the details of the SBOM file
         Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "SBOM_PATH=$MSIXBundleOutput/_manifest/spdx_2.2/manifest.spdx.json"
@@ -1044,7 +1034,7 @@ function Build_ACM {
     }
 
     if ($Install -and $PackageFamilyName -eq 'AppControlManager_sadt7br7jpt02') {
-        (Invoke-RestMethod -Uri 'https://raw.githubusercontent.com/HotCakeX/Harden-Windows-Security/main/Harden-Windows-Security.ps1') + "AppControl -Verbose -MSIXBundlePath '$MSIXBundle'" | Invoke-Expression
+        (Invoke-RestMethod -Uri 'https://raw.githubusercontent.com/OFFSECHQ/windows-security-studio/main/Harden-Windows-Security.ps1') + "AppControl -Verbose -MSIXBundlePath '$MSIXBundle'" | Invoke-Expression
     }
 
     if ($Upload) {

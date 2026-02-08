@@ -4,7 +4,7 @@
 
 ## Description
 
-Use this page in [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) on a system where Application Control policies are already deployed.
+Use this page in [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) on a system where Application Control policies are already deployed.
 
 When you need to install a new application, this page provides an intuitive way to temporarily enable Audit mode in your existing deployed base policy. This allows the installation of the app while ensuring the base policy automatically reverts to Enforced mode immediately afterward.
 
@@ -30,7 +30,7 @@ You can also use this page to create supplemental policies for every program you
 
 1. Prepare a clean VM (Virtual Machine such as Hyper-V) by installing the latest OS version on it and updating it. After update and restart of the guest OS in the VM, Install the **App Control Studio** on it and shut it down. Now create a Hyper-V checkpoint. You will use this checkpoint to return back to this clean state.
 
-2. Use App Control Studio to [deploy a base policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-App-Control-Policy) such as `Allow Microsoft`.
+2. Use App Control Studio to [deploy a base policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-App-Control-Policy) such as `Allow Microsoft`.
 
 3. Use the `Allow New Apps` feature to browse for the base policy and enter the name of the program you wish to create a supplemental policy for.
 
@@ -46,7 +46,7 @@ You can also use this page to create supplemental policies for every program you
 
 9. After the policy is deployed, try starting your program again and make sure it 100% works and all of its features are usable.
 
-10. If one of the files of the program still gets blocked, that means you didn't browse for the directory where that file is located or you didn't use the program's feature that would trigger audit logs to be generated for its files. App Control Studio offers multiple features that you can use to generate supplemental policies and then [merge them all](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Merge-App-Control-Policies) into one. For example, you can [create a supplemental policy just from the event logs](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Policy-From-Event-Logs).
+10. If one of the files of the program still gets blocked, that means you didn't browse for the directory where that file is located or you didn't use the program's feature that would trigger audit logs to be generated for its files. App Control Studio offers multiple features that you can use to generate supplemental policies and then [merge them all](https://github.com/OFFSECHQ/windows-security-studio/wiki/Merge-App-Control-Policies) into one. For example, you can [create a supplemental policy just from the event logs](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Policy-From-Event-Logs).
 
 ## Configuration Details
 
@@ -56,8 +56,8 @@ You can also use this page to create supplemental policies for every program you
 
 - **Log Size**: Use this number box to increase or decrease the maximum capacity of the `Code Integrity/Operational` logs. The bigger the number, the more events will be captured without being overwritten.
 
-- **Scan Level**: You can choose from different scan levels. [Refer to this page for all the information about them.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Rule-Levels-Comparison-and-Guide)
+- **Scan Level**: You can choose from different scan levels. [Refer to this page for all the information about them.](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Rule-Levels-Comparison-and-Guide)
 
 - **Browse for folders**: Use this button in Step 2 to browse for the installation directories of the app(s) you installed. This will help improve the accuracy of the supplemental policy that will be created. If for some reason you cannot locate the installation directory of the app you installed, ensure you start the app after installation, use it as you normally would so that audit logs will be generated for all of its files and components. These audit logs will then be displayed to you in the `Review the Event Logs` tab.
 
-- **Deploy After Creation**: If toggled, only the supplemental policy XML file will be available in the [User Configuration directory](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager#where-is-the-user-configurations-directory) at the end of the operation. If it's not toggled, the CIP file will also be made available. Both files will have the same name as the policy name that you choose.
+- **Deploy After Creation**: If toggled, only the supplemental policy XML file will be available in the [User Configuration directory](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager#where-is-the-user-configurations-directory) at the end of the operation. If it's not toggled, the CIP file will also be made available. Both files will have the same name as the policy name that you choose.

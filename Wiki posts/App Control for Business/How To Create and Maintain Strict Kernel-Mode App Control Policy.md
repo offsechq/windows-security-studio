@@ -1,10 +1,10 @@
 # How To Create and Maintain Strict Kernel-Mode App Control Policy
 
-A [**Strict Kernel-mode**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection) App Control policy is a special kind of policy that only enforces Kernel-mode drivers without affecting user-mode files. [The App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) fully supports this unique policy and allows you to create and maintain it effortlessly.
+A [**Strict Kernel-mode**](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection) App Control policy is a special kind of policy that only enforces Kernel-mode drivers without affecting user-mode files. [The App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) fully supports this unique policy and allows you to create and maintain it effortlessly.
 
 ## Creating the Base Policy
 
-Navigate to the [Create App Control policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-App-Control-Policy) page and scroll down to the `Create Strict Kernel-Mode Policy` section.
+Navigate to the [Create App Control policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-App-Control-Policy) page and scroll down to the `Create Strict Kernel-Mode Policy` section.
 
 ![creating new base strict kernel mode policy](https://raw.githubusercontent.com/HotCakeX/.github/1df694f5fc413e27f9cf4621777d85cba60ef0d2/Pictures/PNG%20and%20JPG/How%20To%20Create%20and%20Maintain%20Strict%20Kernel-Mode%20App%20Control%20Policy/Creating%20the%20base%20policy.png)
 
@@ -19,15 +19,15 @@ Navigate to the [Create App Control policy](https://github.com/HotCakeX/Harden-W
 
 ## Creating the Supplemental Policy
 
-After restarting the system and relaunching the App Control Studio, navigate to the [System Information](https://github.com/HotCakeX/Harden-Windows-Security/wiki/System-Information) page. Press the `Retrieve Policies` button, locate the Strict kernel-mode base policy, and remove it from the system.
+After restarting the system and relaunching the App Control Studio, navigate to the [System Information](https://github.com/OFFSECHQ/windows-security-studio/wiki/System-Information) page. Press the `Retrieve Policies` button, locate the Strict kernel-mode base policy, and remove it from the system.
 
 ![Removing app control policy using App Control Studio](https://raw.githubusercontent.com/HotCakeX/.github/8a4f06e919efc7ddd5b833203445ac9ea64b184c/Pictures/PNG%20and%20JPG/How%20To%20Create%20and%20Maintain%20Strict%20Kernel-Mode%20App%20Control%20Policy/Remove%20base%20policy.png)
 
-Once removed, redeploy the same base policy using the [Create App Control policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-App-Control-Policy) page, but this time ensure that Audit Mode is disabled.
+Once removed, redeploy the same base policy using the [Create App Control policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-App-Control-Policy) page, but this time ensure that Audit Mode is disabled.
 
 ![redeploy strict kernel mode base policy in enforced mode](https://raw.githubusercontent.com/HotCakeX/.github/d14d7437685416117edda8a56496180a2047984f/Pictures/PNG%20and%20JPG/How%20To%20Create%20and%20Maintain%20Strict%20Kernel-Mode%20App%20Control%20Policy/redeploy%20base%20policy%20in%20enforced%20mode.png)
 
-Now navigate to the [Create Supplemental Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Supplemental-App-Control-Policy#create-kernel-mode-supplemental-policy) page. Scroll down to the `Kernel-mode policy` section.
+Now navigate to the [Create Supplemental Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Supplemental-App-Control-Policy#create-kernel-mode-supplemental-policy) page. Scroll down to the `Kernel-mode policy` section.
 
 ![Creating strict kernel mode supplemental policy](https://raw.githubusercontent.com/HotCakeX/.github/6a635612aef4c1dbb00533689d568eaf7d52c98e/Pictures/PNG%20and%20JPG/How%20To%20Create%20and%20Maintain%20Strict%20Kernel-Mode%20App%20Control%20Policy/Creating%20supplemental%20policy.png)
 

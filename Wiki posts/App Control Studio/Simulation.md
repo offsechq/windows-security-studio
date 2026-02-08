@@ -2,7 +2,7 @@
 
 ![App Control Studio Application's Simulation Page](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/AppControl%20Manager%20page%20screenshots/Simulation.png)
 
-The Simulation page in [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) allows you to simulate an App Control for Business policy deployment. Simply select folders or files and a policy XML file, it will show you whether the selected files would be allowed or blocked by your App Control policy if it was actually deployed on a system and those files were running.
+The Simulation page in [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) allows you to simulate an App Control for Business policy deployment. Simply select folders or files and a policy XML file, it will show you whether the selected files would be allowed or blocked by your App Control policy if it was actually deployed on a system and those files were running.
 
 There will be very detailed results of each file that participates in the Simulation process. You can use sorting and search features to categorize and find the files quickly.
 
@@ -12,7 +12,7 @@ There will be very detailed results of each file that participates in the Simula
 
 - Employ this simulation method to discover files that are not explicitly specified in the App Control policy but are still authorized to run by it due to implicit authorization.
 
-- Identify files that have hash mismatch and will not be permitted by App Control engine using signature. These files are typically found in [_questionable_ software](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Notes#allowing-questionable-software-in-a-wdac-policy) because they are tampered with.
+- Identify files that have hash mismatch and will not be permitted by App Control engine using signature. These files are typically found in [_questionable_ software](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Notes#allowing-questionable-software-in-a-wdac-policy) because they are tampered with.
 
 - And many more use cases...
 

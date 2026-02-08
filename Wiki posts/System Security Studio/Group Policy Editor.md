@@ -4,7 +4,7 @@
 
 The Group Policy Editor page enables you to retrieve the effective policies on the system. You can sort and search through this data via the available UI controls. You can also browse for `.POL` group policy files on your system or a shared network location in order to inspect it.
 
-Since the [Harden System Security app](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security) can be set as the default handler of the `.POL` files, this page is also displayed when you double-click or tap on any `.POL` file in the File Explorer.
+Since the [Harden System Security app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) can be set as the default handler of the `.POL` files, this page is also displayed when you double-click or tap on any `.POL` file in the File Explorer.
 
 You may remove any policy from a `.POL` file — whether a system `.POL` or one you opened in the app. All edits are correctly persisted back to the selected `.POL` file.
 

@@ -19,7 +19,7 @@ Another vital aspect to consider is the trustworthiness of the individual applyi
 
 ## Application Control for Business
 
-[This article was created by me](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection) to address these vulnerabilities directly. Windows Defender Application Control (WDAC) or Application Control for Business exists precisely for this reason—it transforms the security paradigm for both attackers and defenders by embracing a real zero-trust approach. Zero trust removes assumptions from the equation, requiring that every executable be explicitly validated before being allowed to run.
+[This article was created by me](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection) to address these vulnerabilities directly. Windows Defender Application Control (WDAC) or Application Control for Business exists precisely for this reason—it transforms the security paradigm for both attackers and defenders by embracing a real zero-trust approach. Zero trust removes assumptions from the equation, requiring that every executable be explicitly validated before being allowed to run.
 
 In environments with highly sensitive devices or workspaces, relying solely on certificate authorities to secure your systems can be dangerously misguided. Trusting that a certificate authority has conducted rigorous due diligence when issuing code-signing certificates is a risky assumption. App Control provides a critical alternative: it enables you to define your own standards of trust, rather than leaving the responsibility in the hands of external entities who may have different criteria for assessing reliability.
 

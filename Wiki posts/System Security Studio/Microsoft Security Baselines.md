@@ -5,7 +5,7 @@
 
 A security baseline is a group of Microsoft-recommended configuration settings that explains their security implications. These settings are based on feedback from Microsoft security engineering teams, product groups, partners, and customers.
 
-On this page, [the Harden System Security app](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security) enables you to apply the Microsoft Security Baselines on your system, verify compliance, and remove the applied policies.
+On this page, [the Harden System Security app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) enables you to apply the Microsoft Security Baselines on your system, verify compliance, and remove the applied policies.
 
 You can measure the compliance level of your system using the built-in compliance assessment functionality by simply pressing the **Verify** button on this page. You will receive a detailed report of every security measure inside the Microsoft Security Baseline and you will be able to export this security report to a properly formatted JSON file as well.
 
@@ -21,7 +21,7 @@ Each security measure has the following details:
 
 - Use the `Browse` button to browse for a Microsoft Security baseline ZIP file that you've already downloaded on your device, this way you can use it on systems that have no Internet connectivity.
 
-- Use the **Apply Optional Overrides** toggle button, which is toggled by default, to apply the [Overrides for Microsoft Security Baseline](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Overrides-for-Microsoft-Security-Baseline). They are recommended for enhanced user experience when using the Microsoft Security Baselines.
+- Use the **Apply Optional Overrides** toggle button, which is toggled by default, to apply the [Overrides for Microsoft Security Baseline](https://github.com/OFFSECHQ/windows-security-studio/wiki/Overrides-for-Microsoft-Security-Baseline). They are recommended for enhanced user experience when using the Microsoft Security Baselines.
 
   - Users usually apply the Microsoft Security Baseline on their system, which is mostly geared towards enterprise use, but then they find that some settings are not user-friendly for personal use. These optional overrides help to mitigate that situation. You can of course disable this toggle if you want to stick strictly to the Microsoft Security Baseline without any modifications.
 
@@ -36,6 +36,6 @@ Each security measure has the following details:
 
 > [!TIP] > [Official Documentation for the Microsoft Security Baseline](https://learn.microsoft.com/windows/security/operating-system-security/device-management/windows-security-configuration-framework/windows-security-baselines#what-are-security-baselines)
 >
-> [Optional Overrides for Microsoft Security Baselines](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Overrides-for-Microsoft-Security-Baseline)
+> [Optional Overrides for Microsoft Security Baselines](https://github.com/OFFSECHQ/windows-security-studio/wiki/Overrides-for-Microsoft-Security-Baseline)
 >
 > **Highly recommended** to apply these overrides. Use Optional Overrides when applying the hardening measures on Azure VMs.

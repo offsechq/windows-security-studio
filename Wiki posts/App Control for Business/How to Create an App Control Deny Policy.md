@@ -2,11 +2,11 @@
 
 Application Control is based on whitelisting strategy, that means everything that is not allowed in the policy is automatically denied. However, there are times when you might need to only prevent a certain app or file from running, while allowing everything else. This is where the App Control Deny Policy comes in.
 
-Use the [Create Deny Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Deny-App-Control-Policy) page in the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to create a new App Control Deny Policy based on different criteria.
+Use the [Create Deny Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Deny-App-Control-Policy) page in the [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) to create a new App Control Deny Policy based on different criteria.
 
 ## Create an App Control Deny Policy by Scanning Files and Folders
 
-In the [Create Deny Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Deny-App-Control-Policy) page, select the **Files and Folders** section to expand it.
+In the [Create Deny Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Deny-App-Control-Policy) page, select the **Files and Folders** section to expand it.
 
 ![Deny policy Files and Folders section](https://raw.githubusercontent.com/HotCakeX/.github/ea0139c82415aa735341490086ff22af03d93a87/Pictures/PNG%20and%20JPG/How%20to%20Create%20an%20App%20Control%20Deny%20Policy/Files%20and%20Folders%20section.png)
 
@@ -32,9 +32,9 @@ If you toggle the **Deploy after Creation** button the Deny policy will also be 
 
 Packaged apps are modern, they use MSIX packages and are easy to manage and block/deny in App Control policies because all of the files in a packaged app share the same signing certificate and Package Family Name.
 
-Use the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to create deny policies for packaged apps. The policy that you create will not need any changes when the apps are updated since the denial is based on the `PackageFamilyName` aka `PFN`.
+Use the [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) to create deny policies for packaged apps. The policy that you create will not need any changes when the apps are updated since the denial is based on the `PackageFamilyName` aka `PFN`.
 
-In order to create this type of deny policy, navigate to the [Create Deny Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Deny-App-Control-Policy) page in the App Control Studio and expand the **Package Family Name** section.
+In order to create this type of deny policy, navigate to the [Create Deny Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Deny-App-Control-Policy) page in the App Control Studio and expand the **Package Family Name** section.
 
 ![PFN section selecting apps after search](https://raw.githubusercontent.com/HotCakeX/.github/29c774a6339adf75bea5f019ad32a3f214fe764e/Pictures/PNG%20and%20JPG/How%20to%20Create%20an%20App%20Control%20Deny%20Policy/Deny%20policy%20PFN%20app%20selection.png)
 

@@ -44,6 +44,6 @@ Let Windows recreate them during clean installation process
 
 ## How to create a bootable USB drive without 3rd party tools
 
-[Refer to this Wiki post](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Bootable-USB-flash-drive-with-no-3rd-party-tools)
+[Refer to this Wiki post](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Bootable-USB-flash-drive-with-no-3rd-party-tools)
 
 <br>

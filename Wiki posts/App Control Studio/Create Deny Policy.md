@@ -2,13 +2,13 @@
 
 ![App Control Studio Application's Create Deny Policy Page](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/AppControl%20Manager%20page%20screenshots/Create%20Deny%20policy.png)
 
-Use [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to create Deny App Control policies. Keep in mind that App Control is inherently a whitelisting feature so anything that is not allowed by a policy is already automatically blocked.
+Use [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) to create Deny App Control policies. Keep in mind that App Control is inherently a whitelisting feature so anything that is not allowed by a policy is already automatically blocked.
 
 All Deny policies have _Base_ policy types as other types such as Supplemental cannot have Deny rules in them.
 
 All Deny policies have 2 allow all rules so that anything not denied by them will be allowed. This is mandatory for the policy to work. This also allows Deny policies to be deployed side by side with other policies, because for a file to be allowed, it must be allowed by all deployed policies. [Read more about side-by-side deployment here](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/deploy-multiple-appcontrol-policies).
 
-> [!IMPORTANT] > [How to Create an App Control Deny Policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-to-Create-an-App-Control-Deny-Policy)
+> [!IMPORTANT] > [How to Create an App Control Deny Policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/How-to-Create-an-App-Control-Deny-Policy)
 
 ## Create a Deny Policy by Files or Folders Scan
 
@@ -24,9 +24,9 @@ With App Control Studio, you can easily create a Deny base policy by scanning fi
 
 - **Scalability**: Use this gauge to set the number of concurrent threads for the scan. By default, 2 threads are used. Increasing this number will speed up the scan but will also consume more system resources.
 
-- **Select Scan Level**: You can choose from different scan levels. [Refer to this page for all the information about them.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Rule-Levels-Comparison-and-Guide)
+- **Select Scan Level**: You can choose from different scan levels. [Refer to this page for all the information about them.](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Rule-Levels-Comparison-and-Guide)
 
-- **Deploy After Creation**: If toggled, only the Deny policy XML file will be available in the [User Configuration directory](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager#where-is-the-user-configurations-directory) at the end of the operation. If it's not toggled, the CIP file will also be made available. Both files will have the same name as the policy name that you choose.
+- **Deploy After Creation**: If toggled, only the Deny policy XML file will be available in the [User Configuration directory](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager#where-is-the-user-configurations-directory) at the end of the operation. If it's not toggled, the CIP file will also be made available. Both files will have the same name as the policy name that you choose.
 
 > [!TIP]
 > Use the **_View Detected File Details_** section to view highly detailed results of the files and folders scans.
@@ -45,7 +45,7 @@ You can create Deny policies for the installed packaged apps. This is useful for
 
   - Use the Refresh button to refresh the list of installed apps in case you removed/installed any apps after the list was loaded.
 
-- **Deploy After Creation**: If toggled, only the Deny policy XML file will be available in the [User Configuration directory](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager#where-is-the-user-configurations-directory) at the end of the operation. If it's not toggled, the CIP file will also be made available. Both files will have the same name as the policy name that you choose.
+- **Deploy After Creation**: If toggled, only the Deny policy XML file will be available in the [User Configuration directory](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager#where-is-the-user-configurations-directory) at the end of the operation. If it's not toggled, the CIP file will also be made available. Both files will have the same name as the policy name that you choose.
 
 ## Create a Deny Policy Based on Custom Pattern-based File Rules
 
@@ -59,7 +59,7 @@ Keep in mind that file rules are only supported for user-mode files. Using file 
 
 - **Custom Pattern-based File Rule**: Enter your pattern here. It will be used as is without any further modifications to it. What you enter here will be what you see in the XML file.
 
-- **Deploy After Creation**: If toggled, only the Deny policy XML file will be available in the [User Configuration directory](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager#where-is-the-user-configurations-directory) at the end of the operation. If it's not toggled, the CIP file will also be made available. Both files will have the same name as the policy name that you choose.
+- **Deploy After Creation**: If toggled, only the Deny policy XML file will be available in the [User Configuration directory](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager#where-is-the-user-configurations-directory) at the end of the operation. If it's not toggled, the CIP file will also be made available. Both files will have the same name as the policy name that you choose.
 
 > [!TIP]
 > Use the **_More Information_** section to view examples and description of different patterns that you can use in this section.

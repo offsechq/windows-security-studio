@@ -18,7 +18,7 @@ App Control Studio does not integrate with any third-party services or tools tha
 
 ## 4. Security
 
-We prioritize your privacy and security. App Control Studio goes above and beyond to ensure user security through various means. Please [refer to this section of the App Control Studio's documentation](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager#security) for technical information regarding security.
+We prioritize your privacy and security. App Control Studio goes above and beyond to ensure user security through various means. Please [refer to this section of the App Control Studio's documentation](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager#security) for technical information regarding security.
 
 ## 5. Updates to the Privacy Policy
 

@@ -29,7 +29,7 @@ Absolutely not.
 
 Every security feature needed is already available in Windows. Use the Harden System Security app to activate and enable them.
 
-[Here is a more technical explanation](https://github.com/HotCakeX/Harden-Windows-Security/issues/103#issuecomment-1707940307)
+[Here is a more technical explanation](https://github.com/OFFSECHQ/windows-security-studio/issues/103#issuecomment-1707940307)
 
 <br>
 
@@ -63,7 +63,7 @@ Uninstall it by going to Windows Settings -> Apps -> Installed Apps -> Search fo
 
 ## What Categories Do You Recommend to Run?
 
-Use the default predefined preset in the Harden System Security app, it is tuned for optimal and balanced security. You can also use [the device usage intents](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Protect) to tune the protections. They allow for easy and quick selection of categories and sub-categories.
+Use the default predefined preset in the Harden System Security app, it is tuned for optimal and balanced security. You can also use [the device usage intents](https://github.com/OFFSECHQ/windows-security-studio/wiki/Protect) to tune the protections. They allow for easy and quick selection of categories and sub-categories.
 
 <br>
 
@@ -157,6 +157,6 @@ Once the recovery steps are complete, use `lusrmgr.msc` to disable the built-in 
 
 ## Have More Questions?
 
-Ask away by opening [a new Discussion](https://github.com/HotCakeX/Harden-Windows-Security/discussions)
+Ask away by opening [a new Discussion](https://github.com/OFFSECHQ/windows-security-studio/discussions)
 
 <br>

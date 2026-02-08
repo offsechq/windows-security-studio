@@ -242,7 +242,7 @@ Remove this item which is for Windows Store EKU
 
 ## How to Use and Automate This Entire Process
 
-> [!IMPORTANT] > **Use the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Create-and-Maintain-Strict-Kernel%E2%80%90Mode-App-Control-Policy)** to automatically Audit and deploy the Strict Kernel-mode App Control policies.
+> [!IMPORTANT] > **Use the [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/How-To-Create-and-Maintain-Strict-Kernel%E2%80%90Mode-App-Control-Policy)** to automatically Audit and deploy the Strict Kernel-mode App Control policies.
 
 As mentioned earlier, this policy only enforces and applies to Kernel-mode drivers, so your non-Kernel mode files are unaffected. Keep in mind that Kernel-mode does not mean programs that require Administrator privileges, those 2 categories are completely different. Also, not all drivers are Kernel mode, [**there are user-mode drivers too.**](https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)
 
@@ -258,7 +258,7 @@ Now the Allow all rules that exist in the first policy are neutralized. [Only ap
 
 So far, we've only been doing Kernel-mode administration. We can use User-mode App Control policies as well.
 
-After using those 2 Kernel-mode policies, we can deploy a 3rd policy which is going to authorize and validate User-mode binaries too, such as the [`Allow Microsoft` policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-App-Control-Policy). This policy applies to both Kernel and User mode files, but since we already know the logic and learned that only applications allowed by all base policies are allowed to run, we're confident that our Strict Kernel-mode base policy is the only one in charge of authorizing and validating Kernel-mode files/drivers.
+After using those 2 Kernel-mode policies, we can deploy a 3rd policy which is going to authorize and validate User-mode binaries too, such as the [`Allow Microsoft` policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-App-Control-Policy). This policy applies to both Kernel and User mode files, but since we already know the logic and learned that only applications allowed by all base policies are allowed to run, we're confident that our Strict Kernel-mode base policy is the only one in charge of authorizing and validating Kernel-mode files/drivers.
 
 ### A rule of thumb
 
@@ -277,6 +277,6 @@ Anti-malware or antivirus vendors need to sign enforceable and binding legal agr
 - [Early Launch Anti-Malware Driver Sample](https://github.com/Microsoft/Windows-driver-samples/tree/main/security/elam)
 - [ELAM Driver Requirements](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/elam-driver-requirements)
 
-## [Continue reading about important App Control notes](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Notes)
+## [Continue reading about important App Control notes](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Notes)
 
-#### [Important Notes and Tips](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Notes) about App Control policies
+#### [Important Notes and Tips](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Notes) about App Control policies

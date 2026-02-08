@@ -3,7 +3,7 @@
 <p align="center">
 </p>
 
-You don't need Admin privileges to run this category, because no system-wide changes are made. Changes in this category only apply to the current user account that is running the [Harden System Security App](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security).
+You don't need Admin privileges to run this category, because no system-wide changes are made. Changes in this category only apply to the current user account that is running the [Harden System Security App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security).
 
 - **[User Setting]** Shows known file extensions in File explorer
 

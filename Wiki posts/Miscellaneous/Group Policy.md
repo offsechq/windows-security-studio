@@ -131,7 +131,7 @@ In Policy Analyzer, there is an option called `Compare to Effective State`. Quot
 
 2. It then uses the group policies included in the Module files for security measures explained on the readme page and applies them to the system, on top of Microsoft Security Baselines, so where there is a conflict of policy, the module will replace the configurations set by Microsoft Security Baselines.
 
-3. When applying the Microsoft Security Baselines, you have the option to apply the optional overrides too, [you can find the details of those overrides in here,](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Overrides-for-Microsoft-Security-Baseline), they are required to be applied if you are using Harden Windows Security Module in Azure VMs and highly recommended in general.
+3. When applying the Microsoft Security Baselines, you have the option to apply the optional overrides too, [you can find the details of those overrides in here,](https://github.com/OFFSECHQ/windows-security-studio/wiki/Overrides-for-Microsoft-Security-Baseline), they are required to be applied if you are using Harden Windows Security Module in Azure VMs and highly recommended in general.
 
 <br>
 <br>
@@ -184,13 +184,13 @@ Note: At first, when we clean install Windows, the Group Policy folder `C:\Windo
 
 ## How to verify Security-Baselines-X directory and 100% trust it?
 
-1. Download [the files from here](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden-Windows-Security%20Module/Main%20files/Resources/Security-Baselines-X).
+1. Download [the files from here](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden-Windows-Security%20Module/Main%20files/Resources/Security-Baselines-X).
 2. Open the Policy Analyzer, Navigate to Add -> File -> Select either `Add User Configuration (registry.pol)` or `Add Security Template (*.inf)` -> Browse for the `Security-Baselines-X` directory, navigate to the category you want.
 3. Select either `.pol` or `.inf` file, Import it, give it a name, save it in `\Documents\PolicyAnalyzer\`
 
 4. Back at the main window, use "Compare to Effective State" button to view what policies are included in the file.
 
-5. As you will see, everything is according to what has been explicitly stated in the [GitHub's Readme page](https://github.com/HotCakeX/Harden-Windows-Security).
+5. As you will see, everything is according to what has been explicitly stated in the [GitHub's Readme page](https://github.com/OFFSECHQ/windows-security-studio).
 
 <br>
 <br>

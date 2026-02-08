@@ -1,6 +1,6 @@
 # Optional overrides for Microsoft Security Baseline
 
-Since Microsoft Security Baselines are geared towards Enterprise level security, some functionalities that home users might require are disabled. Use the following overrides in [the Harden System Security App](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security) to bring back those functionalities. **Some of these are necessary when using the app in Azure VMs.**
+Since Microsoft Security Baselines are geared towards Enterprise level security, some functionalities that home users might require are disabled. Use the following overrides in [the Harden System Security App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) to bring back those functionalities. **Some of these are necessary when using the app in Azure VMs.**
 
 > [!IMPORTANT]\
 > All of the features and functionalities listed below are enabled by default in Windows.
@@ -113,7 +113,7 @@ Computer Configuration\Administrative Templates\Windows Components\Microsoft Def
 
 It disables some important features in Windows Settings -> Bluetooth & Devices -> Mobile Devices
 
-More info in this [PR](https://github.com/HotCakeX/Harden-Windows-Security/pull/207)
+More info in this [PR](https://github.com/OFFSECHQ/windows-security-studio/pull/207)
 
 ```
 Computer Configuration\Administrative Templates\Windows Components\Cloud Content

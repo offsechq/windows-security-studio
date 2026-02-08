@@ -2,13 +2,11 @@
 
 ![App Control Studio Application's Deploy App Control Policy Page](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/AppControl%20Manager%20page%20screenshots/Deploy%20App%20Control%20Policies.png)
 
-Use this [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) page to select XML policy files or `.cip` binary files to deploy on the local/cloud systems or convert XML files to CIP files for manual deployment.
-
-- [![App Control Studio Menu Item](https://raw.githubusercontent.com/HotCakeX/.github/7ac3898730bc82a790f56a61e301b6663dfc9d5a/Pictures/Gifs/AppControl%20Manager%20Menu/Microsoft%20Graph.gif)](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Graph) [**Microsoft Graph Button**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Graph).
+Use this [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) page to select XML policy files or `.cip` binary files to deploy on the local/cloud systems or convert XML files to CIP files for manual deployment.
 
 > [!IMPORTANT] > **Intune Cloud Deployment**
 >
-> Please [**refer to this page**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Upload-App-Control-Policies-To-Intune-Using-AppControl-Manager) for details on how to upload App Control Policies to Intune using App Control Studio.
+> Please [**refer to this page**](https://github.com/OFFSECHQ/windows-security-studio/wiki/How-To-Upload-App-Control-Policies-To-Intune-Using-AppControl-Manager) for details on how to upload App Control Policies to Intune using App Control Studio.
 
 ## Configuration Details for Unsigned XML Policy Files Deployment
 
@@ -28,7 +26,7 @@ Use this [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Securit
 
 When signing and deploying App Control Policies, a dialog will be displayed asking for additional information required for signing the policy.
 
-- **Certificate File**: Provide the path to the certificate `.cer` file. It must be a code signing certificate that is either issued by a public certificate authority (CA) or a self-signed certificate. You can generate a self-signed certificate suitable for App Control policy signing in [the certificate building page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Build-New-Certificate) of the App Control Studio. The certificate's details will be added to the XML policy as signers. The certificate must exist in the Personal store of the Current User certificate stores with private key.
+- **Certificate File**: Provide the path to the certificate `.cer` file. It must be a code signing certificate that is either issued by a public certificate authority (CA) or a self-signed certificate. You can generate a self-signed certificate suitable for App Control policy signing in [the certificate building page](https://github.com/OFFSECHQ/windows-security-studio/wiki/Build-New-Certificate) of the App Control Studio. The certificate's details will be added to the XML policy as signers. The certificate must exist in the Personal store of the Current User certificate stores with private key.
 
 - **Certificate Common Name**: The Common Name (CN) of the same certificate file you select.
 

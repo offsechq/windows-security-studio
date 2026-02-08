@@ -22,9 +22,9 @@ winget install --id 9p7ggfl7dx57 --exact --accept-package-agreements --accept-so
 
 ### Offline Installation for Air-gapped Systems
 
-Please [**follow this guide**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Install-Microsoft-Store-Apps-Completely-Offline) for instructions.
+Please [**follow this guide**](https://github.com/OFFSECHQ/windows-security-studio/wiki/How-To-Install-Microsoft-Store-Apps-Completely-Offline) for instructions.
 
-Please feel free to open a discussion if you have any questions about the build process, security, how to use or have feedbacks. [**Source code on this repository**](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden%20System%20Security)
+Please feel free to open a discussion if you have any questions about the build process, security, how to use or have feedbacks. [**Source code on this repository**](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security)
 
 ### Supported Operating Systems
 
@@ -72,13 +72,13 @@ Please feel free to open a discussion if you have any questions about the build 
 
 - When a security measure is no longer necessary because it's applied by default by Microsoft on new builds of Windows, it will also be removed from the app in order to prevent any problems and because it won't be necessary anymore. **Community feedback will always be taken into account when doing so.**
 
-- Applying the security measures can make your system compliant with Microsoft Security Baselines and Secured-core PC specifications (provided that you use modern hardware that supports the latest Windows security features) - [See what makes a Secured-core PC](https://learn.microsoft.com/windows-hardware/design/device-experiences/oem-highly-secure-11#what-makes-a-secured-core-pc) - <a href="https://github.com/HotCakeX/Harden-Windows-Security/wiki/Device-Guard">Check Device Guard category for more info</a>
+- Applying the security measures can make your system compliant with Microsoft Security Baselines and Secured-core PC specifications (provided that you use modern hardware that supports the latest Windows security features) - [See what makes a Secured-core PC](https://learn.microsoft.com/windows-hardware/design/device-experiences/oem-highly-secure-11#what-makes-a-secured-core-pc) - <a href="https://github.com/OFFSECHQ/windows-security-studio/wiki/Device-Guard">Check Device Guard category for more info</a>
 
   > [Secured-core](https://learn.microsoft.com/windows-hardware/design/device-experiences/oem-highly-secure-11) – recommended for the most sensitive systems and industries like financial, healthcare, and government agencies. Builds on the previous layers and leverages advanced processor capabilities to provide protection from firmware attacks.
 
 - Since I originally created this repository for myself and people I care about, I always maintain it to the highest possible standard.
 
-- If you have multiple accounts on your device, you only need to apply the security measures 1 time with Admin privileges, that will make system-wide changes. Then you can **_optionally_** run the app, without Admin privileges, for each standard user to apply the [Non-Admin category](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Non-Admin-Measures).
+- If you have multiple accounts on your device, you only need to apply the security measures 1 time with Admin privileges, that will make system-wide changes. Then you can **_optionally_** run the app, without Admin privileges, for each standard user to apply the [Non-Admin category](https://github.com/OFFSECHQ/windows-security-studio/wiki/Non-Admin-Measures).
 
 ## Comprehensive Logging Capabilities
 
@@ -93,7 +93,7 @@ The logs ensure that all actions taken by the Harden System Security app are rec
 ## Security
 
 > [!IMPORTANT]
-> The Harden System Security application is built publicly using a [GitHub Workflow](https://github.com/HotCakeX/Harden-Windows-Security/actions/runs/17206622843/workflow) and uploaded to the Microsoft Partner Center for validation and signing. The action uses [SBOM (Software Bill of Materials)](https://github.com/HotCakeX/Harden-Windows-Security/network/dependencies) generation to comply with the highest [security standards](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds) such as [SLSA](https://slsa.dev/spec/v1.0/levels) level 3. [GitHub's CodeQL Advanced workflow](https://github.com/HotCakeX/Harden-Windows-Security/actions/workflows/codeql.yml) with extended security model scans the entire repository. All of the dependencies of any project in this repository are uploaded to GitHub and are available in the [Dependency Graph](https://github.com/HotCakeX/Harden-Windows-Security/network/dependencies).
+> The Harden System Security application is built publicly using a [GitHub Workflow](https://github.com/OFFSECHQ/windows-security-studio/actions/runs/17206622843/workflow) and uploaded to the Microsoft Partner Center for validation and signing. The action uses [SBOM (Software Bill of Materials)](https://github.com/OFFSECHQ/windows-security-studio/network/dependencies) generation to comply with the highest [security standards](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds) such as [SLSA](https://slsa.dev/spec/v1.0/levels) level 3. [GitHub's CodeQL Advanced workflow](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/codeql.yml) with extended security model scans the entire repository. All of the dependencies of any project in this repository are uploaded to GitHub and are available in the [Dependency Graph](https://github.com/OFFSECHQ/windows-security-studio/network/dependencies).
 
 Harden System Security is architected with a security-first philosophy from its inception. Every feature is designed and implemented with an offensive security mindset, ensuring that security is never an afterthought—and never will be. When selecting a solution tasked with defending critical systems, the last thing you want is a so‑called security tool that silently broadens your attack surface or neglects foundational safeguards. This application is built to be inherently trustworthy, defensible, and resilient.
 
@@ -120,33 +120,33 @@ The codebase is extensively and thoughtfully documented, enabling reviewers to t
 
 ### Quick Links
 
-- [Protect](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Protect)
-- [Microsoft Security Baselines](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Security-Baselines)
-- [Microsoft Security Baselines Overrides](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Overrides-for-Microsoft-Security-Baseline)
-- [Microsoft 365 Apps Security Baseline](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-365-Apps-Security-Baseline)
-- [Microsoft Defender](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Defender)
-- [Attack Surface Reduction](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Attack-Surface-Reduction)
-- [Bitlocker](https://github.com/HotCakeX/Harden-Windows-Security/wiki/BitLocker)
-- [Device Guard](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Device-Guard)
-- [TLS Security](https://github.com/HotCakeX/Harden-Windows-Security/wiki/TLS-Security)
-- [Lock Screen](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Lock-Screen)
-- [User Account Control](https://github.com/HotCakeX/Harden-Windows-Security/wiki/User-Account-Control)
-- [Windows Firewall](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Windows-Firewall)
-- [Optional Windows Features](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Optional-Windows-Features)
-- [Windows Networking](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Windows-Networking)
-- [Miscellaneous Configurations](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Miscellaneous-Configurations)
-- [Windows Update](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Windows-Update)
-- [Edge Browser](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Edge-Browser)
-- [Certificate Checking](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Certificate-Checking)
-- [Country IP Blocking](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Country-IP-Blocking)
-- [Non Admin Measures](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Non-Admin-Measures)
-- [Group Policy Editor](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Group-Policy-Editor)
-- [Manage Installed Apps](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Manage-Installed-Apps)
-- [File Reputation](https://github.com/HotCakeX/Harden-Windows-Security/wiki/File-Reputation)
-- [Audit Policies](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Audit-Policies)
-- [Cryptographic Bill of Materials](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Cryptographic-Bill-of-Materials)
-- [Intune](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Intune-%7C-Harden-System-Security)
-- [Configuration Service Provider (CSP)](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Configuration-Service-Provider-%7C-Harden-System-Security)
+- [Protect](https://github.com/OFFSECHQ/windows-security-studio/wiki/Protect)
+- [Microsoft Security Baselines](https://github.com/OFFSECHQ/windows-security-studio/wiki/Microsoft-Security-Baselines)
+- [Microsoft Security Baselines Overrides](https://github.com/OFFSECHQ/windows-security-studio/wiki/Overrides-for-Microsoft-Security-Baseline)
+- [Microsoft 365 Apps Security Baseline](https://github.com/OFFSECHQ/windows-security-studio/wiki/Microsoft-365-Apps-Security-Baseline)
+- [Microsoft Defender](https://github.com/OFFSECHQ/windows-security-studio/wiki/Microsoft-Defender)
+- [Attack Surface Reduction](https://github.com/OFFSECHQ/windows-security-studio/wiki/Attack-Surface-Reduction)
+- [Bitlocker](https://github.com/OFFSECHQ/windows-security-studio/wiki/BitLocker)
+- [Device Guard](https://github.com/OFFSECHQ/windows-security-studio/wiki/Device-Guard)
+- [TLS Security](https://github.com/OFFSECHQ/windows-security-studio/wiki/TLS-Security)
+- [Lock Screen](https://github.com/OFFSECHQ/windows-security-studio/wiki/Lock-Screen)
+- [User Account Control](https://github.com/OFFSECHQ/windows-security-studio/wiki/User-Account-Control)
+- [Windows Firewall](https://github.com/OFFSECHQ/windows-security-studio/wiki/Windows-Firewall)
+- [Optional Windows Features](https://github.com/OFFSECHQ/windows-security-studio/wiki/Optional-Windows-Features)
+- [Windows Networking](https://github.com/OFFSECHQ/windows-security-studio/wiki/Windows-Networking)
+- [Miscellaneous Configurations](https://github.com/OFFSECHQ/windows-security-studio/wiki/Miscellaneous-Configurations)
+- [Windows Update](https://github.com/OFFSECHQ/windows-security-studio/wiki/Windows-Update)
+- [Edge Browser](https://github.com/OFFSECHQ/windows-security-studio/wiki/Edge-Browser)
+- [Certificate Checking](https://github.com/OFFSECHQ/windows-security-studio/wiki/Certificate-Checking)
+- [Country IP Blocking](https://github.com/OFFSECHQ/windows-security-studio/wiki/Country-IP-Blocking)
+- [Non Admin Measures](https://github.com/OFFSECHQ/windows-security-studio/wiki/Non-Admin-Measures)
+- [Group Policy Editor](https://github.com/OFFSECHQ/windows-security-studio/wiki/Group-Policy-Editor)
+- [Manage Installed Apps](https://github.com/OFFSECHQ/windows-security-studio/wiki/Manage-Installed-Apps)
+- [File Reputation](https://github.com/OFFSECHQ/windows-security-studio/wiki/File-Reputation)
+- [Audit Policies](https://github.com/OFFSECHQ/windows-security-studio/wiki/Audit-Policies)
+- [Cryptographic Bill of Materials](https://github.com/OFFSECHQ/windows-security-studio/wiki/Cryptographic-Bill-of-Materials)
+- [Intune](https://github.com/OFFSECHQ/windows-security-studio/wiki/Intune-%7C-Harden-System-Security)
+- [Configuration Service Provider (CSP)](https://github.com/OFFSECHQ/windows-security-studio/wiki/Configuration-Service-Provider-%7C-Harden-System-Security)
 
 ## Supported Languages
 
@@ -169,9 +169,9 @@ The Harden System Security app utilizes a Windows Service that is responsible fo
 
 It can only be used by elevated Administrators and SYSTEM account. It is automatically installed when the Harden System Security app is installed and removed when the Harden System Security app is uninstalled, not leaving any leftovers on the system. It has 0 dependency other than the .NET SDK itself and its executable is inside the app's package.
 
-The service source code [can be found here](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/AppControl%20Manager/eXclude/QuantumRelayHSS). The service name is `QuantumRelayHSS` and it is designed to write verbose logs in the Windows Event log if you add a System environment variable to your OS named `QUANTUMRELAYHSS_DEBUG` with a value of `1` or `true`.
+The service source code [can be found here](https://github.com/OFFSECHQ/windows-security-studio/tree/main/AppControl%20Manager/eXclude/QuantumRelayHSS). The service name is `QuantumRelayHSS` and it is designed to write verbose logs in the Windows Event log if you add a System environment variable to your OS named `QUANTUMRELAYHSS_DEBUG` with a value of `1` or `true`.
 
-The service supports Arbitrary Code Guard exploit protection as well as many others, all of which can be applied to it in the [Microsoft Defender category](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Microsoft-Defender).
+The service supports Arbitrary Code Guard exploit protection as well as many others, all of which can be applied to it in the [Microsoft Defender category](https://github.com/OFFSECHQ/windows-security-studio/wiki/Microsoft-Defender).
 
 ## CommandLine Interface (CLI) Support
 
@@ -246,7 +246,7 @@ HSS.exe --cli --preset=0 --op=Remove
 
 #### Device Usage Intent Operations
 
-Apply protections tailored to a specific [device usage intent](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Protect#device-usage-intents).
+Apply protections tailored to a specific [device usage intent](https://github.com/OFFSECHQ/windows-security-studio/wiki/Protect#device-usage-intents).
 
 > [!NOTE]
 > Only `Apply` is supported for intents at this time.
@@ -348,21 +348,21 @@ HSS.exe --cli CheckMSStoreAppUpdate
 
 Here is the breakdown of some of the directories and files used by the Harden System Security app.
 
-- [Animated Icon Sources](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden%20System%20Security/Animated%20Icon%20Sources) is the location hosting JSON content of the Lottie animations used for the animated buttons.
+- [Animated Icon Sources](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Animated%20Icon%20Sources) is the location hosting JSON content of the Lottie animations used for the animated buttons.
 
-- [Animated Icons](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden%20System%20Security/Animated%20Icons) contain source generated files used for animated icons in various parts of the app.
+- [Animated Icons](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Animated%20Icons) contain source generated files used for animated icons in various parts of the app.
 
-- [Resources](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden%20System%20Security/Resources) directory contains JSON data used by the app to apply Security Measures for the following sources: `Group Policies`, `Registry Keys`, `Security Policies Registry Keys`.
+- [Resources](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Resources) directory contains JSON data used by the app to apply Security Measures for the following sources: `Group Policies`, `Registry Keys`, `Security Policies Registry Keys`.
 
-- [CountryIPsData](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden%20System%20Security/Resources/CountryIPsData) contains the JSON files used by the app in the [Country IP Blocking](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Country-IP-Blocking) page.
+- [CountryIPsData](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Resources/CountryIPsData) contains the JSON files used by the app in the [Country IP Blocking](https://github.com/OFFSECHQ/windows-security-studio/wiki/Country-IP-Blocking) page.
 
-- [Mitigations](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden%20System%20Security/Resources/Mitigations) contains files used by the app to apply, verify or remove Exploit Protection for different processes defined in it.
+- [Mitigations](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Resources/Mitigations) contains files used by the app to apply, verify or remove Exploit Protection for different processes defined in it.
 
-- [DISMService.exe](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/Harden%20System%20Security/DISMService.exe) is one of the components of the Harden System Security app that provides DISM functionalities via named pipe.
+- [DISMService.exe](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden%20System%20Security/DISMService.exe) is one of the components of the Harden System Security app that provides DISM functionalities via named pipe.
 
-- [CppInterop](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden%20System%20Security/CppInterop) directory contains parts of the Harden System Security app written in C++.
+- [CppInterop](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/CppInterop) directory contains parts of the Harden System Security app written in C++.
 
-- [Intune Files](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden%20System%20Security/Resources/Intune%20Files) directory contains files to be used for Intune, such as policies the app offers for Intune deployment.
+- [Intune Files](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Resources/Intune%20Files) directory contains files to be used for Intune, such as policies the app offers for Intune deployment.
 
 If you'd like to know more about a specific file or directory please feel free to reach out.
 
@@ -952,7 +952,7 @@ function Build_HSS {
         Invoke-WebRequest -Uri 'https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-win-x64.exe' -OutFile "${Env:RUNNER_TEMP}\sbom-tool.exe"
 
         # https://github.com/microsoft/sbom-tool/blob/main/docs/sbom-tool-arguments.md
-        . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc .\ -pn 'Harden System Security' -ps 'Violet Hansen' -pv $MSIXVersion -nsb 'https://github.com/HotCakeX/Harden-Windows-Security' -V Verbose -gt true -li true -pm true -D true -lto 80
+        . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc .\ -pn 'Harden System Security' -ps 'Violet Hansen' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
 
         # Saving the details of the SBOM file
         Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "SBOM_PATH=$MSIXBundleOutput/_manifest/spdx_2.2/manifest.spdx.json"

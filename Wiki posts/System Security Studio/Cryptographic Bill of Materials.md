@@ -108,7 +108,7 @@ A minimal, illustrative shape (truncated for clarity):
     },
     "Tool": {
       "Name": "Harden System Security Application",
-      "Website": "https://github.com/HotCakeX/Harden-Windows-Security",
+      "Website": "https://github.com/OFFSECHQ/windows-security-studio",
       "Version": "1.0.15.0 - Internal"
     }
   },

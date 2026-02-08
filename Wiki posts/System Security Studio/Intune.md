@@ -1,6 +1,4 @@
-# Intune | Harden System Security
-
-![Intune Support Harden System Security](https://raw.githubusercontent.com/HotCakeX/.github/38222c927722311f036585d2d2b2fbaa4aa84186/Pictures/Gifs/Intune%20Support%20Harden%20System%20Security.gif)
+# Intune | System Security Studio
 
 You can scale the security policies you trust locally to your entire fleet of Windows devices. The Harden System Security app introduces an Intune dashboard, allowing you to bridge the gap between local hardening and cloud management.
 

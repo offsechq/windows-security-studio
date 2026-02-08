@@ -2,7 +2,7 @@
 
 ![App Control Studio Application's Create App Control Policy Page](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/AppControl%20Manager%20page%20screenshots/Create%20Policy.png)
 
-Use [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to create new App Control policies based on the [default templates](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/example-appcontrol-base-policies).
+Use [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) to create new App Control policies based on the [default templates](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/example-appcontrol-base-policies).
 
 - **Allow Microsoft**: Only allows files signed by Microsoft certificates to run on the system.
 
@@ -14,9 +14,9 @@ Use [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wik
 
 - **Microsoft Recommended Driver Block Rules**: It will download the latest Microsoft Recommended (Kernel-Mode) block rules from [the official source](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules) and create an App Control policy.
 
-  - **Auto update**: It will create a scheduled task on the system that will check every week for the latest Microsoft Recommended block rules and update the policy automatically. [Please refer to this page for more info.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Fast-and-Automatic-Microsoft-Recommended-Driver-Block-Rules-updates)
+  - **Auto update**: It will create a scheduled task on the system that will check every week for the latest Microsoft Recommended block rules and update the policy automatically. [Please refer to this page for more info.](https://github.com/OFFSECHQ/windows-security-studio/wiki/Fast-and-Automatic-Microsoft-Recommended-Driver-Block-Rules-updates)
 
-- **Strict Kernel-mode policy**: It's a special kind of policy that will only enforce Kernel-mode files without blocking user-mode files. Please refer [to this article](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection) for more information.
+- **Strict Kernel-mode policy**: It's a special kind of policy that will only enforce Kernel-mode files without blocking user-mode files. Please refer [to this article](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection) for more information.
 
 Deploying any of them is optional. You can create the policies and then deploying them on remote systems using Intune or other methods.
 
@@ -38,13 +38,13 @@ There are different settings and options you can use to fine tune the policy acc
 
 ![Downloads Defense Measures - Harden Windows Security GitHub repository](https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/Readme%20Categories/Downloads%20Defense%20Measures/Downloads%20Defense%20Measures.png)
 
-**T**o combat the threat of more sophisticated malware, a preemptive measure is taken by creating and deploying an [App Control](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction) policy on the system. This policy blocks the execution of executables and [other potentially harmful file types](https://learn.microsoft.com/windows/security/application-security/application-control/app-control-for-business/feature-availability) in the Downloads folder.
+**T**o combat the threat of more sophisticated malware, a preemptive measure is taken by creating and deploying an [App Control](https://github.com/OFFSECHQ/windows-security-studio/wiki/Introduction) policy on the system. This policy blocks the execution of executables and [other potentially harmful file types](https://learn.microsoft.com/windows/security/application-security/application-control/app-control-for-business/feature-availability) in the Downloads folder.
 
 This policy defends the system from malware that can launch itself automatically after being downloaded from the Internet and has the potential to protect against zero-click exploits. The user must ensure the file's safety and explicitly transfer it to a different folder before running it.
 
 The App Control policy employs a wildcard pattern to prevent any file from running in the Downloads folder. Additionally, it verifies that the system downloads folder in the user directory matches the downloads folder in the Edge browser's settings. If there is a discrepancy, a warning message is displayed on the console.
 
-Creates a custom [App Control](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction) policy that blocks the execution of the following executables:
+Creates a custom [App Control](https://github.com/OFFSECHQ/windows-security-studio/wiki/Introduction) policy that blocks the execution of the following executables:
 
 - wscript.exe
 - mshta.exe

@@ -40,7 +40,7 @@ TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA  Reason: CBC, SHA1
 TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA  Reason: CBC, SHA1
 ```
 
-Due to security reasons, many policies cannot be used when you are signed into Edge browser using personal Microsoft account. [This app](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security) does not use any of those policies. When those policies are applied, they are ignored by the browser and `edge://policy/` shows an error for them.
+Due to security reasons, many policies cannot be used when you are signed into Edge browser using personal Microsoft account. [This app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) does not use any of those policies. When those policies are applied, they are ignored by the browser and `edge://policy/` shows an error for them.
 
 - You can view all of the policies being applied to your Edge browser by visiting this page: `edge://policy/`
 - You can find all of the available internal Edge pages in here: `edge://about/`
@@ -52,4 +52,4 @@ Due to security reasons, many policies cannot be used when you are signed into E
   - [Microsoft Edge Mobile stable channel change log](https://learn.microsoft.com/deployedge/microsoft-edge-relnote-mobile-stable-channel)
   - [Edge Insider for Beta/Dev/Canary channels](https://www.microsoft.com/en-us/edge/download/insider)
   - [Microsoft Edge Security baselines](https://www.microsoft.com/en-us/download/details.aspx?id=55319) - Work without ingesting [ADMX policy files](https://www.microsoft.com/en-us/edge/business/download) first
-    - [Reason why this app doesn't use it.](https://github.com/HotCakeX/Harden-Windows-Security/issues/50)
+    - [Reason why this app doesn't use it.](https://github.com/OFFSECHQ/windows-security-studio/issues/50)

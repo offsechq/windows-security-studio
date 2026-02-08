@@ -29,7 +29,7 @@ TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
 - **[Group Policy]** **[Subcategory]** Use the **_TLS for BattleNet_** sub-category if you have the BattleNet game client installed on your system. This client utilizes the `TLS_RSA_WITH_AES_256_CBC_SHA` cipher suite to establish connections with its servers. Since this cipher suite is less secure, it is excluded from the secure cipher-suites list by default. However, enabling this sub-category will include the required cipher suite, allowing you to use BattleNet without interruptions.
 
-- **[Group Policy]** [Configures](https://learn.microsoft.com/windows-server/security/tls/manage-tls) TLS ECC Curves to [use the following](https://github.com/HotCakeX/Harden-Windows-Security/commit/5b5be1fcab8f7bf5d364f48459aecfc54c6eff9d#commitcomment-115982586) prioritized Curves order: **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-cryptography#configureellipticcurvecryptography)
+- **[Group Policy]** [Configures](https://learn.microsoft.com/windows-server/security/tls/manage-tls) TLS ECC Curves to [use the following](https://github.com/OFFSECHQ/windows-security-studio/commit/5b5be1fcab8f7bf5d364f48459aecfc54c6eff9d#commitcomment-115982586) prioritized Curves order: **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-cryptography#configureellipticcurvecryptography)
 
 ```
 nistP521
@@ -46,4 +46,4 @@ NistP256
 NistP384
 ```
 
-_[Read more in this Wiki post](https://github.com/HotCakeX/Harden-Windows-Security/wiki/About-TLS,-DNS,-Encryption-and-OPSEC-concepts)_
+_[Read more in this Wiki post](https://github.com/OFFSECHQ/windows-security-studio/wiki/About-TLS,-DNS,-Encryption-and-OPSEC-concepts)_

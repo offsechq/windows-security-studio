@@ -18,7 +18,7 @@ You can retrieve, filter, sort, and search exclusions across these branches. Add
 
   - Here is an example of the notification you will see in Windows 11 if that happens.
 
-    <p align="center"><img src="https://raw.githubusercontent.com/HotCakeX/Harden-Windows-Security/main/images/Windows%20Security%20Cloud%20Analysis.png" alt="Windows Security Cloud Scan Notification" width="200"></p>
+    <p align="center"><img src="https://raw.githubusercontent.com/OFFSECHQ/windows-security-studio/main/images/Windows%20Security%20Cloud%20Analysis.png" alt="Windows Security Cloud Scan Notification" width="200"></p>
 
 - **[Group Policy]** Configures the Cloud Block/Protection Level to the **maximum level of Zero Tolerance and [Block At First Sight](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/configure-block-at-first-sight-microsoft-defender-antivirus?view=o365-worldwide#turn-on-block-at-first-sight-with-group-policy)**. No unknown file can run on your system without first being recognized by the Microsoft's Security Graph and other **globally omniscient systems**. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-defender#cloudblocklevel)
 
@@ -66,7 +66,7 @@ You can retrieve, filter, sort, and search exclusions across these branches. Add
 
 - **[Registry/Cmdlet]** **[Subcategory]** Enables [Smart App Control](https://support.microsoft.com/en-us/topic/what-is-smart-app-control-285ea03d-fa88-4d56-882e-6698afdb7003) (_if it's in Evaluation mode_): adds significant protection from new and emerging threats by blocking apps that are malicious or untrusted. Smart App Control also helps to block potentially unwanted apps, which are apps that may cause your device to run slowly, display unexpected ads, offer extra software you didn't want, or do other things you don't expect.
 
-  - Smart App Control is User-Mode (and enforces Kernel-Mode) [App Control for Business](https://learn.microsoft.com/windows/security/application-security/application-control/app-control-for-business/design/appcontrol-design-guide), **more info** [**in the Wiki**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction). You can see its status in [System Information](https://support.microsoft.com/en-us/windows/view-your-system-info-a965a8f2-0773-1d65-472a-1e747c9ebe00) and enable it manually from Microsoft Defender app's GUI. It is very important for Windows and Windows Defender intelligence updates to be always up-to-date in order for Smart App Control to work properly as it relies on live intelligence and definition data from the cloud and other sources to make a Smart decision about programs and files it encounters.
+  - Smart App Control is User-Mode (and enforces Kernel-Mode) [App Control for Business](https://learn.microsoft.com/windows/security/application-security/application-control/app-control-for-business/design/appcontrol-design-guide), **more info** [**in the Wiki**](https://github.com/OFFSECHQ/windows-security-studio/wiki/Introduction). You can see its status in [System Information](https://support.microsoft.com/en-us/windows/view-your-system-info-a965a8f2-0773-1d65-472a-1e747c9ebe00) and enable it manually from Microsoft Defender app's GUI. It is very important for Windows and Windows Defender intelligence updates to be always up-to-date in order for Smart App Control to work properly as it relies on live intelligence and definition data from the cloud and other sources to make a Smart decision about programs and files it encounters.
 
   - Smart App Control uses [ISG (Intelligent Security Graph)](https://learn.microsoft.com/windows/security/application-security/application-control/app-control-for-business/design/use-appcontrol-with-intelligent-security-graph#how-does-app-control-work-with-the-isg). The ISG isn't a "list" of apps. Rather, it uses the same vast security intelligence and machine learning analytics that power Microsoft Defender SmartScreen and Microsoft Defender Antivirus to help classify applications as having "known good", "known bad", or "unknown" reputation. This cloud-based AI is based on trillions of signals collected from Windows endpoints and other data sources and processed every 24 hours. As a result, the decision from the cloud can change.
 
@@ -84,13 +84,13 @@ You can retrieve, filter, sort, and search exclusions across these branches. Add
 
 - **[Registry/Cmdlet]** Enables [Mandatory ASLR,](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/enable-exploit-protection?view=o365-worldwide) _It might cause compatibility issues_ only for some **poorly-made 3rd party programs**, specially portable ones. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-exploitguard)
 
-  - Automatically detects and excludes the Git executables of GitHub Desktop and Git (Standalone version) from mandatory ASLR if they are installed on the system. [More info here](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Git-GitHub-Desktop-and-Mandatory-ASLR)
+  - Automatically detects and excludes the Git executables of GitHub Desktop and Git (Standalone version) from mandatory ASLR if they are installed on the system. [More info here](https://github.com/OFFSECHQ/windows-security-studio/wiki/Git-GitHub-Desktop-and-Mandatory-ASLR)
 
   - You can add Mandatory ASLR override for a trusted program using the PowerShell command below or in the Program Settings section of Exploit Protection in Microsoft Defender app.
 
     - `Set-ProcessMitigation -Name "C:\TrustedApp.exe" -Disable ForceRelocateImages`
 
-- **[Registry/Cmdlet]** Applies [Exploit Protections/Process Mitigations](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/enable-exploit-protection) from [**this list**](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/Harden-Windows-Security%20Module/Main%20files/Resources/ProcessMitigations.csv) to the following programs: **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-exploitguard)
+- **[Registry/Cmdlet]** Applies [Exploit Protections/Process Mitigations](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/enable-exploit-protection) from [**this list**](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden-Windows-Security%20Module/Main%20files/Resources/ProcessMitigations.csv) to the following programs: **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-exploitguard)
 
   - All channels of [Microsoft Edge](https://www.microsoft.com/en-us/edge) browser
 
@@ -102,7 +102,7 @@ You can retrieve, filter, sort, and search exclusions across these branches. Add
 
   - More apps and processes will be added to the list over time once they are properly validated to be fully compatible.
 
-  - Exploit Protection configurations are also accessible in XML format [within this repository](https://github.com/HotCakeX/Harden-Windows-Security/tree/main/Harden%20System%20Security/Resources/Intune%20Files/Hardening%20Policies/Exploit%20Protections). When implementing exploit protections using an XML file, the existing exploit mitigations will seamlessly integrate rather than being overwritten. Should there be pre-existing exploit protections applied to an executable on the system, and the XML file specifies different mitigations for the same executable, these protections will be merged and applied collectively.
+  - Exploit Protection configurations are also accessible in XML format [within this repository](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Resources/Intune%20Files/Hardening%20Policies/Exploit%20Protections). When implementing exploit protections using an XML file, the existing exploit mitigations will seamlessly integrate rather than being overwritten. Should there be pre-existing exploit protections applied to an executable on the system, and the XML file specifies different mitigations for the same executable, these protections will be merged and applied collectively.
 
 - **[Registry/Cmdlet]** [Turns on Data Execution Prevention](https://learn.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) (DEP) for all applications, including 32-bit programs. By default, the output of `BCDEdit /enum "{current}"` (in PowerShell) for the NX bit is `OptIn` but the Harden System Security app sets it to `AlwaysOn`
 
@@ -122,7 +122,7 @@ You can retrieve, filter, sort, and search exclusions across these branches. Add
 
 - **[Group Policy]** Enables automatic data collection (formerly known as Capture Threat Window) of Enhanced Phishing Protection in Microsoft Defender SmartScreen for security analysis from a suspicious website or app. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-webthreatdefense#automaticdatacollection)
 
-- **[Registry/Cmdlet]** **[Subcategory]** [Creates scheduled task for fast weekly Microsoft recommended driver block list update.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Fast-and-Automatic-Microsoft-Recommended-Driver-Block-Rules-updates). You won't see this prompt if the task already exists and is enabled or running.
+- **[Registry/Cmdlet]** **[Subcategory]** [Creates scheduled task for fast weekly Microsoft recommended driver block list update.](https://github.com/OFFSECHQ/windows-security-studio/wiki/Fast-and-Automatic-Microsoft-Recommended-Driver-Block-Rules-updates). You won't see this prompt if the task already exists and is enabled or running.
 
 - **[Registry/Cmdlet]** **[Subcategory]** Set the Microsoft Defender engine and platform update channel to beta. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/defender-csp?WT.mc_id=Portal-fx#configurationengineupdateschannel) **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/defender-csp?WT.mc_id=Portal-fx#configurationplatformupdateschannel)
 

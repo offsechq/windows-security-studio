@@ -91,9 +91,9 @@ As you can see, we need the TBS Hash value of the root certificate.
 
 ### Use the App Control Studio to Automatically Allow Certificates
 
-You can use the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) to create a supplemental policy that allows the certificates you select to be allowed by App Control.
+You can use the [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) to create a supplemental policy that allows the certificates you select to be allowed by App Control.
 
-**_[Refer to this page for more information](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Supplemental-App-Control-Policy#create-a-supplemental-policy-from-certificate-files)_**
+**_[Refer to this page for more information](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Supplemental-App-Control-Policy#create-a-supplemental-policy-from-certificate-files)_**
 
 > [!TIP]
 > A manual way to get the TBS Hash value of a certificate is using the following command, which also works for signed files and will show the details of the certificates in the chain as well.

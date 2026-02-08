@@ -2,7 +2,7 @@
 
 ![App Control Studio Application's View File Certificates Page](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/AppControl%20Manager%20page%20screenshots/View%20File%20Certificates.png)
 
-Use this [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) page to inspect, search, sort, copy, and export highly detailed information about the public key certificates found in signed content on your system. The page can display the complete chains (Leaf, Intermediate, Root) for each signer of a signed file, as well as parse standalone certificates and signed App Control policy packages.
+Use this [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) page to inspect, search, sort, copy, and export highly detailed information about the public key certificates found in signed content on your system. The page can display the complete chains (Leaf, Intermediate, Root) for each signer of a signed file, as well as parse standalone certificates and signed App Control policy packages.
 
 > [!TIP]
 > You can verify the signing certificates inside `.CIP` files (signed App Control policies) and standalone `.cer` certificate files.

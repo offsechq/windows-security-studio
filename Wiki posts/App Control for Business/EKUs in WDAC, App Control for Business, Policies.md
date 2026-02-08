@@ -263,6 +263,6 @@ In every Signer, the `CertEKU` node should only be placed directly after `CertRo
 
 ## Continue Reading
 
-- [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager)
-- [App Control Policy for BYOVD Kernel Mode Only Protection](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection)
-- [WDAC Notes](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Notes)
+- [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager)
+- [App Control Policy for BYOVD Kernel Mode Only Protection](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection)
+- [WDAC Notes](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Notes)

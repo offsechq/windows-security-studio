@@ -9,7 +9,7 @@
 <br>
 
 > [!Tip]\
-> Many of the features mentioned in the map above can be automatically deployed and configured via the [Harden Windows Security repository's](https://github.com/HotCakeX/Harden-Windows-Security) offerings.
+> Many of the features mentioned in the map above can be automatically deployed and configured via the [Harden Windows Security repository's](https://github.com/OFFSECHQ/windows-security-studio) offerings.
 
 <br>
 <br>
@@ -38,7 +38,7 @@ Exploit protection helps protect devices from malware that uses exploits to spre
 
 * [Read More](https://learn.microsoft.com/en-us/defender-endpoint/evaluate-exploit-protection)
 
-* [Read More](https://github.com/HotCakeX/Harden-Windows-Security/blob/main/Harden-Windows-Security%20Module/Main%20files/Resources/ProcessMitigations.csv)
+* [Read More](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden-Windows-Security%20Module/Main%20files/Resources/ProcessMitigations.csv)
 
 <br>
 
@@ -127,9 +127,9 @@ Regularly updating Microsoft Defender Antivirus is crucial for maintaining robus
 
 Application control is a crucial line of defense for protecting computer systems given today's threat landscape, and it has an inherent advantage over traditional antivirus solutions. Specifically, application control moves away from an application trust model where all applications are assumed trustworthy to one where applications must earn trust in order to run.
 
-* [Read More](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Introduction)
+* [Read More](https://github.com/OFFSECHQ/windows-security-studio/wiki/Introduction)
 
-* [**App Control Studio**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager)
+* [**App Control Studio**](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager)
 
 <br>
 
@@ -137,7 +137,7 @@ Application control is a crucial line of defense for protecting computer systems
 
 This scenario involves removing the trust to any Kernel mode driver, whether they are vulnerable or not. It does not affect User-mode binaries or drivers. Any 3rd party software/hardware Kernel mode driver will need to be explicitly allowed. This scenario protects against all BYOVD scenarios and much more.
 
-* [Read More](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection)
+* [Read More](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection)
 
 <br>
 
@@ -221,7 +221,7 @@ UEFI locked security measures are rooted in Proof of Physical Presence and they 
 
 The only way to disable UEFI locked security measures is to have physical access to the computer, reboot and access the UEFI settings, supply the credentials to access the UEFI, turn off Secure Boot, reboot the system and then you will be able to disable those security measures with Administrator privileges.
 
-* [Read More](https://github.com/HotCakeX/Harden-Windows-Security?tab=readme-ov-file#device-guard)
+* [Read More](https://github.com/OFFSECHQ/windows-security-studio?tab=readme-ov-file#device-guard)
 
 <br>
 
@@ -250,7 +250,7 @@ Requires a USB flash drive to be inserted into the computer to start the compute
 
 * [Read More](https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/faq#what-is-the-difference-between-a-tpm-owner-password--recovery-password--recovery-key--pin--enhanced-pin--and-startup-key)
 
-* [Read More](https://github.com/HotCakeX/Harden-Windows-Security/wiki/BitLocker,-TPM-and-Pluton-%7C--What-Are-They-and-How-Do-They-Work)
+* [Read More](https://github.com/OFFSECHQ/windows-security-studio/wiki/BitLocker,-TPM-and-Pluton-%7C--What-Are-They-and-How-Do-They-Work)
 
 <br>
 
@@ -497,6 +497,6 @@ This feature is constantly learning from phishing attacks seen throughout the en
 
 ## Continue Reading
 
-Head over to [the main page of the GitHub repository](https://github.com/HotCakeX/Harden-Windows-Security) to learn more about Windows Security and how to automate a lot of the features talked about on this page.
+Head over to [the main page of the GitHub repository](https://github.com/OFFSECHQ/windows-security-studio) to learn more about Windows Security and how to automate a lot of the features talked about on this page.
 
 <br>

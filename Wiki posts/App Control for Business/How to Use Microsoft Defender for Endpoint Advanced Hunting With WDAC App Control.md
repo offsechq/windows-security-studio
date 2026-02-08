@@ -2,21 +2,21 @@
 
 App Control for Business is a highly effective security feature that empowers you to manage the execution of applications on your endpoints. The application whitelisting approach serves as a potent defense against emerging and unknown threats. By emphasizing the identification of trusted applications, it automatically blocks any software that falls outside this trusted realm.
 
-Microsoft Defender for Endpoint (MDE) is one of the tools that can be used by enterprises and organizations to develop a trusted application policy and manage it at scale. MDE provides the intelligence and insights needed to create and maintain a robust application control policy through its Advanced Hunting feature. This feature uses KQL [(Kusto Query Language)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/) to query the data collected by MDE and using the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager), you can turn this actionable data into App Control policies. You can then use [Intune](https://intune.microsoft.com) to deploy these policies to your endpoints. All of these tools are built for scalability.
+Microsoft Defender for Endpoint (MDE) is one of the tools that can be used by enterprises and organizations to develop a trusted application policy and manage it at scale. MDE provides the intelligence and insights needed to create and maintain a robust application control policy through its Advanced Hunting feature. This feature uses KQL [(Kusto Query Language)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/) to query the data collected by MDE and using the [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager), you can turn this actionable data into App Control policies. You can then use [Intune](https://intune.microsoft.com) to deploy these policies to your endpoints. All of these tools are built for scalability.
 
 ## Preparing the Code Integrity and AppLocker Data
 
 To start, you need your endpoints to be generating data and intelligence you can work with. These data points are the Code Integrity and AppLocker events. These events are generated when an application or file is blocked or audited by App Control, or when a script or MSI file is blocked or audited by AppLocker. You can trigger the data generation by deploying App Control policies to your endpoints in Audit mode. This mode will not block any applications, instead it will generate data points for any application, file or script that would have been blocked if the policy was in Enforce mode.
 
-You can create Audit mode policies using the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) based on different levels of trust. [Use this page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-App-Control-Policy) to see what kind of audit events each base policy template generates when deployed in audit mode.
+You can create Audit mode policies using the [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) based on different levels of trust. [Use this page](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-App-Control-Policy) to see what kind of audit events each base policy template generates when deployed in audit mode.
 
 For instance, once the `DefaultWindows` template is deployed on an endpoint, it starts generating Audit logs for any file that runs but is not part of the Windows by default. On the other hand, deploying the `AllowMicrosoft` base policy in Audit mode starts generating Audit logs for any file that runs but is not signed by Microsoft certificates.
 
-After generating the policy files using the app, you will then use the [Deployment page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Deploy-App-Control-Policy) to deploy them to as many endpoints as you want. It uses Microsoft Graph API to upload the policies to Intune. [You can read more about this feature here.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Upload-App-Control-Policies-To-Intune-Using-AppControl-Manager)
+After generating the policy files using the app, you will then use the [Deployment page](https://github.com/OFFSECHQ/windows-security-studio/wiki/Deploy-App-Control-Policy) to deploy them to as many endpoints as you want. It uses Microsoft Graph API to upload the policies to Intune. [You can read more about this feature here.](https://github.com/OFFSECHQ/windows-security-studio/wiki/How-To-Upload-App-Control-Policies-To-Intune-Using-AppControl-Manager)
 
 ## Collecting the Data from MDE Advanced Hunting
 
-Use the [**Cloud Tab** in the MDE Advanced Hunting page](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Create-Policy-From-MDE-Advanced-Hunting#cloud-tab) to sign into your tenant and retrieve the Advanced Hunting logs. However, if you want to manually run the query in the XDR portal, you can use the following query:
+Use the [**Cloud Tab** in the MDE Advanced Hunting page](https://github.com/OFFSECHQ/windows-security-studio/wiki/Create-Policy-From-MDE-Advanced-Hunting#cloud-tab) to sign into your tenant and retrieve the Advanced Hunting logs. However, if you want to manually run the query in the XDR portal, you can use the following query:
 
 ```kql
 DeviceEvents
@@ -41,7 +41,7 @@ DeviceEvents
 > [!NOTE]
 > You can access Microsoft Defender for Endpoint's portal by navigating to: [https://security.microsoft.com](https://security.microsoft.com)
 
-That query generates a standard output of the data in CSV file format which is compatible with what the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) requires in order to generate App Control policies. If you want to customize the query further, make sure the subsequent filters are applied after the initial query to ensure correct data format.
+That query generates a standard output of the data in CSV file format which is compatible with what the [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) requires in order to generate App Control policies. If you want to customize the query further, make sure the subsequent filters are applied after the initial query to ensure correct data format.
 
 ![MDE AH button](https://raw.githubusercontent.com/HotCakeX/.github/main/Pictures/PNG%20and%20JPG/Wiki%20MDE%20Advanced%20Hunting%20WDAC/931857763219946.png)
 
@@ -71,11 +71,11 @@ You can choose the level based on which the logs will be scanned. By default, th
   - If the file is signed and the MDE AH results contain the file's version as well as **at least one** of the following file attributes (Original Name, Internal Name, Description, Product Name), then a File Publisher rule will be created for it.
   - If the file is signed but the file attributes are not present in the results, Publisher level rule will be created for it.
 
-These levels are selected based on their security. You can read more about the levels security comparison [in this article](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Rule-Levels-Comparison-and-Guide).
+These levels are selected based on their security. You can read more about the levels security comparison [in this article](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Rule-Levels-Comparison-and-Guide).
 
 ## Deploying the App Control Policies
 
-After generating the Supplemental policies based off of the MDE Advanced Hunting data, you need to remove the Audit mode policies you deployed to your endpoints initially and replace them with Enforced mode policies. [App Control Studio offers an easy way to do so.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/System-Information)
+After generating the Supplemental policies based off of the MDE Advanced Hunting data, you need to remove the Audit mode policies you deployed to your endpoints initially and replace them with Enforced mode policies. [App Control Studio offers an easy way to do so.](https://github.com/OFFSECHQ/windows-security-studio/wiki/System-Information)
 
 > [!IMPORTANT]
 > Ensure that the Enforced mode policies align with the type of policies set during Audit mode. For example, if you utilized an Audit mode policy that permits Microsoft-signed files (`AllowMicrosoft`), it is crucial to employ an Enforced mode policy that also allows such files. Conversely, when dealing with the `DefaultWindows` policy, consistency is key. Mixing these policies can result in files that were allowed during Audit mode being unexpectedly blocked during Enforce mode.
@@ -95,11 +95,11 @@ You can put your endpoints into different groups and each group can receive diff
 > [!NOTE] > [ApplicationControl CSP](https://learn.microsoft.com/en-us/windows/client-management/mdm/applicationcontrol-csp)
 
 > [!TIP]
-> You can use [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/How-To-Upload-App-Control-Policies-To-Intune-Using-AppControl-Manager) to seamlessly deploy your App Control policies to the Intune. It supports signed and unsigned policy deployment.
+> You can use [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/How-To-Upload-App-Control-Policies-To-Intune-Using-AppControl-Manager) to seamlessly deploy your App Control policies to the Intune. It supports signed and unsigned policy deployment.
 
 ## Strict Kernel Mode Code Integrity Policy Scenario
 
-I've created a scenario where you can strictly control what is allowed to run in Kernel mode, without blocking any user mode applications. [**You can read all about this scenario in here**](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection). Using the [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) and MDE Advanced Hunting intel, you can deploy this scenario across your entire fleet of endpoints.
+I've created a scenario where you can strictly control what is allowed to run in Kernel mode, without blocking any user mode applications. [**You can read all about this scenario in here**](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection). Using the [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) and MDE Advanced Hunting intel, you can deploy this scenario across your entire fleet of endpoints.
 
 This approach demands very minimal upkeep as it exclusively manages Kernel-mode activities, yet it offers an exceptional degree of security. A significant benefit of this method is the safeguarding of your endpoints from all Bring Your Own Vulnerable Driver (BYOVD) threats.
 

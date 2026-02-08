@@ -201,7 +201,7 @@ The policy must be in multiple policy format, which can be achieved by using the
 
   - The version is mentioned in [Code Integrity operational event logs](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/operations/event-id-explanations) with an event ID of `3099` in the General tab.
 
-- We don't need to merge and use the Microsoft recommended driver block rules in a policy, because [it's already being enforced by default](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules#microsoft-vulnerable-driver-blocklist) and if we want to update it more regularly, we can do so [by following this section of the document.](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules#steps-to-download-and-apply-the-vulnerable-driver-blocklist-binary) Or by [Fast and Automatic Microsoft Recommended Driver Block Rules updates](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Fast-and-Automatic-Microsoft-Recommended-Driver-Block-Rules-updates).
+- We don't need to merge and use the Microsoft recommended driver block rules in a policy, because [it's already being enforced by default](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules#microsoft-vulnerable-driver-blocklist) and if we want to update it more regularly, we can do so [by following this section of the document.](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/microsoft-recommended-driver-block-rules#steps-to-download-and-apply-the-vulnerable-driver-blocklist-binary) Or by [Fast and Automatic Microsoft Recommended Driver Block Rules updates](https://github.com/OFFSECHQ/windows-security-studio/wiki/Fast-and-Automatic-Microsoft-Recommended-Driver-Block-Rules-updates).
 
 > [Citation:](https://github.com/MicrosoftDocs/WDAC-Toolkit/discussions/217#discussioncomment-5104749) If you only manage Windows 11 22H2 systems (and above), then you don't need the recommended driver block rules in your App Control policy. Otherwise, you should have the driver block rules in your policy. In either scenario, you should have the recommended user mode rules.
 
@@ -278,7 +278,7 @@ If you've deployed a Signed App Control policy on a system and then decide to re
 
 Unsigned App Control policies don't have this behavior. Since they are neither cryptographically signed nor tamper-proof, they will be removed during the reset process and after reset the system will not have the App Control policy.
 
-This behavior is true for [Lightly managed](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-for-Lightly-Managed-Devices), [Allow Microsoft](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-Fully-managed-device---Variant-3) and [Default Windows](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-Fully-managed-device---Variant-4) App Control policy types.
+This behavior is true for [Lightly managed](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-for-Lightly-Managed-Devices), [Allow Microsoft](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-Fully-managed-device---Variant-3) and [Default Windows](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-Fully-managed-device---Variant-4) App Control policy types.
 
 ## The .CIP Binary File Can Have Any Name or No Name at All
 
@@ -315,7 +315,7 @@ For a Kernel-mode only App Control policy, only the following EKUs are necessary
 </EKUs>
 ```
 
-> [!IMPORTANT] > [Refer to this document for complete info about Kernel-Mode policies](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection)
+> [!IMPORTANT] > [Refer to this document for complete info about Kernel-Mode policies](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection)
 
 ## You Can Merge the Same Policy XML File With Itself
 
@@ -396,7 +396,7 @@ Setting [HVCI to Strict](https://learn.microsoft.com/en-us/powershell/module/con
 
 ## MSI Files and Their Applicable Rule Levels
 
-MSI files cannot be allowed using FilePublisher rule level because they are not PEs and do not have the necessary attributes (Such as file version, original file name, product name, file description and so on) of the PEs (Portable Executable) in order to create FilePublisher/SignedVersion rules for them, so they need to be allowed by other [levels](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Rule-Levels-Comparison-and-Guide) such as Publisher or Hash.
+MSI files cannot be allowed using FilePublisher rule level because they are not PEs and do not have the necessary attributes (Such as file version, original file name, product name, file description and so on) of the PEs (Portable Executable) in order to create FilePublisher/SignedVersion rules for them, so they need to be allowed by other [levels](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Rule-Levels-Comparison-and-Guide) such as Publisher or Hash.
 
 ## The Length of the IDs in the policy XML file has no effect on the size of the generated CIP file
 
@@ -428,6 +428,6 @@ If a policy lacks that setting, the resulting Code Integrity event logs—for in
 
 - If using a FilePath rule level and the file path contains a UNC path, **ensure** [UNC hardening is enabled and secure](https://learn.microsoft.com/en-us/archive/blogs/leesteve/demystifying-the-unc-hardening-dilemma).
 
-## [Continue reading about BYOVD protection with App Control for Business](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection)
+## [Continue reading about BYOVD protection with App Control for Business](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection)
 
-#### [App Control policy](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection) for BYOVD Kernel mode only protection
+#### [App Control policy](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-policy-for-BYOVD-Kernel-mode-only-protection) for BYOVD Kernel mode only protection

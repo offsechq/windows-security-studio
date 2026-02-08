@@ -6,7 +6,7 @@ This document is dedicated to offering various ways to use Event logs to achieve
 
 ## How to identify which Windows Firewall rule is responsible for a blocked packet
 
-I've mostly considered this for the [Country IP Blocking category](https://github.com/HotCakeX/Harden-Windows-Security#country-ip-blocking), but you can use it for any purpose.
+I've mostly considered this for the [Country IP Blocking category](https://github.com/OFFSECHQ/windows-security-studio#country-ip-blocking), but you can use it for any purpose.
 
 Before doing this, you need to activate one of the system Audits.
 
@@ -140,7 +140,7 @@ Get-BlockedPackets
 
 ## How to Get Event Logs from the Miscellaneous Category in PowerShell
 
-This code assumes you've already used the [Harden Windows Security Module](https://github.com/HotCakeX/Harden-Windows-Security?tab=readme-ov-file#miscellaneous-configurations) and the event logs custom views exist on your machine.
+This code assumes you've already used the [Harden Windows Security Module](https://github.com/OFFSECHQ/windows-security-studio?tab=readme-ov-file#miscellaneous-configurations) and the event logs custom views exist on your machine.
 
 ```powershell
 # Load the XML content from a file or a string

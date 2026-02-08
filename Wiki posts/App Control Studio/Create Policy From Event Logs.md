@@ -2,7 +2,7 @@
 
 ![App Control Studio Application's Create Policy From Event Logs Page](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/AppControl%20Manager%20page%20screenshots/Create%20policy%20from%20event%20logs.png)
 
-This page in [App Control Studio](https://github.com/HotCakeX/Harden-Windows-Security/wiki/AppControl-Manager) allows you to create Application Control policies directly from local event logs or EVTX files. It focuses on processing Code Integrity and AppLocker event logs to help build tailored policies.
+This page in [App Control Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/AppControl-Manager) allows you to create Application Control policies directly from local event logs or EVTX files. It focuses on processing Code Integrity and AppLocker event logs to help build tailored policies.
 
 This page offers a data grid that has search functionality, sorting, removal of individual logs and copying entire rows or each cell to the clipboard.
 
@@ -44,7 +44,7 @@ Only the following [event types](https://learn.microsoft.com/en-us/windows/secur
 
 - **Deploy policy after creation**: Use this toggle button to tell the application that you want to deploy the policy after creation.
 
-- **Scan Level**: You can choose from different scan levels. [Refer to this page for all the information about them.](https://github.com/HotCakeX/Harden-Windows-Security/wiki/WDAC-Rule-Levels-Comparison-and-Guide)
+- **Scan Level**: You can choose from different scan levels. [Refer to this page for all the information about them.](https://github.com/OFFSECHQ/windows-security-studio/wiki/WDAC-Rule-Levels-Comparison-and-Guide)
 
 - **Only Use Selected Items**: If this button is toggled, only the items in the List View that are highlighted will be added to the Supplemental policy. If this button is not toggled, then everything available in the List View will be added to the Supplemental policy.
 

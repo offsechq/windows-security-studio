@@ -1,6 +1,6 @@
 # Protect
 
-The Protect page in the [Harden System Security App](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security) is a central hub for Applying, Verifying or Removing the security measures. It offers presets with optimal pre-selected categories and sub-categories to streamline the hardening process.
+The Protect page in the [Harden System Security App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) is a central hub for Applying, Verifying or Removing the security measures. It offers presets with optimal pre-selected categories and sub-categories to streamline the hardening process.
 
 Each Security Measure category on this page has its own dedicated page where you can view and modify the specific settings related to that category in a more detailed manner. When you use the Apply, Verify or Remove buttons on this page, it is as if you are directly interacting with the button on that category's page.
 
@@ -51,4 +51,4 @@ After you generate a system report, whether it's a full system report that inclu
 
 Let's say you've configured a system to your liking and it's in a compliant golden state, you can back up the categories you want or the entire system state to a JSON file and import it on as many workstations as you want.
 
-**The great thing about all of this? You can totally automate it, thanks to the new CLI support. [Documentation for CLI usage available here](https://github.com/HotCakeX/Harden-Windows-Security/wiki/Harden-System-Security#commandline-interface-cli-support).**
+**The great thing about all of this? You can totally automate it, thanks to the new CLI support. [Documentation for CLI usage available here](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security#commandline-interface-cli-support).**
