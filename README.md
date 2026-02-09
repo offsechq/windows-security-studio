@@ -97,5 +97,3 @@ cd "System Security Studio"
 ## License
 
 [MIT](LICENSE)
-
-Original work © 2023 [Violet Hansen](https://github.com/HotCakeX) · Fork modifications © 2026 OFFSECHQ
