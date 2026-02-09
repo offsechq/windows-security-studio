@@ -151,6 +151,11 @@
                 <!-- Update section -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
                            x:Uid="UpdateSectionHeaderTextBlock" />
+                <customUI:InfoBarV2 Margin="0,0,0,5"
+                                    IsOpen="{x:Bind ViewModelUpdate.MainInfoBarIsOpen, Mode=TwoWay}"
+                                    Message="{x:Bind ViewModelUpdate.MainInfoBarMessage, Mode=OneWay}"
+                                    Severity="{x:Bind ViewModelUpdate.MainInfoBarSeverity, Mode=OneWay}"
+                                    IsClosable="{x:Bind ViewModelUpdate.MainInfoBarIsClosable, Mode=OneWay}"/>
                 <controls:SettingsExpander x:Uid="UpdateSectionSettingsExpander" IsExpanded="True" HeaderIcon="{ui:FontIcon Glyph=&#xEDE4;}">
 
                     <controls:SettingsExpander.Items>
