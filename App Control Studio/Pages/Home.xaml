@@ -499,6 +499,63 @@
                             </Grid>
                         </Border>
 
+                        <!-- SECURITY CORE -->
+                        <Border Style="{StaticResource OverviewCardBorderStyle}">
+                            <Grid Style="{StaticResource CardContentGridStyle}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Style="{StaticResource CardHeaderStackStyle}">
+                                    <FontIcon Style="{StaticResource CardHeaderIconStyle}"
+                                              Glyph="&#xE72E;"/>
+                                    <TextBlock Style="{StaticResource CardHeaderTextStyle}"
+                                               Text="Security Core"/>
+                                </StackPanel>
+                                <TextBlock Grid.Row="1"
+                                           Style="{StaticResource CardBodyTextStyle}"
+                                           Text="{x:Bind ViewModel.SecurityCoreStatusText, Mode=OneWay}"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- FIREWALL PROFILES -->
+                        <Border Style="{StaticResource OverviewCardBorderStyle}">
+                            <Grid Style="{StaticResource CardContentGridStyle}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Style="{StaticResource CardHeaderStackStyle}">
+                                    <FontIcon Style="{StaticResource CardHeaderIconStyle}"
+                                              Glyph="&#xEC7A;"/>
+                                    <TextBlock Style="{StaticResource CardHeaderTextStyle}"
+                                               Text="Firewall Profiles"/>
+                                </StackPanel>
+                                <TextBlock Grid.Row="1"
+                                           Style="{StaticResource CardBodyTextStyle}"
+                                           Text="{x:Bind ViewModel.FirewallProfilesStatusText, Mode=OneWay}"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- PENDING RESTART -->
+                        <Border Style="{StaticResource OverviewCardBorderStyle}">
+                            <Grid Style="{StaticResource CardContentGridStyle}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Style="{StaticResource CardHeaderStackStyle}">
+                                    <FontIcon Style="{StaticResource CardHeaderIconStyle}"
+                                              Glyph="&#xE777;"/>
+                                    <TextBlock Style="{StaticResource CardHeaderTextStyle}"
+                                               Text="Pending Restart"/>
+                                </StackPanel>
+                                <TextBlock Grid.Row="1"
+                                           Style="{StaticResource CardBodyTextStyle}"
+                                           Text="{x:Bind ViewModel.PendingRestartStatusText, Mode=OneWay}"/>
+                            </Grid>
+                        </Border>
+
                     </ItemsControl>
 
                     <!-- spacer between sections -->

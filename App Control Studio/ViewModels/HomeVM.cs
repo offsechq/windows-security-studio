@@ -216,6 +216,33 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 
 			try
 			{
+				SecurityCoreStatusText = GetSecurityCoreStatusString();
+			}
+			catch (Exception ex)
+			{
+				Logger.Write(ex);
+			}
+
+			try
+			{
+				FirewallProfilesStatusText = GetFirewallProfilesStatusString();
+			}
+			catch (Exception ex)
+			{
+				Logger.Write(ex);
+			}
+
+			try
+			{
+				PendingRestartStatusText = GetPendingRestartStatusString();
+			}
+			catch (Exception ex)
+			{
+				Logger.Write(ex);
+			}
+
+			try
+			{
 				List<WindowsActivationStatus> actStats = GetOSActivationStates.Get();
 				if (actStats.Count > 0)
 				{
@@ -290,6 +317,9 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 	internal string? CpuTemperatureText { get; private set => SP(ref field, value); } = "CPU Temp: Unavailable";
 	internal string? OpenPortsText { get; private set => SP(ref field, value); } = "TCP: 0 / UDP: 0";
 	internal string? PowerPlanText { get; private set => SP(ref field, value); }
+	internal string? SecurityCoreStatusText { get; private set => SP(ref field, value); } = "Secure Boot: Unknown - VBS: Unknown - HVCI: Unknown";
+	internal string? FirewallProfilesStatusText { get; private set => SP(ref field, value); } = "Domain: Unknown - Private: Unknown - Public: Unknown";
+	internal string? PendingRestartStatusText { get; private set => SP(ref field, value); } = "Restart pending: Unknown";
 	internal string? OsInfoText { get; private set => SP(ref field, value); }
 	internal string? CpuDetailsText { get; private set => SP(ref field, value); }
 	internal string? GpuNamesText { get; private set => SP(ref field, value); }
@@ -1357,6 +1387,144 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 		{
 			return "TCP: 0 - UDP: 0";
 		}
+	}
+
+	private static string GetSecurityCoreStatusString()
+	{
+		string secureBoot = GetSecureBootStatus();
+		string vbs = GetVbsStatus();
+		string hvci = GetHvciStatus();
+		return $"Secure Boot: {secureBoot} - VBS: {vbs} - HVCI: {hvci}";
+	}
+
+	private static string GetSecureBootStatus()
+	{
+		try
+		{
+			using RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\SecureBoot\State");
+			object? value = key?.GetValue("UEFISecureBootEnabled");
+			if (value is int intValue)
+			{
+				return intValue == 1 ? "On" : "Off";
+			}
+		}
+		catch
+		{
+		}
+
+		return "Unknown";
+	}
+
+	private static string GetVbsStatus()
+	{
+		try
+		{
+			using RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\DeviceGuard");
+			object? value = key?.GetValue("EnableVirtualizationBasedSecurity");
+			if (value is int intValue)
+			{
+				return intValue == 1 ? "On" : "Off";
+			}
+		}
+		catch
+		{
+		}
+
+		return "Unknown";
+	}
+
+	private static string GetHvciStatus()
+	{
+		try
+		{
+			using RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity");
+			object? value = key?.GetValue("Enabled");
+			if (value is int intValue)
+			{
+				return intValue == 1 ? "On" : "Off";
+			}
+		}
+		catch
+		{
+		}
+
+		return "Unknown";
+	}
+
+	private static string GetFirewallProfilesStatusString()
+	{
+		string domain = GetFirewallProfileStatus(@"SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile");
+		string privateProfile = GetFirewallProfileStatus(@"SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile");
+		string publicProfile = GetFirewallProfileStatus(@"SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile");
+
+		return $"Domain: {domain} - Private: {privateProfile} - Public: {publicProfile}";
+	}
+
+	private static string GetFirewallProfileStatus(string keyPath)
+	{
+		try
+		{
+			using RegistryKey? key = Registry.LocalMachine.OpenSubKey(keyPath);
+			object? value = key?.GetValue("EnableFirewall");
+			if (value is int intValue)
+			{
+				return intValue == 1 ? "On" : "Off";
+			}
+		}
+		catch
+		{
+		}
+
+		return "Unknown";
+	}
+
+	private static string GetPendingRestartStatusString()
+	{
+		List<string> reasons = [];
+
+		try
+		{
+			using RegistryKey? cbs = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending");
+			if (cbs is not null)
+			{
+				reasons.Add("CBS");
+			}
+		}
+		catch
+		{
+		}
+
+		try
+		{
+			using RegistryKey? wu = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired");
+			if (wu is not null)
+			{
+				reasons.Add("Windows Update");
+			}
+		}
+		catch
+		{
+		}
+
+		try
+		{
+			using RegistryKey? sessionManager = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Session Manager");
+			object? pending = sessionManager?.GetValue("PendingFileRenameOperations");
+			if (pending is string[] entries && entries.Length > 0)
+			{
+				reasons.Add("File operations");
+			}
+		}
+		catch
+		{
+		}
+
+		if (reasons.Count == 0)
+		{
+			return "No pending restart";
+		}
+
+		return "Restart required: " + string.Join(", ", reasons);
 	}
 
 	#endregion
