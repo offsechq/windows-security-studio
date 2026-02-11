@@ -497,7 +497,7 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 			return;
 
 		ViewModel.HasAutoVerified = true;
-		VerifyAllMUnits();
+		_ = VerifyAllMUnitsInternal(disableElements: false);
 	}
 
 	#endregion
@@ -749,9 +749,14 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 	}
 
 	/// <summary>
-	/// Verify all MUnits - modified to use cancellable button pattern like CreateSupplementalPolicyVM
+	/// Verify all MUnits.
 	/// </summary>
 	internal async void VerifyAllMUnits()
+	{
+		await VerifyAllMUnitsInternal(disableElements: true);
+	}
+
+	private async Task VerifyAllMUnitsInternal(bool disableElements)
 	{
 		if (ViewModel is null || _isDisposed) return;
 
@@ -761,7 +766,10 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 
 		try
 		{
-			ViewModel.ElementsAreEnabled = false;
+			if (disableElements)
+			{
+				ViewModel.ElementsAreEnabled = false;
+			}
 			ViewModel.MainInfoBar.WriteInfo(GlobalVars.GetStr("VerifyingAllSecurityMeasures"));
 
 			List<MUnit> allMUnits = [];
@@ -793,7 +801,10 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 			}
 
 			ViewModel.VerifyAllCancellableButton.End();
-			ViewModel.ElementsAreEnabled = true;
+			if (disableElements)
+			{
+				ViewModel.ElementsAreEnabled = true;
+			}
 		}
 	}
 

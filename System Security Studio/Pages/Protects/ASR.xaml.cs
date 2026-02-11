@@ -42,7 +42,7 @@ internal sealed partial class ASR : Page, CommonCore.UI.IPageHeaderProvider
 		if (!ViewModel.HasAutoRetrieved)
 		{
 			ViewModel.HasAutoRetrieved = true;
-			ViewModel.RetrieveLatest();
+			_ = ViewModel.RetrieveLatest_Internal(disableElements: false);
 		}
 	}
 
