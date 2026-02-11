@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<Version>$(FileVersion)</Version>
-		<FileVersion>1.0.1.0</FileVersion>
+		<FileVersion>1.0.0.0</FileVersion>
 		<AssemblyVersion>$(FileVersion)</AssemblyVersion>
 		<Title>HSS Quantum Relay Service</Title>
 		<Copyright>Kenyata Gomo</Copyright>

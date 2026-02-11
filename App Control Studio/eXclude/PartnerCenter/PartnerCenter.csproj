@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<Version>$(FileVersion)</Version>
-		<FileVersion>1.0.1.0</FileVersion>
+		<FileVersion>1.0.0.0</FileVersion>
 		<AssemblyVersion>$(FileVersion)</AssemblyVersion>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<StackTraceSupport>false</StackTraceSupport>
