@@ -762,7 +762,15 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 
 		bool errorsOccurred = false;
 
-		ViewModel.VerifyAllCancellableButton.Begin();
+		// For background refresh, skip the cancellable button lifecycle entirely.
+		// Begin() transforms the Verify All button into a Cancel button, starts shadow
+		// animations, and disables Apply All / Remove All -- all of which are intrusive
+		// for a silent background operation. Individual MUnit status indicators will
+		// update in real-time via PropertyChanged -> UpdateStatusCounts.
+		if (!isBackgroundRefresh)
+		{
+			ViewModel.VerifyAllCancellableButton.Begin();
+		}
 
 		try
 		{
@@ -770,11 +778,7 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 			{
 				ViewModel.ElementsAreEnabled = false;
 			}
-			if (isBackgroundRefresh)
-			{
-				ViewModel.MainInfoBar.WriteInfo("Refreshing status in background...");
-			}
-			else
+			if (!isBackgroundRefresh)
 			{
 				ViewModel.MainInfoBar.WriteInfo(GlobalVars.GetStr("VerifyingAllSecurityMeasures"));
 			}
@@ -790,34 +794,40 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 					}
 				}
 			}
-			await MUnit.ProcessMUnitsWithBulkOperations(ViewModel, allMUnits, MUnitOperation.Verify, ViewModel.VerifyAllCancellableButton.Cts?.Token);
+
+			// For background refresh, pass null token (no cancellation support needed since
+			// the user is not presented with a Cancel button).
+			System.Threading.CancellationToken? token = isBackgroundRefresh ? null : ViewModel.VerifyAllCancellableButton.Cts?.Token;
+			await MUnit.ProcessMUnitsWithBulkOperations(ViewModel, allMUnits, MUnitOperation.Verify, token);
 		}
 		catch (Exception ex)
 		{
-			ViewModelBase.HandleExceptions(ex, ref errorsOccurred, ref ViewModel.VerifyAllCancellableButton.wasCancelled, ViewModel.MainInfoBar);
+			if (isBackgroundRefresh)
+			{
+				// Log silently for background refresh -- don't show intrusive error UI.
+				Logger.Write(ex);
+			}
+			else
+			{
+				ViewModelBase.HandleExceptions(ex, ref errorsOccurred, ref ViewModel.VerifyAllCancellableButton.wasCancelled, ViewModel.MainInfoBar);
+			}
 		}
 		finally
 		{
-			if (ViewModel.VerifyAllCancellableButton.wasCancelled)
+			if (!isBackgroundRefresh)
 			{
-				if (!isBackgroundRefresh)
+				if (ViewModel.VerifyAllCancellableButton.wasCancelled)
 				{
 					ViewModel.MainInfoBar.WriteWarning(GlobalVars.GetStr("VerifyOperationCancelledByUser"));
 				}
-			}
-			else if (!errorsOccurred)
-			{
-				if (isBackgroundRefresh)
-				{
-					ViewModel.MainInfoBar.WriteInfo("Background refresh complete.");
-				}
-				else
+				else if (!errorsOccurred)
 				{
 					ViewModel.MainInfoBar.WriteSuccess(GlobalVars.GetStr("VerifyingAllSecurityMeasuresSuccessful"));
 				}
+
+				ViewModel.VerifyAllCancellableButton.End();
 			}
 
-			ViewModel.VerifyAllCancellableButton.End();
 			if (disableElements)
 			{
 				ViewModel.ElementsAreEnabled = true;
