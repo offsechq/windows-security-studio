@@ -53,7 +53,7 @@ internal static class AppUpdate
 	{
 		string versionsResponse = SecHttpClient.Instance.GetStringAsync(GlobalVars.AppVersionLinkURL).GetAwaiter().GetResult().Trim();
 
-		if (versionsResponse.StartsWith("v", StringComparison.OrdinalIgnoreCase))
+		if (versionsResponse.Length > 0 && (versionsResponse[0] == 'v' || versionsResponse[0] == 'V'))
 		{
 			versionsResponse = versionsResponse[1..];
 		}

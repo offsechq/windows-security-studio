@@ -37,27 +37,4 @@ internal sealed partial class Protect : Page, CommonCore.UI.IPageHeaderProvider
 
 	string CommonCore.UI.IPageHeaderProvider.HeaderTitle => GlobalVars.GetStr("ProtectPageTitle");
 	Uri? CommonCore.UI.IPageHeaderProvider.HeaderGuideUri => new("https://github.com/HotCakeX/Harden-Windows-Security/wiki/Protect");
-
-	private async void OnBorderPointerEntered(object sender, PointerRoutedEventArgs e)
-	{
-		try
-		{
-			await ShadowEnterAnimation.StartAsync((UIElement)sender);
-		}
-		catch (Exception ex)
-		{
-			Logger.Write(ex);
-		}
-	}
-	private async void OnBorderPointerExited(object sender, PointerRoutedEventArgs e)
-	{
-		try
-		{
-			await ShadowExitAnimation.StartAsync((UIElement)sender);
-		}
-		catch (Exception ex)
-		{
-			Logger.Write(ex);
-		}
-	}
 }
