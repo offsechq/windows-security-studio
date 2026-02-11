@@ -47,6 +47,8 @@ namespace AppControlManager.ViewModels;
 
 internal sealed partial class UpdateVM : ViewModelBase
 {
+	private static readonly string DefaultUpdateButtonContent = GlobalVars.GetStr("UpdateNavItem/ToolTipService/ToolTip");
+
 	internal UpdateVM()
 	{
 		MainInfoBar = new InfoBarSettings(
@@ -87,7 +89,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 	/// <summary>
 	/// Content of the main update button
 	/// </summary>
-	internal string UpdateButtonContent { get; set => SP(ref field, value); } = GlobalVars.GetStr("UpdateNavItem/ToolTipService/ToolTip");
+	internal string UpdateButtonContent { get; set => SP(ref field, value); } = DefaultUpdateButtonContent;
 
 	internal bool MainInfoBarIsOpen { get; set => SP(ref field, value); }
 	internal string? MainInfoBarMessage { get; set => SP(ref field, value); }
@@ -114,6 +116,9 @@ internal sealed partial class UpdateVM : ViewModelBase
 		try
 		{
 			ElementsAreEnabled = false;
+			ProgressBarValue = 0;
+			ProgressBarIsIndeterminate = true;
+			WhatsNewInfoBarIsOpen = false;
 
 			MainInfoBar.WriteInfo(GlobalVars.GetStr("CheckingForUpdate"));
 
@@ -131,15 +136,14 @@ internal sealed partial class UpdateVM : ViewModelBase
 				{
 					string stagingArea = StagingArea.NewStagingArea("AppUpdate").ToString();
 
-					// store the latest MSIXBundle version download link after retrieving it from GitHub text file
-					Uri onlineDownloadURL = new(await SecHttpClient.Instance.GetStringAsync(GlobalVars.AppUpdateDownloadLinkURL));
+					// Store the latest MSIXBundle version download link after retrieving it from GitHub text file
+					string onlineDownloadURLRaw = await SecHttpClient.Instance.GetStringAsync(GlobalVars.AppUpdateDownloadLinkURL);
+					Uri onlineDownloadURL = new(onlineDownloadURLRaw.Trim(), UriKind.Absolute);
 
 					// Location of the MSIXBundle package where it will be saved after downloading it from GitHub
 					string packageSavePath = Path.Combine(stagingArea, "update.msixbundle");
 
 					MainInfoBar.WriteInfo(GlobalVars.GetStr("DownloadingPackage"));
-
-					ProgressBarIsIndeterminate = false;
 
 					// Send an Async get request to the url and specify to stop reading after headers are received for better efficiently
 					using (HttpResponseMessage response = await SecHttpClient.Instance.GetAsync(onlineDownloadURL, HttpCompletionOption.ResponseHeadersRead))
@@ -153,6 +157,8 @@ internal sealed partial class UpdateVM : ViewModelBase
 						// Open a stream to read the response content asynchronously
 						await using (Stream contentStream = await response.Content.ReadAsStreamAsync())
 						{
+							ProgressBarIsIndeterminate = !totalBytes.HasValue;
+
 							// Open a file stream to save the downloaded data locally
 							await using (FileStream fileStream = new(
 								packageSavePath,                 // Path to save the file
@@ -251,11 +257,13 @@ internal sealed partial class UpdateVM : ViewModelBase
 			}
 			else
 			{
+				UpdateButtonContent = DefaultUpdateButtonContent;
 				MainInfoBar.WriteSuccess(GlobalVars.GetStr("AlreadyUpdated"));
 			}
 		}
 		catch (Exception ex)
 		{
+			UpdateButtonContent = DefaultUpdateButtonContent;
 			MainInfoBar.WriteError(ex, GlobalVars.GetStr("UpdateCheckError"));
 		}
 		finally

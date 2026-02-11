@@ -497,7 +497,7 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 			return;
 
 		ViewModel.HasAutoVerified = true;
-		_ = VerifyAllMUnitsInternal(disableElements: false);
+		_ = VerifyAllMUnitsInternal(disableElements: false, isBackgroundRefresh: true);
 	}
 
 	#endregion
@@ -753,10 +753,10 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 	/// </summary>
 	internal async void VerifyAllMUnits()
 	{
-		await VerifyAllMUnitsInternal(disableElements: true);
+		await VerifyAllMUnitsInternal(disableElements: true, isBackgroundRefresh: false);
 	}
 
-	private async Task VerifyAllMUnitsInternal(bool disableElements)
+	private async Task VerifyAllMUnitsInternal(bool disableElements, bool isBackgroundRefresh)
 	{
 		if (ViewModel is null || _isDisposed) return;
 
@@ -770,7 +770,14 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 			{
 				ViewModel.ElementsAreEnabled = false;
 			}
-			ViewModel.MainInfoBar.WriteInfo(GlobalVars.GetStr("VerifyingAllSecurityMeasures"));
+			if (isBackgroundRefresh)
+			{
+				ViewModel.MainInfoBar.WriteInfo("Refreshing status in background...");
+			}
+			else
+			{
+				ViewModel.MainInfoBar.WriteInfo(GlobalVars.GetStr("VerifyingAllSecurityMeasures"));
+			}
 
 			List<MUnit> allMUnits = [];
 			foreach (GroupInfoListForMUnit group in ListViewItemsSource)
@@ -793,11 +800,21 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 		{
 			if (ViewModel.VerifyAllCancellableButton.wasCancelled)
 			{
-				ViewModel.MainInfoBar.WriteWarning(GlobalVars.GetStr("VerifyOperationCancelledByUser"));
+				if (!isBackgroundRefresh)
+				{
+					ViewModel.MainInfoBar.WriteWarning(GlobalVars.GetStr("VerifyOperationCancelledByUser"));
+				}
 			}
 			else if (!errorsOccurred)
 			{
-				ViewModel.MainInfoBar.WriteSuccess(GlobalVars.GetStr("VerifyingAllSecurityMeasuresSuccessful"));
+				if (isBackgroundRefresh)
+				{
+					ViewModel.MainInfoBar.WriteInfo("Background refresh complete.");
+				}
+				else
+				{
+					ViewModel.MainInfoBar.WriteSuccess(GlobalVars.GetStr("VerifyingAllSecurityMeasuresSuccessful"));
+				}
 			}
 
 			ViewModel.VerifyAllCancellableButton.End();

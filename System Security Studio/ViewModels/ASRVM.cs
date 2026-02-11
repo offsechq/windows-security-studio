@@ -453,13 +453,18 @@ internal sealed partial class ASRVM : ViewModelBase
 	/// <summary>
 	/// Retrieves all ASR rules states from the system and updates the UI to reflect current values.
 	/// </summary>
-	internal async Task RetrieveLatest_Internal(bool disableElements = true)
+	internal async Task RetrieveLatest_Internal(bool disableElements = true, bool isBackgroundRefresh = false)
 	{
 		try
 		{
 			if (disableElements)
 			{
 				ElementsAreEnabled = false;
+			}
+
+			if (isBackgroundRefresh)
+			{
+				MainInfoBar.WriteInfo("Refreshing ASR states in background...");
 			}
 
 			// Retrieve system states on background thread
@@ -484,7 +489,14 @@ internal sealed partial class ASRVM : ViewModelBase
 				}
 			}
 
-			MainInfoBar.WriteSuccess(string.Format(GlobalVars.GetStr("RetrievedSystemStatesAndUpdatedASRRules"), updatedRules));
+			if (isBackgroundRefresh)
+			{
+				MainInfoBar.WriteInfo($"Background refresh complete ({updatedRules} rules updated).");
+			}
+			else
+			{
+				MainInfoBar.WriteSuccess(string.Format(GlobalVars.GetStr("RetrievedSystemStatesAndUpdatedASRRules"), updatedRules));
+			}
 		}
 		catch (Exception ex)
 		{

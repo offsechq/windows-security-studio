@@ -34,6 +34,8 @@ namespace AppControlManager.Others;
 /// </summary>
 internal static class AppUpdate
 {
+	private static readonly string DefaultUpdateButtonContent = GlobalVars.GetStr("UpdateNavItem/ToolTipService/ToolTip");
+
 	/// <summary>
 	/// Event triggered when an update is available.
 	/// Includes details about the availability status and the version.
@@ -51,7 +53,16 @@ internal static class AppUpdate
 	{
 		string versionsResponse = SecHttpClient.Instance.GetStringAsync(GlobalVars.AppVersionLinkURL).GetAwaiter().GetResult().Trim();
 
-		Version onlineAvailableVersion = new(versionsResponse);
+		if (versionsResponse.StartsWith("v", StringComparison.OrdinalIgnoreCase))
+		{
+			versionsResponse = versionsResponse[1..];
+		}
+
+		if (!Version.TryParse(versionsResponse, out Version? onlineAvailableVersion))
+		{
+			throw new InvalidOperationException($"Invalid online version format: '{versionsResponse}'");
+		}
+
 		bool isUpdateAvailable = onlineAvailableVersion > App.currentAppVersion;
 
 		// Raise the UpdateAvailable event if there are subscribers
@@ -70,6 +81,7 @@ internal static class AppUpdate
 		}
 		else
 		{
+			UpdateVM.UpdateButtonContent = DefaultUpdateButtonContent;
 			Logger.Write(GlobalVars.GetStr("TheAppIsUpToDate"));
 		}
 
