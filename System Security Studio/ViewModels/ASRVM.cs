@@ -185,6 +185,11 @@ internal sealed partial class ASRVM : ViewModelBase
 		}
 	} = true;
 
+	/// <summary>
+	/// Tracks whether auto-retrieve has already been triggered for this VM instance (once per app session).
+	/// </summary>
+	internal bool HasAutoRetrieved { get; set; }
+
 	internal static readonly string JSONConfigPath = Path.Combine(AppContext.BaseDirectory, "Resources", "AttackSurfaceReductionRules.json");
 
 	/// <summary>

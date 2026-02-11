@@ -129,6 +129,11 @@ internal interface IMUnitListViewModel : INotifyPropertyChanged
 	List<MUnit> AllMUnits { get; }
 
 	/// <summary>
+	/// Tracks whether auto-verify has already been triggered for this VM instance (once per app session).
+	/// </summary>
+	bool HasAutoVerified { get; set; }
+
+	/// <summary>
 	/// Static helper method to create UI values categories for ViewModels that implement IMUnitListViewModel. It is only run once in ViewModel's ctor.
 	/// Used to create a collection of grouped items, create a query that groups an existing list, or returns a grouped collection from a database.
 	/// The output will be used as the ItemsSource for our CollectionViewSource that is defined in XAML.

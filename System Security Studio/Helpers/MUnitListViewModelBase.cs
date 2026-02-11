@@ -123,6 +123,11 @@ internal abstract partial class MUnitListViewModelBase : ViewModelBase, IMUnitLi
 	public bool ShowUndetermined { get; set => SP(ref field, value); } = true;
 
 	/// <summary>
+	/// Tracks whether auto-verify has already been triggered for this VM instance (once per app session).
+	/// </summary>
+	public bool HasAutoVerified { get; set; }
+
+	/// <summary>
 	/// Gets the current catalog of all MUnits for this ViewModel.
 	/// Default is empty list. VMs must override.
 	/// </summary>

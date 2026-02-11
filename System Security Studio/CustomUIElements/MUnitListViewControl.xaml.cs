@@ -162,6 +162,9 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 		{
 			TrySetChildExplicitDisposalOptIn();
 		}
+
+		// Automatically verify all settings on first navigation to this page
+		TryAutoVerify();
 	}
 
 	/// <summary>
@@ -256,6 +259,9 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 			{
 				control.TrySetChildExplicitDisposalOptIn();
 			}
+
+			// Automatically verify all settings on first navigation when data becomes available
+			control.TryAutoVerify();
 		}
 	}
 
@@ -469,6 +475,32 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 		// Update selected count
 		_ = (ViewModel?.SelectedItemsCount = ViewModel.ItemsSourceSelectedItems.Count);
 	}
+
+	#region Auto Verify on First Navigation
+
+	/// <summary>
+	/// Automatically triggers Verify All on the first navigation to this page during the app session.
+	/// Called from both Loaded and OnListViewItemsSourceChanged -- whichever fires first with data wins.
+	/// The HasAutoVerified flag on the singleton ViewModel ensures it only runs once per session.
+	/// </summary>
+	private void TryAutoVerify()
+	{
+		if (_isDisposed || ViewModel is null)
+			return;
+
+		// Already ran for this VM this session
+		if (ViewModel.HasAutoVerified)
+			return;
+
+		// Data not loaded yet -- OnListViewItemsSourceChanged will retry
+		if (ListViewItemsSource.Count == 0)
+			return;
+
+		ViewModel.HasAutoVerified = true;
+		VerifyAllMUnits();
+	}
+
+	#endregion
 
 	#region Single MUnit Operations
 
