@@ -3,10 +3,10 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<Version>$(FileVersion)</Version>
-		<FileVersion>1.0.0.0</FileVersion>
+		<FileVersion>1.0.1.0</FileVersion>
 		<AssemblyVersion>$(FileVersion)</AssemblyVersion>
 		<Title>HSS Quantum Relay Service</Title>
-		<Copyright>Violet Hansen</Copyright>
+		<Copyright>Kenyata Gomo</Copyright>
 		<Description>Quantum Relay Service for the Harden System Security App</Description>
 		<StartupObject>QuantumRelayHSS.Program</StartupObject>
 		<DebugSymbols>false</DebugSymbols>

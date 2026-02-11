@@ -2,7 +2,7 @@
 name = "dism_capabilities"
 version = "0.1.0"
 edition = "2024"
-authors = ["Violet Hansen"]
+authors = ["Kenyata Gomo"]
 license = "MIT"
 homepage = "https://github.com/HotCakeX/Harden-Windows-Security"
 repository = "https://github.com/HotCakeX/Harden-Windows-Security"

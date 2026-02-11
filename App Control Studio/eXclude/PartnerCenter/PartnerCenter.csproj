@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<Version>$(FileVersion)</Version>
-		<FileVersion>1.0.0.0</FileVersion>
+		<FileVersion>1.0.1.0</FileVersion>
 		<AssemblyVersion>$(FileVersion)</AssemblyVersion>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<StackTraceSupport>false</StackTraceSupport>
@@ -16,7 +16,7 @@
 		<MetadataUpdaterSupport>false</MetadataUpdaterSupport>
 		<OptimizationPreference>Speed</OptimizationPreference>
 		<Title>Partner Center</Title>
-		<Copyright>Violet Hansen</Copyright>
+		<Copyright>Kenyata Gomo</Copyright>
 		<Description>Partner Center</Description>
 		<DebugType>none</DebugType>
 		<PackageTags>Partner Center, Microsoft</PackageTags>

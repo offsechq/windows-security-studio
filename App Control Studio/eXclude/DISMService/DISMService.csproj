@@ -2,9 +2,9 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<Version>$(FileVersion)</Version>
-		<FileVersion>1.0.0.0</FileVersion>
+		<FileVersion>1.0.1.0</FileVersion>
 		<Title>DISMService</Title>
-		<Copyright>Violet Hansen</Copyright>
+		<Copyright>Kenyata Gomo</Copyright>
 		<Description>DISM Service Component of the Harden System Security app.</Description>
 		<AssemblyVersion>$(FileVersion)</AssemblyVersion>
 		<PublishAot>True</PublishAot>
