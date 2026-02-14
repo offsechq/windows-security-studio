@@ -39,73 +39,80 @@
             <!-- Defines a single Protection category displayed in the ListView -->
             <DataTemplate x:Key="ProtectionCategoryListViewTemplate"
                           x:DataType="Protect:ProtectionCategoryListViewItem">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <Border Margin="0,4,0,4"
+                        Padding="12"
+                        CornerRadius="10"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+                    <Grid ColumnSpacing="12" RowSpacing="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Border CornerRadius="15"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            BorderThickness="0"
-                            Grid.RowSpan="3"
-                            Grid.Column="0">
-                        <Image Width ="36"
-                               Height="36"
-                               Margin="6"
-                               ToolTipService.ToolTip="{x:Bind Title}"
-                               AutomationProperties.HelpText="{x:Bind Title}"
-                               Source="{x:Bind Logo}" />
-                    </Border>
+                        <Border Grid.RowSpan="3"
+                                Grid.Column="0"
+                                CornerRadius="16"
+                                Width="48"
+                                Height="48"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Background="{ThemeResource SubtleFillColorSecondaryBrush}">
+                            <Image Width="32"
+                                   Height="32"
+                                   Margin="8"
+                                   ToolTipService.ToolTip="{x:Bind Title}"
+                                   AutomationProperties.HelpText="{x:Bind Title}"
+                                   Source="{x:Bind Logo}" />
+                        </Border>
 
-                    <TextBlock Grid.Column="1"
-                               Grid.Row="0"
-                               Text="{x:Bind Title}"
-                               ToolTipService.ToolTip="{x:Bind Title}"
-                               AutomationProperties.HelpText="{x:Bind Title}"
-                               x:Phase="1"
-                               Style="{ThemeResource BaseTextBlockStyle}"
-                               Margin="12,6,0,0"/>
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="0"
+                                   Text="{x:Bind Title}"
+                                   ToolTipService.ToolTip="{x:Bind Title}"
+                                   AutomationProperties.HelpText="{x:Bind Title}"
+                                   x:Phase="1"
+                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                    <TextBlock Grid.Column="1"
-                               Grid.Row="1"
-                               Text="{x:Bind Subtitle}"
-                               ToolTipService.ToolTip="{x:Bind Subtitle}"
-                               AutomationProperties.HelpText="{x:Bind Subtitle}"
-                               x:Phase="2"
-                               Style="{ThemeResource BodyTextBlockStyle}"
-                               Margin="12,6,0,0"/>
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="1"
+                                   Text="{x:Bind Subtitle}"
+                                   ToolTipService.ToolTip="{x:Bind Subtitle}"
+                                   AutomationProperties.HelpText="{x:Bind Subtitle}"
+                                   x:Phase="2"
+                                   Style="{ThemeResource BodyTextBlockStyle}"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
 
-                    <!-- Sub-categories as vertical list of checkboxes -->
-                    <ItemsControl Grid.Column="1"
-                                  Grid.Row="2"
-                                  ItemsSource="{x:Bind SubCategories}"
-                                  Margin="12,6,0,6">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate x:DataType="Protect:SubCategoryDefinition">
-                                <StackPanel Orientation="Vertical" Spacing="4" Margin="6">
-                                    <CheckBox Content="{x:Bind Description}"
-                                              IsChecked="{x:Bind IsChecked, Mode=TwoWay}"
-                                              ToolTipService.ToolTip="{x:Bind Description}"
-                                              AutomationProperties.HelpText="{x:Bind Description}" />
+                        <!-- Sub-categories as vertical list of checkboxes -->
+                        <ItemsControl Grid.Column="1"
+                                      Grid.Row="2"
+                                      ItemsSource="{x:Bind SubCategories}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="Protect:SubCategoryDefinition">
+                                    <StackPanel Orientation="Vertical" Spacing="4" Margin="0,4,0,4">
+                                        <CheckBox Content="{x:Bind Description}"
+                                                  IsChecked="{x:Bind IsChecked, Mode=TwoWay}"
+                                                  ToolTipService.ToolTip="{x:Bind Description}"
+                                                  AutomationProperties.HelpText="{x:Bind Description}" />
 
-                                    <TextBlock Text="{x:Bind Tip}"
-                                               ToolTipService.ToolTip="{x:Bind Tip}"
-                                               Visibility="{x:Bind Protect:SubCategoryDefinition.HasTip(Tip)}"
-                                               AutomationProperties.HelpText="{x:Bind Tip}"
-                                               Style="{StaticResource CaptionTextBlockStyle}"
-                                               Foreground="{ThemeResource SystemFillColorCautionBrush}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </Grid>
+                                        <TextBlock Text="{x:Bind Tip}"
+                                                   ToolTipService.ToolTip="{x:Bind Tip}"
+                                                   Visibility="{x:Bind Protect:SubCategoryDefinition.HasTip(Tip)}"
+                                                   AutomationProperties.HelpText="{x:Bind Tip}"
+                                                   Style="{StaticResource CaptionTextBlockStyle}"
+                                                   Foreground="{ThemeResource SystemFillColorCautionBrush}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </Border>
             </DataTemplate>
 
             <!-- For the listview that shows security measures that will be applied based on selected device usage intent. -->
@@ -268,34 +275,36 @@
 
         </Grid.Resources>
 
-        <SelectorBar
-            Grid.Row="0"
-            Margin="0,-10,0,10"
-            HorizontalAlignment="Center"
-            SelectionChanged="{x:Bind ViewModel.SelectorBar_SelectionChanged}"
-            Style="{StaticResource TokenViewSelectorBarStyle}">
-            <SelectorBarItem
-                IsSelected="True"
-                Style="{StaticResource TokenViewSelectorBarItemStyle}"
-                Tag="Presets"
-                x:Uid="Presets">
-                <SelectorBarItem.Icon>
-                    <FontIcon Glyph="&#xF5EE;" />
-                </SelectorBarItem.Icon>
-            </SelectorBarItem>
-            <SelectorBarItem
-                Style="{StaticResource TokenViewSelectorBarItemStyle}"
-                Tag="DeviceIntents"
-                x:Uid="DeviceIntents">
-                <SelectorBarItem.Icon>
-                    <FontIcon Glyph="&#xF133;" />
-                </SelectorBarItem.Icon>
-            </SelectorBarItem>
-
-        </SelectorBar>
+        <Border Grid.Row="0"
+                Margin="0,0,0,10"
+                Style="{StaticResource GridCardStyle}"
+                Padding="8">
+            <SelectorBar
+                HorizontalAlignment="Left"
+                SelectionChanged="{x:Bind ViewModel.SelectorBar_SelectionChanged}"
+                Style="{StaticResource TokenViewSelectorBarStyle}">
+                <SelectorBarItem
+                    IsSelected="True"
+                    Style="{StaticResource TokenViewSelectorBarItemStyle}"
+                    Tag="Presets"
+                    x:Uid="Presets">
+                    <SelectorBarItem.Icon>
+                        <FontIcon Glyph="&#xF5EE;" />
+                    </SelectorBarItem.Icon>
+                </SelectorBarItem>
+                <SelectorBarItem
+                    Style="{StaticResource TokenViewSelectorBarItemStyle}"
+                    Tag="DeviceIntents"
+                    x:Uid="DeviceIntents">
+                    <SelectorBarItem.Icon>
+                        <FontIcon Glyph="&#xF133;" />
+                    </SelectorBarItem.Icon>
+                </SelectorBarItem>
+            </SelectorBar>
+        </Border>
 
         <customUI:InfoBarV2 Grid.Row="1"
-          Margin="15,0,15,10"
+          Margin="0,0,0,10"
           IsOpen="{x:Bind ViewModel.MainInfoBarIsOpen, Mode=TwoWay}"
           Message="{x:Bind ViewModel.MainInfoBarMessage, Mode=OneWay}"
           Severity="{x:Bind ViewModel.MainInfoBarSeverity, Mode=OneWay}"
@@ -318,7 +327,7 @@
                 <StackPanel Orientation="Vertical"
                             Spacing="3"
                             Grid.Row="0"
-                            HorizontalAlignment="Center"
+                            HorizontalAlignment="Left"
                             VerticalAlignment="Center">
                     <TextBlock x:Uid="SelectDeviceIntents"
                                Style="{ThemeResource TitleTextBlockStyle}" />
@@ -328,24 +337,28 @@
                 </StackPanel>
 
                 <!-- GridView: default visuals, only spacing + wrapping -->
-                <GridView Grid.Row="1"
-                          Margin="0,10,0,0"
-                          MaxHeight="320"
-                          IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
-                          SelectionMode="Single"
-                          IsMultiSelectCheckBoxEnabled="False"
-                          HorizontalAlignment="Stretch"
-                          SelectedItem="{x:Bind ViewModel.SelectedDeviceIntent, Mode=TwoWay}"
-                          ItemsSource="{x:Bind ViewModel.DeviceIntents}"
-                          ItemContainerStyle="{StaticResource GridViewItemStyleSpacedResponsive}"
-                          ItemTemplate="{StaticResource ItemTemplateForIntentItems}">
-                    <GridView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <!-- Wrap across width; presenter uses container width -->
-                            <ItemsWrapGrid Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </GridView.ItemsPanel>
-                </GridView>
+                <Border Grid.Row="1"
+                        Margin="0,10,0,10"
+                        Style="{StaticResource GridCardStyle}"
+                        Padding="8">
+                    <GridView Margin="0"
+                              MaxHeight="320"
+                              IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                              SelectionMode="Single"
+                              IsMultiSelectCheckBoxEnabled="False"
+                              HorizontalAlignment="Stretch"
+                              SelectedItem="{x:Bind ViewModel.SelectedDeviceIntent, Mode=TwoWay}"
+                              ItemsSource="{x:Bind ViewModel.DeviceIntents}"
+                              ItemContainerStyle="{StaticResource GridViewItemStyleSpacedResponsive}"
+                              ItemTemplate="{StaticResource ItemTemplateForIntentItems}">
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <!-- Wrap across width; presenter uses container width -->
+                                <ItemsWrapGrid Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                    </GridView>
+                </Border>
 
                 <Expander Grid.Row="2" Margin="0,0,0,10" HorizontalAlignment="Stretch">
                     <Expander.Header>
@@ -354,7 +367,7 @@
                                             Padding="8"
                                             HorizontalSpacing="10"
                                             VerticalSpacing="6"
-                                            HorizontalAlignment="Center"
+                                            HorizontalAlignment="Left"
                                             VerticalAlignment="Center">
 
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Spacing="2">
@@ -386,6 +399,8 @@
                             <TextBox IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
                                      x:Uid="SearchBoxTextBox"
                                      Text="{x:Bind ViewModel.SearchKeyword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     MinWidth="220"
+                                     MaxWidth="640"
                                      VerticalAlignment="Center"
                                      VerticalContentAlignment="Center" />
 
@@ -415,13 +430,16 @@
 
                     <Expander.Content>
 
-                        <ListView HorizontalAlignment="Stretch"
-                                  Height="400"
-                                  IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                  ScrollViewer.VerticalScrollMode="Auto"
-                                  ItemsSource="{x:Bind ViewModel.DeviceIntentMUnitsPreview}"
-                                  ItemTemplate="{StaticResource DeviceIntentMUnitPreviewTemplate}"/>
+                        <Border Style="{StaticResource GridCardStyle}" Padding="6">
+                            <ListView HorizontalAlignment="Stretch"
+                                      MinHeight="240"
+                                      MaxHeight="420"
+                                      IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      ScrollViewer.VerticalScrollMode="Auto"
+                                      ItemsSource="{x:Bind ViewModel.DeviceIntentMUnitsPreview}"
+                                      ItemTemplate="{StaticResource DeviceIntentMUnitPreviewTemplate}"/>
+                        </Border>
 
                     </Expander.Content>
 
@@ -432,6 +450,7 @@
 
         <!-- Presets section -->
         <Grid Grid.Row="2"
+              Margin="5,0,5,5"
               Visibility="{x:Bind ViewModel.IsPresetsSectionVisible, Mode=OneWay}">
 
             <Grid.RowDefinitions>
@@ -439,15 +458,19 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <controls:WrapPanel Grid.Row="0"
-                                Orientation="Horizontal"
-                                Margin="0,0,0,16"
-                                HorizontalSpacing="12"
-                                VerticalSpacing="12"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center">
+            <Border Grid.Row="0"
+                    Margin="0,0,0,16"
+                    Style="{StaticResource GridCardStyle}"
+                    Padding="8">
+                <controls:WrapPanel Orientation="Horizontal"
+                                    HorizontalSpacing="12"
+                                    VerticalSpacing="12"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center">
 
                         <ComboBox x:Uid="ProtectionPresetsComboBox"
+                                  MinWidth="260"
+                                  MaxWidth="520"
                                   IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
                                   ItemsSource="{x:Bind ViewModel.ProtectionPresetsSource}"
                                   SelectedIndex="{x:Bind ViewModel.ProtectionPresetsSelectedIndex, Mode=TwoWay}">
@@ -577,18 +600,22 @@
 
                         </Button>
 
-                    </controls:WrapPanel>
+                </controls:WrapPanel>
+            </Border>
 
-            <ListView Grid.Row="1"
-                      IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
-                      x:Name="ProtectionCategoriesListView"
-                      Margin="0"
-                      Loaded="{x:Bind ViewModel.ProtectionCategoriesListView_Loaded}"
-                      ItemsSource="{x:Bind ViewModel.ProtectionCategoriesListItemsSource, Mode=OneWay}"
-                      HorizontalAlignment="Stretch"
-                      SelectionMode="Multiple"
-                      SelectionChanged="{x:Bind ViewModel.ListView_SelectionChanged}"
-                      ItemTemplate="{StaticResource ProtectionCategoryListViewTemplate}"/>
+            <Border Grid.Row="1"
+                    Style="{StaticResource GridCardStyle}"
+                    Padding="8">
+                <ListView IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                          x:Name="ProtectionCategoriesListView"
+                          Margin="0"
+                          Loaded="{x:Bind ViewModel.ProtectionCategoriesListView_Loaded}"
+                          ItemsSource="{x:Bind ViewModel.ProtectionCategoriesListItemsSource, Mode=OneWay}"
+                          HorizontalAlignment="Stretch"
+                          SelectionMode="Multiple"
+                          SelectionChanged="{x:Bind ViewModel.ListView_SelectionChanged}"
+                          ItemTemplate="{StaticResource ProtectionCategoryListViewTemplate}"/>
+            </Border>
         </Grid>
     </Grid>
 </Page>
