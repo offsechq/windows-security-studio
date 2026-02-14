@@ -69,11 +69,11 @@
                                 ItemsSource="{x:Bind PolicyEntry.DeviceIntents, Mode=OneWay}"/>
                         </Grid>
 
-                        <!-- State Selection -->
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0"
@@ -85,17 +85,16 @@
                             <ComboBox Grid.Column="1"
                                       SelectedIndex="{x:Bind StateIndex, Mode=TwoWay}"
                                       HorizontalAlignment="Left"
-                                      MinWidth="140">
+                                      MinWidth="180">
                                 <ComboBoxItem Content="Not Configured"/>
                                 <ComboBoxItem Content="Block"/>
                                 <ComboBoxItem Content="Audit"/>
                                 <ComboBoxItem Content="Warn"/>
                             </ComboBox>
-                        </Grid>
 
-                        <!-- Apply Button -->
-                        <Grid Grid.Row="2">
-                            <Button HorizontalAlignment="Right"
+                            <Button Grid.Column="2"
+                                    HorizontalAlignment="Right"
+                                    Margin="12,0,0,0"
                                     Click="{x:Bind ApplyRule}">
                                 <StackPanel Orientation="Horizontal" Spacing="4">
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
@@ -127,11 +126,6 @@
                     <ProgressRing IsActive="True"
                               Visibility="{x:Bind ViewModel.ProgressBarVisibility, Mode=OneWay}"
                               VerticalAlignment="Center" />
-
-                    <TextBox x:Uid="SearchBoxTextBox"
-                             VerticalAlignment="Center"
-                             Text="{x:Bind ViewModel.SearchKeyword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             VerticalContentAlignment="Center" />
 
                     <Button IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind ViewModel.ApplyAllRules}">
 
@@ -167,7 +161,7 @@
 
                     </Button>
 
-                    <Button IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind ViewModel.ApplyRecommended}">
+                    <Button IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind ViewModel.ApplyRecommended}" Style="{StaticResource AccentButtonStyle}">
 
                         <StackPanel Orientation="Horizontal" Spacing="4">
 
@@ -201,13 +195,19 @@
 
                     </Button>
 
+                    <TextBox x:Uid="SearchBoxTextBox"
+                             VerticalAlignment="Center"
+                             MinWidth="220"
+                             Text="{x:Bind ViewModel.SearchKeyword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             VerticalContentAlignment="Center" />
+
                 </controls:WrapPanel>
 
             </Expander.Header>
 
             <Expander.Content>
 
-                <controls:WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalSpacing="10" VerticalSpacing="10">
+                <controls:WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalSpacing="10" VerticalSpacing="10">
 
                     <Button x:Uid="ExportToJsonButton" IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind ViewModel.ExportToJson_Click}">
                         <Button.ContentTemplate>
