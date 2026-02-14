@@ -73,7 +73,7 @@
                                 Style="{StaticResource GridCardStyle}" Padding="8">
 
                             <controls:WrapPanel Orientation="Horizontal"
-                                                HorizontalAlignment="Center"
+                                                HorizontalAlignment="Left"
                                                 VerticalAlignment="Center"
                                                 HorizontalSpacing="10"
                                                 VerticalSpacing="10">
@@ -181,7 +181,8 @@
 
                                                 <TextBlock x:Uid="ViewSelectedFilesTextBlock" TextWrapping="WrapWholeWords" />
 
-                                                <customUI:ListBoxV2 MinWidth="400"
+                                                <customUI:ListBoxV2 MinWidth="220"
+                                                                    MaxWidth="640"
                                                                     SelectionMode="Single"
                                                                     ItemsSource="{x:Bind ViewModel.SelectedFiles, Mode=OneWay}" />
                                             </controls:WrapPanel>
@@ -226,12 +227,45 @@
                                         IsEnabled="{x:Bind ViewModel.ManagementUIIsEnabled, Mode=OneWay}"
                                         Click="{x:Bind ViewModel.RetrieveFirewallRules}" />
 
+                                <DropDownButton x:Uid="ExtraActionsDropDownButton"
+                                                IsEnabled="{x:Bind ViewModel.ManagementUIIsEnabled, Mode=OneWay}">
+                                    <DropDownButton.Flyout>
+                                        <MenuFlyout Placement="Bottom">
+                                            <MenuFlyoutItem x:Uid="ClearDataMenuFlyoutItem"
+                                                            IsEnabled="{x:Bind ViewModel.ManagementUIIsEnabled, Mode=OneWay}"
+                                                            Click="{x:Bind ViewModel.ClearSelectedFiles}">
+                                                <MenuFlyoutItem.Icon>
+                                                    <FontIcon Glyph="&#xE74D;" />
+                                                </MenuFlyoutItem.Icon>
+                                            </MenuFlyoutItem>
+                                        </MenuFlyout>
+                                    </DropDownButton.Flyout>
+                                </DropDownButton>
+
                                 <!-- Search box -->
                                 <TextBox IsEnabled="{x:Bind ViewModel.ManagementUIIsEnabled, Mode=OneWay}"
                                          x:Uid="SearchBoxTextBox"
                                          Text="{x:Bind ViewModel.FirewallRulesSearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         MinWidth="220"
                                          VerticalAlignment="Center"
                                          VerticalContentAlignment="Center" />
+
+                                <!-- Total chip -->
+                                <Border CornerRadius="8"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Padding="10,6"
+                                        BorderThickness="1"
+                                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                                    <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                                        <FontIcon Glyph="&#xE8A9;" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                                        <TextBlock VerticalAlignment="Center">
+                                            <Run x:Uid="TotalText" />
+                                            <Run Text="{x:Bind ViewModel.FirewallRules.Count, Mode=OneWay}" FontWeight="SemiBold" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
 
                             </controls:WrapPanel>
 
@@ -244,7 +278,7 @@
                                              SelectionMode="Extended">
 
                             <customUI:ListViewV2.Header>
-                                <Border CornerRadius="5" Background="Black" customUI:StickyHeaderBehaviorV2.IsEnabled="True">
+                                <Border CornerRadius="5" Background="{ThemeResource SystemControlBackgroundChromeBlackMediumBrush}" customUI:StickyHeaderBehaviorV2.IsEnabled="True">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="{x:Bind ViewModel.FWRuleColWidth1, Mode=TwoWay}" MinWidth="50"/>
