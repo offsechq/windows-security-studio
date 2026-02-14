@@ -8,6 +8,23 @@
     xmlns:customUI="using:AppControlManager.CustomUIElements"
     FlowDirection="{x:Bind ViewModel.AppSettings.ApplicationGlobalFlowDirection, Mode=OneWay}">
 
+    <Page.Resources>
+        <Style x:Key="ResultValueTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="ResultCopyButtonStyle" TargetType="Button" BasedOn="{StaticResource AccentButtonStyle}">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+    </Page.Resources>
+
     <Grid AllowDrop="{x:Bind ViewModel.IsNotElevated}"
           DragOver="{x:Bind ViewModel.OnDragOver}"
           Drop="{x:Bind ViewModel.OnDrop}">
@@ -24,39 +41,40 @@
                          Severity="{x:Bind ViewModel.MainInfoBarSeverity, Mode=OneWay}"
                          IsClosable="{x:Bind ViewModel.MainInfoBarIsClosable, Mode=OneWay}" />
 
-        <Border Grid.Row="1" Margin="0,5,0,5" Style="{StaticResource GridCardStyle}" Padding="8">
+        <Border Grid.Row="1"
+                Margin="0,5,0,5"
+                Padding="12"
+                Style="{StaticResource GridCardStyle}">
+            <StackPanel Spacing="10">
+                <controls:WrapPanel Orientation="Horizontal"
+                                    HorizontalSpacing="10"
+                                    VerticalSpacing="10"
+                                    VerticalAlignment="Center">
+                    <ProgressRing Visibility="{x:Bind ViewModel.ProgressBarVisibility,Mode=OneWay}"
+                                  VerticalAlignment="Center"
+                                  IsIndeterminate="True" />
 
-            <controls:WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             HorizontalSpacing="10"
-                             VerticalSpacing="10">
+                    <Button x:Uid="GenericBrowseButton"
+                            VerticalAlignment="Center"
+                            IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                            Click="{x:Bind ViewModel.BrowseForFile}">
+                        <Button.ContentTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon Glyph="&#xEC50;" FontSize="16"/>
+                                    <TextBlock Text="{x:Bind}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                </controls:WrapPanel>
 
-                <ProgressRing Visibility="{x:Bind ViewModel.ProgressBarVisibility,Mode=OneWay}"
-                              VerticalAlignment="Center"
-                              IsIndeterminate="True" />
-
-                <Button x:Uid="GenericBrowseButton"
-                        VerticalAlignment="Center"
-                        IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
-                        Click="{x:Bind ViewModel.BrowseForFile}">
-                    <Button.ContentTemplate>
-                        <DataTemplate x:DataType="x:String">
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <FontIcon Glyph="&#xEC50;" FontSize="16"/>
-                                <TextBlock Text="{x:Bind}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </Button.ContentTemplate>
-                </Button>
-
-                <!-- Drag and drop hint shown when not elevated -->
                 <TextBlock x:Uid="DragAndDropHintFileReputation"
                            Visibility="{x:Bind ViewModel.IsNotElevated}"
-                           VerticalAlignment="Center"
                            Opacity="0.7"
-                           FontStyle="Italic" />
-
-            </controls:WrapPanel>
+                           FontStyle="Italic"
+                           TextWrapping="WrapWholeWords" />
+            </StackPanel>
         </Border>
 
         <ScrollViewer Grid.Row="2"
@@ -66,13 +84,27 @@
                       HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto">
 
-            <StackPanel Spacing="15" MaxWidth="600" HorizontalAlignment="Center">
-
-                <!-- Reputation Section -->
+            <StackPanel Spacing="12" MaxWidth="760" HorizontalAlignment="Stretch">
                 <Border Style="{StaticResource GridCardStyle}"
-                        Padding="20"
+                        Padding="16"
                         CornerRadius="8">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Selected File"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   Margin="0,0,0,8" />
+                        <TextBox Grid.Row="1"
+                                 Style="{StaticResource ResultValueTextBoxStyle}"
+                                 Text="{x:Bind ViewModel.SelectedFilePath, Mode=OneWay}" />
+                    </Grid>
+                </Border>
 
+                <Border Style="{StaticResource GridCardStyle}"
+                        Padding="16"
+                        CornerRadius="8">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -82,40 +114,30 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-
-                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
                                    x:Uid="ReputationText"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Margin="0,0,0,10"/>
-
-                        <TextBox Grid.Row="1" Grid.Column="0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   Margin="0,0,0,8"/>
+                        <TextBox Grid.Row="1"
+                                 Grid.Column="0"
+                                 Style="{StaticResource ResultValueTextBoxStyle}"
                                  Text="{x:Bind ViewModel.ReputationText, Mode=OneWay}"
-                                 MinWidth="120"
-                                 IsReadOnly="True"
-                                 Background="Transparent"
-                                 BorderThickness="1"
-                                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                 CornerRadius="4"
-                                 Padding="12,8"
                                  Margin="0,0,10,0"/>
-
-                        <Button Grid.Row="1" Grid.Column="1"
-                                Content="&#xE8C8;"
-                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                        <Button Grid.Row="1"
+                                Grid.Column="1"
                                 x:Uid="CopyToClipBoard"
                                 Click="{x:Bind ViewModel.CopyReputationToClipboard}"
-                                Style="{StaticResource AccentButtonStyle}"
-                                Width="40"
-                                Height="40">
+                                Style="{StaticResource ResultCopyButtonStyle}">
+                            <FontIcon Glyph="&#xE8C8;" />
                         </Button>
                     </Grid>
                 </Border>
 
-                <!-- Source Section -->
                 <Border Style="{StaticResource GridCardStyle}"
-                        Padding="20"
+                        Padding="16"
                         CornerRadius="8">
-
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -125,40 +147,30 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-
-                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
                                    x:Uid="SourceText"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Margin="0,0,0,10"/>
-
-                        <TextBox Grid.Row="1" Grid.Column="0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   Margin="0,0,0,8"/>
+                        <TextBox Grid.Row="1"
+                                 Grid.Column="0"
+                                 Style="{StaticResource ResultValueTextBoxStyle}"
                                  Text="{x:Bind ViewModel.SourceText, Mode=OneWay}"
-                                 IsReadOnly="True"
-                                 MinWidth="120"
-                                 Background="Transparent"
-                                 BorderThickness="1"
-                                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                 CornerRadius="4"
-                                 Padding="12,8"
                                  Margin="0,0,10,0"/>
-
-                        <Button Grid.Row="1" Grid.Column="1"
-                                Content="&#xE8C8;"
-                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                        <Button Grid.Row="1"
+                                Grid.Column="1"
                                 x:Uid="CopyToClipBoard"
                                 Click="{x:Bind ViewModel.CopySourceToClipboard}"
-                                Style="{StaticResource AccentButtonStyle}"
-                                Width="40"
-                                Height="40">
+                                Style="{StaticResource ResultCopyButtonStyle}">
+                            <FontIcon Glyph="&#xE8C8;" />
                         </Button>
                     </Grid>
                 </Border>
 
-                <!-- Duration Section -->
                 <Border Style="{StaticResource GridCardStyle}"
-                        Padding="20"
+                        Padding="16"
                         CornerRadius="8">
-
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -168,40 +180,30 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-
-                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
                                    x:Uid="DurationText"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Margin="0,0,0,10"/>
-
-                        <TextBox Grid.Row="1" Grid.Column="0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   Margin="0,0,0,8"/>
+                        <TextBox Grid.Row="1"
+                                 Grid.Column="0"
+                                 Style="{StaticResource ResultValueTextBoxStyle}"
                                  Text="{x:Bind ViewModel.DurationText, Mode=OneWay}"
-                                 IsReadOnly="True"
-                                 MinWidth="120"
-                                 Background="Transparent"
-                                 BorderThickness="1"
-                                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                 CornerRadius="4"
-                                 Padding="12,8"
                                  Margin="0,0,10,0"/>
-
-                        <Button Grid.Row="1" Grid.Column="1"
-                                Content="&#xE8C8;"
-                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                        <Button Grid.Row="1"
+                                Grid.Column="1"
                                 x:Uid="CopyToClipBoard"
                                 Click="{x:Bind ViewModel.CopyDurationToClipboard}"
-                                Style="{StaticResource AccentButtonStyle}"
-                                Width="40"
-                                Height="40">
+                                Style="{StaticResource ResultCopyButtonStyle}">
+                            <FontIcon Glyph="&#xE8C8;" />
                         </Button>
                     </Grid>
                 </Border>
 
-                <!-- Handle Section -->
                 <Border Style="{StaticResource GridCardStyle}"
-                        Padding="20"
+                        Padding="16"
                         CornerRadius="8">
-
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -211,35 +213,26 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-
-                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
                                    Text="Handle"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Margin="0,0,0,10"/>
-
-                        <TextBox Grid.Row="1" Grid.Column="0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   Margin="0,0,0,8"/>
+                        <TextBox Grid.Row="1"
+                                 Grid.Column="0"
+                                 Style="{StaticResource ResultValueTextBoxStyle}"
                                  Text="{x:Bind ViewModel.HandleText, Mode=OneWay}"
-                                 IsReadOnly="True"
-                                 MinWidth="120"
-                                 Background="Transparent"
-                                 BorderThickness="1"
-                                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                 CornerRadius="4"
-                                 Padding="12,8"
                                  Margin="0,0,10,0"/>
-
-                        <Button Grid.Row="1" Grid.Column="1"
-                                Content="&#xE8C8;"
-                                FontFamily="{StaticResource SymbolThemeFontFamily}"
+                        <Button Grid.Row="1"
+                                Grid.Column="1"
                                 x:Uid="CopyToClipBoard"
                                 Click="{x:Bind ViewModel.CopyHandleToClipboard}"
-                                Style="{StaticResource AccentButtonStyle}"
-                                Width="40"
-                                Height="40">
+                                Style="{StaticResource ResultCopyButtonStyle}">
+                            <FontIcon Glyph="&#xE8C8;" />
                         </Button>
                     </Grid>
                 </Border>
-
             </StackPanel>
         </ScrollViewer>
 

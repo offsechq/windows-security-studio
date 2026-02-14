@@ -61,6 +61,7 @@ internal sealed partial class FileReputationVM : ViewModelBase
 	} = true;
 
 	// UI Bound text box properties
+	internal string? SelectedFilePath { get; set => SP(ref field, value); }
 	internal string? ReputationText { get; set => SP(ref field, value); }
 	internal string? SourceText { get; set => SP(ref field, value); }
 	internal string? DurationText { get; set => SP(ref field, value); }
@@ -121,6 +122,7 @@ internal sealed partial class FileReputationVM : ViewModelBase
 		{
 			ElementsAreEnabled = false;
 			MainInfoBarIsClosable = false;
+			SelectedFilePath = filePath;
 
 			FileTrustChecker.FileTrustResult? result = await Task.Run(() => FileTrustChecker.CheckFileTrust(filePath));
 
