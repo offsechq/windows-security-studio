@@ -106,6 +106,11 @@ internal sealed partial class UpdateVM : ViewModelBase
 
 	internal Visibility RatingsSectionVisibility { get; set => SP(ref field, value); } = Visibility.Collapsed;
 
+	/// <summary>
+	/// When true, Settings page should bring the Update section into view on next load.
+	/// </summary>
+	internal bool NavigateToUpdateSectionOnNextSettingsLoad { get; set; }
+
 	#endregion
 
 	/// <summary>

@@ -17,6 +17,7 @@
 
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
 
 #if APP_CONTROL_MANAGER
 using AppControlManager.ViewModels;
@@ -43,6 +44,28 @@ internal sealed partial class Settings : Page, CommonCore.UI.IPageHeaderProvider
 		InitializeComponent();
 		DataContext = this;
 		NavigationCacheMode = NavigationCacheMode.Disabled;
+	}
+
+	private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
+	{
+		if (!ViewModelUpdate.NavigateToUpdateSectionOnNextSettingsLoad)
+		{
+			return;
+		}
+
+		ViewModelUpdate.NavigateToUpdateSectionOnNextSettingsLoad = false;
+		UpdateSectionSettingsExpander.IsExpanded = true;
+
+		_ = DispatcherQueue.TryEnqueue(() =>
+		{
+			UpdateSectionSettingsExpander.StartBringIntoView(new BringIntoViewOptions
+			{
+				AnimationDesired = true,
+				VerticalAlignmentRatio = 0
+			});
+
+			_ = UpdatePageCheckForUpdateButton.Focus(FocusState.Programmatic);
+		});
 	}
 
 	string CommonCore.UI.IPageHeaderProvider.HeaderTitle => GlobalVars.GetStr("SettingsPageTitle/Text");

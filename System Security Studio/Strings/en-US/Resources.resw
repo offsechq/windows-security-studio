@@ -4316,6 +4316,12 @@ Thumbprint: {3}</value>
   <data name="OnlineMicrosoftDefenderStatus.Text" xml:space="preserve">
     <value>Online Microsoft Defender Status</value>
   </data>
+  <data name="OnlineSecurityAndAppUpdates.Text" xml:space="preserve">
+    <value>Online Security &amp; App Updates</value>
+  </data>
+  <data name="ApplicationUpdateCardTitle.Text" xml:space="preserve">
+    <value>Application Update</value>
+  </data>
   <data name="EngineVersion.Text" xml:space="preserve">
     <value>Engine Version</value>
   </data>
@@ -4327,6 +4333,24 @@ Thumbprint: {3}</value>
   </data>
   <data name="SignatureUpdate.Text" xml:space="preserve">
     <value>Signature Update (UTC)</value>
+  </data>
+  <data name="HomeAppUpdateStatusUnavailable" xml:space="preserve">
+    <value>Update status unavailable</value>
+  </data>
+  <data name="HomeAppUpdateCheckingStatus" xml:space="preserve">
+    <value>Checking update status...</value>
+  </data>
+  <data name="HomeAppUpdateAutoCheckOffStatus" xml:space="preserve">
+    <value>Auto-check is off. Open Settings to check for updates.</value>
+  </data>
+  <data name="HomeAppUpdateAvailableFormat" xml:space="preserve">
+    <value>Update available: v{0}</value>
+  </data>
+  <data name="HomeAppUpdateUpToDateFormat" xml:space="preserve">
+    <value>Up to date. Latest: v{0}</value>
+  </data>
+  <data name="HomeAppUpdateInstalledVersionFormat" xml:space="preserve">
+    <value>Installed version: v{0}</value>
   </data>
   <data name="IntunePageTitle" xml:space="preserve">
     <value>Upload, View, Deploy and Modify Intune device management policies.</value>

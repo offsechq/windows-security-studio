@@ -569,7 +569,7 @@
                                Margin="2,0,0,8"
                                FontSize="16"
                                FontWeight="SemiBold"
-                               Text="Online Security &amp; App Updates"
+                               x:Uid="OnlineSecurityAndAppUpdates"
                                TextWrapping="Wrap" />
 
                     <!-- Using ItemsControl here as well -->
@@ -673,7 +673,7 @@
                                     <FontIcon Style="{StaticResource CardHeaderIconStyle}"
                                               Glyph="&#xE895;"/>
                                     <TextBlock Style="{StaticResource CardHeaderTextStyle}"
-                                               Text="Application Update"/>
+                                               x:Uid="ApplicationUpdateCardTitle"/>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1"
                                             VerticalAlignment="Center"

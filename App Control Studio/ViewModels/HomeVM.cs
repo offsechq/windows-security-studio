@@ -344,7 +344,7 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 	internal string? ComputerNameText { get; private set => SP(ref field, value); }
 	internal string? SystemInfoText { get; private set => SP(ref field, value); }
 	internal string? ActivationStatusSummaryText { get; private set => SP(ref field, value); } = "Checking...";
-	internal string? AppUpdateStatusText { get; private set => SP(ref field, value); } = "Update status unavailable";
+	internal string? AppUpdateStatusText { get; private set => SP(ref field, value); } = GlobalVars.GetStr("HomeAppUpdateStatusUnavailable");
 	internal string? AppVersionText { get; private set => SP(ref field, value); } = GetInstalledVersionText();
 
 	/// <summary>
@@ -963,8 +963,8 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 		}
 
 		AppUpdateStatusText = AppSettings.AutoCheckForUpdateAtStartup
-			? "Checking update status..."
-			: "Auto-check is off. Open Settings to check for updates.";
+			? GlobalVars.GetStr("HomeAppUpdateCheckingStatus")
+			: GlobalVars.GetStr("HomeAppUpdateAutoCheckOffStatus");
 	}
 
 	private void OnAppUpdateAvailable(object? sender, UpdateAvailableEventArgs e) =>
@@ -973,15 +973,17 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 	private void SetAppUpdateStatus(bool isUpdateAvailable, Version onlineVersion)
 	{
 		AppUpdateStatusText = isUpdateAvailable
-			? $"Update available: v{onlineVersion}"
-			: $"Up to date. Latest: v{onlineVersion}";
+			? string.Format(CultureInfo.CurrentCulture, GlobalVars.GetStr("HomeAppUpdateAvailableFormat"), onlineVersion)
+			: string.Format(CultureInfo.CurrentCulture, GlobalVars.GetStr("HomeAppUpdateUpToDateFormat"), onlineVersion);
 	}
 
 	internal void OnAppUpdateCardClick(object sender, RoutedEventArgs e)
 	{
 #if HARDEN_SYSTEM_SECURITY
+		HardenSystemSecurity.ViewModels.ViewModelProvider.UpdateVM.NavigateToUpdateSectionOnNextSettingsLoad = true;
 		HardenSystemSecurity.ViewModels.ViewModelProvider.NavigationService.Navigate(typeof(HardenSystemSecurity.Pages.Settings), null);
 #else
+		ViewModelProvider.UpdateVM.NavigateToUpdateSectionOnNextSettingsLoad = true;
 		ViewModelProvider.NavigationService.Navigate(typeof(AppControlManager.Pages.Settings), null);
 #endif
 	}
@@ -989,7 +991,10 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 	private static string GetInstalledVersionText()
 	{
 		PackageVersion v = Package.Current.Id.Version;
-		return $"Installed version: v{v.Major}.{v.Minor}.{v.Build}.{v.Revision}";
+		return string.Format(
+			CultureInfo.CurrentCulture,
+			GlobalVars.GetStr("HomeAppUpdateInstalledVersionFormat"),
+			$"{v.Major}.{v.Minor}.{v.Build}.{v.Revision}");
 	}
 
 	#endregion

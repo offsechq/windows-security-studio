@@ -6126,6 +6126,24 @@ NOTE: This option is always enforced if any App Control UMCI policy enables it. 
   <data name="SignatureUpdate.Text" xml:space="preserve">
     <value>Signature Update (UTC)</value>
   </data>
+  <data name="HomeAppUpdateStatusUnavailable" xml:space="preserve">
+    <value>Update status unavailable</value>
+  </data>
+  <data name="HomeAppUpdateCheckingStatus" xml:space="preserve">
+    <value>Checking update status...</value>
+  </data>
+  <data name="HomeAppUpdateAutoCheckOffStatus" xml:space="preserve">
+    <value>Auto-check is off. Open Settings to check for updates.</value>
+  </data>
+  <data name="HomeAppUpdateAvailableFormat" xml:space="preserve">
+    <value>Update available: v{0}</value>
+  </data>
+  <data name="HomeAppUpdateUpToDateFormat" xml:space="preserve">
+    <value>Up to date. Latest: v{0}</value>
+  </data>
+  <data name="HomeAppUpdateInstalledVersionFormat" xml:space="preserve">
+    <value>Installed version: v{0}</value>
+  </data>
   <data name="FirmwareInfoDropdownButton.Content" xml:space="preserve">
     <value>Firmware Info</value>
   </data>
