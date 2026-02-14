@@ -24,59 +24,54 @@
                                 IsClosable="{x:Bind ViewModel.AppPackageInstallerInfoBarIsClosable, Mode=OneWay}"
                                 Grid.Row="0"/>
 
-            <StackPanel HorizontalAlignment="Stretch"
-                        Spacing="{StaticResource SettingsCardSpacing}"
-                        Grid.Row="1"
-                        Margin="0,10,0,0">
+            <StackPanel Grid.Row="1"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Stretch"
+                        Spacing="{StaticResource SettingsCardSpacing}">
 
                 <win:StackPanel.ChildrenTransitions>
                     <win:EntranceThemeTransition FromVerticalOffset="50" />
                     <win:RepositionThemeTransition IsStaggeringEnabled="False" />
                 </win:StackPanel.ChildrenTransitions>
 
-                <Button x:Uid="InstallAppPackagesButton"
-                        Style="{StaticResource AccentButtonStyle}"
-                        Click="{x:Bind ViewModel.InstallButton_Click}"
-                        IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
-                        HorizontalAlignment="Center" Margin="0,0,0,10"/>
-
                 <customUI:SettingsCardV3 HeaderIcon="{ui:FontIcon Glyph=&#xF83E;}"
                                          x:Uid="BrowseForAppPackagePathSettingsCard">
 
-                    <customUI:ButtonV2 Click="{x:Bind ViewModel.BrowseForCustomMSIXPathButton_Click}"
-                                       x:Uid="FileBrowseButton"
-                                       IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
-                                       Style="{StaticResource AccentButtonStyle}"
-                                       ObservedData="{x:Bind ViewModel.LocalPackageFilePath, Mode=OneWay}" >
+                    <StackPanel Spacing="12">
+                        <controls:WrapPanel Orientation="Horizontal"
+                                            HorizontalSpacing="10"
+                                            VerticalSpacing="10">
+                            <customUI:ButtonV2 Click="{x:Bind ViewModel.BrowseForCustomMSIXPathButton_Click}"
+                                               x:Uid="FileBrowseButton"
+                                               IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                                               Style="{StaticResource AccentButtonStyle}"
+                                               ObservedData="{x:Bind ViewModel.LocalPackageFilePath, Mode=OneWay}">
+                                <customUI:ButtonV2.ContentTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <FontIcon Glyph="&#xEC50;" FontSize="16"/>
+                                            <TextBlock Text="{x:Bind}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </customUI:ButtonV2.ContentTemplate>
+                            </customUI:ButtonV2>
 
-                        <customUI:ButtonV2.ContentTemplate>
-                            <DataTemplate x:DataType="x:String">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <FontIcon Glyph="&#xEC50;" FontSize="16"/>
-                                    <TextBlock Text="{x:Bind}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </customUI:ButtonV2.ContentTemplate>
+                            <Button x:Uid="ClearButton"
+                                    Click="{x:Bind ViewModel.ClearSelectedFilePath}"
+                                    IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" />
+                        </controls:WrapPanel>
 
-                        <customUI:ButtonV2.Flyout>
-                            <Flyout>
+                        <TextBlock x:Uid="ViewSelectedFilesTextBlock"
+                                   TextWrapping="WrapWholeWords" />
 
-                                <controls:WrapPanel Orientation="Vertical" HorizontalSpacing="15" VerticalSpacing="15">
-
-                                    <Button x:Uid="ClearButton" Click="{x:Bind ViewModel.ClearSelectedFilePath}" />
-
-                                    <TextBlock x:Uid="ViewSelectedFilesTextBlock" TextWrapping="WrapWholeWords" />
-
-                                    <TextBox Text="{x:Bind ViewModel.LocalPackageFilePath, Mode=OneWay}"
-                                             TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="False"
-                                             MinWidth="400" IsReadOnly="True" />
-
-                                </controls:WrapPanel>
-
-                            </Flyout>
-                        </customUI:ButtonV2.Flyout>
-
-                    </customUI:ButtonV2>
+                        <TextBox Text="{x:Bind ViewModel.LocalPackageFilePath, Mode=OneWay}"
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="True"
+                                 IsSpellCheckEnabled="False"
+                                 MinWidth="400"
+                                 MaxWidth="900"
+                                 IsReadOnly="True" />
+                    </StackPanel>
 
                 </customUI:SettingsCardV3>
 
@@ -87,6 +82,16 @@
                                   IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
                                   x:Uid="ToggleSwitchGeneral"/>
                 </customUI:SettingsCardV2>
+
+                <customUI:SettingsCardV3 x:Uid="InstallAppPackagesSettingsCard"
+                                         HeaderIcon="{ui:FontIcon Glyph=&#xE83B;}"
+                                         IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}">
+                    <Button x:Uid="InstallAppPackagesButton"
+                            Style="{StaticResource AccentButtonStyle}"
+                            Click="{x:Bind ViewModel.InstallButton_Click}"
+                            IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                            HorizontalAlignment="Left"/>
+                </customUI:SettingsCardV3>
 
             </StackPanel>
         </Grid>
