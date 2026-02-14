@@ -76,20 +76,21 @@
                          Visibility="{x:Bind ViewModel.ProgressBarVisibility, Mode=OneWay}"
                          Margin="0,5,0,5"/>
 
-            <Border Grid.Row="2" CornerRadius="12" Padding="20" HorizontalAlignment="Stretch" BorderThickness="2" Margin="0,5,0,5">
-                <Border.BorderBrush>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#FBD3E9" Offset="0"/>
-                        <GradientStop Color="#BB377D" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
+            <Border Grid.Row="2"
+                    CornerRadius="12"
+                    Padding="20"
+                    HorizontalAlignment="Stretch"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    Margin="0,5,0,5">
                 <StackPanel>
 
-                    <TextBlock HorizontalAlignment="Center" x:Uid="TargetedListsText" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock x:Uid="TargetedListsDescriptionText" Style="{StaticResource CaptionTextBlockStyle}" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-                    <HyperlinkButton FontSize="12" Padding="2" NavigateUri="https://github.com/HotCakeX/Official-IANA-IP-blocks" x:Uid="LearnMoreHyperLinkButton" HorizontalAlignment="Center" Margin="0,3,0,15" />
+                    <TextBlock HorizontalAlignment="Left" x:Uid="TargetedListsText" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock x:Uid="TargetedListsDescriptionText" Style="{StaticResource CaptionTextBlockStyle}" Margin="0,5,0,0" HorizontalAlignment="Left"/>
+                    <HyperlinkButton FontSize="12" Padding="2" NavigateUri="https://github.com/HotCakeX/Official-IANA-IP-blocks" x:Uid="LearnMoreHyperLinkButton" HorizontalAlignment="Left" Margin="0,3,0,15" />
 
-                    <Grid HorizontalAlignment="Center">
+                    <Grid HorizontalAlignment="Left">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
@@ -97,7 +98,8 @@
 
                         <ComboBox VerticalAlignment="Center"
                               Grid.Column="0"
-                              MinWidth="200"
+                              MinWidth="220"
+                              MaxWidth="640"
                               Margin="0,0,20,0"
                               IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
                               SelectedIndex="{x:Bind ViewModel.TargetedListSelectedIndex, Mode=TwoWay}"
@@ -112,7 +114,7 @@
 
                             <Button x:Uid="AddCountryFirewallRulesButton"
                                 Click="{x:Bind ViewModel.TargetedListAdd}"
-                                MinWidth="100"
+                                MinWidth="120"
                                 IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}">
                                 <Button.ContentTemplate>
                                     <DataTemplate x:DataType="x:String">
@@ -126,7 +128,7 @@
 
                             <Button x:Uid="RemoveCountryFirewallRulesButton"
                                 Click="{x:Bind ViewModel.TargetedListRemove}"
-                                MinWidth="100"
+                                MinWidth="120"
                                 IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}">
                                 <Button.ContentTemplate>
                                     <DataTemplate x:DataType="x:String">
@@ -143,20 +145,21 @@
                 </StackPanel>
             </Border>
 
-            <Border Grid.Row="3" CornerRadius="12" Padding="20" BorderThickness="2" HorizontalAlignment="Stretch" Margin="0,5,0,5">
-                <Border.BorderBrush>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#654ea3" Offset="0"/>
-                        <GradientStop Color="#eaafc8" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
+            <Border Grid.Row="3"
+                    CornerRadius="12"
+                    Padding="20"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,5,0,5">
                 <StackPanel>
 
-                    <TextBlock HorizontalAlignment="Center" x:Uid="IndividualCountryIPBlockingText" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock x:Uid="IndividualCountryIPBlockingDescriptionText" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center" Margin="0,5,0,0" />
-                    <HyperlinkButton FontSize="12" Padding="2" NavigateUri="https://github.com/HotCakeX/Official-IANA-IP-blocks" x:Uid="LearnMoreHyperLinkButton" Margin="0,3,0,15"  HorizontalAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" x:Uid="IndividualCountryIPBlockingText" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock x:Uid="IndividualCountryIPBlockingDescriptionText" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Left" Margin="0,5,0,0" />
+                    <HyperlinkButton FontSize="12" Padding="2" NavigateUri="https://github.com/HotCakeX/Official-IANA-IP-blocks" x:Uid="LearnMoreHyperLinkButton" Margin="0,3,0,15"  HorizontalAlignment="Left"/>
 
-                    <Grid HorizontalAlignment="Center">
+                    <Grid HorizontalAlignment="Left">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
@@ -171,12 +174,14 @@
                             <TextBox x:Uid="SearchCountriesTextBox"
                                      Text="{x:Bind ViewModel.CountrySearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
-                                     MinWidth="300"
+                                     MinWidth="220"
+                                     MaxWidth="640"
                                      Margin="0,0,0,8"/>
 
                             <!-- Countries ComboBox -->
                             <ComboBox VerticalAlignment="Center"
-                                 MinWidth="300"
+                                 MinWidth="220"
+                                 MaxWidth="640"
                                  IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
                                  SelectedIndex="{x:Bind ViewModel.CountrySelectedIndex, Mode=TwoWay}"
                                  ItemTemplate="{StaticResource CountryComboBoxItemTemplate}"
@@ -190,7 +195,7 @@
                                     HorizontalAlignment="Left">
 
                             <Button x:Uid="AddCountryFirewallRulesButton"
-                                    MinWidth="100"
+                                    MinWidth="120"
                                     Click="{x:Bind ViewModel.CountryAdd}"
                                     IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}">
                                 <Button.ContentTemplate>
@@ -204,7 +209,7 @@
                             </Button>
 
                             <Button x:Uid="RemoveCountryFirewallRulesButton"
-                                    MinWidth="100"
+                                    MinWidth="120"
                                     Click="{x:Bind ViewModel.CountryRemove}"
                                     IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}">
                                 <Button.ContentTemplate>

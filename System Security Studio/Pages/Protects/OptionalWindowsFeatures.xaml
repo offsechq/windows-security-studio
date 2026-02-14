@@ -179,10 +179,14 @@
                     <!-- Search TextBox -->
                     <TextBox x:Uid="SearchFeatureCapabilityPlaceHolder"
                          Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" />
+                         IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
+                         MinWidth="220"
+                         MaxWidth="640" />
 
                     <!-- Total and Displayed Count -->
-                    <Border Background="{ThemeResource SubtleFillColorSecondaryBrush}"
+                    <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1"
                         CornerRadius="6"
                         Padding="12,8">
                         <TextBlock VerticalAlignment="Center"
@@ -316,7 +320,8 @@
                     </customUI:AnimatedCancellableButton>
 
                     <!-- Manage Selections Dropdown -->
-                    <DropDownButton x:Uid="ManageSelectionsDropDownButton">
+                    <DropDownButton x:Uid="ManageSelectionsDropDownButton"
+                                    IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}">
                         <DropDownButton.Flyout>
                             <MenuFlyout Placement="Bottom">
                                 <MenuFlyoutItem x:Uid="SelectAllMenuFlyoutItem" IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind ViewModel.SelectAll_Click}">
@@ -385,14 +390,16 @@
                     </DropDownButton>
 
                     <!-- Selected Items Count -->
-                    <Border Background="#aa4b6b"
+                    <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1"
                         CornerRadius="12"
                         Padding="12,8">
                         <TextBlock FontSize="14"
                                FontWeight="SemiBold"
-                               Foreground="WhiteSmoke"
+                               Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                                VerticalAlignment="Center">
-                        <Run Text="Selected: "/>
+                        <Run x:Uid="SelectedItemText" />
                         <Run Text="{x:Bind ViewModel.SelectedItemsCount, Mode=OneWay}"/>
                         </TextBlock>
                     </Border>
@@ -403,7 +410,7 @@
 
             <Expander.Content>
 
-                <controls:WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalSpacing="10" VerticalSpacing="10">
+                <controls:WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalSpacing="10" VerticalSpacing="10">
 
                     <Button x:Uid="ExportToJsonButton" IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}" Click="{x:Bind ViewModel.ExportToJson_Click}">
                         <Button.ContentTemplate>
