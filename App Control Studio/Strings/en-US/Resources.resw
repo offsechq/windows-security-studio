@@ -6114,6 +6114,12 @@ NOTE: This option is always enforced if any App Control UMCI policy enables it. 
   <data name="OnlineMicrosoftDefenderStatus.Text" xml:space="preserve">
     <value>Online Microsoft Defender Status</value>
   </data>
+  <data name="OnlineSecurityAndAppUpdates.Text" xml:space="preserve">
+    <value>Online Security and App Update Status</value>
+  </data>
+  <data name="ApplicationUpdateCardTitle.Text" xml:space="preserve">
+    <value>Application Update</value>
+  </data>
   <data name="EngineVersion.Text" xml:space="preserve">
     <value>Engine Version</value>
   </data>
