@@ -27,6 +27,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using AppControlManager.CustomUIElements;
+using AppControlManager.Others;
 using CommonCore.Hardware;
 using CommonCore.Power;
 using CommonCore.ThermalMonitors;
@@ -34,6 +35,14 @@ using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Win32;
+using Windows.ApplicationModel;
+
+#if APP_CONTROL_MANAGER
+using AppUpdateManager = AppControlManager.Others.AppUpdate;
+#endif
+#if HARDEN_SYSTEM_SECURITY
+using AppUpdateManager = HardenSystemSecurity.Others.AppUpdate;
+#endif
 
 namespace AppControlManager.ViewModels;
 
@@ -47,6 +56,8 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 	/// <param name="sender"></param>
 	internal void OnHomePageLoaded(object sender)
 	{
+		InitializeAppUpdateStatus();
+
 		// Let these finish without waiting for them.
 		_ = Task.Run(() =>
 		{
@@ -273,6 +284,13 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 	/// </summary>
 	internal void OnHomePageUnLoaded()
 	{
+		// Stop update-status event flow when Home is not visible.
+		if (_isSubscribedToAppUpdateEvents)
+		{
+			AppUpdateManager.UpdateAvailable -= OnAppUpdateAvailable;
+			_isSubscribedToAppUpdateEvents = false;
+		}
+
 		// Clean up the clock timer
 		if (_clockTimer is not null)
 		{
@@ -326,6 +344,8 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 	internal string? ComputerNameText { get; private set => SP(ref field, value); }
 	internal string? SystemInfoText { get; private set => SP(ref field, value); }
 	internal string? ActivationStatusSummaryText { get; private set => SP(ref field, value); } = "Checking...";
+	internal string? AppUpdateStatusText { get; private set => SP(ref field, value); } = "Update status unavailable";
+	internal string? AppVersionText { get; private set => SP(ref field, value); } = GetInstalledVersionText();
 
 	/// <summary>
 	/// Timer first used as one-shot to align to next minute, then switched to repeating every minute.
@@ -346,6 +366,7 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 	/// CPU temperature sampler instance
 	/// </summary>
 	private TemperatureSampler? _temperatureSampler;
+	private bool _isSubscribedToAppUpdateEvents;
 
 	/// <summary>
 	/// Sets the current time immediately, then aligns the timer to the next minute boundary.
@@ -919,6 +940,56 @@ internal sealed partial class HomeVM : ViewModelBase, IDisposable
 		SignatureVersionText = $"Antivirus definition version: {signatures}";
 		PlatformVersionText = $"Platform version: {platform}";
 		SignatureUpdateDateText = $"Definition update time: {dateText}";
+	}
+
+	#endregion
+
+	#region App Update Quick Status
+
+	private void InitializeAppUpdateStatus()
+	{
+		AppVersionText = GetInstalledVersionText();
+
+		if (!_isSubscribedToAppUpdateEvents)
+		{
+			AppUpdateManager.UpdateAvailable += OnAppUpdateAvailable;
+			_isSubscribedToAppUpdateEvents = true;
+		}
+
+		if (AppUpdateManager.HasUpdateCheckResult && AppUpdateManager.LastCheckedOnlineVersion is not null)
+		{
+			SetAppUpdateStatus(AppUpdateManager.LastIsUpdateAvailable, AppUpdateManager.LastCheckedOnlineVersion);
+			return;
+		}
+
+		AppUpdateStatusText = AppSettings.AutoCheckForUpdateAtStartup
+			? "Checking update status..."
+			: "Auto-check is off. Open Settings to check for updates.";
+	}
+
+	private void OnAppUpdateAvailable(object? sender, UpdateAvailableEventArgs e) =>
+		SetAppUpdateStatus(e.IsUpdateAvailable, e.AvailableVersion);
+
+	private void SetAppUpdateStatus(bool isUpdateAvailable, Version onlineVersion)
+	{
+		AppUpdateStatusText = isUpdateAvailable
+			? $"Update available: v{onlineVersion}"
+			: $"Up to date. Latest: v{onlineVersion}";
+	}
+
+	internal void OnAppUpdateCardClick(object sender, RoutedEventArgs e)
+	{
+#if HARDEN_SYSTEM_SECURITY
+		HardenSystemSecurity.ViewModels.ViewModelProvider.NavigationService.Navigate(typeof(HardenSystemSecurity.Pages.Settings), null);
+#else
+		ViewModelProvider.NavigationService.Navigate(typeof(AppControlManager.Pages.Settings), null);
+#endif
+	}
+
+	private static string GetInstalledVersionText()
+	{
+		PackageVersion v = Package.Current.Id.Version;
+		return $"Installed version: v{v.Major}.{v.Minor}.{v.Build}.{v.Revision}";
 	}
 
 	#endregion

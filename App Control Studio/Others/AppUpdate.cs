@@ -37,6 +37,21 @@ internal static class AppUpdate
 	private static readonly string DefaultUpdateButtonContent = GlobalVars.GetStr("UpdateNavItem/ToolTipService/ToolTip");
 
 	/// <summary>
+	/// Indicates whether an update check has completed successfully in this app session.
+	/// </summary>
+	internal static bool HasUpdateCheckResult { get; private set; }
+
+	/// <summary>
+	/// Last known update-availability state from the most recent successful check.
+	/// </summary>
+	internal static bool LastIsUpdateAvailable { get; private set; }
+
+	/// <summary>
+	/// Last known online version from the most recent successful check.
+	/// </summary>
+	internal static Version? LastCheckedOnlineVersion { get; private set; }
+
+	/// <summary>
 	/// Event triggered when an update is available.
 	/// Includes details about the availability status and the version.
 	/// </summary>
@@ -64,6 +79,11 @@ internal static class AppUpdate
 		}
 
 		bool isUpdateAvailable = onlineAvailableVersion > App.currentAppVersion;
+
+		// Cache the latest successful check result so UI surfaces can bind immediately.
+		HasUpdateCheckResult = true;
+		LastIsUpdateAvailable = isUpdateAvailable;
+		LastCheckedOnlineVersion = onlineAvailableVersion;
 
 		// Raise the UpdateAvailable event if there are subscribers
 		UpdateAvailable?.Invoke(
