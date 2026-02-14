@@ -211,13 +211,15 @@
             </ani:Implicit.ShowAnimations>
 
             <controls:WrapPanel Orientation="Horizontal"
-                                HorizontalAlignment="Center"
+                                HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 HorizontalSpacing="15"
                                 VerticalSpacing="15">
 
                 <!-- Search Box -->
-                <Border MinWidth="200">
+                <Border MinWidth="220"
+                        MaxWidth="640"
+                        HorizontalAlignment="Left">
                     <ani:Implicit.HideAnimations>
                         <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
                         <ani:ScaleAnimation Duration="0:0:0.3" To="0.95"/>
