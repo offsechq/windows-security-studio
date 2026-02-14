@@ -514,6 +514,9 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 			if (mUnit.RemoveStrategy == null)
 				return;
 
+			if (!await ConfirmRemovalIfNeededAsync(itemCount: 1))
+				return;
+
 			// Mark a per-item operation as running so the "All" animated buttons disable themselves.
 			BeginItemOperation();
 
@@ -645,6 +648,24 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 
 		bool errorsOccurred = false;
 
+		List<MUnit> allMUnits = [];
+		foreach (GroupInfoListForMUnit group in ListViewItemsSource)
+		{
+			foreach (MUnit mUnit in group)
+			{
+				if (mUnit.RemoveStrategy is not null)
+				{
+					allMUnits.Add(mUnit);
+				}
+			}
+		}
+
+		if (allMUnits.Count == 0)
+			return;
+
+		if (!await ConfirmRemovalIfNeededAsync(allMUnits.Count))
+			return;
+
 		ViewModel.RemoveAllCancellableButton.Begin();
 
 		try
@@ -652,17 +673,6 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 			ViewModel.ElementsAreEnabled = false;
 			ViewModel.MainInfoBar.WriteInfo(GlobalVars.GetStr("RemovingAllSecurityMeasures"));
 
-			List<MUnit> allMUnits = [];
-			foreach (GroupInfoListForMUnit group in ListViewItemsSource)
-			{
-				foreach (MUnit mUnit in group)
-				{
-					if (mUnit.RemoveStrategy is not null)
-					{
-						allMUnits.Add(mUnit);
-					}
-				}
-			}
 			await MUnit.ProcessMUnitsWithBulkOperations(ViewModel, allMUnits, MUnitOperation.Remove, ViewModel.RemoveAllCancellableButton.Cts?.Token);
 		}
 		catch (Exception ex)
@@ -707,6 +717,9 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 
 				if (allMUnits.Count > 0)
 				{
+					if (!await ConfirmRemovalIfNeededAsync(allMUnits.Count))
+						return;
+
 					await MUnit.ProcessMUnitsWithBulkOperations(ViewModel, allMUnits, MUnitOperation.Remove);
 				}
 			}
@@ -841,6 +854,39 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 		{
 			Logger.Write(ex);
 		}
+	}
+
+	#endregion
+
+	#region Remove Confirmation
+
+	private bool ShouldConfirmRemoval =>
+		ViewModel is HardenSystemSecurity.ViewModels.MicrosoftBaseLinesOverridesVM;
+
+	private async Task<bool> ConfirmRemovalIfNeededAsync(int itemCount)
+	{
+		if (!ShouldConfirmRemoval)
+			return true;
+
+		using ContentDialogV2 dialog = new()
+		{
+			Title = "Confirm Removal",
+			Content = $"Remove {itemCount} selected override setting{(itemCount == 1 ? string.Empty : "s")}?",
+			CloseButtonText = GlobalVars.GetStr("Cancel"),
+			PrimaryButtonText = GlobalVars.GetStr("RemoveAllButtonText/Text"),
+			DefaultButton = ContentDialogButton.Close,
+			Style = (Style)Application.Current.Resources["DefaultContentDialogStyle"],
+			FlowDirection = Enum.Parse<FlowDirection>(AppSettings.ApplicationGlobalFlowDirection)
+		};
+
+		ContentDialogResult result = await dialog.ShowAsync();
+		if (result is not ContentDialogResult.Primary)
+		{
+			ViewModel?.MainInfoBar.WriteWarning(GlobalVars.GetStr("OperationCancelledMsg"));
+			return false;
+		}
+
+		return true;
 	}
 
 	#endregion
