@@ -21,6 +21,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AppControlManager.CustomUIElements;
 using AppControlManager.Others;
 using AppControlManager.ViewModels;
 using HardenSystemSecurity.GroupPolicy;
@@ -306,7 +307,7 @@ internal sealed partial class Microsoft365AppsSecurityBaselineVM : ViewModelBase
 
 			MainInfoBar.WriteSuccess(GlobalVars.GetStr("Microsoft365AppsSecurityBaselineAppliedSuccessfully"));
 
-			await VerifyInternal();
+			await VerifyInternal(isFollowUpVerification: true, cancellationToken: ApplyAllCancellableButton.Cts?.Token);
 		}
 		catch (Exception ex)
 		{
@@ -400,7 +401,7 @@ internal sealed partial class Microsoft365AppsSecurityBaselineVM : ViewModelBase
 
 			MainInfoBar.WriteSuccess(GlobalVars.GetStr("Microsoft365AppsSecurityBaselineRemovedSuccessfully"));
 
-			await VerifyInternal();
+			await VerifyInternal(isFollowUpVerification: true, cancellationToken: RemoveAllCancellableButton.Cts?.Token);
 		}
 		catch (Exception ex)
 		{
@@ -426,18 +427,25 @@ internal sealed partial class Microsoft365AppsSecurityBaselineVM : ViewModelBase
 	/// </summary>
 	internal async void VerifySecurityBaseline() => await VerifyInternal();
 
-	internal async Task VerifyInternal()
+	internal async Task VerifyInternal(bool isFollowUpVerification = false, CancellationToken? cancellationToken = null)
 	{
 		bool errorsOccurred = false;
-		// Mark "Verify" as the only enabled cancellable button
-		CurrentRunningOperation = RunningOperation.Verify;
-		VerifyAllCancellableButton.Begin();
+
+		if (!isFollowUpVerification)
+		{
+			// Mark "Verify" as the only enabled cancellable button
+			CurrentRunningOperation = RunningOperation.Verify;
+			VerifyAllCancellableButton.Begin();
+		}
 
 		try
 		{
-			ElementsAreEnabled = false;
-			MainInfoBarIsClosable = false;
-			MainInfoBar.WriteInfo(GlobalVars.GetStr("VerifyingMicrosoft365AppsSecurityBaseline"));
+			if (!isFollowUpVerification)
+			{
+				ElementsAreEnabled = false;
+				MainInfoBarIsClosable = false;
+				MainInfoBar.WriteInfo(GlobalVars.GetStr("VerifyingMicrosoft365AppsSecurityBaseline"));
+			}
 
 			// Use custom ZIP file if provided, otherwise use the URL selected in the ComboBox
 			Uri sourceUri = !string.IsNullOrEmpty(CustomBaselineFilePath)
@@ -447,7 +455,7 @@ internal sealed partial class Microsoft365AppsSecurityBaselineVM : ViewModelBase
 			List<VerificationResult>? results = await MSBaseline.DownloadAndProcessSecurityBaseline(
 				sourceUri,
 				MSBaseline.Action.Verify,
-				cancellationToken: VerifyAllCancellableButton.Cts?.Token) ?? throw new InvalidOperationException(GlobalVars.GetStr("NoResultsReturnedFromVerificationProcess"));
+				cancellationToken: cancellationToken ?? VerifyAllCancellableButton.Cts?.Token) ?? throw new InvalidOperationException(GlobalVars.GetStr("NoResultsReturnedFromVerificationProcess"));
 
 			// Clear existing results
 			AllVerificationResults.Clear();
@@ -468,20 +476,28 @@ internal sealed partial class Microsoft365AppsSecurityBaselineVM : ViewModelBase
 		}
 		catch (Exception ex)
 		{
+			if (isFollowUpVerification)
+			{
+				throw;
+			}
+
 			HandleExceptions(ex, ref errorsOccurred, ref VerifyAllCancellableButton.wasCancelled, MainInfoBar);
 		}
 		finally
 		{
-			if (VerifyAllCancellableButton.wasCancelled)
+			if (!isFollowUpVerification && VerifyAllCancellableButton.wasCancelled)
 			{
 				MainInfoBar.WriteWarning(GlobalVars.GetStr("VerifyOperationCancelledByUser"));
 			}
 
-			VerifyAllCancellableButton.End();
-			ElementsAreEnabled = true;
-			MainInfoBarIsClosable = true;
-			// Re-enable all three buttons
-			CurrentRunningOperation = RunningOperation.None;
+			if (!isFollowUpVerification)
+			{
+				VerifyAllCancellableButton.End();
+				ElementsAreEnabled = true;
+				MainInfoBarIsClosable = true;
+				// Re-enable all three buttons
+				CurrentRunningOperation = RunningOperation.None;
+			}
 		}
 	}
 
@@ -657,6 +673,25 @@ internal sealed partial class Microsoft365AppsSecurityBaselineVM : ViewModelBase
 			return;
 		}
 
+		using ContentDialogV2 dialog = new()
+		{
+			Title = "Confirm Policy Deletion",
+			Content = $"Delete {idsToRemove.Count} selected baseline polic{(idsToRemove.Count == 1 ? "y" : "ies")} from the system?",
+			CloseButtonText = GlobalVars.GetStr("Cancel"),
+			PrimaryButtonText = GlobalVars.GetStr("DeleteRow.Text"),
+			DefaultButton = ContentDialogButton.Close,
+			Style = (Style)Application.Current.Resources["DefaultContentDialogStyle"],
+			FlowDirection = Enum.Parse<FlowDirection>(AppSettings.ApplicationGlobalFlowDirection)
+		};
+
+		ContentDialogResult confirmResult = await dialog.ShowAsync();
+
+		if (confirmResult is not ContentDialogResult.Primary)
+		{
+			MainInfoBar.WriteWarning(GlobalVars.GetStr("OperationCancelledMsg"));
+			return;
+		}
+
 		try
 		{
 			ElementsAreEnabled = false;
@@ -677,8 +712,8 @@ internal sealed partial class Microsoft365AppsSecurityBaselineVM : ViewModelBase
 
 			MainInfoBar.WriteSuccess("Selected policies removed successfully.");
 
-			// Verify again to show the updated state
-			await VerifyInternal();
+			// Verify again to show the updated state without switching toolbar buttons into verify-cancel mode.
+			await VerifyInternal(isFollowUpVerification: true);
 		}
 		catch (Exception ex)
 		{
