@@ -1,1 +1,1 @@
-https://github.com/offsechq/windows-security-studio/releases/download/sss-v1.0.3.0/System.Security.Studio_1.0.3.0.msixbundle
+https://github.com/offsechq/windows-security-studio/releases/download/sss-v1.0.4.0/System.Security.Studio_1.0.4.0.msixbundle
