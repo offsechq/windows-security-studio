@@ -71,10 +71,10 @@
                         <Border Margin="0,10,0,10"
                                 Grid.Row="0"
                                 Style="{StaticResource GridCardStyle}" Padding="8">
-                            <controls:WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"
-                                     VerticalAlignment="Center"
-                                     HorizontalSpacing="10"
-                                     VerticalSpacing="10">
+                            <controls:WrapPanel Orientation="Horizontal" HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      HorizontalSpacing="10"
+                                      VerticalSpacing="10">
 
                                 <ProgressRing Visibility="{x:Bind ViewModel.ExclusionProgressVisibility, Mode=OneWay}"
                                                VerticalAlignment="Center"
@@ -125,23 +125,25 @@
                                     </Button.ContentTemplate>
                                 </Button>
 
-                                <Button x:Uid="ClearDataButton"
-                                        VerticalAlignment="Center"
-                                        IsEnabled="{x:Bind ViewModel.ExclusionsUIIsEnabled, Mode=OneWay}"
-                                        Click="{x:Bind ViewModel.ClearExclusionsList}">
-                                    <Button.ContentTemplate>
-                                        <DataTemplate x:DataType="x:String">
-                                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                                <FontIcon Glyph="&#xE74D;" FontSize="16"/>
-                                                <TextBlock Text="{x:Bind}"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </Button.ContentTemplate>
-                                </Button>
+                                <DropDownButton x:Uid="ExtraActionsDropDownButton"
+                                                VerticalAlignment="Center"
+                                                IsEnabled="{x:Bind ViewModel.ExclusionsUIIsEnabled, Mode=OneWay}">
+                                    <DropDownButton.Flyout>
+                                        <MenuFlyout Placement="Bottom">
+                                            <MenuFlyoutItem x:Uid="ClearDataMenuFlyoutItem"
+                                                            Click="{x:Bind ViewModel.ClearExclusionsList}">
+                                                <MenuFlyoutItem.Icon>
+                                                    <FontIcon Glyph="&#xE74D;"/>
+                                                </MenuFlyoutItem.Icon>
+                                            </MenuFlyoutItem>
+                                        </MenuFlyout>
+                                    </DropDownButton.Flyout>
+                                </DropDownButton>
 
                                 <TextBox x:Uid="SearchBoxTextBox"
                                          VerticalAlignment="Center"
                                          IsEnabled="{x:Bind ViewModel.ExclusionsUIIsEnabled, Mode=OneWay}"
+                                         MinWidth="220"
                                          Text="{x:Bind ViewModel.ExclusionsSearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                                 <!-- Total chip -->
@@ -174,7 +176,7 @@
                             SelectionMode="Single">
 
                             <customUI:ListViewV2.Header>
-                                <Border CornerRadius="5" Background="Black" customUI:StickyHeaderBehaviorV2.IsEnabled="True">
+                                <Border CornerRadius="5" Background="{ThemeResource SystemControlBackgroundChromeBlackMediumBrush}" customUI:StickyHeaderBehaviorV2.IsEnabled="True">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="{x:Bind ViewModel.EXColWidth1, Mode=TwoWay}" MinWidth="50"/>
