@@ -14,7 +14,7 @@ Native Windows applications for application control and system hardening, built 
 
 ---
 
-## What It Is
+## Overview
 
 Windows Security Studio includes two WinUI 3 desktop apps that harden Windows using built-in, documented Microsoft security technologies.
 
@@ -58,7 +58,7 @@ Applies, verifies, and manages hardening settings across Windows.
 1. Download the latest **Install Kit** `.zip` from [Releases](https://github.com/OFFSECHQ/windows-security-studio/releases)
 2. Extract and run `Install.cmd` (auto-elevates, imports the signing certificate, and installs the package)
 
-The apps can check GitHub for new versions and update in place.
+Both apps can check GitHub for updates and update in place.
 
 ### Build from Source
 
@@ -89,7 +89,7 @@ cd "System Security Studio"
 | **Compilation** | Native AOT, trimming, Control Flow Guard, CET Shadow Stack |
 | **Packaging** | MSIX / MSIXBundle |
 | **CI/CD** | GitHub Actions |
-| **Platform** | Windows 10 22H2+ (build 22621), x64 |
+| **Platform** | Windows 10 22H2+ (build 19045+) / Windows 11 22H2+ (build 22621+), x64 |
 
 ---
 
