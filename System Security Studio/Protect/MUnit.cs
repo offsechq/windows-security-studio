@@ -1361,7 +1361,15 @@ internal sealed partial class MUnit(
 	/// <param name="mUnits"></param>
 	/// <param name="operation"></param>
 	/// <param name="cancellationToken">Optional cancellation token for the operation</param>
-	internal async static Task ProcessMUnitsWithBulkOperations(IMUnitListViewModel viewModel, List<MUnit> mUnits, MUnitOperation operation, CancellationToken? cancellationToken = null)
+	/// <param name="suppressUiStateChanges">When true, does not toggle main UI enablement state.</param>
+	/// <param name="suppressInfoBarMessages">When true, suppresses operation start/success messages and closable toggling.</param>
+	internal async static Task ProcessMUnitsWithBulkOperations(
+		IMUnitListViewModel viewModel,
+		List<MUnit> mUnits,
+		MUnitOperation operation,
+		CancellationToken? cancellationToken = null,
+		bool suppressUiStateChanges = false,
+		bool suppressInfoBarMessages = false)
 	{
 		await Task.Run(() =>
 		{
@@ -1369,9 +1377,15 @@ internal sealed partial class MUnit(
 			{
 				cancellationToken?.ThrowIfCancellationRequested();
 
-				viewModel.ElementsAreEnabled = false;
+				if (!suppressUiStateChanges)
+				{
+					viewModel.ElementsAreEnabled = false;
+				}
 
-				viewModel.MainInfoBar.IsClosable = false;
+				if (!suppressInfoBarMessages)
+				{
+					viewModel.MainInfoBar.IsClosable = false;
+				}
 
 				string operationText = operation switch
 				{
@@ -1380,7 +1394,10 @@ internal sealed partial class MUnit(
 					MUnitOperation.Verify => GlobalVars.GetStr("VerifyingSecurityMeasures"),
 					_ => GlobalVars.GetStr("ProcessingSecurityMeasures")
 				};
-				viewModel.MainInfoBar.WriteInfo(string.Format(operationText, mUnits.Count));
+				if (!suppressInfoBarMessages)
+				{
+					viewModel.MainInfoBar.WriteInfo(string.Format(operationText, mUnits.Count));
+				}
 
 				// Use the global catalog to ensure dependencies can be resolved across different categories.
 				List<MUnit> allAvailableMUnits = Traverse.MUnitCatalog.All.Values.ToList();
@@ -1447,12 +1464,21 @@ internal sealed partial class MUnit(
 					MUnitOperation.Verify => GlobalVars.GetStr("SuccessfullyVerifiedSecurityMeasures"),
 					_ => GlobalVars.GetStr("SuccessfullyProcessedSecurityMeasures")
 				};
-				viewModel.MainInfoBar.WriteSuccess(string.Format(operationText2, mUnits.Count));
+				if (!suppressInfoBarMessages)
+				{
+					viewModel.MainInfoBar.WriteSuccess(string.Format(operationText2, mUnits.Count));
+				}
 			}
 			finally
 			{
-				viewModel.ElementsAreEnabled = true;
-				viewModel.MainInfoBar.IsClosable = true;
+				if (!suppressUiStateChanges)
+				{
+					viewModel.ElementsAreEnabled = true;
+				}
+				if (!suppressInfoBarMessages)
+				{
+					viewModel.MainInfoBar.IsClosable = true;
+				}
 			}
 		}, cancellationToken ?? CancellationToken.None);
 	}

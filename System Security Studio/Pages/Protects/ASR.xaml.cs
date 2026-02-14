@@ -32,20 +32,6 @@ internal sealed partial class ASR : Page, CommonCore.UI.IPageHeaderProvider
 		DataContext = ViewModel;
 	}
 
-	/// <summary>
-	/// Automatically retrieves the latest ASR rule states from the system on first navigation.
-	/// </summary>
-	protected override void OnNavigatedTo(NavigationEventArgs e)
-	{
-		base.OnNavigatedTo(e);
-
-		if (!ViewModel.HasAutoRetrieved)
-		{
-			ViewModel.HasAutoRetrieved = true;
-			_ = ViewModel.RetrieveLatest_Internal(disableElements: false, isBackgroundRefresh: true);
-		}
-	}
-
 	string CommonCore.UI.IPageHeaderProvider.HeaderTitle => GlobalVars.GetStr("ASRRulesPageTitle");
 	Uri? CommonCore.UI.IPageHeaderProvider.HeaderGuideUri => new("https://github.com/HotCakeX/Harden-Windows-Security/wiki/Attack-Surface-Reduction");
 }

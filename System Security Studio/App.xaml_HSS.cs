@@ -20,10 +20,13 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using CommonCore.Taskbar;
 using HardenSystemSecurity.DeviceIntents;
 using HardenSystemSecurity.Helpers;
 using HardenSystemSecurity.Others;
+using HardenSystemSecurity.Protect;
 using HardenSystemSecurity.ViewModels;
 using HardenSystemSecurity.WindowComponents;
 using Microsoft.UI.Xaml;
@@ -63,6 +66,9 @@ public partial class App : Application
 	private static string? _cliImportPath;
 	private static string? _cliExportPath;
 	private static bool _cliModeFull = true; // --mode defaults to full; partial sets this false
+
+	// Protect data prefetch state
+	private static int _protectRulesPrefetchStarted;
 
 	/// <summary>
 	/// Invoked when the application is launched.
@@ -348,6 +354,84 @@ public partial class App : Application
 
 		// Startup update check
 		AppUpdate.CheckAtStartup();
+
+		// Prefetch Protect tab states/rules one time for this app launch in non-intrusive background mode.
+		_ = PrefetchProtectRulesAtStartupAsync();
+	}
+
+	/// <summary>
+	/// Retrieves Protect-related states once on app launch without disabling visible UI.
+	/// Manual retrieval/verify actions remain available in each page.
+	/// </summary>
+	private static async Task PrefetchProtectRulesAtStartupAsync()
+	{
+		if (Interlocked.Exchange(ref _protectRulesPrefetchStarted, 1) != 0)
+		{
+			return;
+		}
+
+		try
+		{
+			List<IMUnitListViewModel> protectMUnitViewModels =
+			[
+				ViewModelProvider.MicrosoftDefenderVM,
+				ViewModelProvider.BitLockerVM,
+				ViewModelProvider.TLSVM,
+				ViewModelProvider.LockScreenVM,
+				ViewModelProvider.UACVM,
+				ViewModelProvider.DeviceGuardVM,
+				ViewModelProvider.WindowsFirewallVM,
+				ViewModelProvider.WindowsNetworkingVM,
+				ViewModelProvider.MiscellaneousConfigsVM,
+				ViewModelProvider.WindowsUpdateVM,
+				ViewModelProvider.EdgeVM,
+				ViewModelProvider.NonAdminVM,
+				ViewModelProvider.MicrosoftBaseLinesOverridesVM
+			];
+
+			// Prevent page-level auto verify from triggering later; startup prefetch is now the single auto source.
+			foreach (IMUnitListViewModel vm in protectMUnitViewModels)
+			{
+				vm.HasAutoVerified = true;
+			}
+
+			ASRVM asrVM = ViewModelProvider.ASRVM;
+			asrVM.HasAutoRetrieved = true;
+
+			// Let the window render first before starting background prefetch work.
+			await Task.Yield();
+
+			// Verify each Protect MUnit category once (silent/no UI dim).
+			foreach (IMUnitListViewModel vm in protectMUnitViewModels)
+			{
+				List<MUnit> verifiableMUnits = vm.AllMUnits
+					.Where(static m => m.VerifyStrategy is not null)
+					.ToList();
+
+				if (verifiableMUnits.Count == 0)
+				{
+					continue;
+				}
+
+				await MUnit.ProcessMUnitsWithBulkOperations(
+					vm,
+					verifiableMUnits,
+					MUnitOperation.Verify,
+					cancellationToken: null,
+					suppressUiStateChanges: true,
+					suppressInfoBarMessages: true);
+			}
+
+			// Retrieve ASR rule states once as part of startup prefetch (silent/no UI dim).
+			await asrVM.RetrieveLatest_Internal(
+				disableElements: false,
+				isBackgroundRefresh: true,
+				suppressInfoBarMessages: true);
+		}
+		catch (Exception ex)
+		{
+			Logger.Write(ex);
+		}
 	}
 
 	/// <summary>

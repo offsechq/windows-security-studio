@@ -162,9 +162,6 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 		{
 			TrySetChildExplicitDisposalOptIn();
 		}
-
-		// Automatically verify all settings on first navigation to this page
-		TryAutoVerify();
 	}
 
 	/// <summary>
@@ -260,8 +257,6 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 				control.TrySetChildExplicitDisposalOptIn();
 			}
 
-			// Automatically verify all settings on first navigation when data becomes available
-			control.TryAutoVerify();
 		}
 	}
 
@@ -475,32 +470,6 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 		// Update selected count
 		_ = (ViewModel?.SelectedItemsCount = ViewModel.ItemsSourceSelectedItems.Count);
 	}
-
-	#region Auto Verify on First Navigation
-
-	/// <summary>
-	/// Automatically triggers Verify All on the first navigation to this page during the app session.
-	/// Called from both Loaded and OnListViewItemsSourceChanged -- whichever fires first with data wins.
-	/// The HasAutoVerified flag on the singleton ViewModel ensures it only runs once per session.
-	/// </summary>
-	private void TryAutoVerify()
-	{
-		if (_isDisposed || ViewModel is null)
-			return;
-
-		// Already ran for this VM this session
-		if (ViewModel.HasAutoVerified)
-			return;
-
-		// Data not loaded yet -- OnListViewItemsSourceChanged will retry
-		if (ListViewItemsSource.Count == 0)
-			return;
-
-		ViewModel.HasAutoVerified = true;
-		_ = VerifyAllMUnitsInternal(disableElements: false, isBackgroundRefresh: true);
-	}
-
-	#endregion
 
 	#region Single MUnit Operations
 
@@ -798,7 +767,13 @@ internal sealed partial class MUnitListViewControl : UserControl, IDisposable
 			// For background refresh, pass null token (no cancellation support needed since
 			// the user is not presented with a Cancel button).
 			System.Threading.CancellationToken? token = isBackgroundRefresh ? null : ViewModel.VerifyAllCancellableButton.Cts?.Token;
-			await MUnit.ProcessMUnitsWithBulkOperations(ViewModel, allMUnits, MUnitOperation.Verify, token);
+			await MUnit.ProcessMUnitsWithBulkOperations(
+				ViewModel,
+				allMUnits,
+				MUnitOperation.Verify,
+				token,
+				suppressUiStateChanges: isBackgroundRefresh,
+				suppressInfoBarMessages: isBackgroundRefresh);
 		}
 		catch (Exception ex)
 		{
