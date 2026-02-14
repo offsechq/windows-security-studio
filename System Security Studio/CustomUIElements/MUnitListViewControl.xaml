@@ -219,7 +219,11 @@
                 <!-- Search Box -->
                 <Border MinWidth="220"
                         MaxWidth="640"
-                        HorizontalAlignment="Left">
+                        HorizontalAlignment="Left"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="8">
                     <ani:Implicit.HideAnimations>
                         <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
                         <ani:ScaleAnimation Duration="0:0:0.3" To="0.95"/>
@@ -255,10 +259,12 @@
 
                 <!-- Total and Filtered Count Button with Status Details Flyout -->
                 <Button x:Name="CountsButton"
-                        Background="{ThemeResource SubtleFillColorSecondaryBrush}"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1"
                         CornerRadius="6"
                         Padding="12,8"
-                        BorderThickness="0">
+                        HorizontalAlignment="Left">
                     <ani:Implicit.HideAnimations>
                         <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
                         <ani:ScaleAnimation Duration="0:0:0.3" To="0.95"/>
@@ -507,7 +513,8 @@
 
                 </customUI:AnimatedCancellableButton>
 
-                <DropDownButton x:Uid="ManageSelectionsDropDownButton">
+                <DropDownButton x:Uid="ManageSelectionsDropDownButton"
+                                IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}">
                     <ani:Implicit.HideAnimations>
                         <ani:OpacityAnimation Duration="0:0:0.3" To="0.0"/>
                         <ani:ScaleAnimation Duration="0:0:0.3" To="0.9"/>
