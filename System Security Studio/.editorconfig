@@ -7,6 +7,12 @@ root = true
 [*]
 charset = utf-8
 trim_trailing_whitespace = true
+end_of_line = lf
+
+[*.cmd]
+end_of_line = crlf
+
+[*.bat]
 end_of_line = crlf
 
 # https://learn.microsoft.com/visualstudio/ide/reference/add-file-header
