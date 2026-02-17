@@ -72,17 +72,6 @@ public partial class App : Application
 	internal static readonly bool IsElevated = Environment.IsPrivilegedProcess;
 
 	/// <summary>
-	/// Detects the source of the application.
-	/// GitHub => 0
-	/// Microsoft Store => 1
-	/// Unknown => 2
-	/// </summary>
-	internal static readonly int PackageSource = string.Equals(PFN, "OFFSECHQ.AppControlStudio_52ydnp6c4w3g1", StringComparison.OrdinalIgnoreCase) ?
-		0 :
-		(string.Equals(PFN, "OFFSECHQ.AppControlStudio_52ydnp6c4w3g1", StringComparison.OrdinalIgnoreCase) || string.Equals(PFN, "OFFSECHQ.SystemSecurityStudio_52ydnp6c4w3g1", StringComparison.OrdinalIgnoreCase)
-		? 1 : 2);
-
-	/// <summary>
 	/// Tracks whether the cleanup logics have been run.
 	/// </summary>
 	private static int CleanUpHappened;

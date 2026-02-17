@@ -251,10 +251,6 @@ public partial class App : Application
 							synchronizeExact: _cliModeFull
 							);
 					}
-					else if (string.Equals(_cliAction, "CheckMSStoreAppUpdate", StringComparison.OrdinalIgnoreCase))
-					{
-						await ViewModelProvider.MainWindowVM.CheckForAllAppUpdates_Internal();
-					}
 					else
 					{
 						Logger.Write($"Error: Unknown CLI action '{_cliAction}'.");

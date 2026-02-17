@@ -280,7 +280,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 	}
 
 	/// <summary>
-	/// Opens GitHub releases page for rating/feedback (replaces Microsoft Store rating).
+	/// Opens GitHub releases page for rating/feedback.
 	/// </summary>
 	internal async void LaunchRating()
 	{
@@ -305,7 +305,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 	}
 
 	/// <summary>
-	/// Removes any existing ASR rule exclusions that belong to the AppControl Manager, non-store version.
+	/// Removes any existing ASR rule exclusions that belong to the GitHub-distributed AppControl Manager package.
 	/// </summary>
 	private static void RemoveExistingAppControlManagerASRExclusions()
 	{
