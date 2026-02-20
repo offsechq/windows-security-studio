@@ -24,6 +24,16 @@ Both apps are compiled with **Native AOT** and distributed as self-contained **M
 
 ---
 
+## Important Safety Notice
+
+Some features in **App Control Studio** and **System Security Studio** are advanced hardening controls that can cause system instability, lockouts, or reduced functionality if applied incorrectly.
+
+Use these tools only if you understand the settings you are changing, test changes in a safe environment first, and keep recovery options available.
+
+By using this project, you accept full responsibility for any impact. Use at your own risk.
+
+---
+
 ## App Control Studio
 
 Manages **Windows Defender Application Control (WDAC)**, the allowlisting technology built into Windows.
