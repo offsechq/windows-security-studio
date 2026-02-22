@@ -5,7 +5,7 @@
 		<FileVersion>1.0.0.0</FileVersion>
 		<Title>DISMService</Title>
 		<Copyright>Kenyata Gomo</Copyright>
-		<Description>DISM Service Component of the Harden System Security app.</Description>
+		<Description>DISM Service Component of the System Security Studio app.</Description>
 		<AssemblyVersion>$(FileVersion)</AssemblyVersion>
 		<PublishAot>True</PublishAot>
 		<PublishTrimmed>True</PublishTrimmed>

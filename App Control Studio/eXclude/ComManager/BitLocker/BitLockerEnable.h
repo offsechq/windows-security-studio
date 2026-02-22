@@ -8,7 +8,7 @@
 
 namespace BitLocker {
 
-	// Encryption types of the OS Drive supported by the Harden System Security App
+	// Encryption types of the OS Drive supported by the System Security Studio App
 	enum class OSEncryptionType : unsigned long
 	{
 		Normal = 0,

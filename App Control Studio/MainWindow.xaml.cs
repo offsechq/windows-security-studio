@@ -490,7 +490,7 @@ internal sealed partial class MainWindow : Window
 			AutomationProperties.SetHelpText(TitleBarSearchBox, GlobalVars.GetStr("MainSearchAutoSuggestBox/AutomationProperties/HelpText"));
 			ToolTipService.SetToolTip(TitleBarSearchBox, GlobalVars.GetStr("MainSearchAutoSuggestBox/ToolTipService/ToolTip"));
 
-			// Main navigation items for Harden System Security
+			// Main navigation items for System Security Studio
 			ProtectNavigationViewItemHeader.Content = GlobalVars.GetStr("ProtectNavigationViewItemHeader/Content");
 
 			ProtectNavItem.Content = GlobalVars.GetStr("ProtectNavigationViewItem/Content");

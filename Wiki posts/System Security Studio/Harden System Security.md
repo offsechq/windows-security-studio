@@ -1,6 +1,6 @@
-# Harden System Security
+# System Security Studio
 
-Harden System Security is a modern secure lightweight application that can help you harden, secure and lock down your system. It is designed to be user-friendly and efficient, providing a range of features to enhance the security of your Windows operating system.
+System Security Studio is a modern secure lightweight application that can help you harden, secure and lock down your system. It is designed to be user-friendly and efficient, providing a range of features to enhance the security of your Windows operating system.
 
 It always stays up to date with the latest security patches and provides constant and consistent maintenance and support.
 
@@ -14,7 +14,7 @@ It always stays up to date with the latest security patches and provides constan
 
 ### Use Winget
 
-You can utilize Winget to automate the installation of the Harden System Security.
+You can utilize Winget to automate the installation of the System Security Studio.
 
 ```powershell
 winget install --id 9p7ggfl7dx57 --exact --accept-package-agreements --accept-source-agreements --force --source msstore
@@ -82,30 +82,30 @@ Please feel free to open a discussion if you have any questions about the build 
 
 ## Comprehensive Logging Capabilities
 
-The Harden System Security app includes detailed logging feature that tracks every part of its operations. These logs are helpful for reviewing what actions were taken, making it easier to audit and troubleshoot if necessary. The logs are saved in the following location:
+The System Security Studio app includes detailed logging feature that tracks every part of its operations. These logs are helpful for reviewing what actions were taken, making it easier to audit and troubleshoot if necessary. The logs are saved in the following location:
 
 ```
 C:\Users\USERNAME\AppData\Local\Temp\HardenSystemSecurityLogs
 ```
 
-The logs ensure that all actions taken by the Harden System Security app are recorded, giving you clear visibility into your security processes. Whether you're conducting security checks, responding to issues, or just keeping an eye on things, these logs can provide valuable information.
+The logs ensure that all actions taken by the System Security Studio app are recorded, giving you clear visibility into your security processes. Whether you're conducting security checks, responding to issues, or just keeping an eye on things, these logs can provide valuable information.
 
 ## Security
 
 > [!IMPORTANT]
-> The Harden System Security application is built publicly using a [GitHub Workflow](https://github.com/OFFSECHQ/windows-security-studio/actions/runs/17206622843/workflow) and uploaded to the Microsoft Partner Center for validation and signing. The action uses [SBOM (Software Bill of Materials)](https://github.com/OFFSECHQ/windows-security-studio/network/dependencies) generation to comply with the highest [security standards](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds) such as [SLSA](https://slsa.dev/spec/v1.0/levels) level 3. [GitHub's CodeQL Advanced workflow](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/codeql.yml) with extended security model scans the entire repository. All of the dependencies of any project in this repository are uploaded to GitHub and are available in the [Dependency Graph](https://github.com/OFFSECHQ/windows-security-studio/network/dependencies).
+> The System Security Studio application is built publicly using a [GitHub Workflow](https://github.com/OFFSECHQ/windows-security-studio/actions/runs/17206622843/workflow) and uploaded to the Microsoft Partner Center for validation and signing. The action uses [SBOM (Software Bill of Materials)](https://github.com/OFFSECHQ/windows-security-studio/network/dependencies) generation to comply with the highest [security standards](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds) such as [SLSA](https://slsa.dev/spec/v1.0/levels) level 3. [GitHub's CodeQL Advanced workflow](https://github.com/OFFSECHQ/windows-security-studio/actions/workflows/codeql.yml) with extended security model scans the entire repository. All of the dependencies of any project in this repository are uploaded to GitHub and are available in the [Dependency Graph](https://github.com/OFFSECHQ/windows-security-studio/network/dependencies).
 
-Harden System Security is architected with a security-first philosophy from its inception. Every feature is designed and implemented with an offensive security mindset, ensuring that security is never an afterthought—and never will be. When selecting a solution tasked with defending critical systems, the last thing you want is a so‑called security tool that silently broadens your attack surface or neglects foundational safeguards. This application is built to be inherently trustworthy, defensible, and resilient.
+System Security Studio is architected with a security-first philosophy from its inception. Every feature is designed and implemented with an offensive security mindset, ensuring that security is never an afterthought—and never will be. When selecting a solution tasked with defending critical systems, the last thing you want is a so‑called security tool that silently broadens your attack surface or neglects foundational safeguards. This application is built to be inherently trustworthy, defensible, and resilient.
 
 ### Dependencies
 
-Harden System Security explicitly and unequivocally maintains zero third‑party dependencies. It relies solely on the .NET SDK, the Windows App SDK, and a minimal set of small trusted Microsoft platform components for the User Interface. This deliberate constraint sharply reduces the attack surface and virtually eliminates common software supply chain attack vectors. Rather than pulling transient packages to satisfy feature gaps, required capabilities are purpose‑built in-house—implemented correctly, auditable, and securely. While this increases development effort and time, the mission and deployment contexts of this application more than justify the investment.
+System Security Studio explicitly and unequivocally maintains zero third‑party dependencies. It relies solely on the .NET SDK, the Windows App SDK, and a minimal set of small trusted Microsoft platform components for the User Interface. This deliberate constraint sharply reduces the attack surface and virtually eliminates common software supply chain attack vectors. Rather than pulling transient packages to satisfy feature gaps, required capabilities are purpose‑built in-house—implemented correctly, auditable, and securely. While this increases development effort and time, the mission and deployment contexts of this application more than justify the investment.
 
 Leveraging GitHub's native automation (including Dependabot) alongside Microsoft's patch cadence, security and platform updates can be integrated and released rapidly, preserving both stability and assurance.
 
 ### Exploit Protection
 
-The application avoids dynamic code generation, enhancing security posture and reducing vulnerability exposure. This design ensures compatibility with advanced OS-level exploit mitigation. The Harden System Security supports [process mitigations / Exploit Protections](https://learn.microsoft.com/defender-endpoint/exploit-protection-reference) such as: `Blocking low integrity images`, `Blocking remote images`, `Blocking untrusted fonts`, `Strict Control Flow Guard`, `Disabling extension points`, `Export Address Filtering`, `Hardware enforced stack protection`, `Import Address Filtering`, `Validate handle usage`, `Validate stack integrity`, `Code integrity guard`.
+The application avoids dynamic code generation, enhancing security posture and reducing vulnerability exposure. This design ensures compatibility with advanced OS-level exploit mitigation. The System Security Studio supports [process mitigations / Exploit Protections](https://learn.microsoft.com/defender-endpoint/exploit-protection-reference) such as: `Blocking low integrity images`, `Blocking remote images`, `Blocking untrusted fonts`, `Strict Control Flow Guard`, `Disabling extension points`, `Export Address Filtering`, `Hardware enforced stack protection`, `Import Address Filtering`, `Validate handle usage`, `Validate stack integrity`, `Code integrity guard`.
 
 This disciplined approach bolsters resistance against memory corruption, injection, and tampering techniques frequently leveraged by sophisticated adversaries.
 
@@ -116,7 +116,7 @@ The codebase is extensively and thoughtfully documented, enabling reviewers to t
 ## Documentation
 
 > [!NOTE]
-> Mixing 3rd party security solutions with advanced Microsoft Defender features or other features offered by the Harden System Security app is not recommended as it can create conflicts.
+> Mixing 3rd party security solutions with advanced Microsoft Defender features or other features offered by the System Security Studio app is not recommended as it can create conflicts.
 
 ### Quick Links
 
@@ -150,7 +150,7 @@ The codebase is extensively and thoughtfully documented, enabling reviewers to t
 
 ## Supported Languages
 
-The Harden System Security fully supports the following languages:
+The System Security Studio fully supports the following languages:
 
 - English
 - Hebrew
@@ -165,9 +165,9 @@ The Harden System Security fully supports the following languages:
 
 ## Windows Service
 
-The Harden System Security app utilizes a Windows Service that is responsible for performing tasks that require SYSTEM privilege such as Intune configurations detection during verification jobs so that even when you applied the security measures via Intune, they will be detected and verifiable by the app. The service is very compact (2MBs only), highly optimized and runs only when needed. It does not consume any resources when idle. The service is designed to automatically shut itself down when idle for 120 seconds.
+The System Security Studio app utilizes a Windows Service that is responsible for performing tasks that require SYSTEM privilege such as Intune configurations detection during verification jobs so that even when you applied the security measures via Intune, they will be detected and verifiable by the app. The service is very compact (2MBs only), highly optimized and runs only when needed. It does not consume any resources when idle. The service is designed to automatically shut itself down when idle for 120 seconds.
 
-It can only be used by elevated Administrators and SYSTEM account. It is automatically installed when the Harden System Security app is installed and removed when the Harden System Security app is uninstalled, not leaving any leftovers on the system. It has 0 dependency other than the .NET SDK itself and its executable is inside the app's package.
+It can only be used by elevated Administrators and SYSTEM account. It is automatically installed when the System Security Studio app is installed and removed when the System Security Studio app is uninstalled, not leaving any leftovers on the system. It has 0 dependency other than the .NET SDK itself and its executable is inside the app's package.
 
 The service source code [can be found here](https://github.com/OFFSECHQ/windows-security-studio/tree/main/AppControl%20Manager/eXclude/QuantumRelayHSS). The service name is `QuantumRelayHSS` and it is designed to write verbose logs in the Windows Event log if you add a System environment variable to your OS named `QUANTUMRELAYHSS_DEBUG` with a value of `1` or `true`.
 
@@ -175,7 +175,7 @@ The service supports Arbitrary Code Guard exploit protection as well as many oth
 
 ## CommandLine Interface (CLI) Support
 
-The Harden System Security app can be launched via command line for advanced users and automation scenarios. All CLI arguments are case-insensitive.
+The System Security Studio app can be launched via command line for advanced users and automation scenarios. All CLI arguments are case-insensitive.
 
 When `--cli` is present the app runs headless (no GUI).
 If an operation requires elevation, the app relaunches itself elevated and preserves all CLI arguments.
@@ -205,7 +205,7 @@ Invoke-Item -Path "C:\Path\Policy.pol"
 
 ### Via AUMID (Application User Model ID) Activation
 
-#### Simply launches Harden System Security
+#### Simply launches System Security Studio
 
 ```powershell
 explorer.exe shell:AppsFolder\VioletHansen.HardenSystemSecurity_ea7andspwdn10!App
@@ -346,7 +346,7 @@ HSS.exe --cli CheckMSStoreAppUpdate
 
 ## Under the Hood: Files and Directories Structures Explained
 
-Here is the breakdown of some of the directories and files used by the Harden System Security app.
+Here is the breakdown of some of the directories and files used by the System Security Studio app.
 
 - [Animated Icon Sources](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Animated%20Icon%20Sources) is the location hosting JSON content of the Lottie animations used for the animated buttons.
 
@@ -358,17 +358,17 @@ Here is the breakdown of some of the directories and files used by the Harden Sy
 
 - [Mitigations](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Resources/Mitigations) contains files used by the app to apply, verify or remove Exploit Protection for different processes defined in it.
 
-- [DISMService.exe](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden%20System%20Security/DISMService.exe) is one of the components of the Harden System Security app that provides DISM functionalities via named pipe.
+- [DISMService.exe](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden%20System%20Security/DISMService.exe) is one of the components of the System Security Studio app that provides DISM functionalities via named pipe.
 
-- [CppInterop](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/CppInterop) directory contains parts of the Harden System Security app written in C++.
+- [CppInterop](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/CppInterop) directory contains parts of the System Security Studio app written in C++.
 
 - [Intune Files](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Resources/Intune%20Files) directory contains files to be used for Intune, such as policies the app offers for Intune deployment.
 
 If you'd like to know more about a specific file or directory please feel free to reach out.
 
-## How To Build The Harden System Security Locally?
+## How To Build The System Security Studio Locally?
 
-You can build the Harden System Security application directly from the source code locally on your device without using any 3rd party tools in a completely automated way. It will create the MSIXBundle file containing the X64 and ARM64 MSIX packages.
+You can build the System Security Studio application directly from the source code locally on your device without using any 3rd party tools in a completely automated way. It will create the MSIXBundle file containing the X64 and ARM64 MSIX packages.
 
 The build process will generate complete log files and you can use the [MSBuild Structured Log Viewer](https://learn.microsoft.com/shows/visual-studio-toolbox/msbuild-structured-log-viewer) to inspect them.
 
@@ -406,7 +406,7 @@ function Build_HSS {
         [System.String]$RepoUrl = "https://github.com/HotCakeX/$RepoName/archive/refs/heads/$BranchName.zip"
         [System.String]$ZipPath = [System.IO.Path]::Combine($env:TEMP, "$RepoName.zip")
         [System.String]$InitialWorkingDirectory = $PWD.Path
-        $script:AppControlManagerDirectory = [System.IO.Path]::Combine($InitialWorkingDirectory, "$RepoName-$BranchName", 'Harden System Security')
+        $script:AppControlManagerDirectory = [System.IO.Path]::Combine($InitialWorkingDirectory, "$RepoName-$BranchName", 'System Security Studio')
 
         if (Test-Path -Path $script:AppControlManagerDirectory -PathType Container) {
             Remove-Item -Path $script:AppControlManagerDirectory -Recurse -Force
@@ -726,7 +726,7 @@ function Build_HSS {
 
     #endregion
 
-    [string]$CsProjFilePath = (Resolve-Path -Path '.\Harden System Security.csproj').Path
+    [string]$CsProjFilePath = (Resolve-Path -Path '.\System Security Studio.csproj').Path
 
     # https://learn.microsoft.com/dotnet/core/tools/dotnet-build
     # https://learn.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
@@ -741,14 +741,14 @@ function Build_HSS {
     Copy-Item -Path '..\App Control Studio\eXclude\QuantumRelayHSS\OutputX64\QuantumRelayHSS.exe' -Destination '.\QuantumRelayHSS.exe' -Force
 
     # Generate for X64 architecture
-    dotnet clean 'Harden System Security.csproj' --configuration Release
-    dotnet build 'Harden System Security.csproj' --configuration Release --verbosity minimal /p:Platform=x64 /p:RuntimeIdentifier=win-x64
+    dotnet clean 'System Security Studio.csproj' --configuration Release
+    dotnet build 'System Security Studio.csproj' --configuration Release --verbosity minimal /p:Platform=x64 /p:RuntimeIdentifier=win-x64
 
-    if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building x64 Harden System Security project. Exit Code: $LASTEXITCODE") }
+    if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building x64 System Security Studio project. Exit Code: $LASTEXITCODE") }
 
-    dotnet msbuild 'Harden System Security.csproj' /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-x64 /p:AppxPackageDir="MSIXOutputX64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=x64 -v:minimal /p:MsPdbCmfExeFullpath=$mspdbcmfPath -bl:X64MSBuildLog.binlog
+    dotnet msbuild 'System Security Studio.csproj' /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-x64 /p:AppxPackageDir="MSIXOutputX64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=x64 -v:minimal /p:MsPdbCmfExeFullpath=$mspdbcmfPath -bl:X64MSBuildLog.binlog
 
-    if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed packaging x64 Harden System Security project. Exit Code: $LASTEXITCODE") }
+    if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed packaging x64 System Security Studio project. Exit Code: $LASTEXITCODE") }
 
     # Copy the ARM64 components to the directory before the build starts
 
@@ -759,14 +759,14 @@ function Build_HSS {
     Copy-Item -Path '..\App Control Studio\eXclude\QuantumRelayHSS\OutputARM64\QuantumRelayHSS.exe' -Destination '.\QuantumRelayHSS.exe' -Force
 
     # Generate for ARM64 architecture
-    dotnet clean 'Harden System Security.csproj' --configuration Release
-    dotnet build 'Harden System Security.csproj' --configuration Release --verbosity minimal /p:Platform=ARM64 /p:RuntimeIdentifier=win-arm64
+    dotnet clean 'System Security Studio.csproj' --configuration Release
+    dotnet build 'System Security Studio.csproj' --configuration Release --verbosity minimal /p:Platform=ARM64 /p:RuntimeIdentifier=win-arm64
 
-    if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ARM64 Harden System Security project. Exit Code: $LASTEXITCODE") }
+    if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building ARM64 System Security Studio project. Exit Code: $LASTEXITCODE") }
 
-    dotnet msbuild 'Harden System Security.csproj' /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-arm64 /p:AppxPackageDir="MSIXOutputARM64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=ARM64 -v:minimal /p:MsPdbCmfExeFullpath=$mspdbcmfPath -bl:ARM64MSBuildLog.binlog
+    dotnet msbuild 'System Security Studio.csproj' /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-arm64 /p:AppxPackageDir="MSIXOutputARM64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=ARM64 -v:minimal /p:MsPdbCmfExeFullpath=$mspdbcmfPath -bl:ARM64MSBuildLog.binlog
 
-    if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed packaging ARM64 Harden System Security project. Exit Code: $LASTEXITCODE") }
+    if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed packaging ARM64 System Security Studio project. Exit Code: $LASTEXITCODE") }
 
     function Get-MSIXFile {
         param(
@@ -807,23 +807,23 @@ function Build_HSS {
     }
 
     #region Finding X64 outputs
-    [System.String]$FinalMSIXX64Path = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($PWD.Path, 'MSIXOutputX64')) -FolderPattern 'Harden System Security_\d+\.\d+\.\d+\.\d+_x64_Test' -FileNamePattern 'Harden System Security_\d+\.\d+\.\d+\.\d+_x64\.msix' -ErrorMessageFolder 'Could not find the directory for X64 MSIX file' -ErrorMessageFile 'Could not find the X64 MSIX file'
+    [System.String]$FinalMSIXX64Path = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($PWD.Path, 'MSIXOutputX64')) -FolderPattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_x64_Test' -FileNamePattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_x64\.msix' -ErrorMessageFolder 'Could not find the directory for X64 MSIX file' -ErrorMessageFile 'Could not find the X64 MSIX file'
     [System.String]$FinalMSIXX64Name = [System.IO.Path]::GetFileName($FinalMSIXX64Path)
-    [System.String]$FinalMSIXX64SymbolPath = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($PWD.Path, 'MSIXOutputX64')) -FolderPattern 'Harden System Security_\d+\.\d+\.\d+\.\d+_x64_Test' -FileNamePattern 'Harden System Security_\d+\.\d+\.\d+\.\d+_x64\.appxsym' -ErrorMessageFolder 'Could not find the directory for X64 symbol file' -ErrorMessageFile 'Could not find the X64 symbol file'
+    [System.String]$FinalMSIXX64SymbolPath = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($PWD.Path, 'MSIXOutputX64')) -FolderPattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_x64_Test' -FileNamePattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_x64\.appxsym' -ErrorMessageFolder 'Could not find the directory for X64 symbol file' -ErrorMessageFile 'Could not find the X64 symbol file'
     [System.String]$FinalMSIXX64SymbolName = [System.IO.Path]::GetFileName($FinalMSIXX64SymbolPath)
     #endregion
 
     #region Finding ARM64 outputs
-    [System.String]$FinalMSIXARM64Path = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($PWD.Path, 'MSIXOutputARM64')) -FolderPattern 'Harden System Security_\d+\.\d+\.\d+\.\d+_arm64_Test' -FileNamePattern 'Harden System Security_\d+\.\d+\.\d+\.\d+_arm64\.msix' -ErrorMessageFolder 'Could not find the directory for ARM64 MSIX file' -ErrorMessageFile 'Could not find the ARM64 MSIX file'
+    [System.String]$FinalMSIXARM64Path = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($PWD.Path, 'MSIXOutputARM64')) -FolderPattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64_Test' -FileNamePattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64\.msix' -ErrorMessageFolder 'Could not find the directory for ARM64 MSIX file' -ErrorMessageFile 'Could not find the ARM64 MSIX file'
     [System.String]$FinalMSIXARM64Name = [System.IO.Path]::GetFileName($FinalMSIXARM64Path)
-    [System.String]$FinalMSIXARM64SymbolPath = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($PWD.Path, 'MSIXOutputARM64')) -FolderPattern 'Harden System Security_\d+\.\d+\.\d+\.\d+_arm64_Test' -FileNamePattern 'Harden System Security_\d+\.\d+\.\d+\.\d+_arm64\.appxsym' -ErrorMessageFolder 'Could not find the directory for ARM64 symbol file' -ErrorMessageFile 'Could not find the ARM64 symbol file'
+    [System.String]$FinalMSIXARM64SymbolPath = Get-MSIXFile -BasePath ([System.IO.Path]::Combine($PWD.Path, 'MSIXOutputARM64')) -FolderPattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64_Test' -FileNamePattern 'System Security Studio_\d+\.\d+\.\d+\.\d+_arm64\.appxsym' -ErrorMessageFolder 'Could not find the directory for ARM64 symbol file' -ErrorMessageFile 'Could not find the ARM64 symbol file'
     [System.String]$FinalMSIXARM64SymbolName = [System.IO.Path]::GetFileName($FinalMSIXARM64SymbolPath)
     #endregion
 
     #region Detect and Validate File Versions
-    [System.Text.RegularExpressions.Regex]$versionRegexX64 = [System.Text.RegularExpressions.Regex]::New('Harden System Security_(\d+\.\d+\.\d+\.\d+)_x64\.msix')
+    [System.Text.RegularExpressions.Regex]$versionRegexX64 = [System.Text.RegularExpressions.Regex]::New('System Security Studio_(\d+\.\d+\.\d+\.\d+)_x64\.msix')
 
-    [System.Text.RegularExpressions.Regex]$versionRegexARM64 = [System.Text.RegularExpressions.Regex]::New('Harden System Security_(\d+\.\d+\.\d+\.\d+)_arm64\.msix')
+    [System.Text.RegularExpressions.Regex]$versionRegexARM64 = [System.Text.RegularExpressions.Regex]::New('System Security Studio_(\d+\.\d+\.\d+\.\d+)_arm64\.msix')
     [System.Text.RegularExpressions.Match]$MatchX64 = $versionRegexX64.Match($FinalMSIXX64Name)
 
     [System.Text.RegularExpressions.Match]$MatchARM64 = $versionRegexARM64.Match($FinalMSIXARM64Name)
@@ -845,7 +845,7 @@ function Build_HSS {
     }
 
     # Craft the file name for the MSIX Bundle file
-    [System.String]$FinalBundleFileName = "Harden System Security_$versionX64.msixbundle"
+    [System.String]$FinalBundleFileName = "System Security Studio_$versionX64.msixbundle"
     #endregion
 
     # Creating the directory where the MSIX packages will be copied to
@@ -952,7 +952,7 @@ function Build_HSS {
         Invoke-WebRequest -Uri 'https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-win-x64.exe' -OutFile "${Env:RUNNER_TEMP}\sbom-tool.exe"
 
         # https://github.com/microsoft/sbom-tool/blob/main/docs/sbom-tool-arguments.md
-        . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc .\ -pn 'Harden System Security' -ps 'Violet Hansen' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
+        . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc .\ -pn 'System Security Studio' -ps 'Violet Hansen' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
 
         # Saving the details of the SBOM file
         Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "SBOM_PATH=$MSIXBundleOutput/_manifest/spdx_2.2/manifest.spdx.json"

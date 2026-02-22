@@ -108,7 +108,7 @@ internal static class Helpers
 internal sealed class CbomTool
 {
 	[JsonInclude]
-	internal string Name => "Harden System Security Application";
+	internal string Name => "System Security Studio Application";
 
 	[JsonInclude]
 	internal string Website => "https://github.com/HotCakeX/Harden-Windows-Security";

@@ -1,11 +1,11 @@
-# Microsoft Security Baselines | Harden System Security
+# Microsoft Security Baselines | System Security Studio
 
 <p align="center">
 </p>
 
 A security baseline is a group of Microsoft-recommended configuration settings that explains their security implications. These settings are based on feedback from Microsoft security engineering teams, product groups, partners, and customers.
 
-On this page, [the Harden System Security app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) enables you to apply the Microsoft Security Baselines on your system, verify compliance, and remove the applied policies.
+On this page, [the System Security Studio app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) enables you to apply the Microsoft Security Baselines on your system, verify compliance, and remove the applied policies.
 
 You can measure the compliance level of your system using the built-in compliance assessment functionality by simply pressing the **Verify** button on this page. You will receive a detailed report of every security measure inside the Microsoft Security Baseline and you will be able to export this security report to a properly formatted JSON file as well.
 
@@ -26,13 +26,13 @@ Each security measure has the following details:
   - Users usually apply the Microsoft Security Baseline on their system, which is mostly geared towards enterprise use, but then they find that some settings are not user-friendly for personal use. These optional overrides help to mitigate that situation. You can of course disable this toggle if you want to stick strictly to the Microsoft Security Baseline without any modifications.
 
 > [!NOTE]
-> Either when downloading the Security Baseline from Microsoft Servers or when browsing for the zip file manually, the Harden System Security app will process it entirely **in memory**, and apply it without writing any temporary files to disk. The same is true for verification or removal processes.
+> Either when downloading the Security Baseline from Microsoft Servers or when browsing for the zip file manually, the System Security Studio app will process it entirely **in memory**, and apply it without writing any temporary files to disk. The same is true for verification or removal processes.
 >
 > While this approach increases development complexity, it significantly improves security by preventing malicious interference with temporary files before application.
 >
 > The app caches the baseline in memory to avoid unnecessary re-downloads and/or re-reads. The cache expires every **2 hours**, after which it is refreshed with the latest data from the Microsoft Server/File path you provided, and this only happens if the app is open. The cache is compressed to minimize memory usage.
 
-![Microsoft Security Baselines | Harden System Security](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/Harden%20System%20Security%20page%20screenshots/Microsoft%20Security%20Baseline.png)
+![Microsoft Security Baselines | System Security Studio](https://raw.githubusercontent.com/HotCakeX/.github/refs/heads/main/Pictures/PNG%20and%20JPG/Harden%20System%20Security%20page%20screenshots/Microsoft%20Security%20Baseline.png)
 
 > [!TIP] > [Official Documentation for the Microsoft Security Baseline](https://learn.microsoft.com/windows/security/operating-system-security/device-management/windows-security-configuration-framework/windows-security-baselines#what-are-security-baselines)
 >

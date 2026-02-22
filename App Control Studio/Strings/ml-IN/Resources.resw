@@ -5523,10 +5523,10 @@
     <value>ക്വറി ഉദാഹരണങ്ങൾ</value>
   </data>
   <data name="MDEAHQueryExamplesButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>താഴെ നൽകിയിരിക്കുന്ന ക്വറികൾ പകർത്തി MDE Advanced Hunting പോർട്ടലിൽ ഉപയോഗിച്ച് AppControl Manager-നുമായി അനുയോജ്യമായ സ്റ്റാൻഡേർഡ് ലോഗുകൾ സൃഷ്ടിക്കാം, അല്ലെങ്കിൽ ആപ്ലിക്കേഷന്റെ ഉൾനിർമ്മിത കഴിവുകൾ ഉപയോഗിച്ച് ലോഗുകൾ സ്വയമേവ വീണ്ടെടുത്ത് പ്രോസസ്സ് ചെയ്യാം.</value>
+    <value>താഴെ നൽകിയിരിക്കുന്ന ക്വറികൾ പകർത്തി MDE Advanced Hunting പോർട്ടലിൽ ഉപയോഗിച്ച് App Control Studio-നുമായി അനുയോജ്യമായ സ്റ്റാൻഡേർഡ് ലോഗുകൾ സൃഷ്ടിക്കാം, അല്ലെങ്കിൽ ആപ്ലിക്കേഷന്റെ ഉൾനിർമ്മിത കഴിവുകൾ ഉപയോഗിച്ച് ലോഗുകൾ സ്വയമേവ വീണ്ടെടുത്ത് പ്രോസസ്സ് ചെയ്യാം.</value>
   </data>
   <data name="MDEAHQueryExamplesButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>താഴെ നൽകിയിരിക്കുന്ന ക്വറികൾ പകർത്തി MDE Advanced Hunting പോർട്ടലിൽ ഉപയോഗിച്ച് AppControl Manager-നുമായി അനുയോജ്യമായ സ്റ്റാൻഡേർഡ് ലോഗുകൾ സൃഷ്ടിക്കാം, അല്ലെങ്കിൽ ആപ്ലിക്കേഷന്റെ ഉൾനിർമ്മിത കഴിവുകൾ ഉപയോഗിച്ച് ലോഗുകൾ സ്വയമേവ വീണ്ടെടുത്ത് പ്രോസസ്സ് ചെയ്യാം.</value>
+    <value>താഴെ നൽകിയിരിക്കുന്ന ക്വറികൾ പകർത്തി MDE Advanced Hunting പോർട്ടലിൽ ഉപയോഗിച്ച് App Control Studio-നുമായി അനുയോജ്യമായ സ്റ്റാൻഡേർഡ് ലോഗുകൾ സൃഷ്ടിക്കാം, അല്ലെങ്കിൽ ആപ്ലിക്കേഷന്റെ ഉൾനിർമ്മിത കഴിവുകൾ ഉപയോഗിച്ച് ലോഗുകൾ സ്വയമേവ വീണ്ടെടുത്ത് പ്രോസസ്സ് ചെയ്യാം.</value>
   </data>
   <data name="DragAndDropHint.Text" xml:space="preserve">
      <value>അല്ലെങ്കിൽ ഫയലുകൾ ഇവിടെ വലിച്ചിട്ട് ഇടുക</value>

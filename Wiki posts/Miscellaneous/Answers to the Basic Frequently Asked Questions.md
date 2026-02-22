@@ -4,20 +4,20 @@ This document has answers to the most basic frequently asked questions about thi
 
 <br>
 
-## From 1 to 10 How Difficult Is It to Use the Harden System Security App?
+## From 1 to 10 How Difficult Is It to Use the System Security Studio App?
 
 1 - **Very Easy**
 
 <br>
 
-## What Do I Need to Do to Use Harden System Security App?
+## What Do I Need to Do to Use System Security Studio App?
 
 1. Open Microsoft Store.
-2. Type [`Harden System Security`](https://apps.microsoft.com/detail/9P7GGFL7DX57), find it and press the Install button.
+2. Type [`System Security Studio`](https://apps.microsoft.com/detail/9P7GGFL7DX57), find it and press the Install button.
 
 <br>
 
-## Do I Need to Use the Harden System Security App Only on New Windows Installation?
+## Do I Need to Use the System Security Studio App Only on New Windows Installation?
 
 No, you can **use it any time**.
 
@@ -27,7 +27,7 @@ No, you can **use it any time**.
 
 Absolutely not.
 
-Every security feature needed is already available in Windows. Use the Harden System Security app to activate and enable them.
+Every security feature needed is already available in Windows. Use the System Security Studio app to activate and enable them.
 
 [Here is a more technical explanation](https://github.com/OFFSECHQ/windows-security-studio/issues/103#issuecomment-1707940307)
 
@@ -43,7 +43,7 @@ Uninstall it by going to Windows Settings -> Apps -> Installed Apps -> Search fo
 
 * Check and install any updates from Windows Update
 * Check and install any updates in Microsoft Store
-* Install and run the [Harden System Security App](https://apps.microsoft.com/detail/9P7GGFL7DX57)
+* Install and run the [System Security Studio App](https://apps.microsoft.com/detail/9P7GGFL7DX57)
 
 <br>
 
@@ -63,7 +63,7 @@ Uninstall it by going to Windows Settings -> Apps -> Installed Apps -> Search fo
 
 ## What Categories Do You Recommend to Run?
 
-Use the default predefined preset in the Harden System Security app, it is tuned for optimal and balanced security. You can also use [the device usage intents](https://github.com/OFFSECHQ/windows-security-studio/wiki/Protect) to tune the protections. They allow for easy and quick selection of categories and sub-categories.
+Use the default predefined preset in the System Security Studio app, it is tuned for optimal and balanced security. You can also use [the device usage intents](https://github.com/OFFSECHQ/windows-security-studio/wiki/Protect) to tune the protections. They allow for easy and quick selection of categories and sub-categories.
 
 <br>
 
@@ -99,13 +99,13 @@ Modern devices receive firmware updates as capsules through Windows Update, simi
 
 ### Backup Your BitLocker Recovery Keys
 
-It's crucial to back up your BitLocker recovery keys before updating the firmware. Use the Harden System Security App to simplify this process. The 48-character recovery key for your OS drive will be required to boot your system after the firmware update is applied.
+It's crucial to back up your BitLocker recovery keys before updating the firmware. Use the System Security Studio App to simplify this process. The 48-character recovery key for your OS drive will be required to boot your system after the firmware update is applied.
 
 ### Ensure Internet Connectivity After the Update
 
 Once the firmware update is installed, you will need an active Internet connection to reset your Windows Hello credentials. This process involves signing into your Microsoft account and authorizing the login using the Microsoft Authenticator app.
 
-The Harden System Security app's Lock Screen category does not allow unauthorized people to change network settings on lock screen before logging in. Ensure your current Wi-Fi network is saved on the device and accessible post-update.
+The System Security Studio app's Lock Screen category does not allow unauthorized people to change network settings on lock screen before logging in. Ensure your current Wi-Fi network is saved on the device and accessible post-update.
 
 ### Manage VPN Configurations
 

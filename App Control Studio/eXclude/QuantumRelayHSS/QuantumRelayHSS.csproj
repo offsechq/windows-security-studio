@@ -7,7 +7,7 @@
 		<AssemblyVersion>$(FileVersion)</AssemblyVersion>
 		<Title>HSS Quantum Relay Service</Title>
 		<Copyright>Kenyata Gomo</Copyright>
-		<Description>Quantum Relay Service for the Harden System Security App</Description>
+		<Description>Quantum Relay Service for the System Security Studio App</Description>
 		<StartupObject>QuantumRelayHSS.Program</StartupObject>
 		<DebugSymbols>false</DebugSymbols>
 		<DebugType>none</DebugType>

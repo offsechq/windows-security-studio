@@ -71,7 +71,7 @@ internal static class Main
 
 	private readonly static BrokerOptions OptionsForBroker = new(BrokerOptions.OperatingSystems.Windows)
 	{
-		Title = "AppControl Manager"
+		Title = "App Control Studio"
 	};
 
 	/// <summary>
@@ -1321,17 +1321,17 @@ DeviceEvents
 		{
 			DeviceHealthScriptType = "managedInstallerScript",
 			DisplayName = "Managed Installer Policy",
-			Description = "Enables or disables Intune Management Extensions as the Managed Installer on the targeted devices. Deployed by the AppControl Manager.",
+			Description = "Enables or disables Intune Management Extensions as the Managed Installer on the targeted devices. Deployed by the App Control Studio.",
 			RunAsAccount = "system",
 			EnforceSignatureCheck = true,
-			Publisher = "AppControl Manager",
+			Publisher = "App Control Studio",
 			RunAs32Bit = true,
 			DetectionScriptParameters =
 			[
 				new DeviceHealthScriptStringParameter
 				{
 					Name = "Enabled",
-					Description = "Enable Managed Installer. Deployed by the AppControl Manager.",
+					Description = "Enable Managed Installer. Deployed by the App Control Studio.",
 					IsRequired = true,
 					ApplyDefaultValueWhenNotAssigned = true,
 					DefaultValue = "True"

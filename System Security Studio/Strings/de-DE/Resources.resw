@@ -4578,10 +4578,10 @@ Fingerabdruck: {3}</value>
     <value>Authentifizierungskontext</value>
   </data>
   <data name="AuthenticationContextComboBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Wählen Sie den Authentifizierungskontext für den Anmeldevorgang. Jeder Kontext ist ein Satz von Microsoft Graph-Berechtigungen, die erforderlich sind, um die in AppControl Manager angebotenen Aufgaben erfolgreich abzuschließen.</value>
+    <value>Wählen Sie den Authentifizierungskontext für den Anmeldevorgang. Jeder Kontext ist ein Satz von Microsoft Graph-Berechtigungen, die erforderlich sind, um die in App Control Studio angebotenen Aufgaben erfolgreich abzuschließen.</value>
   </data>
   <data name="AuthenticationContextComboBox.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Wählen Sie den Authentifizierungskontext für den Anmeldevorgang. Jeder Kontext ist ein Satz von Microsoft Graph-Berechtigungen, die erforderlich sind, um die in AppControl Manager angebotenen Aufgaben erfolgreich abzuschließen.</value>
+    <value>Wählen Sie den Authentifizierungskontext für den Anmeldevorgang. Jeder Kontext ist ein Satz von Microsoft Graph-Berechtigungen, die erforderlich sind, um die in App Control Studio angebotenen Aufgaben erfolgreich abzuschließen.</value>
   </data>
     <data name="RemoveAccountButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Konto aus der Liste entfernen. Es wird vollständig aus dem Arbeitsspeicher der App und dem Cache der Microsoft Authentication Library entfernt.</value>

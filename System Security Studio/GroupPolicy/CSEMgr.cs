@@ -294,14 +294,14 @@ internal static class CSEMgr
 
 	/// <summary>
 	/// The GUID to use for the 4th parameter (pGuid) in all calls.
-	/// This is the GUID generated for the Harden System Security App and is unique to it.
+	/// This is the GUID generated for the System Security Studio App and is unique to it.
 	/// https://learn.microsoft.com/windows/win32/api/gpedit/nf-gpedit-igrouppolicyobject-save
 	/// </summary>
 	private static readonly Guid HWSAppAdminToolGUID = new("01985C43-EA44-749A-97FA-7BC348C33484");
 
 	/// <summary>
 	/// Registers all required CSE GUIDs for both machine and user configurations.
-	/// Basically what's needed for the Harden System Security app's policies as well as Microsoft Security Baselines.
+	/// Basically what's needed for the System Security Studio app's policies as well as Microsoft Security Baselines.
 	/// Automatically creates the folder structure at "C:\Windows\System32\GroupPolicy" too if it doesn't exist, including the main POL files.
 	/// Increases the version in the GPT.INI file every time.
 	/// LGPO.exe also increases the version in that file every time it merges a POL file.

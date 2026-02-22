@@ -305,7 +305,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 	}
 
 	/// <summary>
-	/// Removes any existing ASR rule exclusions that belong to the GitHub-distributed AppControl Manager package.
+	/// Removes any existing ASR rule exclusions that belong to the GitHub-distributed App Control Studio package.
 	/// </summary>
 	private static void RemoveExistingAppControlManagerASRExclusions()
 	{
@@ -317,7 +317,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 		{
 			ASROutput = ProcessStarter.RunCommand(GlobalVars.ComManagerProcessPath, comCommand);
 
-			// If there are ASR rule exclusions, find ones that belong to AppControl Manager and remove them
+			// If there are ASR rule exclusions, find ones that belong to App Control Studio and remove them
 			if (!string.IsNullOrWhiteSpace(ASROutput))
 			{
 				// Deserialize the JSON string
@@ -328,7 +328,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 				{
 					List<string> asrRulesToRemove = [];
 
-					// Find all the rules that belong to the AppControl Manager
+					// Find all the rules that belong to the App Control Studio
 					foreach (string item in ASROutputArrayCleaned)
 					{
 						if (item.Contains("__52ydnp6c4w3g1", StringComparison.OrdinalIgnoreCase))
@@ -337,7 +337,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 						}
 					}
 
-					// If any of the rules belong to the AppControl Manager
+					// If any of the rules belong to the App Control Studio
 					if (asrRulesToRemove.Count > 0)
 					{
 						// Wrap them with double quotes and separate them with a space
@@ -372,7 +372,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 
 			string AppControlInstallFolder = AppControlManagerPackage.EffectivePath;
 
-			// Construct the paths to the .exe and .dll files of the AppControl Manager
+			// Construct the paths to the .exe and .dll files of the App Control Studio
 			string path1 = Path.Combine(AppControlInstallFolder, "AppControlManager.exe");
 			string path2 = Path.Combine(AppControlInstallFolder, "AppControlManager.dll");
 			string path3 = Path.Combine(AppControlInstallFolder, "CppInterop", "ComManager.exe");
@@ -398,7 +398,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 	internal bool UseHardenedInstallationProcess { get; set => SP(ref field, value); } = true;
 
 	/// <summary>
-	/// Common name of the on-device generated certificate used to sign the AppControl Manager MSIXBundle package.
+	/// Common name of the on-device generated certificate used to sign the App Control Studio MSIXBundle package.
 	/// </summary>
 	private const string CertCommonName = "OFFSECHQ";
 
@@ -473,7 +473,7 @@ internal sealed partial class UpdateVM : ViewModelBase
 			{
 				LLPackageReader.PackageDetails packageDits = LLPackageReader.GetPackageDetails(packagePath);
 
-				// Determine whether this is the AppControl Manager app package provided in GitHub releases that the user is trying to install
+				// Determine whether this is the App Control Studio app package provided in GitHub releases that the user is trying to install
 				isNonStoreACM = string.Equals(packageDits.CertCN, CertCommonName, StringComparison.Ordinal);
 
 				infoBar.WriteInfo($"Package details retrieved. Package Publisher: '{packageDits.CertCN}', Package Hashing Algorithm: '{packageDits.HashAlgorithm}'.");

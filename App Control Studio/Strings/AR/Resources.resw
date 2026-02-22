@@ -950,16 +950,16 @@
     <value>، جارٍ تحديث التطبيق...</value>
   </data>
   <data name="DownloadingPackage" xml:space="preserve">
-    <value>جارٍ تنزيل حزمة AppControl Manager MSIXBundle...</value>
+    <value>جارٍ تنزيل حزمة App Control Studio MSIXBundle...</value>
   </data>
   <data name="DownloadSuccess" xml:space="preserve">
-    <value>تم تنزيل حزمة AppControl Manager MSIXBundle بنجاح إلى </value>
+    <value>تم تنزيل حزمة App Control Studio MSIXBundle بنجاح إلى </value>
   </data>
   <data name="NoMSIXBundlePath" xml:space="preserve">
     <value>لم يتم اختيار أي مسار MSIXBundle</value>
   </data>
   <data name="DownloadsFinished" xml:space="preserve">
-    <value>اكتملت جميع التنزيلات، جارٍ تثبيت الإصدار الجديد من AppControl Manager</value>
+    <value>اكتملت جميع التنزيلات، جارٍ تثبيت الإصدار الجديد من App Control Studio</value>
   </data>
   <data name="ASRError" xml:space="preserve">
     <value>حدث خطأ أثناء محاولة إزالة استثناءات قاعدة ASR ويمكنك تجاهله بأمان: </value>
@@ -968,7 +968,7 @@
     <value>حدث خطأ أثناء محاولة إضافة استثناءات قاعدة ASR ويمكنك تجاهله بأمان: </value>
   </data>
   <data name="UpdateSuccess" xml:space="preserve">
-    <value>تم التحديث بنجاح. عندما تغلق وتعيد فتح AppControl Manager، ستستخدم الإصدار الجديد تلقائيًا.</value>
+    <value>تم التحديث بنجاح. عندما تغلق وتعيد فتح App Control Studio، ستستخدم الإصدار الجديد تلقائيًا.</value>
   </data>
   <data name="UpdatesInstalled" xml:space="preserve">
     <value>تم تثبيت التحديثات</value>
@@ -1109,7 +1109,7 @@
     <value>السياسة '</value>
   </data>
   <data name="ManualRemovalWarningEnd" xml:space="preserve">
-    <value>' يجب ألا تتم إزالتها يدويًا لأنك لن تتمكن من استخدام AppControl Manager مرة أخرى. يتم إزالتها تلقائيًا عند إزالة سياستها الأساسية المقابلة من النظام. هل أنت متأكد أنك تريد إزالتها يدويًا؟</value>
+    <value>' يجب ألا تتم إزالتها يدويًا لأنك لن تتمكن من استخدام App Control Studio مرة أخرى. يتم إزالتها تلقائيًا عند إزالة سياستها الأساسية المقابلة من النظام. هل أنت متأكد أنك تريد إزالتها يدويًا؟</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>نعم</value>
@@ -1989,7 +1989,7 @@
     <value>استرجع واستعلم عن الإعدادات الآمنة على النظام.</value>
   </data>
   <data name="LogsPageTitle" xml:space="preserve">
-    <value>فيما يلي السجلات التي يقوم مدير AppControl بإنشائها وتخزينها تلقائيًا في مجلد "AppControl Manager" في Program Files (إذا كان يعمل بامتيازات مرتفعة، وإلا فسيتم حفظها في دليل TEMP). لن يتجاوز الحجم الإجمالي لمجلد السجلات 1 جيجابايت.</value>
+    <value>فيما يلي السجلات التي يقوم مدير AppControl بإنشائها وتخزينها تلقائيًا في مجلد "App Control Studio" في Program Files (إذا كان يعمل بامتيازات مرتفعة، وإلا فسيتم حفظها في دليل TEMP). لن يتجاوز الحجم الإجمالي لمجلد السجلات 1 جيجابايت.</value>
   </data>
   <data name="MDEAHPolicyCreationPageTitle.Text" xml:space="preserve">
     <value>استفد من سجلات Microsoft Defender for Endpoint Advanced Hunting لإنشاء نُهج التحكم في التطبيقات. يمكنك إما تصفح ملفات السجل المصدرة أو استردادها من السحابة عن طريق تسجيل الدخول إلى حساب Microsoft الخاص بك.</value>
@@ -2394,10 +2394,10 @@
     <value>مزيد من المعلومات</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>يفتح صفحة wiki الرئيسية لـ AppControl Manager على GitHub</value>
+    <value>يفتح صفحة wiki الرئيسية لـ App Control Studio على GitHub</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>يفتح صفحة wiki الرئيسية لـ AppControl Manager على GitHub</value>
+    <value>يفتح صفحة wiki الرئيسية لـ App Control Studio على GitHub</value>
   </data>
   <data name="UpdatePageWhatsNewInfoBar.Title" xml:space="preserve">
     <value>ملاحظات الإصدار</value>
@@ -3789,7 +3789,7 @@
     <value>محاولة تحليل وقراءة ملف تكوينات المستخدم الحالي</value>
   </data>
   <data name="AppControlManagerFolderCreatedMessage" xml:space="preserve">
-    <value>تم إنشاء مجلد AppControl Manager في Program Files لأنه لم يكن موجودًا.</value>
+    <value>تم إنشاء مجلد App Control Studio في Program Files لأنه لم يكن موجودًا.</value>
   </data>
   <data name="ErrorReadingUserConfigMessage" xml:space="preserve">
     <value>خطأ في قراءة أو تحليل ملف تكوين المستخدم: {0} سيتم إنشاء تكوين جديد بقيم افتراضية.</value>
@@ -5523,10 +5523,10 @@
     <value>أمثلة على الاستعلامات</value>
   </data>
   <data name="MDEAHQueryExamplesButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>يمكنك نسخ الاستعلامات التالية واستخدامها في مدخل MDE Advanced Hunting لإنشاء سجلات قياسية متوافقة مع AppControl Manager، أو يمكنك استخدام الوظائف المضمنة في التطبيق لاسترداد السجلات ومعالجتها تلقائيًا.</value>
+    <value>يمكنك نسخ الاستعلامات التالية واستخدامها في مدخل MDE Advanced Hunting لإنشاء سجلات قياسية متوافقة مع App Control Studio، أو يمكنك استخدام الوظائف المضمنة في التطبيق لاسترداد السجلات ومعالجتها تلقائيًا.</value>
   </data>
   <data name="MDEAHQueryExamplesButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>يمكنك نسخ الاستعلامات التالية واستخدامها في مدخل MDE Advanced Hunting لإنشاء سجلات قياسية متوافقة مع AppControl Manager، أو يمكنك استخدام الوظائف المضمنة في التطبيق لاسترداد السجلات ومعالجتها تلقائيًا.</value>
+    <value>يمكنك نسخ الاستعلامات التالية واستخدامها في مدخل MDE Advanced Hunting لإنشاء سجلات قياسية متوافقة مع App Control Studio، أو يمكنك استخدام الوظائف المضمنة في التطبيق لاسترداد السجلات ومعالجتها تلقائيًا.</value>
   </data>
   <data name="DragAndDropHint.Text" xml:space="preserve">
      <value>أو اسحب الملفات وأفلتها هنا</value>

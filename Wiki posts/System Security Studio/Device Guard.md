@@ -1,4 +1,4 @@
-# Device Guard | Harden System Security
+# Device Guard | System Security Studio
 
 <p align="center">
 </p>

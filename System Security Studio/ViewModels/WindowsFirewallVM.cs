@@ -462,7 +462,7 @@ internal sealed partial class WindowsFirewallVM : MUnitListViewModelBase
 	}
 
 	/// <summary>
-	/// Event handler for the button that retrieves all of the Firewall rules made by Harden System Security app.
+	/// Event handler for the button that retrieves all of the Firewall rules made by System Security Studio app.
 	/// </summary>
 	internal async void RetrieveFirewallRules() => await RetrieveFirewallRules_internal();
 

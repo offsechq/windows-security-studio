@@ -1989,7 +1989,7 @@ UWAGA: Ta opcja jest zawsze wymuszana, jeśli jakakolwiek zasada UMCI Kontroli A
     <value>Pobieraj i wysyłaj zapytania dotyczące bezpiecznych ustawień w systemie.</value>
   </data>
   <data name="LogsPageTitle" xml:space="preserve">
-    <value>Poniżej znajdują się dzienniki, które Menedżer AppControl automatycznie generuje i przechowuje w folderze „AppControl Manager” w Program Files (jeśli działa z podniesionymi uprawnieniami, w przeciwnym razie zostaną zapisane w katalogu TEMP). Całkowity rozmiar folderu dzienników nigdy nie przekroczy 1 GB.</value>
+    <value>Poniżej znajdują się dzienniki, które Menedżer AppControl automatycznie generuje i przechowuje w folderze „App Control Studio” w Program Files (jeśli działa z podniesionymi uprawnieniami, w przeciwnym razie zostaną zapisane w katalogu TEMP). Całkowity rozmiar folderu dzienników nigdy nie przekroczy 1 GB.</value>
   </data>
   <data name="MDEAHPolicyCreationPageTitle.Text" xml:space="preserve">
     <value>Wykorzystaj dzienniki zaawansowanego wyszukiwania Microsoft Defender for Endpoint do tworzenia zasad kontroli aplikacji. Możesz przeglądać wyeksportowane pliki dziennika lub pobierać je z chmury, logując się na swoje konto Microsoft.</value>
@@ -5523,10 +5523,10 @@ UWAGA: Ta opcja jest zawsze wymuszana, jeśli jakakolwiek zasada UMCI Kontroli A
     <value>Przykłady zapytań</value>
   </data>
   <data name="MDEAHQueryExamplesButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Możesz skopiować poniższe zapytania i użyć ich w portalu MDE Advanced Hunting, aby wygenerować standardowe dzienniki zgodne z AppControl Manager, lub możesz użyć wbudowanej funkcjonalności aplikacji, aby automatycznie pobrać i przetworzyć dzienniki.</value>
+    <value>Możesz skopiować poniższe zapytania i użyć ich w portalu MDE Advanced Hunting, aby wygenerować standardowe dzienniki zgodne z App Control Studio, lub możesz użyć wbudowanej funkcjonalności aplikacji, aby automatycznie pobrać i przetworzyć dzienniki.</value>
   </data>
   <data name="MDEAHQueryExamplesButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Możesz skopiować poniższe zapytania i użyć ich w portalu MDE Advanced Hunting, aby wygenerować standardowe dzienniki zgodne z AppControl Manager, lub możesz użyć wbudowanej funkcjonalności aplikacji, aby automatycznie pobrać i przetworzyć dzienniki.</value>
+    <value>Możesz skopiować poniższe zapytania i użyć ich w portalu MDE Advanced Hunting, aby wygenerować standardowe dzienniki zgodne z App Control Studio, lub możesz użyć wbudowanej funkcjonalności aplikacji, aby automatycznie pobrać i przetworzyć dzienniki.</value>
   </data>
   <data name="DragAndDropHint.Text" xml:space="preserve">
      <value>lub przeciągnij i upuść pliki tutaj</value>

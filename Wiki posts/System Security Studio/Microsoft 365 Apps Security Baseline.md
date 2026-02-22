@@ -1,11 +1,11 @@
-# Microsoft 365 Apps Security Baseline | Harden System Security
+# Microsoft 365 Apps Security Baseline | System Security Studio
 
 <p align="center">
 </p>
 
-The security baseline for Microsoft 365 Apps for enterprise is published twice a year, usually in June and December. Use [the Harden System Security App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) to effortlessly apply them onto your system.
+The security baseline for Microsoft 365 Apps for enterprise is published twice a year, usually in June and December. Use [the System Security Studio App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) to effortlessly apply them onto your system.
 
-On this page, the Harden System Security app enables you to apply the Microsoft 365 Apps Security Baselines on your system, verify compliance, and remove the applied policies.
+On this page, the System Security Studio app enables you to apply the Microsoft 365 Apps Security Baselines on your system, verify compliance, and remove the applied policies.
 
 You can measure the compliance level of your system using the built-in compliance assessment functionality by simply pressing the **Verify** button on this page. You will receive a detailed report of every security measure inside the Microsoft 365 Apps Security Baseline and you will be able to export this security report to a properly formatted JSON file as well.
 
@@ -22,13 +22,13 @@ Each security measure has the following details:
 - Use the `Browse` button to browse for a Microsoft 365 Apps Security Baseline ZIP file that you've already downloaded on your device, this way you can use it on systems that have no Internet connectivity.
 
 > [!NOTE]
-> Either when downloading the Microsoft 365 Apps Security Baseline from Microsoft Servers or when browsing for the zip file manually, the Harden System Security app will process it entirely **in memory**, and apply it without writing any temporary files to disk. The same is true for verification or removal processes.
+> Either when downloading the Microsoft 365 Apps Security Baseline from Microsoft Servers or when browsing for the zip file manually, the System Security Studio app will process it entirely **in memory**, and apply it without writing any temporary files to disk. The same is true for verification or removal processes.
 >
 > While this approach increases development complexity, it significantly improves security by preventing malicious interference with temporary files before application.
 >
 > The app caches the baseline in memory to avoid unnecessary re-downloads and/or re-reads. The cache expires every **2 hours**, after which it is refreshed with the latest data from the Microsoft Server/File path you provided, and this only happens if the app is open. The cache is compressed to minimize memory usage.
 
-![Microsoft 365 Apps Security Baseline | Harden System Security](https://raw.githubusercontent.com/HotCakeX/.github/9f8c01aea24dd33804e794ab1fbcb68fb71609dc/Pictures/PNG%20and%20JPG/Harden%20System%20Security%20page%20screenshots/Microsoft%20365%20Apps%20Security%20Baselines.png)
+![Microsoft 365 Apps Security Baseline | System Security Studio](https://raw.githubusercontent.com/HotCakeX/.github/9f8c01aea24dd33804e794ab1fbcb68fb71609dc/Pictures/PNG%20and%20JPG/Harden%20System%20Security%20page%20screenshots/Microsoft%20365%20Apps%20Security%20Baselines.png)
 
 > [!TIP] > [More info in Microsoft Learn](https://learn.microsoft.com/deployoffice/security/security-baseline)
 >

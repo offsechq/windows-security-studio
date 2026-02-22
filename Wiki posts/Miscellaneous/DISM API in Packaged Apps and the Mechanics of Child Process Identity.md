@@ -92,7 +92,7 @@ The Kernel automatically strips off all of the special token claims attributes f
 
 ### For Windows App SDK apps
 
-I've implemented the solution [here](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden%20System%20Security/ViewModels/OptionalWindowsFeaturesVM.cs) in the [Harden System Security](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) app's code.
+I've implemented the solution [here](https://github.com/OFFSECHQ/windows-security-studio/blob/main/Harden%20System%20Security/ViewModels/OptionalWindowsFeaturesVM.cs) in the [System Security Studio](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) app's code.
 
 ### For PowerShell
 

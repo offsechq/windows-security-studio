@@ -4578,10 +4578,10 @@ Odcisk Palca: {3}</value>
     <value>Kontekst uwierzytelniania</value>
   </data>
   <data name="AuthenticationContextComboBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Wybierz kontekst uwierzytelniania do użycia w operacji logowania. Każdy kontekst to zestaw uprawnień Microsoft Graph wymaganych do pomyślnego wykonania zadań oferowanych w AppControl Manager.</value>
+    <value>Wybierz kontekst uwierzytelniania do użycia w operacji logowania. Każdy kontekst to zestaw uprawnień Microsoft Graph wymaganych do pomyślnego wykonania zadań oferowanych w App Control Studio.</value>
   </data>
   <data name="AuthenticationContextComboBox.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Wybierz kontekst uwierzytelniania do użycia w operacji logowania. Każdy kontekst to zestaw uprawnień Microsoft Graph wymaganych do pomyślnego wykonania zadań oferowanych w AppControl Manager.</value>
+    <value>Wybierz kontekst uwierzytelniania do użycia w operacji logowania. Każdy kontekst to zestaw uprawnień Microsoft Graph wymaganych do pomyślnego wykonania zadań oferowanych w App Control Studio.</value>
   </data>
     <data name="RemoveAccountButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Usuń konto z listy. Zostanie całkowicie usunięte z pamięci aplikacji i pamięci podręcznej Microsoft Authentication Library.</value>

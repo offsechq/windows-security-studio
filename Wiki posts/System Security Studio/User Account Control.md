@@ -1,4 +1,4 @@
-# User Account Control | Harden System Security
+# User Account Control | System Security Studio
 
 <p align="center">
 </p>

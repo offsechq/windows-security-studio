@@ -1,4 +1,4 @@
-# Edge Browser | Harden System Security
+# Edge Browser | System Security Studio
 
 <p align="center">
 </p>

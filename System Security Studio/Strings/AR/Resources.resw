@@ -4578,10 +4578,10 @@
     <value>سياق المصادقة</value>
   </data>
   <data name="AuthenticationContextComboBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>حدّد سياق المصادقة لاستخدامه في عملية تسجيل الدخول. كل سياق هو مجموعة من أذونات Microsoft Graph المطلوبة لإكمال المهام التي يقدّمها AppControl Manager بنجاح.</value>
+    <value>حدّد سياق المصادقة لاستخدامه في عملية تسجيل الدخول. كل سياق هو مجموعة من أذونات Microsoft Graph المطلوبة لإكمال المهام التي يقدّمها App Control Studio بنجاح.</value>
   </data>
   <data name="AuthenticationContextComboBox.AutomationProperties.HelpText" xml:space="preserve">
-    <value>حدّد سياق المصادقة لاستخدامه في عملية تسجيل الدخول. كل سياق هو مجموعة من أذونات Microsoft Graph المطلوبة لإكمال المهام التي يقدّمها AppControl Manager بنجاح.</value>
+    <value>حدّد سياق المصادقة لاستخدامه في عملية تسجيل الدخول. كل سياق هو مجموعة من أذونات Microsoft Graph المطلوبة لإكمال المهام التي يقدّمها App Control Studio بنجاح.</value>
   </data>
     <data name="RemoveAccountButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>أزل الحساب من القائمة. سيتم إزالته بالكامل من ذاكرة التطبيق ومن ذاكرة التخزين المؤقت لـ Microsoft Authentication Library.</value>

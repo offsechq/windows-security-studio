@@ -1,4 +1,4 @@
-# Microsoft Defender | Harden System Security
+# Microsoft Defender | System Security Studio
 
 ## Exclusions Tab
 
@@ -78,7 +78,7 @@ You can retrieve, filter, sort, and search exclusions across these branches. Add
 
 - **[Group Policy]** Enables [Controlled Folder Access](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/enable-controlled-folders). It [helps protect your valuable data](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/controlled-folders) from malicious apps and threats, such as ransomware. Controlled folder access protects your data by checking apps against a list of known, trusted apps. Due to the recent wave of global ransomware attacks, it is important to use this feature to protect your valuables files, specially OneDrive folders. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-defender#enablecontrolledfolderaccess)
 
-  - If it blocks a program from accessing one of your folders it protects, and you absolutely trust that program, then you can add it to exclusion list using Microsoft Defender GUI or the Harden System Security app. You can also query the list of allowed apps using the app in the Defender category, Exclusions tab. You can backup your personalized list of allowed apps, that are relevant to your system, and restore them in case you clean install your Windows.
+  - If it blocks a program from accessing one of your folders it protects, and you absolutely trust that program, then you can add it to exclusion list using Microsoft Defender GUI or the System Security Studio app. You can also query the list of allowed apps using the app in the Defender category, Exclusions tab. You can backup your personalized list of allowed apps, that are relevant to your system, and restore them in case you clean install your Windows.
 
   - **[Registry/Cmdlet]** The root of the OneDrive folders of all the user accounts will be added to the protected folders list of Controlled Folder Access, to provide Ransomware protection for the entire OneDrive folder. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-defender#controlledfolderaccessprotectedfolders)
 
@@ -104,7 +104,7 @@ You can retrieve, filter, sort, and search exclusions across these branches. Add
 
   - Exploit Protection configurations are also accessible in XML format [within this repository](https://github.com/OFFSECHQ/windows-security-studio/tree/main/Harden%20System%20Security/Resources/Intune%20Files/Hardening%20Policies/Exploit%20Protections). When implementing exploit protections using an XML file, the existing exploit mitigations will seamlessly integrate rather than being overwritten. Should there be pre-existing exploit protections applied to an executable on the system, and the XML file specifies different mitigations for the same executable, these protections will be merged and applied collectively.
 
-- **[Registry/Cmdlet]** [Turns on Data Execution Prevention](https://learn.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) (DEP) for all applications, including 32-bit programs. By default, the output of `BCDEdit /enum "{current}"` (in PowerShell) for the NX bit is `OptIn` but the Harden System Security app sets it to `AlwaysOn`
+- **[Registry/Cmdlet]** [Turns on Data Execution Prevention](https://learn.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) (DEP) for all applications, including 32-bit programs. By default, the output of `BCDEdit /enum "{current}"` (in PowerShell) for the NX bit is `OptIn` but the System Security Studio app sets it to `AlwaysOn`
 
 - **[Group Policy]** Check for the latest virus and spyware security intelligence on startup. **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-microsoftdefenderantivirus#signatureupdate_updateonstartup)
 

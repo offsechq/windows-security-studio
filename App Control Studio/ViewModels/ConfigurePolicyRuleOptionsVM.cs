@@ -205,7 +205,7 @@ internal sealed partial class ConfigurePolicyRuleOptionsVM : ViewModelBase
 
 					Management.ConvertXMLToBinary(SelectedFilePath, null, cipPath);
 
-					// If a base policy is being deployed, ensure it's supplemental policy for AppControl Manager also gets deployed
+					// If a base policy is being deployed, ensure it's supplemental policy for App Control Studio also gets deployed
 					if (SupplementalForSelf.IsEligible(policyObj, SelectedFilePath))
 						SupplementalForSelf.Deploy(stagingArea.FullName, policyObj.PolicyID);
 

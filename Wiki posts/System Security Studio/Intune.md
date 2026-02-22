@@ -1,6 +1,6 @@
 # Intune | System Security Studio
 
-You can scale the security policies you trust locally to your entire fleet of Windows devices. The Harden System Security app introduces an Intune dashboard, allowing you to bridge the gap between local hardening and cloud management.
+You can scale the security policies you trust locally to your entire fleet of Windows devices. The System Security Studio app introduces an Intune dashboard, allowing you to bridge the gap between local hardening and cloud management.
 
 - **Unified Policy Control**: Instantly view your existing Device Configuration policies or push the hardened standards directly to the cloud.
 
@@ -16,6 +16,6 @@ You can scale the security policies you trust locally to your entire fleet of Wi
 
 - **Retrieve Intune Policies**: Use this button to retrieve all available device configurations from your tenant's Intune. You will see a detailed overview of all of them in the list view.
 
-- **Policies ComboBox**: It lists security categories that the Harden System Security app offers. You can select the category that you like and then use the `Deploy Selected Policy` button to deploy/upload it to your Intune.
+- **Policies ComboBox**: It lists security categories that the System Security Studio app offers. You can select the category that you like and then use the `Deploy Selected Policy` button to deploy/upload it to your Intune.
 
 - **Deploy Selected Policy**: Deploys the policy you select from the `Policies ComboBox` next to it.

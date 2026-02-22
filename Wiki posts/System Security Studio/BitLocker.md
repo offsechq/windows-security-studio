@@ -1,4 +1,4 @@
-# BitLocker | Harden System Security
+# BitLocker | System Security Studio
 
 <p align="center">
 </p>
@@ -27,7 +27,7 @@
 
 > [!IMPORTANT] > [AMD Zen 2 and 3 CPUs have a vulnerability in them](https://github.com/OFFSECHQ/windows-security-studio/issues/63), if you use one of them, make sure your BitLocker Startup PIN is at least 16 characters long [_(max is 20)_](https://learn.microsoft.com/windows/security/operating-system-security/data-protection/bitlocker/bitlocker-group-policy-settings#configure-minimum-pin-length-for-startup).
 
-- **[Group Policy]** Enables or disables [DMA protection from BitLocker Countermeasures](https://learn.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-countermeasures#protecting-thunderbolt-and-other-dma-ports) based on the status of [Kernel DMA protection](https://learn.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt). Kernel DMA Protection is [not compatible](https://learn.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt#system-compatibility) with other BitLocker DMA attacks countermeasures. It is recommended to disable the BitLocker DMA attacks countermeasures if the system supports Kernel DMA Protection ([The Harden System Security App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) does that exactly). Kernel DMA Protection provides higher security bar for the system over the BitLocker DMA attack countermeasures, while maintaining usability of external peripherals. You can check the status of Kernel DMA protection [using this official guide](https://learn.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt#how-to-check-if-kernel-dma-protection-is-enabled). **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-dataprotection#allowdirectmemoryaccess)
+- **[Group Policy]** Enables or disables [DMA protection from BitLocker Countermeasures](https://learn.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-countermeasures#protecting-thunderbolt-and-other-dma-ports) based on the status of [Kernel DMA protection](https://learn.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt). Kernel DMA Protection is [not compatible](https://learn.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt#system-compatibility) with other BitLocker DMA attacks countermeasures. It is recommended to disable the BitLocker DMA attacks countermeasures if the system supports Kernel DMA Protection ([The System Security Studio App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) does that exactly). Kernel DMA Protection provides higher security bar for the system over the BitLocker DMA attack countermeasures, while maintaining usability of external peripherals. You can check the status of Kernel DMA protection [using this official guide](https://learn.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt#how-to-check-if-kernel-dma-protection-is-enabled). **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-dataprotection#allowdirectmemoryaccess)
 
   - [Kernel DMA Protection (Memory Access Protection) for OEMs](https://learn.microsoft.com/windows-hardware/design/device-experiences/oem-kernel-dma-protection) page shows the requirements for Kernel DMA Protection. for Intel CPUs, support for requirements such as VT-X and VT-D can be found in each CPU's respective product page. e.g. [Intel i7 13700K](https://ark.intel.com/content/www/us/en/ark/products/230500/intel-core-i713700k-processor-30m-cache-up-to-5-40-ghz.html)
 
@@ -49,11 +49,11 @@ Refer to this [official documentation about the countermeasures of BitLocker](ht
 
 ## BitLocker Management
 
-![BitLocker management in Harden System Security](https://raw.githubusercontent.com/HotCakeX/.github/b70cfc85f491ca1e80bd00df62bfebeb0f3b7d5b/Pictures/APNGs/Harden%20System%20Security/HardenSystemSecurity_BitLockerManagementDemo.apng)
+![BitLocker management in System Security Studio](https://raw.githubusercontent.com/HotCakeX/.github/b70cfc85f491ca1e80bd00df62bfebeb0f3b7d5b/Pictures/APNGs/Harden%20System%20Security/HardenSystemSecurity_BitLockerManagementDemo.apng)
 
 ### Full Drive Encryption
 
-You can enable BitLocker encryption for the **Operating System (OS) drive**, **fixed drives**, and **removable drives** via a guided, safety-first workflow. All messages and UI elements related to BitLocker are localized for the languages supported by the app. BitLocker management is implemented in the low-level **ComManager** component of Harden System Security.
+You can enable BitLocker encryption for the **Operating System (OS) drive**, **fixed drives**, and **removable drives** via a guided, safety-first workflow. All messages and UI elements related to BitLocker are localized for the languages supported by the app. BitLocker management is implemented in the low-level **ComManager** component of System Security Studio.
 
 ### Add or Modify Key Protectors
 

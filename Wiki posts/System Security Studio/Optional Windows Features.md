@@ -1,21 +1,21 @@
-# Optional Windows Features | Harden System Security
+# Optional Windows Features | System Security Studio
 
 <p align="center">
 </p>
 
 ## Full Customization
 
-On this page, the Harden System Security app offers a fully featured list of every single Windows Feature and Capability with searching and sorting functionalities, allowing you to easily enable or disable each of them with real time progress display.
+On this page, the System Security Studio app offers a fully featured list of every single Windows Feature and Capability with searching and sorting functionalities, allowing you to easily enable or disable each of them with real time progress display.
 
 Use the `Retrieve Recommended Only` option under the `Retrieve All` button to only retrieve the status of the items listed on this page; It completes a lot faster than retrieving all the items.
 
-![Optional Windows Features Page Demo of the Harden System Security App](https://raw.githubusercontent.com/HotCakeX/.github/c22418f6d2605c77ea4c05dfd42f2c85ef0191eb/Pictures/APNGs/Harden%20System%20Security/HardenSystemSecurity_OptionalWindowsFeaturesDemo.apng)
+![Optional Windows Features Page Demo of the System Security Studio App](https://raw.githubusercontent.com/HotCakeX/.github/c22418f6d2605c77ea4c05dfd42f2c85ef0191eb/Pictures/APNGs/Harden%20System%20Security/HardenSystemSecurity_OptionalWindowsFeaturesDemo.apng)
 
 ## Recommended Configurations
 
 Use the 3 apply, remove or verify buttons on this page to apply the security configurations states explained below. They enable/disable only specific Windows Features and capabilities to provide optimal security for your system:
 
-- The [Harden System Security app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) [disables](https://learn.microsoft.com/powershell/module/dism/disable-windowsoptionalfeature) the following rarely used features in [Windows optional features](https://learn.microsoft.com/windows/application-management/add-apps-and-features#use-windows-powershell-to-disable-specific-features) (Control Panel):
+- The [System Security Studio app](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) [disables](https://learn.microsoft.com/powershell/module/dism/disable-windowsoptionalfeature) the following rarely used features in [Windows optional features](https://learn.microsoft.com/windows/application-management/add-apps-and-features#use-windows-powershell-to-disable-specific-features) (Control Panel):
 
   - PowerShell v2: because it's old and doesn't support [AMSI](https://devblogs.microsoft.com/powershell/powershell-the-blue-team/#antimalware-scan-interface-integration).
 
@@ -49,4 +49,4 @@ Use the 3 apply, remove or verify buttons on this page to apply the security con
 
 Windows includes pre-loaded Ethernet and Wi-Fi network adapter drivers to enable internet connectivity during the Out-of-Box Experience (OOBE) without requiring manual driver installation. These drivers support hardware from manufacturers such as Intel, Qualcomm, Broadcom, Marvell, Realtek, Ralink, and others.
 
-Using the Harden System Security app, you can remove unnecessary drivers or those associated with OEM hardware you do not own. This process helps freeing up disk space and reduce the overall attack surface.
+Using the System Security Studio app, you can remove unnecessary drivers or those associated with OEM hardware you do not own. This process helps freeing up disk space and reduce the overall attack surface.

@@ -719,10 +719,10 @@
     <value>סגנון רקע</value>
   </data>
   <data name="BackgroundStyleSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>זו הרקע של AppControl Manager. השינויים יהיו גלויים ברקע.</value>
+    <value>זו הרקע של App Control Studio. השינויים יהיו גלויים ברקע.</value>
   </data>
   <data name="BackgroundStyleSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>זו הרקע של AppControl Manager. השינויים יהיו גלויים ברקע.</value>
+    <value>זו הרקע של App Control Studio. השינויים יהיו גלויים ברקע.</value>
   </data>
   <data name="MainNavigationIconsSettingsCard.Description" xml:space="preserve">
     <value>בחר סגנון עבור הסמלים של הניווט הראשי</value>
@@ -743,10 +743,10 @@
     <value>ערכת נושא</value>
   </data>
   <data name="AppThemeSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>בחר ערכת נושא עבור AppControl Manager</value>
+    <value>בחר ערכת נושא עבור App Control Studio</value>
   </data>
   <data name="AppThemeSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>בחר ערכת נושא עבור AppControl Manager</value>
+    <value>בחר ערכת נושא עבור App Control Studio</value>
   </data>
   <data name="MainNavigationLocationSettingsCard.Description" xml:space="preserve">
     <value>התאם אישית את מיקום תפריט הניווט</value>
@@ -761,16 +761,16 @@
     <value>בחר מיקום עבור תפריט הניווט</value>
   </data>
   <data name="AppSoundSettingSettingsCard.Description" xml:space="preserve">
-    <value>שמע משוב קולי בעת שימוש ברכיבים שונים של AppControl Manager</value>
+    <value>שמע משוב קולי בעת שימוש ברכיבים שונים של App Control Studio</value>
   </data>
   <data name="AppSoundSettingSettingsCard.Header" xml:space="preserve">
     <value>צליל</value>
   </data>
   <data name="AppSoundSettingSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>שמע משוב קולי בעת שימוש ברכיבים שונים של AppControl Manager</value>
+    <value>שמע משוב קולי בעת שימוש ברכיבים שונים של App Control Studio</value>
   </data>
   <data name="AppSoundSettingSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>שמע משוב קולי בעת שימוש ברכיבים שונים של AppControl Manager</value>
+    <value>שמע משוב קולי בעת שימוש ברכיבים שונים של App Control Studio</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.Description" xml:space="preserve">
     <value>מתאים בעיקר לשימוש עם MicaAlt כרקע.</value>
@@ -779,10 +779,10 @@
     <value>רקע כהה יותר</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>זה יסיר את הצל הבהיר הנוסף מהרקע, וייתן מראה כהה יותר כללי למראה של AppControl Manager.</value>
+    <value>זה יסיר את הצל הבהיר הנוסף מהרקע, וייתן מראה כהה יותר כללי למראה של App Control Studio.</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>זה יסיר את הצל הבהיר הנוסף מהרקע, וייתן מראה כהה יותר כללי למראה של AppControl Manager.</value>
+    <value>זה יסיר את הצל הבהיר הנוסף מהרקע, וייתן מראה כהה יותר כללי למראה של App Control Studio.</value>
   </data>
   <data name="UserConfigurations.Text" xml:space="preserve">
     <value>תצורות משתמש</value>
@@ -1989,7 +1989,7 @@
     <value>אחזר ושאל את ההגדרות המאובטחות במערכת.</value>
   </data>
   <data name="LogsPageTitle" xml:space="preserve">
-    <value>להלן היומנים שמנהל AppControl מייצר אוטומטית ומאחסן בתיקיית &quot;AppControl Manager&quot; ב-Program Files (אם פועל עם הרשאות מוגברות, אחרת הם יישמרו בספריית TEMP). הגודל הכולל של תיקיית היומנים לעולם לא יעלה על 1GB.</value>
+    <value>להלן היומנים שמנהל AppControl מייצר אוטומטית ומאחסן בתיקיית &quot;App Control Studio&quot; ב-Program Files (אם פועל עם הרשאות מוגברות, אחרת הם יישמרו בספריית TEMP). הגודל הכולל של תיקיית היומנים לעולם לא יעלה על 1GB.</value>
   </data>
   <data name="MDEAHPolicyCreationPageTitle.Text" xml:space="preserve">
     <value>השתמש ביומני ה-Advanced Hunting של Microsoft Defender for Endpoint לבניית מדיניות בקרת אפליקציות. תוכל לדפדף בקבצי יומן מיוצאים או לאחזר אותם מהענן על ידי התחברות לחשבון מיקרוסופט שלך.</value>
@@ -2283,7 +2283,7 @@
     <value>מרחיב תפריט משנה בהגבהה או בנגיעה כדי לאפשר העתקת פריטים נפרדים בכל שורה.</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>AppControl Manager מאפשר לך לנהל בקלות מדיניות App Control ו-Code Integrity ב-Windows, כולל אך לא מוגבל ליצירה, סימולציה, הסרה, פריסה וחתימה.</value>
+    <value>App Control Studio מאפשר לך לנהל בקלות מדיניות App Control ו-Code Integrity ב-Windows, כולל אך לא מוגבל ליצירה, סימולציה, הסרה, פריסה וחתימה.</value>
   </data>
   <data name="MergePoliciesSettingsExpander.Description" xml:space="preserve">
     <value>מיזוג מדיניות App Control</value>
@@ -2394,10 +2394,10 @@
     <value>מידע נוסף</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>פותח את דף הוויקי הראשי של AppControl Manager ב-GitHub.</value>
+    <value>פותח את דף הוויקי הראשי של App Control Studio ב-GitHub.</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>פותח את דף הוויקי הראשי של AppControl Manager ב-GitHub.</value>
+    <value>פותח את דף הוויקי הראשי של App Control Studio ב-GitHub.</value>
   </data>
   <data name="UpdatePageWhatsNewInfoBar.Title" xml:space="preserve">
     <value>הערות שחרור</value>
@@ -2427,16 +2427,16 @@
     <value>פותח את עמוד ה-Releases של GitHub שבו תוכל למצוא את הערות השחרור המלאות עבור העדכון הקיים.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.Description" xml:space="preserve">
-    <value>לאחר שהעדכונים יורדו ויותקנו, בפעם הבאה שתפתח את AppControl Manager תשתמש בגרסה החדשה.</value>
+    <value>לאחר שהעדכונים יורדו ויותקנו, בפעם הבאה שתפתח את App Control Studio תשתמש בגרסה החדשה.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.Header" xml:space="preserve">
-    <value>בדוק עדכון ל-AppControl Manager</value>
+    <value>בדוק עדכון ל-App Control Studio</value>
   </data>
   <data name="CheckForUpdateSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>לאחר שהעדכונים יורדו ויותקנו, בפעם הבאה שתפתח את AppControl Manager תשתמש בגרסה החדשה.</value>
+    <value>לאחר שהעדכונים יורדו ויותקנו, בפעם הבאה שתפתח את App Control Studio תשתמש בגרסה החדשה.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>לאחר שהעדכונים יורדו ויותקנו, בפעם הבאה שתפתח את AppControl Manager תשתמש בגרסה החדשה.</value>
+    <value>לאחר שהעדכונים יורדו ויותקנו, בפעם הבאה שתפתח את App Control Studio תשתמש בגרסה החדשה.</value>
   </data>
   <data name="AutoUpdateCheckSettingsCard.Description" xml:space="preserve">
     <value>בודק באופן אוטומטי עדכונים בעת הפעלת האפליקציה ומודיע לך אם גרסה חדשה זמינה, כך שתוכל להשתמש בדף זה כדי להתקין אותה.</value>
@@ -2526,13 +2526,13 @@
     <value>נתיב התעודה:</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.Header" xml:space="preserve">
-    <value>התאם את מראה AppControl Manager לפי העדפתך.</value>
+    <value>התאם את מראה App Control Studio לפי העדפתך.</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>השתמש באפשרויות השונות הזמינות לשינוי המראה והאפקטים הוויזואליים של AppControl Manager.</value>
+    <value>השתמש באפשרויות השונות הזמינות לשינוי המראה והאפקטים הוויזואליים של App Control Studio.</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>השתמש באפשרויות השונות הזמינות לשינוי המראה והאפקטים הוויזואליים של AppControl Manager.</value>
+    <value>השתמש באפשרויות השונות הזמינות לשינוי המראה והאפקטים הוויזואליים של App Control Studio.</value>
   </data>
   <data name="LanguageTextBlock.Text" xml:space="preserve">
     <value>שפה</value>
@@ -2541,7 +2541,7 @@
     <value>מאגר GitHub</value>
   </data>
   <data name="AppControlManagerDocumentationHyperLinkButton.Content" xml:space="preserve">
-    <value>תיעוד AppControl Manager</value>
+    <value>תיעוד App Control Studio</value>
   </data>
   <data name="MicrosoftStorePageHyperLinkButton.Content" xml:space="preserve">
     <value>דף Microsoft Store</value>
@@ -2948,7 +2948,7 @@
     <value>עיין בקובץ מדיניות XML</value>
   </data>
   <data name="SidebarMainCaptionTextBlock.Text" xml:space="preserve">
-    <value>השתמש בסרגל הצד כדי לנעוץ נתיבי קובצי XML ולהשתמש בהם שוב בחלקים שונים של AppControl Manager.</value>
+    <value>השתמש בסרגל הצד כדי לנעוץ נתיבי קובצי XML ולהשתמש בהם שוב בחלקים שונים של App Control Studio.</value>
   </data>
   <data name="SidebarTextBlock.Text" xml:space="preserve">
     <value>סרגל צד</value>
@@ -3152,7 +3152,7 @@
     <comment>Certificate creation page</comment>
 </data>
 <data name="TheAppIsUpToDate" xml:space="preserve">
-    <value>אפליקציית AppControl Manager מעודכנת.</value>
+    <value>אפליקציית App Control Studio מעודכנת.</value>
   </data>
   <data name="CheckingForUpdateStore" xml:space="preserve">
     <value>בודק עדכון ב-Microsoft Store...</value>
@@ -3161,7 +3161,7 @@
     <value>יש עדכון חדש זמין. פותח את Microsoft Store כדי שתוכל לעדכן את האפליקציה שם.</value>
   </data>
   <data name="ProblemOpeningMSStore" xml:space="preserve">
-    <value>אירעה בעיה בפתיחת דף ה-Microsoft Store של AppControl Manager.</value>
+    <value>אירעה בעיה בפתיחת דף ה-Microsoft Store של App Control Studio.</value>
   </data>
   <data name="InstallLatestVer" xml:space="preserve">
     <value>התקן את הגרסה האחרונה</value>
@@ -3582,16 +3582,16 @@
     <value>החלפת נתיב של Code Integrity Schema</value>
   </data>
   <data name="RateAndReviewSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>פותח את דף המיני של חנות Microsoft, שבו ניתן לדרג ובאופן אופציונלי לכתוב חוות דעת על AppControl Manager.</value>
+    <value>פותח את דף המיני של חנות Microsoft, שבו ניתן לדרג ובאופן אופציונלי לכתוב חוות דעת על App Control Studio.</value>
   </data>
   <data name="RateAndReviewSettingsCard.Header" xml:space="preserve">
     <value>דרג וכתוב חוות דעת</value>
   </data>
   <data name="RateAndReviewSettingsCard.Description" xml:space="preserve">
-    <value>פותח את דף המיני של חנות Microsoft, שבו ניתן לדרג ובאופן אופציונלי לכתוב חוות דעת על AppControl Manager.</value>
+    <value>פותח את דף המיני של חנות Microsoft, שבו ניתן לדרג ובאופן אופציונלי לכתוב חוות דעת על App Control Studio.</value>
   </data>
   <data name="RateAndReviewSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>פותח את דף המיני של חנות Microsoft, שבו ניתן לדרג ובאופן אופציונלי לכתוב חוות דעת על AppControl Manager.</value>
+    <value>פותח את דף המיני של חנות Microsoft, שבו ניתן לדרג ובאופן אופציונלי לכתוב חוות דעת על App Control Studio.</value>
   </data>
 <data name="VerifyButtonText" xml:space="preserve">
     <value>אמת</value>
@@ -3789,7 +3789,7 @@
     <value>מנסה לנתח ולקרוא את קובץ הגדרות המשתמש הנוכחי</value>
 </data>
 <data name="AppControlManagerFolderCreatedMessage" xml:space="preserve">
-    <value>תיקיית AppControl Manager בתיקיית Program Files נוצרה מכיוון שלא הייתה קיימת.</value>
+    <value>תיקיית App Control Studio בתיקיית Program Files נוצרה מכיוון שלא הייתה קיימת.</value>
 </data>
 <data name="ErrorReadingUserConfigMessage" xml:space="preserve">
     <value>שגיאה בקריאה או בניתוח קובץ הגדרות המשתמש: {0}. תיווצר הגדרה חדשה עם ערכי ברירת מחדל.</value>
@@ -5523,10 +5523,10 @@
     <value>דוגמאות לשאילתות</value>
   </data>
   <data name="MDEAHQueryExamplesButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>באפשרותך להעתיק את השאילתות הבאות ולהשתמש בהן בפורטל Advanced Hunting של MDE כדי להפיק יומנים סטנדרטיים התואמים ל-AppControl Manager, או להשתמש ביכולות המובנות של היישום כדי לאחזר את היומנים ולעבד אותם באופן אוטומטי.</value>
+    <value>באפשרותך להעתיק את השאילתות הבאות ולהשתמש בהן בפורטל Advanced Hunting של MDE כדי להפיק יומנים סטנדרטיים התואמים ל-App Control Studio, או להשתמש ביכולות המובנות של היישום כדי לאחזר את היומנים ולעבד אותם באופן אוטומטי.</value>
   </data>
   <data name="MDEAHQueryExamplesButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>באפשרותך להעתיק את השאילתות הבאות ולהשתמש בהן בפורטל Advanced Hunting של MDE כדי להפיק יומנים סטנדרטיים התואמים ל-AppControl Manager, או להשתמש ביכולות המובנות של היישום כדי לאחזר את היומנים ולעבד אותם באופן אוטומטי.</value>
+    <value>באפשרותך להעתיק את השאילתות הבאות ולהשתמש בהן בפורטל Advanced Hunting של MDE כדי להפיק יומנים סטנדרטיים התואמים ל-App Control Studio, או להשתמש ביכולות המובנות של היישום כדי לאחזר את היומנים ולעבד אותם באופן אוטומטי.</value>
   </data>
   <data name="DragAndDropHint.Text" xml:space="preserve">
      <value>או גרור ושחרר קבצים לכאן</value>

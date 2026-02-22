@@ -77,7 +77,7 @@ public partial class App : Application
 	private static int CleanUpHappened;
 
 	/// <summary>
-	/// The application settings for AppControl Manager. Retrieved early in a Non-ThreadSafe manner.
+	/// The application settings for App Control Studio. Retrieved early in a Non-ThreadSafe manner.
 	/// Any references (instance or static) throughout the app to App settings use this property.
 	/// </summary>
 	internal static CommonCore.AppSettings.Main Settings => ViewModelProvider.AppSettings;

@@ -1,4 +1,4 @@
-# Windows Firewall | Harden System Security
+# Windows Firewall | System Security Studio
 
 <p align="center">
 </p>
@@ -16,7 +16,7 @@
 
 ## Management
 
-The **Management** tab provides an interface for creating, viewing, and deleting Windows Firewall rules created by the Harden System Security app. This feature is designed to give you granular control over network traffic for specific applications and directories.
+The **Management** tab provides an interface for creating, viewing, and deleting Windows Firewall rules created by the System Security Studio app. This feature is designed to give you granular control over network traffic for specific applications and directories.
 
 ### User Interface Guide
 

@@ -1,11 +1,11 @@
-// [string]$ExePath = 'AppControl Manager\eXclude\ResourceValidator\target\x86_64-pc-windows-msvc\release\ResourceValidator-X64.exe'
-// [string]$Root = '.\AppControl Manager'
-// [string]$CsprojPath = '.\AppControl Manager\AppControl Manager.csproj'
+// [string]$ExePath = 'App Control Studio\eXclude\ResourceValidator\target\x86_64-pc-windows-msvc\release\ResourceValidator-X64.exe'
+// [string]$Root = '.\App Control Studio'
+// [string]$CsprojPath = '.\App Control Studio\App Control Studio.csproj'
 // . $ExePath $Root $CsprojPath
 
-// [string]$ExePath = 'AppControl Manager\eXclude\ResourceValidator\target\x86_64-pc-windows-msvc\release\ResourceValidator-X64.exe'
-// [string]$Root = '.\Harden System Security'
-// [string]$CsprojPath = '.\Harden System Security\Harden System Security.csproj'
+// [string]$ExePath = 'App Control Studio\eXclude\ResourceValidator\target\x86_64-pc-windows-msvc\release\ResourceValidator-X64.exe'
+// [string]$Root = '.\System Security Studio'
+// [string]$CsprojPath = '.\System Security Studio\System Security Studio.csproj'
 // . $ExePath $Root $CsprojPath
 
 // There is currently an edge case where a key is defined in a resource file via "." indicating it belongs to a XAML x:UID, but then it's used via GetStr method in C# code.

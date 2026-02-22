@@ -1,4 +1,4 @@
-# Windows Networking | Harden System Security
+# Windows Networking | System Security Studio
 
 <p align="center">
 </p>

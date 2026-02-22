@@ -1,4 +1,4 @@
-# Miscellaneous Configurations | Harden System Security
+# Miscellaneous Configurations | System Security Studio
 
 <p align="center">
 </p>

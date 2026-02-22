@@ -210,14 +210,14 @@ internal sealed partial class UserConfiguration(
 	{
 		try
 		{
-			// Create the AppControl Manager folder in Program Files if it doesn't exist
+			// Create the App Control Studio folder in Program Files if it doesn't exist
 			if (!Directory.Exists(GlobalVars.UserConfigDir))
 			{
 				_ = Directory.CreateDirectory(GlobalVars.UserConfigDir);
 				Logger.Write(GlobalVars.GetStr("AppControlManagerFolderCreatedMessage"));
 			}
 
-			// Create User configuration folder in the AppControl Manager folder if it doesn't already exist
+			// Create User configuration folder in the App Control Studio folder if it doesn't already exist
 			string UserConfigDir = Path.Combine(GlobalVars.UserConfigDir, "UserConfigurations");
 			if (!Directory.Exists(UserConfigDir))
 			{

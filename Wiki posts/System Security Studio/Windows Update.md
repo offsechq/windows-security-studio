@@ -1,4 +1,4 @@
-# Windows Update | Harden System Security
+# Windows Update | System Security Studio
 
 <p align="center">
 </p>

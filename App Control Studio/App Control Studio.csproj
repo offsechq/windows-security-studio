@@ -125,7 +125,7 @@
     <NuGetAuditMode>all</NuGetAuditMode>
     <NuGetAuditLevel>low</NuGetAuditLevel>
     <DocumentationFile>AppControlManagerAPIDocumentation.xml</DocumentationFile>
-    <PackageReadmeFile>AppControl Manager.md</PackageReadmeFile>
+    <PackageReadmeFile>App Control Studio.md</PackageReadmeFile>
     <!-- Don't need this -->
     <GenerateTemporaryStoreCertificate>False</GenerateTemporaryStoreCertificate>
     <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>

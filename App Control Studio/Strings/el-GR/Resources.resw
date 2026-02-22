@@ -719,10 +719,10 @@
     <value>Στυλ Φόντου</value>
   </data>
   <data name="BackgroundStyleSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Αυτό είναι το φόντο του AppControl Manager. Οι αλλαγές θα είναι ορατές στο φόντο.</value>
+    <value>Αυτό είναι το φόντο του App Control Studio. Οι αλλαγές θα είναι ορατές στο φόντο.</value>
   </data>
   <data name="BackgroundStyleSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Αυτό είναι το φόντο του AppControl Manager. Οι αλλαγές θα είναι ορατές στο φόντο.</value>
+    <value>Αυτό είναι το φόντο του App Control Studio. Οι αλλαγές θα είναι ορατές στο φόντο.</value>
   </data>
   <data name="MainNavigationIconsSettingsCard.Description" xml:space="preserve">
     <value>Επιλέξτε ένα στυλ για τα εικονίδια κύριας πλοήγησης</value>
@@ -743,10 +743,10 @@
     <value>Θέμα</value>
   </data>
   <data name="AppThemeSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Επιλέξτε ένα θέμα για το AppControl Manager</value>
+    <value>Επιλέξτε ένα θέμα για το App Control Studio</value>
   </data>
   <data name="AppThemeSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Επιλέξτε ένα θέμα για το AppControl Manager</value>
+    <value>Επιλέξτε ένα θέμα για το App Control Studio</value>
   </data>
   <data name="MainNavigationLocationSettingsCard.Description" xml:space="preserve">
     <value>Προσαρμογή της τοποθεσίας του Μενού Πλοήγησης</value>
@@ -761,16 +761,16 @@
     <value>Επιλέξτε μια τοποθεσία για το μενού πλοήγησης</value>
   </data>
   <data name="AppSoundSettingSettingsCard.Description" xml:space="preserve">
-    <value>Ακούστε ηχητική ανάδραση κατά τη χρήση διαφορετικών στοιχείων του AppControl Manager</value>
+    <value>Ακούστε ηχητική ανάδραση κατά τη χρήση διαφορετικών στοιχείων του App Control Studio</value>
   </data>
   <data name="AppSoundSettingSettingsCard.Header" xml:space="preserve">
     <value>Ήχος</value>
   </data>
   <data name="AppSoundSettingSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ακούστε ηχητική ανάδραση κατά τη χρήση διαφορετικών στοιχείων του AppControl Manager</value>
+    <value>Ακούστε ηχητική ανάδραση κατά τη χρήση διαφορετικών στοιχείων του App Control Studio</value>
   </data>
   <data name="AppSoundSettingSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Ακούστε ηχητική ανάδραση κατά τη χρήση διαφορετικών στοιχείων του AppControl Manager</value>
+    <value>Ακούστε ηχητική ανάδραση κατά τη χρήση διαφορετικών στοιχείων του App Control Studio</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.Description" xml:space="preserve">
     <value>Κυρίως κατάλληλο όταν χρησιμοποιείται το MicaAlt ως φόντο.</value>
@@ -779,10 +779,10 @@
     <value>Σκοτεινότερο Φόντο</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Θα αφαιρέσει την επιπλέον ανοιχτή σκιά από το φόντο, δίνοντας μια συνολικά σκοτεινότερη εμφάνιση στην εμφάνιση του AppControl Manager.</value>
+    <value>Θα αφαιρέσει την επιπλέον ανοιχτή σκιά από το φόντο, δίνοντας μια συνολικά σκοτεινότερη εμφάνιση στην εμφάνιση του App Control Studio.</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Θα αφαιρέσει την επιπλέον ανοιχτή σκιά από το φόντο, δίνοντας μια συνολικά σκοτεινότερη εμφάνιση στην εμφάνιση του AppControl Manager.</value>
+    <value>Θα αφαιρέσει την επιπλέον ανοιχτή σκιά από το φόντο, δίνοντας μια συνολικά σκοτεινότερη εμφάνιση στην εμφάνιση του App Control Studio.</value>
   </data>
   <data name="UserConfigurations.Text" xml:space="preserve">
     <value>Ρυθμίσεις Χρήστη</value>
@@ -950,16 +950,16 @@
     <value>, ενημέρωση της εφαρμογής...</value>
   </data>
   <data name="DownloadingPackage" xml:space="preserve">
-    <value>Λήψη του πακέτου MSIXBundle του AppControl Manager...</value>
+    <value>Λήψη του πακέτου MSIXBundle του App Control Studio...</value>
   </data>
   <data name="DownloadSuccess" xml:space="preserve">
-    <value>Το πακέτο MSIXBundle του AppControl Manager λήφθηκε με επιτυχία στο </value>
+    <value>Το πακέτο MSIXBundle του App Control Studio λήφθηκε με επιτυχία στο </value>
   </data>
   <data name="NoMSIXBundlePath" xml:space="preserve">
     <value>Δεν επιλέχθηκε διαδρομή MSIXBundle</value>
   </data>
   <data name="DownloadsFinished" xml:space="preserve">
-    <value>Όλες οι λήψεις ολοκληρώθηκαν, εγκατάσταση της νέας έκδοσης του AppControl Manager</value>
+    <value>Όλες οι λήψεις ολοκληρώθηκαν, εγκατάσταση της νέας έκδοσης του App Control Studio</value>
   </data>
   <data name="ASRError" xml:space="preserve">
     <value>Παρουσιάστηκε σφάλμα κατά την προσπάθεια αφαίρεσης των εξαιρέσεων κανόνων ASR, το οποίο μπορείτε να αγνοήσετε με ασφάλεια: </value>
@@ -968,7 +968,7 @@
     <value>Παρουσιάστηκε σφάλμα κατά την προσπάθεια προσθήκης των εξαιρέσεων κανόνων ASR, το οποίο μπορείτε να αγνοήσετε με ασφάλεια: </value>
   </data>
   <data name="UpdateSuccess" xml:space="preserve">
-    <value>Η ενημέρωση ήταν επιτυχής. Όταν κλείσετε και ανοίξετε ξανά το AppControl Manager, θα χρησιμοποιείτε αυτόματα τη νέα έκδοση.</value>
+    <value>Η ενημέρωση ήταν επιτυχής. Όταν κλείσετε και ανοίξετε ξανά το App Control Studio, θα χρησιμοποιείτε αυτόματα τη νέα έκδοση.</value>
   </data>
   <data name="UpdatesInstalled" xml:space="preserve">
     <value>Ενημερώσεις εγκατεστημένες</value>
@@ -1109,7 +1109,7 @@
     <value>Η πολιτική '</value>
   </data>
   <data name="ManualRemovalWarningEnd" xml:space="preserve">
-    <value> δεν πρέπει να αφαιρεθεί χειροκίνητα επειδή ΔΕΝ ΘΑ ΜΠΟΡΕΙΤΕ ΝΑ ΧΡΗΣΙΜΟΠΟΙΗΣΕΤΕ ΞΑΝΑ ΤΟ APPCONTROL MANAGER. Αφαιρείται αυτόματα όταν η αντίστοιχη βασική πολιτική αφαιρεθεί από το σύστημα. Είστε σίγουροι ότι εξακολουθείτε να θέλετε να την αφαιρέσετε χειροκίνητα;</value>
+    <value> δεν πρέπει να αφαιρεθεί χειροκίνητα επειδή ΔΕΝ ΘΑ ΜΠΟΡΕΙΤΕ ΝΑ ΧΡΗΣΙΜΟΠΟΙΗΣΕΤΕ ΞΑΝΑ ΤΟ App Control Studio. Αφαιρείται αυτόματα όταν η αντίστοιχη βασική πολιτική αφαιρεθεί από το σύστημα. Είστε σίγουροι ότι εξακολουθείτε να θέλετε να την αφαιρέσετε χειροκίνητα;</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ναι</value>
@@ -1671,16 +1671,16 @@
     <value>Χρησιμοποιώντας αυτήν την επιλογή σημαίνει ότι οι Συνιστώμενοι Κανόνες Αποκλεισμού (Λειτουργίας Χρήστη) της Microsoft δεν θα δημιουργηθούν/αναπτυχθούν μαζί με την βασική πολιτική. (Δεν Συνιστάται)</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.Header" xml:space="preserve">
-    <value>Αλλαγή της συμπεριφοράς του AppControl Manager και διαφόρων στοιχείων μέσα σε αυτό</value>
+    <value>Αλλαγή της συμπεριφοράς του App Control Studio και διαφόρων στοιχείων μέσα σε αυτό</value>
   </data>
   <data name="Behavior.Text" xml:space="preserve">
     <value>Συμπεριφορά</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Αλλαγή της συμπεριφοράς του AppControl Manager και διαφόρων στοιχείων μέσα σε αυτό</value>
+    <value>Αλλαγή της συμπεριφοράς του App Control Studio και διαφόρων στοιχείων μέσα σε αυτό</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Αλλαγή της συμπεριφοράς του AppControl Manager και διαφόρων στοιχείων μέσα σε αυτό</value>
+    <value>Αλλαγή της συμπεριφοράς του App Control Studio και διαφόρων στοιχείων μέσα σε αυτό</value>
   </data>
   <data name="ListViewsCenterVerticallyUponSelectionSettingsCard.Description" xml:space="preserve">
     <value>Όποτε επιλέγετε ένα στοιχείο σε μια Προβολή Λίστας, κεντράρετε αυτό το στοιχείο κάθετα στην οθόνη.</value>
@@ -1716,16 +1716,16 @@
     <value>Επεξεργασία πολιτικών Ελέγχου Εφαρμογών, προβολή και αφαίρεση μεμονωμένων κανόνων και τροποποίηση άλλων λεπτομερειών.</value>
   </data>
   <data name="PromptForElevationSettingsCard.Description" xml:space="preserve">
-    <value>Εάν αυτό είναι ενεργοποιημένο, ο AppControl Manager θα ζητήσει ανύψωση για να εκτελεστεί με δικαιώματα Διαχειριστή κατά την εκκίνηση.</value>
+    <value>Εάν αυτό είναι ενεργοποιημένο, ο App Control Studio θα ζητήσει ανύψωση για να εκτελεστεί με δικαιώματα Διαχειριστή κατά την εκκίνηση.</value>
   </data>
   <data name="PromptForElevationSettingsCard.Header" xml:space="preserve">
     <value>Προτροπή Για Ανύψωση Κατά την Εκκίνηση</value>
   </data>
   <data name="PromptForElevationSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Εάν αυτό είναι ενεργοποιημένο, ο AppControl Manager θα ζητήσει ανύψωση για να εκτελεστεί με δικαιώματα Διαχειριστή κατά την εκκίνηση.</value>
+    <value>Εάν αυτό είναι ενεργοποιημένο, ο App Control Studio θα ζητήσει ανύψωση για να εκτελεστεί με δικαιώματα Διαχειριστή κατά την εκκίνηση.</value>
   </data>
   <data name="PromptForElevationSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Εάν αυτό είναι ενεργοποιημένο, ο AppControl Manager θα ζητήσει ανύψωση για να εκτελεστεί με δικαιώματα Διαχειριστή κατά την εκκίνηση.</value>
+    <value>Εάν αυτό είναι ενεργοποιημένο, ο App Control Studio θα ζητήσει ανύψωση για να εκτελεστεί με δικαιώματα Διαχειριστή κατά την εκκίνηση.</value>
   </data>
   <data name="OnlyIncludeSelectedItemsToggleButton.Content" xml:space="preserve">
     <value>Χρήση Μόνο Επιλεγμένων Στοιχείων</value>
@@ -1815,10 +1815,10 @@
     <value>Πλαίσιο Πιστοποίησης</value>
   </data>
   <data name="AuthenticationContextComboBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Επιλέξτε το πλαίσιο πιστοποίησης που θα χρησιμοποιηθεί για τη λειτουργία Σύνδεσης. Κάθε πλαίσιο είναι ένα σύνολο δικαιωμάτων Microsoft Graph που απαιτούνται για την επιτυχή ολοκλήρωση των εργασιών που προσφέρονται στο AppControl Manager.</value>
+    <value>Επιλέξτε το πλαίσιο πιστοποίησης που θα χρησιμοποιηθεί για τη λειτουργία Σύνδεσης. Κάθε πλαίσιο είναι ένα σύνολο δικαιωμάτων Microsoft Graph που απαιτούνται για την επιτυχή ολοκλήρωση των εργασιών που προσφέρονται στο App Control Studio.</value>
   </data>
   <data name="AuthenticationContextComboBox.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Επιλέξτε το πλαίσιο πιστοποίησης που θα χρησιμοποιηθεί για τη λειτουργία Σύνδεσης. Κάθε πλαίσιο είναι ένα σύνολο δικαιωμάτων Microsoft Graph που απαιτούνται για την επιτυχή ολοκλήρωση των εργασιών που προσφέρονται στο AppControl Manager.</value>
+    <value>Επιλέξτε το πλαίσιο πιστοποίησης που θα χρησιμοποιηθεί για τη λειτουργία Σύνδεσης. Κάθε πλαίσιο είναι ένα σύνολο δικαιωμάτων Microsoft Graph που απαιτούνται για την επιτυχή ολοκλήρωση των εργασιών που προσφέρονται στο App Control Studio.</value>
   </data>
   <data name="RemoveAccountButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Αφαιρέστε τον λογαριασμό από τη λίστα. Θα αφαιρεθεί πλήρως από τη μνήμη της εφαρμογής και από την κρυφή μνήμη της Βιβλιοθήκης Πιστοποίησης της Microsoft.</value>
@@ -1989,7 +1989,7 @@
     <value>Ανακτήστε και ερωτήστε τις Ασφαλείς Ρυθμίσεις στο σύστημα.</value>
   </data>
   <data name="LogsPageTitle" xml:space="preserve">
-    <value>Τα παρακάτω είναι τα αρχεία καταγραφής που ο AppControl Manager δημιουργεί αυτόματα και αποθηκεύει στο φάκελο "AppControl Manager" στα Program Files (εάν εκτελείται με ανύψωση, διαφορετικά θα αποθηκευτούν στον κατάλογο TEMP). Το συνολικό μέγεθος του φακέλου αρχείων καταγραφής δεν θα υπερβεί ποτέ το 1GB.</value>
+    <value>Τα παρακάτω είναι τα αρχεία καταγραφής που ο App Control Studio δημιουργεί αυτόματα και αποθηκεύει στο φάκελο "App Control Studio" στα Program Files (εάν εκτελείται με ανύψωση, διαφορετικά θα αποθηκευτούν στον κατάλογο TEMP). Το συνολικό μέγεθος του φακέλου αρχείων καταγραφής δεν θα υπερβεί ποτέ το 1GB.</value>
   </data>
   <data name="MDEAHPolicyCreationPageTitle.Text" xml:space="preserve">
     <value>Χρησιμοποιήστε τα αρχεία καταγραφής Προηγμένης Αναζήτησης του Microsoft Defender for Endpoint για να δημιουργήσετε Πολιτικές Ελέγχου Εφαρμογών. Μπορείτε είτε να αναζητήσετε εξαγόμενα αρχεία καταγραφής είτε να τα ανακτήσετε από το cloud συνδεόμενοι στον λογαριασμό σας Microsoft.</value>
@@ -2001,7 +2001,7 @@
     <value>Επεξεργαστείτε Πολιτικές Ελέγχου Εφαρμογών για Επιχειρήσεις. Αναζητήστε εύκολα ένα αρχείο πολιτικής XML και φορτώστε τις λεπτομέρειές του χρησιμοποιώντας το κουμπί Φόρτωση. Μόλις φορτωθεί, μπορείτε να εξετάσετε τον αριθμό κάθε κανόνα εντός της πολιτικής, να αφαιρέσετε συγκεκριμένους κανόνες και να τροποποιήσετε διάφορες άλλες ρυθμίσεις πολιτικής.</value>
   </data>
   <data name="SettingsPageTitle.Text" xml:space="preserve">
-    <value>Προσαρμόστε τις ρυθμίσεις της εφαρμογής σας εδώ. Οι προτιμήσεις σας θα αποθηκευτούν ώστε να είναι έτοιμες για εσάς κάθε φορά που ξεκινάτε τον AppControl Manager.</value>
+    <value>Προσαρμόστε τις ρυθμίσεις της εφαρμογής σας εδώ. Οι προτιμήσεις σας θα αποθηκευτούν ώστε να είναι έτοιμες για εσάς κάθε φορά που ξεκινάτε τον App Control Studio.</value>
   </data>
   <data name="SimulationPageTitle.Text" xml:space="preserve">
     <value>Εκτελέστε Προσομοίωση Ελέγχου Εφαρμογών για Επιχειρήσεις επιλέγοντας αρχεία ή φακέλους και ένα αρχείο πολιτικής XML, στη συνέχεια χρησιμοποιήστε το κουμπί Έναρξη Προσομοίωσης για να συμπληρώσετε το πλέγμα δεδομένων. Τα αποτελέσματα θα σας δείξουν εάν τα επιλεγμένα αρχεία θα επιτρέπονταν ή θα μπλοκαρίζονταν από την πολιτική Ελέγχου Εφαρμογών σας εάν ήταν πράγματι αναπτυγμένη σε ένα σύστημα και αυτά τα αρχεία εκτελούνταν.</value>
@@ -2070,7 +2070,7 @@
     <value>Εναλλαγή μεταξύ των κατευθύνσεων ροής από Δεξιά προς Αριστερά και από Αριστερά προς Δεξιά για τα στοιχεία της διεπαφής χρήστη.</value>
   </data>
   <data name="AppElevationNoticeMain" xml:space="preserve">
-    <value>Παρακαλώ εκκινήστε τον AppControl Manager ως Διαχειριστής για να αποκτήσετε πρόσβαση σε αυτήν τη σελίδα</value>
+    <value>Παρακαλώ εκκινήστε τον App Control Studio ως Διαχειριστής για να αποκτήσετε πρόσβαση σε αυτήν τη σελίδα</value>
   </data>
   <data name="AppElevationNoticeTitle" xml:space="preserve">
     <value>Απαιτούνται δικαιώματα Διαχειριστή</value>
@@ -2283,7 +2283,7 @@
     <value>Αναπτύσσει ένα υπομενού κατά το πέρασμα του ποντικιού ή την αφή, ώστε να έχετε τη δυνατότητα να αντιγράψετε μεμονωμένα στοιχεία σε κάθε σειρά.</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Ο AppControl Manager σας επιτρέπει να διαχειρίζεστε πολιτικές Ελέγχου Εφαρμογών και Ακεραιότητας Κώδικα στα Windows με ευκολία, συμπεριλαμβανομένων, αλλά όχι περιορισμένων σε: δημιουργία, προσομοίωση, αφαίρεση, ανάπτυξη και υπογραφή.</value>
+    <value>Ο App Control Studio σας επιτρέπει να διαχειρίζεστε πολιτικές Ελέγχου Εφαρμογών και Ακεραιότητας Κώδικα στα Windows με ευκολία, συμπεριλαμβανομένων, αλλά όχι περιορισμένων σε: δημιουργία, προσομοίωση, αφαίρεση, ανάπτυξη και υπογραφή.</value>
   </data>
   <data name="MergePoliciesSettingsExpander.Description" xml:space="preserve">
     <value>Συγχώνευση Πολιτικών Ελέγχου Εφαρμογών</value>
@@ -2394,10 +2394,10 @@
     <value>Περισσότερες πληροφορίες</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ανοίγει την κύρια σελίδα wiki του GitHub για τον AppControl Manager</value>
+    <value>Ανοίγει την κύρια σελίδα wiki του GitHub για τον App Control Studio</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Ανοίγει την κύρια σελίδα wiki του GitHub για τον AppControl Manager</value>
+    <value>Ανοίγει την κύρια σελίδα wiki του GitHub για τον App Control Studio</value>
   </data>
   <data name="UpdatePageWhatsNewInfoBar.Title" xml:space="preserve">
     <value>Σημειώσεις Έκδοσης</value>
@@ -2427,16 +2427,16 @@
     <value>Ανοίγει τη σελίδα εκδόσεων του GitHub όπου μπορείτε να βρείτε τις πλήρεις σημειώσεις έκδοσης για τη διαθέσιμη ενημέρωση.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.Description" xml:space="preserve">
-    <value>Μόλις οι ενημερώσεις κατεβούν και εγκατασταθούν, την επόμενη φορά που θα ανοίξετε τον AppControl Manager θα χρησιμοποιήσετε τη νέα έκδοση.</value>
+    <value>Μόλις οι ενημερώσεις κατεβούν και εγκατασταθούν, την επόμενη φορά που θα ανοίξετε τον App Control Studio θα χρησιμοποιήσετε τη νέα έκδοση.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.Header" xml:space="preserve">
-    <value>Έλεγχος για ενημέρωση του AppControl Manager</value>
+    <value>Έλεγχος για ενημέρωση του App Control Studio</value>
   </data>
   <data name="CheckForUpdateSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Μόλις οι ενημερώσεις κατεβούν και εγκατασταθούν, την επόμενη φορά που θα ανοίξετε τον AppControl Manager θα χρησιμοποιήσετε τη νέα έκδοση.</value>
+    <value>Μόλις οι ενημερώσεις κατεβούν και εγκατασταθούν, την επόμενη φορά που θα ανοίξετε τον App Control Studio θα χρησιμοποιήσετε τη νέα έκδοση.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Μόλις οι ενημερώσεις κατεβούν και εγκατασταθούν, την επόμενη φορά που θα ανοίξετε τον AppControl Manager θα χρησιμοποιήσετε τη νέα έκδοση.</value>
+    <value>Μόλις οι ενημερώσεις κατεβούν και εγκατασταθούν, την επόμενη φορά που θα ανοίξετε τον App Control Studio θα χρησιμοποιήσετε τη νέα έκδοση.</value>
   </data>
   <data name="AutoUpdateCheckSettingsCard.Description" xml:space="preserve">
     <value>Ελέγχει αυτόματα για ενημέρωση όταν η εφαρμογή εκκινείται και σας ειδοποιεί εάν είναι διαθέσιμη μια νέα έκδοση ώστε να μπορείτε να χρησιμοποιήσετε αυτήν τη σελίδα για να την εγκαταστήσετε.</value>
@@ -2526,13 +2526,13 @@
     <value>Διαδρομή Πιστοποιητικού:</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.Header" xml:space="preserve">
-    <value>Κάντε τον AppControl Manager να Φαίνεται Όπως Θέλετε</value>
+    <value>Κάντε τον App Control Studio να Φαίνεται Όπως Θέλετε</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Χρησιμοποιήστε διάφορες διαθέσιμες επιλογές για να αλλάξετε την εμφάνιση και τα οπτικά εφέ του AppControl Manager</value>
+    <value>Χρησιμοποιήστε διάφορες διαθέσιμες επιλογές για να αλλάξετε την εμφάνιση και τα οπτικά εφέ του App Control Studio</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Χρησιμοποιήστε διάφορες διαθέσιμες επιλογές για να αλλάξετε την εμφάνιση και τα οπτικά εφέ του AppControl Manager</value>
+    <value>Χρησιμοποιήστε διάφορες διαθέσιμες επιλογές για να αλλάξετε την εμφάνιση και τα οπτικά εφέ του App Control Studio</value>
   </data>
   <data name="LanguageTextBlock.Text" xml:space="preserve">
     <value>Γλώσσα</value>
@@ -2541,7 +2541,7 @@
     <value>Αποθετήριο GitHub</value>
   </data>
   <data name="AppControlManagerDocumentationHyperLinkButton.Content" xml:space="preserve">
-    <value>Τεκμηρίωση AppControl Manager</value>
+    <value>Τεκμηρίωση App Control Studio</value>
   </data>
   <data name="MicrosoftStorePageHyperLinkButton.Content" xml:space="preserve">
     <value>Σελίδα Microsoft Store</value>
@@ -2948,7 +2948,7 @@
     <value>Αναζήτηση για ένα αρχείο πολιτικής XML</value>
   </data>
   <data name="SidebarMainCaptionTextBlock.Text" xml:space="preserve">
-    <value>Χρησιμοποιήστε την Πλευρική Γραμμή για να καρφιτσώσετε διαδρομές αρχείων XML και να τις επαναχρησιμοποιήσετε σε διαφορετικά μέρη του AppControl Manager.</value>
+    <value>Χρησιμοποιήστε την Πλευρική Γραμμή για να καρφιτσώσετε διαδρομές αρχείων XML και να τις επαναχρησιμοποιήσετε σε διαφορετικά μέρη του App Control Studio.</value>
   </data>
   <data name="SidebarTextBlock.Text" xml:space="preserve">
     <value>Πλευρική Γραμμή</value>
@@ -3152,7 +3152,7 @@
     <comment>Σελίδα δημιουργίας πιστοποιητικού</comment>
   </data>
   <data name="TheAppIsUpToDate" xml:space="preserve">
-    <value>Η εφαρμογή AppControl Manager είναι ενημερωμένη.</value>
+    <value>Η εφαρμογή App Control Studio είναι ενημερωμένη.</value>
   </data>
   <data name="CheckingForUpdateStore" xml:space="preserve">
     <value>Έλεγχος για ενημέρωση στο Microsoft Store...</value>
@@ -3161,7 +3161,7 @@
     <value>Μια νέα ενημέρωση είναι διαθέσιμη. Άνοιγμα του Microsoft Store ώστε να μπορείτε να προχωρήσετε με την ενημέρωση της εφαρμογής εκεί.</value>
   </data>
   <data name="ProblemOpeningMSStore" xml:space="preserve">
-    <value>Παρουσιάστηκε πρόβλημα κατά το άνοιγμα της σελίδας του Microsoft Store του AppControl Manager.</value>
+    <value>Παρουσιάστηκε πρόβλημα κατά το άνοιγμα της σελίδας του Microsoft Store του App Control Studio.</value>
   </data>
   <data name="InstallLatestVer" xml:space="preserve">
     <value>Εγκατάσταση της τελευταίας έκδοσης</value>
@@ -3582,16 +3582,16 @@
     <value>Παράκαμψη Διαδρομής Σχήματος Ακεραιότητας Κώδικα</value>
   </data>
   <data name="RateAndReviewSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Ανοίγει τη μικρο-σελίδα του Microsoft Store όπου μπορείτε να αξιολογήσετε και προαιρετικά να γράψετε μια κριτική για το AppControl Manager.</value>
+    <value>Ανοίγει τη μικρο-σελίδα του Microsoft Store όπου μπορείτε να αξιολογήσετε και προαιρετικά να γράψετε μια κριτική για το App Control Studio.</value>
   </data>
   <data name="RateAndReviewSettingsCard.Header" xml:space="preserve">
     <value>Αξιολόγηση και Κριτική</value>
   </data>
   <data name="RateAndReviewSettingsCard.Description" xml:space="preserve">
-    <value>Ανοίγει τη μικρο-σελίδα του Microsoft Store όπου μπορείτε να αξιολογήσετε και προαιρετικά να γράψετε μια κριτική για το AppControl Manager.</value>
+    <value>Ανοίγει τη μικρο-σελίδα του Microsoft Store όπου μπορείτε να αξιολογήσετε και προαιρετικά να γράψετε μια κριτική για το App Control Studio.</value>
   </data>
   <data name="RateAndReviewSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ανοίγει τη μικρο-σελίδα του Microsoft Store όπου μπορείτε να αξιολογήσετε και προαιρετικά να γράψετε μια κριτική για το AppControl Manager.</value>
+    <value>Ανοίγει τη μικρο-σελίδα του Microsoft Store όπου μπορείτε να αξιολογήσετε και προαιρετικά να γράψετε μια κριτική για το App Control Studio.</value>
   </data>
   <data name="VerifyButtonText" xml:space="preserve">
     <value>Επαλήθευση</value>
@@ -3789,7 +3789,7 @@
     <value>Προσπάθεια ανάλυσης και ανάγνωσης του αρχείου ρυθμίσεων χρήστη</value>
   </data>
   <data name="AppControlManagerFolderCreatedMessage" xml:space="preserve">
-    <value>Ο φάκελος AppControl Manager στα Program Files δημιουργήθηκε επειδή δεν υπήρχε.</value>
+    <value>Ο φάκελος App Control Studio στα Program Files δημιουργήθηκε επειδή δεν υπήρχε.</value>
   </data>
   <data name="ErrorReadingUserConfigMessage" xml:space="preserve">
     <value>Σφάλμα κατά την ανάγνωση ή ανάλυση του αρχείου ρυθμίσεων χρήστη: {0} Θα δημιουργηθεί νέα ρύθμιση με προεπιλεγμένες τιμές.</value>
@@ -5523,10 +5523,10 @@
     <value>Παραδείγματα ερωτημάτων</value>
   </data>
   <data name="MDEAHQueryExamplesButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Μπορείτε να αντιγράψετε τα παρακάτω ερωτήματα και να τα χρησιμοποιήσετε στην πύλη MDE Advanced Hunting για να δημιουργήσετε τυπικά αρχεία καταγραφής συμβατά με το AppControl Manager, ή μπορείτε να χρησιμοποιήσετε τις ενσωματωμένες δυνατότητες της εφαρμογής για να ανακτήσετε αυτόματα τα αρχεία καταγραφής και να τα επεξεργαστείτε.</value>
+    <value>Μπορείτε να αντιγράψετε τα παρακάτω ερωτήματα και να τα χρησιμοποιήσετε στην πύλη MDE Advanced Hunting για να δημιουργήσετε τυπικά αρχεία καταγραφής συμβατά με το App Control Studio, ή μπορείτε να χρησιμοποιήσετε τις ενσωματωμένες δυνατότητες της εφαρμογής για να ανακτήσετε αυτόματα τα αρχεία καταγραφής και να τα επεξεργαστείτε.</value>
   </data>
   <data name="MDEAHQueryExamplesButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Μπορείτε να αντιγράψετε τα παρακάτω ερωτήματα και να τα χρησιμοποιήσετε στην πύλη MDE Advanced Hunting για να δημιουργήσετε τυπικά αρχεία καταγραφής συμβατά με το AppControl Manager, ή μπορείτε να χρησιμοποιήσετε τις ενσωματωμένες δυνατότητες της εφαρμογής για να ανακτήσετε αυτόματα τα αρχεία καταγραφής και να τα επεξεργαστείτε.</value>
+    <value>Μπορείτε να αντιγράψετε τα παρακάτω ερωτήματα και να τα χρησιμοποιήσετε στην πύλη MDE Advanced Hunting για να δημιουργήσετε τυπικά αρχεία καταγραφής συμβατά με το App Control Studio, ή μπορείτε να χρησιμοποιήσετε τις ενσωματωμένες δυνατότητες της εφαρμογής για να ανακτήσετε αυτόματα τα αρχεία καταγραφής και να τα επεξεργαστείτε.</value>
   </data>
   <data name="DragAndDropHint.Text" xml:space="preserve">
      <value>ή σύρετε και αποθέστε αρχεία εδώ</value>

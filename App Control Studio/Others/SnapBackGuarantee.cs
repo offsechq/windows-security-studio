@@ -176,12 +176,12 @@ internal static class SnapBackGuarantee
 
 
 		const string command = """
-/c ""C:\Program Files\AppControl Manager\EnforcedModeSnapBack.cmd""
+/c ""C:\Program Files\App Control Studio\EnforcedModeSnapBack.cmd""
 """;
 
 
 		string args = $"""
-scheduledtasks --name "EnforcedModeSnapBack" --exe "cmd.exe" --arg "{command}" --description "Created by AppControl Manager - Allow New Apps page - Ensures that the enforced mode policy will be deployed in case of a sudden power loss or system restart" --author "AppControl Manager" --logon 2 --runlevel 1 --sid "S-1-5-18" --allowstartifonbatteries --dontstopifgoingonbatteries --startwhenavailable --restartcount 2 --restartinterval PT3M --priority 0 --trigger "type=logon;" --useunifiedschedulingengine true --executiontimelimit PT4M --multipleinstancespolicy 2 --allowhardterminate 1 --hidden
+scheduledtasks --name "EnforcedModeSnapBack" --exe "cmd.exe" --arg "{command}" --description "Created by App Control Studio - Allow New Apps page - Ensures that the enforced mode policy will be deployed in case of a sudden power loss or system restart" --author "App Control Studio" --logon 2 --runlevel 1 --sid "S-1-5-18" --allowstartifonbatteries --dontstopifgoingonbatteries --startwhenavailable --restartcount 2 --restartinterval PT3M --priority 0 --trigger "type=logon;" --useunifiedschedulingengine true --executiontimelimit PT4M --multipleinstancespolicy 2 --allowhardterminate 1 --hidden
 """;
 
 		_ = ProcessStarter.RunCommand(GlobalVars.ComManagerProcessPath, args);

@@ -48,7 +48,7 @@ internal static partial class ListViewHelper
 	/// </summary>
 	internal enum ListViewsRegistry : uint
 	{
-		// For AppControl Manager
+		// For App Control Studio
 		Locally_Deployed_Policies = 0,
 		Online_Deployed_Policies = 1,
 		Allow_New_Apps_EventLogs_ScanResults = 2,
@@ -66,7 +66,7 @@ internal static partial class ListViewHelper
 		DenyPolicy_PFNBasedRules = 14,
 		Deployment_IntuneGroupsListView = 15,
 
-		// For Harden System Security App
+		// For System Security Studio App
 		GroupPolicyEditor = 10000,
 		MicrosoftDefender = 10001,
 		MicrosoftSecurityBaseline = 10002,

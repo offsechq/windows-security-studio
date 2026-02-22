@@ -1,11 +1,11 @@
 {
     "profiles": {
-        "Harden System Security (Package)": {
+        "System Security Studio (Package)": {
             "commandName": "MsixPackage",
             "nativeDebugging": true,
             "remoteDebugEnabled": false
         },
-        "Harden System Security (Unpackaged)": {
+        "System Security Studio (Unpackaged)": {
             "commandName": "Project"
         }
     }

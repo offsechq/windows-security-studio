@@ -4578,10 +4578,10 @@ Empreinte : {3}</value>
     <value>Contexte d'authentification</value>
   </data>
   <data name="AuthenticationContextComboBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Sélectionnez le contexte d'authentification à utiliser pour l'opération de connexion. Chaque contexte est un ensemble d'autorisations Microsoft Graph requises pour mener à bien les tâches proposées dans AppControl Manager.</value>
+    <value>Sélectionnez le contexte d'authentification à utiliser pour l'opération de connexion. Chaque contexte est un ensemble d'autorisations Microsoft Graph requises pour mener à bien les tâches proposées dans App Control Studio.</value>
   </data>
   <data name="AuthenticationContextComboBox.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Sélectionnez le contexte d'authentification à utiliser pour l'opération de connexion. Chaque contexte est un ensemble d'autorisations Microsoft Graph requises pour mener à bien les tâches proposées dans AppControl Manager.</value>
+    <value>Sélectionnez le contexte d'authentification à utiliser pour l'opération de connexion. Chaque contexte est un ensemble d'autorisations Microsoft Graph requises pour mener à bien les tâches proposées dans App Control Studio.</value>
   </data>
     <data name="RemoveAccountButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Supprimez le compte de la liste. Il sera complètement supprimé de la mémoire de l'application et du cache de la bibliothèque d'authentification Microsoft.</value>

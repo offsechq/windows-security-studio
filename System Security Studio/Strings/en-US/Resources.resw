@@ -4614,10 +4614,10 @@ Thumbprint: {3}</value>
     <value>Authentication Context</value>
   </data>
   <data name="AuthenticationContextComboBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Select the authentication context to use for the Sign in operation. Each context is a set of Microsoft Graph permissions required to successfully complete the tasks offered in the AppControl Manager.</value>
+    <value>Select the authentication context to use for the Sign in operation. Each context is a set of Microsoft Graph permissions required to successfully complete the tasks offered in the App Control Studio.</value>
   </data>
   <data name="AuthenticationContextComboBox.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Select the authentication context to use for the Sign in operation. Each context is a set of Microsoft Graph permissions required to successfully complete the tasks offered in the AppControl Manager.</value>
+    <value>Select the authentication context to use for the Sign in operation. Each context is a set of Microsoft Graph permissions required to successfully complete the tasks offered in the App Control Studio.</value>
   </data>
     <data name="RemoveAccountButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Remove the account from the list. It will be completely removed from the app's memory and the Microsoft Authentication Library's cache.</value>

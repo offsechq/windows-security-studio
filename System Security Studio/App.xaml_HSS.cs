@@ -517,7 +517,7 @@ public partial class App : Application
 			if (Logger.CliRequested)
 			{
 				ConsoleHelper.AttachOrAllocate();
-				Logger.Write("Harden System Security - CLI mode");
+				Logger.Write("System Security Studio - CLI mode");
 
 				// Extract a single-token action right after --cli if provided
 				int cliIndex = Array.FindIndex(ArgsLines, a => string.Equals(a, "--cli", StringComparison.OrdinalIgnoreCase));

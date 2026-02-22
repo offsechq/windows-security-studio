@@ -1,6 +1,6 @@
 # Protect
 
-The Protect page in the [Harden System Security App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) is a central hub for Applying, Verifying or Removing the security measures. It offers presets with optimal pre-selected categories and sub-categories to streamline the hardening process.
+The Protect page in the [System Security Studio App](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) is a central hub for Applying, Verifying or Removing the security measures. It offers presets with optimal pre-selected categories and sub-categories to streamline the hardening process.
 
 Each Security Measure category on this page has its own dedicated page where you can view and modify the specific settings related to that category in a more detailed manner. When you use the Apply, Verify or Remove buttons on this page, it is as if you are directly interacting with the button on that category's page.
 
@@ -35,13 +35,13 @@ The preview **ListView** lets you remove individual security measures before pre
 
 ## Backup and Restore System State
 
-The Harden System Security app now provides comprehensive system report generation capabilities, allowing users to gain deeper insights into their system's security status and save the results to a file for further analysis. All of the security categories participate in this report, including Microsoft Security baselines and Microsoft 365 apps security baselines.
+The System Security Studio app now provides comprehensive system report generation capabilities, allowing users to gain deeper insights into their system's security status and save the results to a file for further analysis. All of the security categories participate in this report, including Microsoft Security baselines and Microsoft 365 apps security baselines.
 
 The name of the device, user account and time is also mentioned in the report header so you can easily identify when and where the report was generated.
 
 The report provides a security score, the exact number of items in each category and the total number of compliant and non-compliant items.
 
-After you generate a system report, whether it's a full system report that includes all categories or only contains 1 category, you can import and apply it to any system where Harden System Security app is installed.
+After you generate a system report, whether it's a full system report that includes all categories or only contains 1 category, you can import and apply it to any system where System Security Studio app is installed.
 
 ### There are 2 modes of application: Partial and Full
 

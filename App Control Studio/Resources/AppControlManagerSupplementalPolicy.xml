@@ -11,7 +11,7 @@
   </Rules>
   <EKUs />
   <FileRules>
-    <Allow ID="ID_ALLOW_A_1" FriendlyName="AppControl Manager PFN Rule" PackageFamilyName="ToBeDetermined" MinimumFileVersion="0.0.0.0" />
+    <Allow ID="ID_ALLOW_A_1" FriendlyName="App Control Studio PFN Rule" PackageFamilyName="ToBeDetermined" MinimumFileVersion="0.0.0.0" />
   </FileRules>
   <Signers />
   <SigningScenarios>

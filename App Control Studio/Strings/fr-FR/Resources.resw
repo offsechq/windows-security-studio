@@ -719,10 +719,10 @@
     <value>Style d'arrière-plan</value>
   </data>
   <data name="BackgroundStyleSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ceci est l'arrière-plan d'AppControl Manager. Les modifications seront visibles en arrière-plan.</value>
+    <value>Ceci est l'arrière-plan d'App Control Studio. Les modifications seront visibles en arrière-plan.</value>
   </data>
   <data name="BackgroundStyleSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Ceci est l'arrière-plan d'AppControl Manager. Les modifications seront visibles en arrière-plan.</value>
+    <value>Ceci est l'arrière-plan d'App Control Studio. Les modifications seront visibles en arrière-plan.</value>
   </data>
   <data name="MainNavigationIconsSettingsCard.Description" xml:space="preserve">
     <value>Choisissez un style pour les icônes de navigation principales</value>
@@ -743,10 +743,10 @@
     <value>Thème</value>
   </data>
   <data name="AppThemeSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Sélectionnez un thème pour AppControl Manager</value>
+    <value>Sélectionnez un thème pour App Control Studio</value>
   </data>
   <data name="AppThemeSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Sélectionnez un thème pour AppControl Manager</value>
+    <value>Sélectionnez un thème pour App Control Studio</value>
   </data>
   <data name="MainNavigationLocationSettingsCard.Description" xml:space="preserve">
     <value>Personnaliser l'emplacement du menu de navigation</value>
@@ -761,16 +761,16 @@
     <value>Sélectionnez un emplacement pour le menu de navigation</value>
   </data>
   <data name="AppSoundSettingSettingsCard.Description" xml:space="preserve">
-    <value>Entendre un retour audio lors de l'utilisation de différents éléments d'AppControl Manager</value>
+    <value>Entendre un retour audio lors de l'utilisation de différents éléments d'App Control Studio</value>
   </data>
   <data name="AppSoundSettingSettingsCard.Header" xml:space="preserve">
     <value>Son</value>
   </data>
   <data name="AppSoundSettingSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Entendre un retour audio lors de l'utilisation de différents éléments d'AppControl Manager</value>
+    <value>Entendre un retour audio lors de l'utilisation de différents éléments d'App Control Studio</value>
   </data>
   <data name="AppSoundSettingSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Entendre un retour audio lors de l'utilisation de différents éléments d'AppControl Manager</value>
+    <value>Entendre un retour audio lors de l'utilisation de différents éléments d'App Control Studio</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.Description" xml:space="preserve">
     <value>Principalement adapté lors de l'utilisation de MicaAlt comme arrière-plan.</value>
@@ -779,10 +779,10 @@
     <value>Arrière-plan plus sombre</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Cela supprimera l'ombre claire supplémentaire de l'arrière-plan, donnant un aspect globalement plus sombre à l'apparence d'AppControl Manager.</value>
+    <value>Cela supprimera l'ombre claire supplémentaire de l'arrière-plan, donnant un aspect globalement plus sombre à l'apparence d'App Control Studio.</value>
   </data>
   <data name="DarkerBackGroundSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Cela supprimera l'ombre claire supplémentaire de l'arrière-plan, donnant un aspect globalement plus sombre à l'apparence d'AppControl Manager.</value>
+    <value>Cela supprimera l'ombre claire supplémentaire de l'arrière-plan, donnant un aspect globalement plus sombre à l'apparence d'App Control Studio.</value>
   </data>
   <data name="UserConfigurations.Text" xml:space="preserve">
     <value>Configurations utilisateur</value>
@@ -950,16 +950,16 @@
     <value>, mise à jour de l'application...</value>
   </data>
   <data name="DownloadingPackage" xml:space="preserve">
-    <value>Téléchargement du package MSIXBundle d'AppControl Manager...</value>
+    <value>Téléchargement du package MSIXBundle d'App Control Studio...</value>
   </data>
   <data name="DownloadSuccess" xml:space="preserve">
-    <value>Le package MSIXBundle d'AppControl Manager a été téléchargé avec succès vers </value>
+    <value>Le package MSIXBundle d'App Control Studio a été téléchargé avec succès vers </value>
   </data>
   <data name="NoMSIXBundlePath" xml:space="preserve">
     <value>Aucun chemin MSIXBundle n'a été sélectionné</value>
   </data>
   <data name="DownloadsFinished" xml:space="preserve">
-    <value>Tous les téléchargements sont terminés, installation de la nouvelle version d'AppControl Manager</value>
+    <value>Tous les téléchargements sont terminés, installation de la nouvelle version d'App Control Studio</value>
   </data>
   <data name="ASRError" xml:space="preserve">
     <value>Une erreur s'est produite lors de la tentative de suppression des exclusions de règle ASR, que vous pouvez ignorer en toute sécurité : </value>
@@ -968,7 +968,7 @@
     <value>Une erreur s'est produite lors de la tentative d'ajout des exclusions de règle ASR, que vous pouvez ignorer en toute sécurité : </value>
   </data>
   <data name="UpdateSuccess" xml:space="preserve">
-    <value>La mise à jour a réussi. Lorsque vous fermerez et rouvrirez AppControl Manager, vous utiliserez automatiquement la nouvelle version.</value>
+    <value>La mise à jour a réussi. Lorsque vous fermerez et rouvrirez App Control Studio, vous utiliserez automatiquement la nouvelle version.</value>
   </data>
   <data name="UpdatesInstalled" xml:space="preserve">
     <value>Mises à jour installées</value>
@@ -1109,7 +1109,7 @@
     <value>La stratégie '</value>
   </data>
   <data name="ManualRemovalWarningEnd" xml:space="preserve">
-    <value> ne doit pas être supprimée manuellement car vous NE POURREZ PLUS UTILISER APPCONTROL MANAGER. Elle est automatiquement supprimée lorsque sa stratégie de base correspondante est supprimée du système. Êtes-vous sûr de vouloir toujours la supprimer manuellement ?</value>
+    <value> ne doit pas être supprimée manuellement car vous NE POURREZ PLUS UTILISER App Control Studio. Elle est automatiquement supprimée lorsque sa stratégie de base correspondante est supprimée du système. Êtes-vous sûr de vouloir toujours la supprimer manuellement ?</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Oui</value>
@@ -1671,16 +1671,16 @@
     <value>L'utilisation de cette option signifie que les règles de blocage recommandées par Microsoft (Mode Utilisateur) ne seront pas créées/déployées avec la politique de base. (Non Recommandé)</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.Header" xml:space="preserve">
-    <value>Modifier le comportement d'AppControl Manager et de divers éléments qu'il contient</value>
+    <value>Modifier le comportement d'App Control Studio et de divers éléments qu'il contient</value>
   </data>
   <data name="Behavior.Text" xml:space="preserve">
     <value>Comportement</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Modifier le comportement d'AppControl Manager et de divers éléments qu'il contient</value>
+    <value>Modifier le comportement d'App Control Studio et de divers éléments qu'il contient</value>
   </data>
   <data name="BehaviorSettingSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Modifier le comportement d'AppControl Manager et de divers éléments qu'il contient</value>
+    <value>Modifier le comportement d'App Control Studio et de divers éléments qu'il contient</value>
   </data>
   <data name="ListViewsCenterVerticallyUponSelectionSettingsCard.Description" xml:space="preserve">
     <value>Chaque fois que vous sélectionnez un élément dans une vue en liste, centrez cet élément verticalement sur l'écran.</value>
@@ -1716,16 +1716,16 @@
     <value>Modifier les politiques de contrôle d'application, afficher et supprimer des règles individuelles et modifier d'autres détails.</value>
   </data>
   <data name="PromptForElevationSettingsCard.Description" xml:space="preserve">
-    <value>Si activé, AppControl Manager demandera une élévation pour s'exécuter avec les privilèges d'administrateur au démarrage.</value>
+    <value>Si activé, App Control Studio demandera une élévation pour s'exécuter avec les privilèges d'administrateur au démarrage.</value>
   </data>
   <data name="PromptForElevationSettingsCard.Header" xml:space="preserve">
     <value>Demander l'Élévation au Démarrage</value>
   </data>
   <data name="PromptForElevationSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Si activé, AppControl Manager demandera une élévation pour s'exécuter avec les privilèges d'administrateur au démarrage.</value>
+    <value>Si activé, App Control Studio demandera une élévation pour s'exécuter avec les privilèges d'administrateur au démarrage.</value>
   </data>
   <data name="PromptForElevationSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Si activé, AppControl Manager demandera une élévation pour s'exécuter avec les privilèges d'administrateur au démarrage.</value>
+    <value>Si activé, App Control Studio demandera une élévation pour s'exécuter avec les privilèges d'administrateur au démarrage.</value>
   </data>
   <data name="OnlyIncludeSelectedItemsToggleButton.Content" xml:space="preserve">
     <value>Utiliser Uniquement les Éléments Sélectionnés</value>
@@ -1815,10 +1815,10 @@
     <value>Contexte d'Authentification</value>
   </data>
   <data name="AuthenticationContextComboBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Sélectionnez le contexte d'authentification à utiliser pour la connexion. Chaque contexte est un ensemble de permissions Microsoft Graph requises pour effectuer les tâches proposées dans AppControl Manager.</value>
+    <value>Sélectionnez le contexte d'authentification à utiliser pour la connexion. Chaque contexte est un ensemble de permissions Microsoft Graph requises pour effectuer les tâches proposées dans App Control Studio.</value>
   </data>
   <data name="AuthenticationContextComboBox.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Sélectionnez le contexte d'authentification à utiliser pour la connexion. Chaque contexte est un ensemble de permissions Microsoft Graph requises pour effectuer les tâches proposées dans AppControl Manager.</value>
+    <value>Sélectionnez le contexte d'authentification à utiliser pour la connexion. Chaque contexte est un ensemble de permissions Microsoft Graph requises pour effectuer les tâches proposées dans App Control Studio.</value>
   </data>
   <data name="RemoveAccountButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Supprimer le compte de la liste. Il sera complètement supprimé de la mémoire de l'application et du cache de la bibliothèque d'authentification Microsoft.</value>
@@ -1989,7 +1989,7 @@
     <value>Récupérez et interrogez les paramètres sécurisés sur le système.</value>
   </data>
   <data name="LogsPageTitle" xml:space="preserve">
-    <value>Voici les journaux générés automatiquement par AppControl Manager et stockés dans le dossier "AppControl Manager" dans Program Files (si exécuté avec élévation, sinon ils seront enregistrés dans le répertoire TEMP). La taille totale du dossier des journaux ne dépassera jamais 1 Go.</value>
+    <value>Voici les journaux générés automatiquement par App Control Studio et stockés dans le dossier "App Control Studio" dans Program Files (si exécuté avec élévation, sinon ils seront enregistrés dans le répertoire TEMP). La taille totale du dossier des journaux ne dépassera jamais 1 Go.</value>
   </data>
   <data name="MDEAHPolicyCreationPageTitle.Text" xml:space="preserve">
     <value>Utilisez les journaux de chasse avancée de Microsoft Defender pour Endpoint pour créer des politiques de contrôle d'application. Vous pouvez parcourir les fichiers journaux exportés ou les récupérer depuis le cloud en vous connectant à votre compte Microsoft.</value>
@@ -2001,7 +2001,7 @@
     <value>Modifiez les politiques App Control for Business. Parcourez facilement un fichier de politique XML et chargez ses détails avec le bouton Charger. Une fois chargé, vous pouvez revoir le nombre de chaque règle, supprimer des règles spécifiques et modifier divers autres paramètres.</value>
   </data>
   <data name="SettingsPageTitle.Text" xml:space="preserve">
-    <value>Personnalisez vos paramètres d'application ici. Vos préférences seront enregistrées afin d'être prêtes à chaque démarrage d'AppControl Manager.</value>
+    <value>Personnalisez vos paramètres d'application ici. Vos préférences seront enregistrées afin d'être prêtes à chaque démarrage d'App Control Studio.</value>
   </data>
   <data name="SimulationPageTitle.Text" xml:space="preserve">
     <value>Effectuez une simulation App Control for Business en sélectionnant des fichiers ou dossiers et un fichier de politique XML, puis utilisez le bouton Commencer la Simulation. Les résultats indiqueront si les fichiers sélectionnés seraient autorisés ou bloqués par votre politique si elle était déployée et si ces fichiers étaient en cours d'exécution.</value>
@@ -2070,7 +2070,7 @@
     <value>Basculez entre les directions de flux de droite à gauche et de gauche à droite pour les éléments de l'interface utilisateur.</value>
   </data>
   <data name="AppElevationNoticeMain" xml:space="preserve">
-    <value>Veuillez lancer AppControl Manager en tant qu'administrateur pour accéder à cette page</value>
+    <value>Veuillez lancer App Control Studio en tant qu'administrateur pour accéder à cette page</value>
   </data>
   <data name="AppElevationNoticeTitle" xml:space="preserve">
     <value>Privilèges d'administrateur requis</value>
@@ -2283,7 +2283,7 @@
     <value>Développe un sous-menu au survol ou au toucher, vous offrant l'option de copier des éléments individuels dans chaque ligne.</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>AppControl Manager vous permet de gérer facilement les politiques App Control et l'intégrité du code dans Windows, y compris (mais sans s'y limiter) : la création, la simulation, la suppression, le déploiement et la signature.</value>
+    <value>App Control Studio vous permet de gérer facilement les politiques App Control et l'intégrité du code dans Windows, y compris (mais sans s'y limiter) : la création, la simulation, la suppression, le déploiement et la signature.</value>
   </data>
   <data name="MergePoliciesSettingsExpander.Description" xml:space="preserve">
     <value>Fusionner les Politiques App Control</value>
@@ -2394,10 +2394,10 @@
     <value>Plus d'infos</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ouvre la page wiki principale de GitHub pour AppControl Manager</value>
+    <value>Ouvre la page wiki principale de GitHub pour App Control Studio</value>
   </data>
   <data name="UpdatePageMoreInfoHyperLinkButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Ouvre la page wiki principale de GitHub pour AppControl Manager</value>
+    <value>Ouvre la page wiki principale de GitHub pour App Control Studio</value>
   </data>
   <data name="UpdatePageWhatsNewInfoBar.Title" xml:space="preserve">
     <value>Notes de Version</value>
@@ -2427,16 +2427,16 @@
     <value>Ouvre la page des versions GitHub où vous pouvez trouver les notes de version complètes pour la mise à jour disponible.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.Description" xml:space="preserve">
-    <value>Une fois les mises à jour téléchargées et installées, la prochaine fois que vous ouvrirez AppControl Manager, vous utiliserez la nouvelle version.</value>
+    <value>Une fois les mises à jour téléchargées et installées, la prochaine fois que vous ouvrirez App Control Studio, vous utiliserez la nouvelle version.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.Header" xml:space="preserve">
-    <value>Vérifier la mise à jour d'AppControl Manager</value>
+    <value>Vérifier la mise à jour d'App Control Studio</value>
   </data>
   <data name="CheckForUpdateSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Une fois les mises à jour téléchargées et installées, la prochaine fois que vous ouvrirez AppControl Manager, vous utiliserez la nouvelle version.</value>
+    <value>Une fois les mises à jour téléchargées et installées, la prochaine fois que vous ouvrirez App Control Studio, vous utiliserez la nouvelle version.</value>
   </data>
   <data name="CheckForUpdateSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Une fois les mises à jour téléchargées et installées, la prochaine fois que vous ouvrirez AppControl Manager, vous utiliserez la nouvelle version.</value>
+    <value>Une fois les mises à jour téléchargées et installées, la prochaine fois que vous ouvrirez App Control Studio, vous utiliserez la nouvelle version.</value>
   </data>
   <data name="AutoUpdateCheckSettingsCard.Description" xml:space="preserve">
     <value>Vérifie automatiquement les mises à jour au lancement de l'application et vous avertit si une nouvelle version est disponible afin que vous puissiez utiliser cette page pour l'installer.</value>
@@ -2526,13 +2526,13 @@
     <value>Chemin du Certificat :</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.Header" xml:space="preserve">
-    <value>Personnalisez l'Apparence d'AppControl Manager</value>
+    <value>Personnalisez l'Apparence d'App Control Studio</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Utilisez les diverses options disponibles pour modifier l'apparence et les effets visuels d'AppControl Manager</value>
+    <value>Utilisez les diverses options disponibles pour modifier l'apparence et les effets visuels d'App Control Studio</value>
   </data>
   <data name="AppearanceSectionSettingsExpander.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Utilisez les diverses options disponibles pour modifier l'apparence et les effets visuels d'AppControl Manager</value>
+    <value>Utilisez les diverses options disponibles pour modifier l'apparence et les effets visuels d'App Control Studio</value>
   </data>
   <data name="LanguageTextBlock.Text" xml:space="preserve">
     <value>Langue</value>
@@ -2541,7 +2541,7 @@
     <value>Dépôt GitHub</value>
   </data>
   <data name="AppControlManagerDocumentationHyperLinkButton.Content" xml:space="preserve">
-    <value>Documentation AppControl Manager</value>
+    <value>Documentation App Control Studio</value>
   </data>
   <data name="MicrosoftStorePageHyperLinkButton.Content" xml:space="preserve">
     <value>Page Microsoft Store</value>
@@ -2948,7 +2948,7 @@
     <value>Rechercher un fichier de politique XML</value>
   </data>
   <data name="SidebarMainCaptionTextBlock.Text" xml:space="preserve">
-    <value>Utilisez la barre latérale pour épingler les chemins de fichiers XML et les réutiliser dans différentes parties d'AppControl Manager.</value>
+    <value>Utilisez la barre latérale pour épingler les chemins de fichiers XML et les réutiliser dans différentes parties d'App Control Studio.</value>
   </data>
   <data name="SidebarTextBlock.Text" xml:space="preserve">
     <value>Barre Latérale</value>
@@ -3152,7 +3152,7 @@
     <comment>Certificate creation page</comment>
   </data>
   <data name="TheAppIsUpToDate" xml:space="preserve">
-    <value>L'application AppControl Manager est à jour.</value>
+    <value>L'application App Control Studio est à jour.</value>
   </data>
   <data name="CheckingForUpdateStore" xml:space="preserve">
     <value>Recherche de mise à jour dans le Microsoft Store...</value>
@@ -3161,7 +3161,7 @@
     <value>Une nouvelle mise à jour est disponible. Ouverture du Microsoft Store pour que vous puissiez procéder à la mise à jour de l'application.</value>
   </data>
   <data name="ProblemOpeningMSStore" xml:space="preserve">
-    <value>Un problème est survenu lors de l'ouverture de la page Microsoft Store d'AppControl Manager.</value>
+    <value>Un problème est survenu lors de l'ouverture de la page Microsoft Store d'App Control Studio.</value>
   </data>
   <data name="InstallLatestVer" xml:space="preserve">
     <value>Installer la dernière version</value>
@@ -3582,16 +3582,16 @@
     <value>Remplacement du Chemin du Schéma d'Intégrité du Code</value>
   </data>
   <data name="RateAndReviewSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Ouvre la mini page du Microsoft Store où vous pouvez noter et éventuellement rédiger un avis pour AppControl Manager.</value>
+    <value>Ouvre la mini page du Microsoft Store où vous pouvez noter et éventuellement rédiger un avis pour App Control Studio.</value>
   </data>
   <data name="RateAndReviewSettingsCard.Header" xml:space="preserve">
     <value>Noter et Avis</value>
   </data>
     <data name="RateAndReviewSettingsCard.Description" xml:space="preserve">
-    <value>Ouvre la mini page du Microsoft Store où vous pouvez noter et éventuellement rédiger un avis pour AppControl Manager.</value>
+    <value>Ouvre la mini page du Microsoft Store où vous pouvez noter et éventuellement rédiger un avis pour App Control Studio.</value>
   </data>
   <data name="RateAndReviewSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ouvre la mini page du Microsoft Store où vous pouvez noter et éventuellement rédiger un avis pour AppControl Manager.</value>
+    <value>Ouvre la mini page du Microsoft Store où vous pouvez noter et éventuellement rédiger un avis pour App Control Studio.</value>
   </data>
   <data name="VerifyButtonText" xml:space="preserve">
     <value>Vérifier</value>
@@ -3789,7 +3789,7 @@
     <value>Tentative d'analyse et de lecture du fichier de configuration utilisateur actuel</value>
   </data>
   <data name="AppControlManagerFolderCreatedMessage" xml:space="preserve">
-    <value>Le dossier AppControl Manager dans Program Files a été créé car il n'existait pas.</value>
+    <value>Le dossier App Control Studio dans Program Files a été créé car il n'existait pas.</value>
   </data>
   <data name="ErrorReadingUserConfigMessage" xml:space="preserve">
     <value>Erreur de lecture ou d'analyse du fichier de configuration utilisateur : {0} Une nouvelle configuration avec des valeurs par défaut sera créée.</value>
@@ -4947,16 +4947,16 @@
     <value>Création réussie de la politique de Blocage RMM</value>
   </data>
   <data name="ScreenShieldSettingsCard.Description" xml:space="preserve">
-    <value>Empêcher d'autres applications comme les enregistreurs d'écran (y compris Recall) d'enregistrer ou de faire des captures d'écran de la fenêtre d'AppControl Manager.</value>
+    <value>Empêcher d'autres applications comme les enregistreurs d'écran (y compris Recall) d'enregistrer ou de faire des captures d'écran de la fenêtre d'App Control Studio.</value>
   </data>
   <data name="ScreenShieldSettingsCard.Header" xml:space="preserve">
     <value>Protection d'Écran</value>
   </data>
   <data name="ScreenShieldSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Empêcher d'autres applications comme les enregistreurs d'écran (y compris Recall) d'enregistrer ou de faire des captures d'écran de la fenêtre d'AppControl Manager.</value>
+    <value>Empêcher d'autres applications comme les enregistreurs d'écran (y compris Recall) d'enregistrer ou de faire des captures d'écran de la fenêtre d'App Control Studio.</value>
   </data>
   <data name="ScreenShieldSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Empêcher d'autres applications comme les enregistreurs d'écran (y compris Recall) d'enregistrer ou de faire des captures d'écran de la fenêtre d'AppControl Manager.</value>
+    <value>Empêcher d'autres applications comme les enregistreurs d'écran (y compris Recall) d'enregistrer ou de faire des captures d'écran de la fenêtre d'App Control Studio.</value>
   </data>
   <data name="ToggleSwitchGeneral.OnContent" xml:space="preserve">
     <value>Activé</value>
@@ -5004,16 +5004,16 @@
   <value>Ouverture d'une Politique App Control dans l'Éditeur de Politique</value>
 </data>
  <data name="PublishUserActivityInTheOSSettingsCard.Description" xml:space="preserve">
-    <value>Publier diverses activités que vous effectuez dans AppControl Manager sur l'OS, leur permettant d'apparaître et d'être disponibles dans Microsoft Recall pour retracer vos actions.</value>
+    <value>Publier diverses activités que vous effectuez dans App Control Studio sur l'OS, leur permettant d'apparaître et d'être disponibles dans Microsoft Recall pour retracer vos actions.</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.Header" xml:space="preserve">
     <value>Publier l'Activité sur l'OS</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Publier diverses activités que vous effectuez dans AppControl Manager sur l'OS, leur permettant d'apparaître et d'être disponibles dans Microsoft Recall pour retracer vos actions.</value>
+    <value>Publier diverses activités que vous effectuez dans App Control Studio sur l'OS, leur permettant d'apparaître et d'être disponibles dans Microsoft Recall pour retracer vos actions.</value>
   </data>
   <data name="PublishUserActivityInTheOSSettingsCard.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Publier diverses activités que vous effectuez dans AppControl Manager sur l'OS, leur permettant d'apparaître et d'être disponibles dans Microsoft Recall pour retracer vos actions.</value>
+    <value>Publier diverses activités que vous effectuez dans App Control Studio sur l'OS, leur permettant d'apparaître et d'être disponibles dans Microsoft Recall pour retracer vos actions.</value>
   </data>
   <data name="OperationCancelledByUser" xml:space="preserve">
     <value>L'opération a été annulée.</value>
@@ -5523,10 +5523,10 @@
     <value>Exemples de Requêtes</value>
   </data>
   <data name="MDEAHQueryExamplesButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Vous pouvez copier les requêtes suivantes et les utiliser dans le portail MDE Advanced Hunting pour générer des journaux standards compatibles avec AppControl Manager, ou vous pouvez utiliser la fonctionnalité intégrée de l'application pour récupérer et traiter automatiquement les journaux.</value>
+    <value>Vous pouvez copier les requêtes suivantes et les utiliser dans le portail MDE Advanced Hunting pour générer des journaux standards compatibles avec App Control Studio, ou vous pouvez utiliser la fonctionnalité intégrée de l'application pour récupérer et traiter automatiquement les journaux.</value>
   </data>
   <data name="MDEAHQueryExamplesButton.AutomationProperties.HelpText" xml:space="preserve">
-    <value>Vous pouvez copier les requêtes suivantes et les utiliser dans le portail MDE Advanced Hunting pour générer des journaux standards compatibles avec AppControl Manager, ou vous pouvez utiliser la fonctionnalité intégrée de l'application pour récupérer et traiter automatiquement les journaux.</value>
+    <value>Vous pouvez copier les requêtes suivantes et les utiliser dans le portail MDE Advanced Hunting pour générer des journaux standards compatibles avec App Control Studio, ou vous pouvez utiliser la fonctionnalité intégrée de l'application pour récupérer et traiter automatiquement les journaux.</value>
   </data>
   <data name="DragAndDropHint.Text" xml:space="preserve">
      <value>ou glissez-déposez des fichiers ici</value>

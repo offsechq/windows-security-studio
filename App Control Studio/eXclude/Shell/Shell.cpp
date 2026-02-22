@@ -473,7 +473,7 @@ public:
 	// IExplorerCommand
 	HRESULT STDMETHODCALLTYPE GetTitle(IShellItemArray* /*psiItemArray*/, LPWSTR* ppszName)
 	{
-		return SHStrDupW(L"AppControl Manager", ppszName);
+		return SHStrDupW(L"App Control Studio", ppszName);
 	}
 
 	HRESULT STDMETHODCALLTYPE GetIcon(IShellItemArray* /*psiItemArray*/, LPWSTR* ppszIcon)
@@ -494,7 +494,7 @@ public:
 		*ppszInfotip = nullptr;
 
 		static constexpr std::wstring_view Tooltip =
-			L"View all of the available options offered by the AppControl Manager application.";
+			L"View all of the available options offered by the App Control Studio application.";
 		return SHStrDupW(Tooltip.data(), ppszInfotip);
 	}
 

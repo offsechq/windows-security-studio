@@ -1,4 +1,4 @@
-# Attack Surface Reduction Rules | Harden System Security
+# Attack Surface Reduction Rules | System Security Studio
 
 **[Group Policy]** [Attack surface reduction rules](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/attack-surface-reduction-rules-reference?view=o365-worldwide) target certain software behaviors, such as: **[CSP]** [CSP](https://learn.microsoft.com/windows/client-management/mdm/policy-csp-defender#attacksurfacereductionrules)
 
@@ -10,4 +10,4 @@ Such software behaviors are sometimes seen in legitimate applications. However, 
 
 [Reducing your attack surface](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/attack-surface-reduction) means protecting your devices and network, which leaves attackers with fewer ways to perform attacks. Configuring attack surface reduction rules in Windows can help!
 
-> [!TIP] > [All 19 available Attack Surface Reduction rules shown in the official chart](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/attack-surface-reduction-rules-reference?view=o365-worldwide#asr-rule-to-guid-matrix) will be enabled. The [Harden System Security application](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) also allows you to individually configure each Attack Surface Reduction rule.
+> [!TIP] > [All 19 available Attack Surface Reduction rules shown in the official chart](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/attack-surface-reduction-rules-reference?view=o365-worldwide#asr-rule-to-guid-matrix) will be enabled. The [System Security Studio application](https://github.com/OFFSECHQ/windows-security-studio/wiki/Harden-System-Security) also allows you to individually configure each Attack Surface Reduction rule.

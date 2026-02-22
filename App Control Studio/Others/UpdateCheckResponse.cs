@@ -18,7 +18,7 @@
 namespace AppControlManager.Others;
 
 /// <summary>
-/// Represents an object that is the response of an update check for the AppControl Manager app
+/// Represents an object that is the response of an update check for the App Control Studio app
 /// </summary>
 internal sealed class UpdateCheckResponse(
 	bool isNewVersionAvailable,

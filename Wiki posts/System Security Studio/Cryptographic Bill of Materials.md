@@ -1,6 +1,6 @@
 # Cryptographic Bill of Materials
 
-![CBOM in Harden System Security](https://raw.githubusercontent.com/HotCakeX/.github/35b963aab5530fd6b084f2e37cc25860bc999747/Pictures/PNG%20and%20JPG/Harden%20System%20Security%20page%20screenshots/Cryptographic%20Bill%20of%20Materials.png)
+![CBOM in System Security Studio](https://raw.githubusercontent.com/HotCakeX/.github/35b963aab5530fd6b084f2e37cc25860bc999747/Pictures/PNG%20and%20JPG/Harden%20System%20Security%20page%20screenshots/Cryptographic%20Bill%20of%20Materials.png)
 
 The Cryptographic Bill of Materials (CBOM) offers a system-level inventory and introspection of the operating system cryptography, surfacing the algorithms, curves, cipher suites, and providers that define the platform's cryptographic posture. By normalizing what the OS exposes, it delivers SBOM-like transparency for crypto: enabling evidence-based audits, baseline conformance checks, drift detection across updates, identification of legacy/weak primitives, and planning for [post-quantum](https://techcommunity.microsoft.com/blog/microsoft-security-blog/post-quantum-cryptography-comes-to-windows-insiders-and-linux/4413803) transitions. Enumerations are sourced directly from the underlying providers to emphasize fidelity and provenance, making the output suitable for compliance artifacts, interoperability analysis, and informed hardening and policy decisions as standards evolve.
 
@@ -107,7 +107,7 @@ A minimal, illustrative shape (truncated for clarity):
       "IsFIPSPolicyEnabled": false
     },
     "Tool": {
-      "Name": "Harden System Security Application",
+      "Name": "System Security Studio Application",
       "Website": "https://github.com/OFFSECHQ/windows-security-studio",
       "Version": "1.0.15.0 - Internal"
     }
