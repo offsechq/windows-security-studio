@@ -42,20 +42,21 @@
                          IsClosable="{x:Bind ViewModel.MainInfoBarIsClosable, Mode=OneWay}" />
 
         <Border Grid.Row="1"
-                Margin="0,5,0,5"
+                Margin="0,8,0,8"
                 Padding="12"
                 Style="{StaticResource GridCardStyle}">
-            <StackPanel Spacing="10">
+            <StackPanel Spacing="8">
                 <controls:WrapPanel Orientation="Horizontal"
-                                    HorizontalSpacing="10"
-                                    VerticalSpacing="10"
-                                    VerticalAlignment="Center">
+                                    HorizontalSpacing="8"
+                                    VerticalSpacing="8"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top">
                     <ProgressRing Visibility="{x:Bind ViewModel.ProgressBarVisibility,Mode=OneWay}"
                                   VerticalAlignment="Center"
                                   IsIndeterminate="True" />
 
                     <Button x:Uid="GenericBrowseButton"
-                            VerticalAlignment="Center"
+                            VerticalAlignment="Top"
                             IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
                             Click="{x:Bind ViewModel.BrowseForFile}">
                         <Button.ContentTemplate>
@@ -78,13 +79,14 @@
         </Border>
 
         <ScrollViewer Grid.Row="2"
-                      Margin="20,5,20,10"
+                      Margin="8,8,8,12"
+                      HorizontalContentAlignment="Left"
                       HorizontalScrollMode="Disabled"
                       VerticalScrollMode="Auto"
                       HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto">
 
-            <StackPanel Spacing="12" MaxWidth="760" HorizontalAlignment="Stretch">
+            <StackPanel Spacing="12" HorizontalAlignment="Stretch">
                 <Border Style="{StaticResource GridCardStyle}"
                         Padding="16"
                         CornerRadius="8">
@@ -124,7 +126,7 @@
                                  Grid.Column="0"
                                  Style="{StaticResource ResultValueTextBoxStyle}"
                                  Text="{x:Bind ViewModel.ReputationText, Mode=OneWay}"
-                                 Margin="0,0,10,0"/>
+                                 Margin="0,0,12,0"/>
                         <Button Grid.Row="1"
                                 Grid.Column="1"
                                 x:Uid="CopyToClipBoard"
@@ -157,7 +159,7 @@
                                  Grid.Column="0"
                                  Style="{StaticResource ResultValueTextBoxStyle}"
                                  Text="{x:Bind ViewModel.SourceText, Mode=OneWay}"
-                                 Margin="0,0,10,0"/>
+                                 Margin="0,0,12,0"/>
                         <Button Grid.Row="1"
                                 Grid.Column="1"
                                 x:Uid="CopyToClipBoard"
@@ -190,7 +192,7 @@
                                  Grid.Column="0"
                                  Style="{StaticResource ResultValueTextBoxStyle}"
                                  Text="{x:Bind ViewModel.DurationText, Mode=OneWay}"
-                                 Margin="0,0,10,0"/>
+                                 Margin="0,0,12,0"/>
                         <Button Grid.Row="1"
                                 Grid.Column="1"
                                 x:Uid="CopyToClipBoard"
@@ -223,7 +225,7 @@
                                  Grid.Column="0"
                                  Style="{StaticResource ResultValueTextBoxStyle}"
                                  Text="{x:Bind ViewModel.HandleText, Mode=OneWay}"
-                                 Margin="0,0,10,0"/>
+                                 Margin="0,0,12,0"/>
                         <Button Grid.Row="1"
                                 Grid.Column="1"
                                 x:Uid="CopyToClipBoard"

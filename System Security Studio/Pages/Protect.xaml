@@ -62,7 +62,7 @@
                                 Width="48"
                                 Height="48"
                                 VerticalAlignment="Top"
-                                HorizontalAlignment="Center"
+                                HorizontalAlignment="Left"
                                 Background="{ThemeResource SubtleFillColorSecondaryBrush}">
                             <Image Width="32"
                                    Height="32"
@@ -276,9 +276,9 @@
         </Grid.Resources>
 
         <Border Grid.Row="0"
-                Margin="0,0,0,10"
+                Margin="0,0,0,12"
                 Style="{StaticResource GridCardStyle}"
-                Padding="8">
+                Padding="12">
             <SelectorBar
                 HorizontalAlignment="Left"
                 SelectionChanged="{x:Bind ViewModel.SelectorBar_SelectionChanged}"
@@ -304,7 +304,7 @@
         </Border>
 
         <customUI:InfoBarV2 Grid.Row="1"
-          Margin="0,0,0,10"
+          Margin="0,0,0,12"
           IsOpen="{x:Bind ViewModel.MainInfoBarIsOpen, Mode=TwoWay}"
           Message="{x:Bind ViewModel.MainInfoBarMessage, Mode=OneWay}"
           Severity="{x:Bind ViewModel.MainInfoBarSeverity, Mode=OneWay}"
@@ -312,7 +312,7 @@
 
         <ScrollViewer Grid.Row="2"
                       Visibility="{x:Bind ViewModel.IsDeviceIntentSectionVisible, Mode=OneWay}"
-                      Margin="5,0,5,5">
+                      Margin="8,0,8,8">
 
             <!-- Device Intents section -->
             <Grid HorizontalAlignment="Stretch">
@@ -325,7 +325,7 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Vertical"
-                            Spacing="3"
+                            Spacing="8"
                             Grid.Row="0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center">
@@ -338,9 +338,9 @@
 
                 <!-- GridView: default visuals, only spacing + wrapping -->
                 <Border Grid.Row="1"
-                        Margin="0,10,0,10"
+                        Margin="0,12,0,12"
                         Style="{StaticResource GridCardStyle}"
-                        Padding="8">
+                        Padding="12">
                     <GridView Margin="0"
                               MaxHeight="320"
                               IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
@@ -360,17 +360,17 @@
                     </GridView>
                 </Border>
 
-                <Expander Grid.Row="2" Margin="0,0,0,10" HorizontalAlignment="Stretch">
+                <Expander Grid.Row="2" Margin="0,0,0,12" HorizontalAlignment="Stretch">
                     <Expander.Header>
 
                         <controls:WrapPanel Orientation="Horizontal"
-                                            Padding="8"
-                                            HorizontalSpacing="10"
-                                            VerticalSpacing="6"
+                                            Padding="12"
+                                            HorizontalSpacing="12"
+                                            VerticalSpacing="8"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Center">
 
-                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Spacing="2">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Spacing="4">
                                 <TextBlock x:Uid="ResultingSecurityMeasures"
                                            Style="{ThemeResource SubtitleTextBlockStyle}"/>
 
@@ -382,8 +382,8 @@
                             <!-- Total chip -->
                             <Border CornerRadius="8"
                                     VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Padding="10,6"
+                                    HorizontalAlignment="Left"
+                                    Padding="12,8"
                                     BorderThickness="1"
                                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
@@ -406,7 +406,7 @@
 
                             <customUI:AnimatedCancellableButton
                                     x:Uid="ApplyIntentBasedSecurityMeasuresButton"
-                                    Margin="5,0,0,0"
+                                    Margin="8,0,0,0"
                                     IsEnabled="{x:Bind ViewModel.IsApplyIntentsButtonEnabled, Mode=OneWay}"
                                     CancelMethod="{x:Bind ViewModel.ApplyIntentsCancellableButton.Cancel, Mode=OneWay}"
                                     ExternalOperationInProgress="{x:Bind ViewModel.ApplyIntentsCancellableButton.IsOperationInProgress, Mode=OneWay}"
@@ -430,7 +430,7 @@
 
                     <Expander.Content>
 
-                        <Border Style="{StaticResource GridCardStyle}" Padding="6">
+                        <Border Style="{StaticResource GridCardStyle}" Padding="12">
                             <ListView HorizontalAlignment="Stretch"
                                       MinHeight="240"
                                       MaxHeight="420"
@@ -450,7 +450,7 @@
 
         <!-- Presets section -->
         <Grid Grid.Row="2"
-              Margin="5,0,5,5"
+              Margin="8,0,8,8"
               Visibility="{x:Bind ViewModel.IsPresetsSectionVisible, Mode=OneWay}">
 
             <Grid.RowDefinitions>
@@ -461,7 +461,7 @@
             <Border Grid.Row="0"
                     Margin="0,0,0,16"
                     Style="{StaticResource GridCardStyle}"
-                    Padding="8">
+                    Padding="12">
                 <controls:WrapPanel Orientation="Horizontal"
                                     HorizontalSpacing="12"
                                     VerticalSpacing="12"
@@ -605,7 +605,7 @@
 
             <Border Grid.Row="1"
                     Style="{StaticResource GridCardStyle}"
-                    Padding="8">
+                    Padding="12">
                 <ListView IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
                           x:Name="ProtectionCategoriesListView"
                           Margin="0"

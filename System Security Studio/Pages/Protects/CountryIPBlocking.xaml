@@ -12,43 +12,43 @@
     <Page.Resources>
         <!-- Custom DataTemplate for ComboBox Items showing targeted lists -->
         <DataTemplate x:Key="ComboBoxItemTemplate" x:DataType="vm:ComboBoxItemModelForCountryIPBlocking">
-            <StackPanel Orientation="Vertical" Margin="5" MinWidth="250">
+            <StackPanel Orientation="Vertical" Margin="8" MinWidth="250">
                 <TextBlock Text="{x:Bind Title}"
                            FontWeight="SemiBold"
                            TextWrapping="WrapWholeWords"
-                           Margin="0,0,0,5"/>
+                           Margin="0,0,0,8"/>
                 <HyperlinkButton x:Uid="LearnMoreHyperLinkButton"
                                  NavigateUri="{x:Bind LearnMoreUrl}"
                                  FontSize="12"
-                                 Padding="3"
+                                 Padding="4"
                                  HorizontalAlignment="Left"/>
             </StackPanel>
         </DataTemplate>
 
         <!-- Custom DataTemplate for individual countries ComboBox Items -->
         <DataTemplate x:Key="CountryComboBoxItemTemplate" x:DataType="vm:CountryData">
-            <StackPanel Orientation="Vertical" Margin="5" MinWidth="300">
+            <StackPanel Orientation="Vertical" Margin="8" MinWidth="300">
                 <TextBlock Text="{x:Bind FriendlyName}"
                            FontWeight="SemiBold"
                            TextWrapping="WrapWholeWords"
-                           Margin="0,0,0,2"/>
+                           Margin="0,0,0,4"/>
                 <TextBlock Text="{x:Bind Alpha2Code}"
                            FontSize="11"
                            Opacity="0.8"
                            TextWrapping="WrapWholeWords"
-                           Margin="0,0,0,4"/>
+                           Margin="0,0,0,8"/>
 
                 <!-- IPv4 and IPv6 hyperlink buttons -->
                 <StackPanel Orientation="Horizontal" Spacing="8">
                     <HyperlinkButton Content="IPv4 Source"
                                      NavigateUri="{x:Bind IPv4Link}"
                                      FontSize="10"
-                                     Padding="2"
+                                     Padding="4"
                                      HorizontalAlignment="Left"/>
                     <HyperlinkButton Content="IPv6 Source"
                                      NavigateUri="{x:Bind IPv6Link}"
                                      FontSize="10"
-                                     Padding="2"
+                                     Padding="4"
                                      HorizontalAlignment="Left"/>
                 </StackPanel>
             </StackPanel>
@@ -57,7 +57,7 @@
 
     <ScrollViewer>
 
-        <Grid Margin="5,0,5,5">
+        <Grid Margin="8,0,8,8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -74,33 +74,32 @@
             <ProgressBar Grid.Row="1"
                          IsIndeterminate="True"
                          Visibility="{x:Bind ViewModel.ProgressBarVisibility, Mode=OneWay}"
-                         Margin="0,5,0,5"/>
+                         Margin="0,8,0,8"/>
 
             <Border Grid.Row="2"
                     CornerRadius="12"
-                    Padding="20"
+                    Padding="16"
                     HorizontalAlignment="Stretch"
                     BorderThickness="1"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    Margin="0,5,0,5">
+                    Margin="0,8,0,8">
                 <StackPanel>
 
                     <TextBlock HorizontalAlignment="Left" x:Uid="TargetedListsText" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock x:Uid="TargetedListsDescriptionText" Style="{StaticResource CaptionTextBlockStyle}" Margin="0,5,0,0" HorizontalAlignment="Left"/>
-                    <HyperlinkButton FontSize="12" Padding="2" NavigateUri="https://github.com/HotCakeX/Official-IANA-IP-blocks" x:Uid="LearnMoreHyperLinkButton" HorizontalAlignment="Left" Margin="0,3,0,15" />
+                    <TextBlock x:Uid="TargetedListsDescriptionText" Style="{StaticResource CaptionTextBlockStyle}" Margin="0,8,0,0" HorizontalAlignment="Left"/>
+                    <HyperlinkButton FontSize="12" Padding="4" NavigateUri="https://github.com/HotCakeX/Official-IANA-IP-blocks" x:Uid="LearnMoreHyperLinkButton" HorizontalAlignment="Left" Margin="0,8,0,12" />
 
-                    <Grid HorizontalAlignment="Left">
+                    <Grid HorizontalAlignment="Stretch" ColumnSpacing="16">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <ComboBox VerticalAlignment="Center"
+                        <ComboBox VerticalAlignment="Top"
                               Grid.Column="0"
                               MinWidth="220"
                               MaxWidth="640"
-                              Margin="0,0,20,0"
                               IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
                               SelectedIndex="{x:Bind ViewModel.TargetedListSelectedIndex, Mode=TwoWay}"
                               ItemTemplate="{StaticResource ComboBoxItemTemplate}"
@@ -108,7 +107,7 @@
 
                         <StackPanel Grid.Column="1"
                                Orientation="Vertical"
-                               Spacing="10"
+                               Spacing="8"
                                VerticalAlignment="Top"
                                HorizontalAlignment="Left">
 
@@ -147,28 +146,28 @@
 
             <Border Grid.Row="3"
                     CornerRadius="12"
-                    Padding="20"
+                    Padding="16"
                     BorderThickness="1"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     HorizontalAlignment="Stretch"
-                    Margin="0,5,0,5">
+                    Margin="0,8,0,8">
                 <StackPanel>
 
                     <TextBlock HorizontalAlignment="Left" x:Uid="IndividualCountryIPBlockingText" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock x:Uid="IndividualCountryIPBlockingDescriptionText" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Left" Margin="0,5,0,0" />
-                    <HyperlinkButton FontSize="12" Padding="2" NavigateUri="https://github.com/HotCakeX/Official-IANA-IP-blocks" x:Uid="LearnMoreHyperLinkButton" Margin="0,3,0,15"  HorizontalAlignment="Left"/>
+                    <TextBlock x:Uid="IndividualCountryIPBlockingDescriptionText" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Left" Margin="0,8,0,0" />
+                    <HyperlinkButton FontSize="12" Padding="4" NavigateUri="https://github.com/HotCakeX/Official-IANA-IP-blocks" x:Uid="LearnMoreHyperLinkButton" Margin="0,8,0,12"  HorizontalAlignment="Left"/>
 
-                    <Grid HorizontalAlignment="Left">
+                    <Grid HorizontalAlignment="Stretch" ColumnSpacing="16">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
                         <!-- Country selection with search -->
                         <StackPanel Grid.Column="0"
                                VerticalAlignment="Top"
-                               Margin="0,0,20,0">
+                               Margin="0">
 
                             <!-- Search box for countries -->
                             <TextBox x:Uid="SearchCountriesTextBox"
@@ -179,7 +178,7 @@
                                      Margin="0,0,0,8"/>
 
                             <!-- Countries ComboBox -->
-                            <ComboBox VerticalAlignment="Center"
+                            <ComboBox VerticalAlignment="Top"
                                  MinWidth="220"
                                  MaxWidth="640"
                                  IsEnabled="{x:Bind ViewModel.ElementsAreEnabled, Mode=OneWay}"
@@ -190,7 +189,7 @@
 
                         <StackPanel Grid.Column="1"
                                     Orientation="Vertical"
-                                    Spacing="10"
+                                    Spacing="8"
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Left">
 
