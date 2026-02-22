@@ -115,7 +115,7 @@ internal sealed partial class MainWindowVM : ViewModelBase
 	/// <summary>
 	/// Whether the main NavigationView's pane is open or closed
 	/// </summary>
-	internal bool MainNavigationIsPaneOpen { get; set => SP(ref field, value); }
+	internal bool MainNavigationIsPaneOpen { get; set => SP(ref field, value); } = true;
 
 	/// <summary>
 	/// The width of the TitleColumn in the main window's custom title bar
