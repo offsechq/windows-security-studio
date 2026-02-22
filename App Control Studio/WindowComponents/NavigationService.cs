@@ -370,22 +370,40 @@ internal sealed class NavigationService
 	/// <param name="args"></param>
 	internal void MainNavigation_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs? args)
 	{
-		// If any other page was invoked
-		if (args?.InvokedItemContainer is not null)
+		if (args is null)
 		{
-			// The "Content" property of the Settings page is null when NavigationView is in "Top" mode since it has no label/content on the UI
-			// That is why we use the "IsSettingsInvoked" property to check for the Settings page click/tap.
-			// Settings' content is also auto translated on different system localizations so this is also useful for those situations.
-			// https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.navigationviewiteminvokedeventargs.issettingsinvoked
-			if (args.IsSettingsInvoked)
-			{
-				Navigate(typeof(Pages.Settings), null);
-			}
-			else
-			{
-				Navigate(null, args?.InvokedItemContainer.Tag.ToString());
-			}
+			return;
 		}
+
+		// The "Content" property of the Settings page is null when NavigationView is in "Top" mode since it has no label/content on the UI
+		// That is why we use the "IsSettingsInvoked" property to check for the Settings page click/tap.
+		// Settings' content is also auto translated on different system localizations so this is also useful for those situations.
+		// https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.navigationviewiteminvokedeventargs.issettingsinvoked
+		if (args.IsSettingsInvoked)
+		{
+			Navigate(typeof(Pages.Settings), null);
+			return;
+		}
+
+		if (args.InvokedItemContainer is not NavigationViewItem invokedItem)
+		{
+			return;
+		}
+
+		string? invokedTag = invokedItem.Tag?.ToString();
+
+		// Group nodes without tags are non-navigable and should only expand/collapse.
+		if (invokedTag is null)
+		{
+			if (invokedItem.MenuItems.Count > 0)
+			{
+				invokedItem.IsExpanded = !invokedItem.IsExpanded;
+			}
+
+			return;
+		}
+
+		Navigate(null, invokedTag);
 	}
 
 	/// <summary>

@@ -89,6 +89,10 @@ internal sealed partial class MainWindow : Window
 		// Set the DataContext of the Grid to enable bindings in XAML
 		RootGrid.DataContext = this;
 
+#if HARDEN_SYSTEM_SECURITY
+		ProtectPresetsNavItem.Content = GlobalVars.GetStr("Presets/Text");
+#endif
+
 		// Subscribe to the NavigationView Content background change event
 		NavigationBackgroundManager.NavViewBackgroundChange += OnNavigationBackgroundChanged;
 
@@ -492,6 +496,10 @@ internal sealed partial class MainWindow : Window
 			ProtectNavItem.Content = GlobalVars.GetStr("ProtectNavigationViewItem/Content");
 			AutomationProperties.SetHelpText(ProtectNavItem, GlobalVars.GetStr("ProtectNavigationViewItem/AutomationProperties/HelpText"));
 			ToolTipService.SetToolTip(ProtectNavItem, GlobalVars.GetStr("ProtectNavigationViewItem/ToolTipService/ToolTip"));
+
+			ProtectPresetsNavItem.Content = GlobalVars.GetStr("Presets/Text");
+			AutomationProperties.SetHelpText(ProtectPresetsNavItem, GlobalVars.GetStr("Presets/Text"));
+			ToolTipService.SetToolTip(ProtectPresetsNavItem, GlobalVars.GetStr("Presets/Text"));
 
 			MicrosoftDefenderNavItem.Content = GlobalVars.GetStr("MicrosoftDefenderNavItem/Content");
 			AutomationProperties.SetHelpText(MicrosoftDefenderNavItem, GlobalVars.GetStr("MicrosoftDefenderNavItem/AutomationProperties/HelpText"));

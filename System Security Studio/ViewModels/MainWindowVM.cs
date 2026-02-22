@@ -55,7 +55,7 @@ internal sealed partial class MainWindowVM : ViewModelBase
 
 		breadCrumbMappingsV2[typeof(Pages.Protect)] = new PageTitleMap
 		(
-			titles: [GlobalVars.GetStr("ProtectNavigationViewItem/Content")],
+			titles: [GlobalVars.GetStr("Presets/Text")],
 			pages: [typeof(Pages.Protect)]
 		);
 

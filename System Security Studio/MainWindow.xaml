@@ -186,9 +186,21 @@
                 <!-- Protect Group -->
                 <NavigationViewItemHeader x:Name="ProtectNavigationViewItemHeader" x:Uid="ProtectNavigationViewItemHeader" />
 
-                <NavigationViewItem x:Name="ProtectNavItem" x:Uid="ProtectNavigationViewItem" Icon="{x:Bind ViewModel.ProtectIcon, Mode=OneWay}" Tag="Protect" IsExpanded="True">
+                <NavigationViewItem x:Name="ProtectNavItem"
+                                    x:Uid="ProtectNavigationViewItem"
+                                    Icon="{x:Bind ViewModel.ProtectIcon, Mode=OneWay}"
+                                    IsExpanded="True"
+                                    SelectsOnInvoked="False">
 
                     <NavigationViewItem.MenuItems>
+                        <NavigationViewItem x:Name="ProtectPresetsNavItem"
+                                            Content="Presets"
+                                            Tag="Protect">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE8B7;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
                         <NavigationViewItem x:Name="MicrosoftSecurityBaselineNavItem" x:Uid="MicrosoftSecurityBaselineNavItem" Tag="MicrosoftSecurityBaseline">
                             <NavigationViewItem.Icon>
                                 <BitmapIcon UriSource="ms-appx:///Assets/ProtectionCategoriesIcons/Microsoft-Security-Baseline.png"
