@@ -33,8 +33,21 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -Command ^
     "if (Test-Path $CertPath) { " ^
     "    Write-Host 'Installing Code Signing Certificate...' -ForegroundColor Yellow; " ^
     "    try { " ^
-    "        Import-Certificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\TrustedPeople | Out-Null; " ^
-    "        Write-Host 'Certificate installed successfully.' -ForegroundColor Green; " ^
+    "        $CertToInstall = Get-PfxCertificate -FilePath $CertPath; " ^
+    "        if ($CertToInstall.Subject -ne 'CN=520167C9-C63F-4572-841C-0538368FD2C2') { throw 'Unexpected signing certificate subject.' }; " ^
+    "        $Store = [System.Security.Cryptography.X509Certificates.X509Store]::new('TrustedPeople', 'LocalMachine'); " ^
+    "        $Store.Open('ReadWrite'); " ^
+    "        $AlreadyTrusted = $Store.Certificates | Where-Object { $_.Thumbprint -eq $CertToInstall.Thumbprint } | Select-Object -First 1; " ^
+    "        if ($null -eq $AlreadyTrusted) { " ^
+    "            $Store.Add($CertToInstall); " ^
+    "            Write-Host 'Certificate installed successfully.' -ForegroundColor Green; " ^
+    "        } else { " ^
+    "            Write-Host 'Certificate already trusted. Skipping import.' -ForegroundColor Gray; " ^
+    "        }; " ^
+    "        $OldCerts = @($Store.Certificates | Where-Object { $_.Subject -eq $CertToInstall.Subject -and $_.Thumbprint -ne $CertToInstall.Thumbprint }); " ^
+    "        foreach ($OldCert in $OldCerts) { $Store.Remove($OldCert) }; " ^
+    "        if ($OldCerts.Count -gt 0) { Write-Host \"Removed $($OldCerts.Count) old signing certificate(s) from TrustedPeople.\" -ForegroundColor Gray }; " ^
+    "        $Store.Close(); " ^
     "    } catch { " ^
     "        Write-Error \"Failed to install certificate: $_\"; " ^
     "        Read-Host 'Press Enter to exit...'; " ^

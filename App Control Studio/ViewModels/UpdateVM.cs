@@ -240,9 +240,47 @@ internal sealed partial class UpdateVM : ViewModelBase
 					// Import the certificate to LocalMachine\TrustedPeople store
 					using (X509Certificate2 signingCert = X509CertificateLoader.LoadCertificateFromFile(certSavePath))
 					{
+						const string expectedPublisher = "CN=520167C9-C63F-4572-841C-0538368FD2C2";
+						if (!string.Equals(signingCert.Subject, expectedPublisher, StringComparison.OrdinalIgnoreCase))
+						{
+							throw new InvalidOperationException($"Unexpected signing certificate subject '{signingCert.Subject}'.");
+						}
+
 						using X509Store trustedPeopleStore = new(StoreName.TrustedPeople, StoreLocation.LocalMachine);
 						trustedPeopleStore.Open(OpenFlags.ReadWrite);
-						trustedPeopleStore.Add(signingCert);
+
+						bool alreadyTrusted = trustedPeopleStore.Certificates
+							.Cast<X509Certificate2>()
+							.Any(cert => string.Equals(cert.Thumbprint, signingCert.Thumbprint, StringComparison.OrdinalIgnoreCase));
+
+						if (!alreadyTrusted)
+						{
+							trustedPeopleStore.Add(signingCert);
+							MainInfoBar.WriteInfo("Signing certificate installed successfully.");
+						}
+						else
+						{
+							MainInfoBar.WriteInfo("Signing certificate already trusted. Skipping import.");
+						}
+
+						// Keep only the currently used OFFSECHQ signing certificate to avoid store growth.
+						List<X509Certificate2> staleCerts = trustedPeopleStore.Certificates
+							.Cast<X509Certificate2>()
+							.Where(cert => string.Equals(cert.Subject, signingCert.Subject, StringComparison.OrdinalIgnoreCase) &&
+								!string.Equals(cert.Thumbprint, signingCert.Thumbprint, StringComparison.OrdinalIgnoreCase))
+							.ToList();
+
+						foreach (X509Certificate2 staleCert in staleCerts)
+						{
+							trustedPeopleStore.Remove(staleCert);
+							staleCert.Dispose();
+						}
+
+						if (staleCerts.Count > 0)
+						{
+							MainInfoBar.WriteInfo($"Removed {staleCerts.Count} old signing certificate(s) from TrustedPeople.");
+						}
+
 						trustedPeopleStore.Close();
 					}
 
