@@ -837,7 +837,7 @@ jobs:
         run: ls -R Downloaded-Artifacts
 
       - name: Generating Artifact Attestation
-        uses: actions/attest-build-provenance@v3
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: "Downloaded-Artifacts/*" # Use all the files in the artifact downloads folder
 
