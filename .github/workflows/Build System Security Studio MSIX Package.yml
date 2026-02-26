@@ -478,43 +478,31 @@ jobs:
 
               #region Certificate Creation and Signing
 
-              # Use a persistent self-signed certificate from GitHub Secrets when available.
-              # Fallback to an ephemeral self-signed cert only if secrets are not configured.
+              # Use a persistent self-signed certificate from GitHub Secrets.
+              # Fail fast when secrets are missing to avoid accidental fallback cert rotation.
               $CertSubject = 'CN=520167C9-C63F-4572-841C-0538368FD2C2'
               [string]$EncodedPfx = $env:OFFSECHQ_SIGNING_PFX_BASE64
               [string]$PfxPassword = $env:OFFSECHQ_SIGNING_PFX_PASSWORD
               [string]$PfxPath = $null
 
-              if (-not [string]::IsNullOrWhiteSpace($EncodedPfx) -and -not [string]::IsNullOrWhiteSpace($PfxPassword)) {
-                  Write-Host -Object 'Using persistent signing certificate from GitHub Secrets.' -ForegroundColor Cyan
-
-                  [byte[]]$PfxBytes = [System.Convert]::FromBase64String($EncodedPfx.Trim())
-                  [System.Security.SecureString]$SecurePfxPassword = ConvertTo-SecureString -String $PfxPassword -AsPlainText -Force
-                  $Cert = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($PfxBytes, $SecurePfxPassword, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
-
-                  if (-not [string]::Equals($Cert.Subject, $CertSubject, [System.StringComparison]::OrdinalIgnoreCase)) {
-                      throw [System.InvalidOperationException]::New("Signing certificate subject '$($Cert.Subject)' does not match package publisher '$CertSubject'.")
-                  }
-
-                  $PfxPath = [System.IO.Path]::Combine($env:RUNNER_TEMP, 'OFFSECHQ_CodeSigning.pfx')
-                  [System.IO.File]::WriteAllBytes($PfxPath, $PfxBytes)
-              }
-              else {
-                  Write-Warning 'Persistent signing certificate secrets are not set. Falling back to a new ephemeral self-signed certificate.'
-
-                  $Cert = New-SelfSignedCertificate -Type Custom -Subject $CertSubject `
-                      -KeyUsage DigitalSignature `
-                      -FriendlyName 'OFFSECHQ Code Signing' `
-                      -CertStoreLocation 'Cert:\CurrentUser\My' `
-                      -TextExtension @('2.5.29.37={text}1.3.6.1.5.5.7.3.3', '2.5.29.19={text}')
+              if ([string]::IsNullOrWhiteSpace($EncodedPfx) -or [string]::IsNullOrWhiteSpace($PfxPassword)) {
+                  throw [System.InvalidOperationException]::New('Required signing secrets OFFSECHQ_SIGNING_PFX_BASE64/OFFSECHQ_SIGNING_PFX_PASSWORD are missing.')
               }
 
-              [System.String[]]$SignCredentialArgs = if (-not [string]::IsNullOrWhiteSpace($PfxPath)) {
-                  @('/f', $PfxPath, '/p', $PfxPassword)
+              Write-Host -Object 'Using persistent signing certificate from GitHub Secrets.' -ForegroundColor Cyan
+
+              [byte[]]$PfxBytes = [System.Convert]::FromBase64String($EncodedPfx.Trim())
+              [System.Security.SecureString]$SecurePfxPassword = ConvertTo-SecureString -String $PfxPassword -AsPlainText -Force
+              $Cert = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($PfxBytes, $SecurePfxPassword, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
+
+              if (-not [string]::Equals($Cert.Subject, $CertSubject, [System.StringComparison]::OrdinalIgnoreCase)) {
+                  throw [System.InvalidOperationException]::New("Signing certificate subject '$($Cert.Subject)' does not match package publisher '$CertSubject'.")
               }
-              else {
-                  @('/sha1', $Cert.Thumbprint)
-              }
+
+              $PfxPath = [System.IO.Path]::Combine($env:RUNNER_TEMP, 'OFFSECHQ_CodeSigning.pfx')
+              [System.IO.File]::WriteAllBytes($PfxPath, $PfxBytes)
+
+              [System.String[]]$SignCredentialArgs = @('/f', $PfxPath, '/p', $PfxPassword)
 
               Write-Host -Object "Using certificate thumbprint: $($Cert.Thumbprint)" -ForegroundColor Green
 
