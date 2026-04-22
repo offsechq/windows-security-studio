@@ -25,6 +25,6 @@
 	<Import Project="..\CommonCore\CommonCore.projitems" Label="Shared" />
 
 	<ItemGroup>
-		<PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler" Version="10.0.6" />
+		<PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler" Version="10.0.7" />
 	</ItemGroup>
 </Project>
