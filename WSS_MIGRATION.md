@@ -244,6 +244,10 @@ The Windows release build and smoke test must cover:
   Release build. Corrected the query formatting, simplified two animation null
   checks, and removed an unnecessary nullable suppression before rerunning the
   complete Windows release pipeline.
+- The third Windows packaging run confirmed those four original diagnostics
+  were resolved. A broader local formatter had suggested removing a separate
+  query nullability suppression that the actual Windows compiler still
+  requires; restored it after the runner reported `CS8602`.
 
 ## Completion Definition
 
