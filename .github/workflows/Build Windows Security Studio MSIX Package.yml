@@ -624,7 +624,7 @@ jobs:
                   }
 
                   # Saving the details of the SBOM file
-                  [string]$SbomOutputPath = [System.IO.Path]::Combine($SbomManifestPath, 'spdx_2.2', 'manifest.spdx.json')
+                  [string]$SbomOutputPath = [System.IO.Path]::Combine($SbomManifestPath, '_manifest', 'spdx_2.2', 'manifest.spdx.json')
                   if (-not [System.IO.File]::Exists($SbomOutputPath)) {
                       throw [System.IO.FileNotFoundException]::New("Generated SBOM was not found at $SbomOutputPath")
                   }
