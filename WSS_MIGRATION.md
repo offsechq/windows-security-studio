@@ -175,8 +175,8 @@ artifacts, and documentation will use WSS branding.
   `System Security Studio`, `HardenSystemSecurity`, `QuantumRelayHSS`, `HSS`,
   `SSS`, `acs-v`, and `sss-v` references.
 - [x] Classify and document any intentional compatibility residue.
-- [ ] Build/package WSS on the `windows-2025` GitHub runner.
-- [ ] Verify the produced bundle, symbols, SBOM, release tag/name, download URL,
+- [x] Build/package WSS on the `windows-2025` GitHub runner.
+- [x] Verify the produced bundle, symbols, SBOM, release tag/name, download URL,
   and installer inputs.
 
 ## Runtime Acceptance Matrix
@@ -283,6 +283,24 @@ The Windows release build and smoke test must cover:
   Artifact inspection then caught an invalid literal `"true"` SBOM creation
   timestamp inherited from the old workflow; replaced it with an invariant UTC
   ISO 8601 timestamp.
+- Final release run
+  [30146966381](https://github.com/OFFSECHQ/windows-security-studio/actions/runs/30146966381)
+  completed successfully. The build job took 13m06s while the optional external
+  license service consumed its full 80-second timeout; the prior green run took
+  10m53s. Compared with the 15m19s baseline, the optimized job saves 2m13s to
+  4m26s (about 15% to 29%) depending on external SBOM enrichment latency.
+- Verified the `wss-v1.2.0.0` draft release and all six WSS assets: install kit,
+  signed bundle, certificate, symbols, binlog, and SPDX 2.2 SBOM.
+- Inspected the bundle and nested x64 package. Confirmed both package signatures,
+  `WindowsSecurityStudio.exe`, the `WSS.exe` execution alias,
+  `DISMService.exe`, `QuantumRelayWSS.exe`, and `CppInterop/ComManager.exe`.
+  Rust interop is linked into the Native AOT application.
+- Verified the final SBOM creation time is valid UTC ISO 8601 and that it
+  contains 60 packages and 357 relationships.
+- Confirmed the download URL/version metadata job succeeds, the private-only
+  unsupported attestation jobs skip as intended, no pull requests remain open,
+  and the generated local `bin`, `obj`, and Cargo `target` directories were
+  removed.
 
 ## Completion Definition
 
