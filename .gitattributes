@@ -12,14 +12,11 @@ README.md merge=ours
 
 # Prevent OFFSECHQ customizations from being overwritten by upstream
 LICENSE merge=ours
-Harden-Windows-Security.ps1 merge=ours
 .gitattributes merge=ours
 
-# Protect rebranded app directories (prevent upstream from overwriting)
-"System Security Studio/**" merge=ours
-"App Control Studio/**" merge=ours
+# Protect the WSS application tree from upstream path churn.
+"Windows Security Studio/**" merge=ours
 
 # Protect custom workflows
 ".github/workflows/sync-upstream.yml" merge=ours
-".github/workflows/Build System Security Studio MSIX Package.yml" merge=ours
-".github/workflows/Build App Control Studio MSIX Package.yml" merge=ours
+".github/workflows/Build Windows Security Studio MSIX Package.yml" merge=ours

@@ -8,9 +8,7 @@
 version: 2
 updates:
   - package-ecosystem: "dotnet-sdk"
-    directories:
-      - "/App Control Studio/"
-      - "/System Security Studio/"
+    directory: "/Windows Security Studio/"
     schedule:
       interval: "weekly"
       day: "tuesday"
@@ -18,8 +16,9 @@ updates:
       - "Dependabot ✨"
   - package-ecosystem: "nuget"
     directories:
-      - "/App Control Studio/"
-      - "/System Security Studio/"
+      - "/Windows Security Studio/"
+      - "/Windows Security Studio/Components/DISMService/"
+      - "/Windows Security Studio/Components/QuantumRelayWSS/"
     schedule:
       interval: "daily"
       time: "07:30"
@@ -34,8 +33,7 @@ updates:
     labels:
       - "Dependabot ✨"
   - package-ecosystem: "cargo"
-    directories:
-      - "/App Control Studio/"
+    directory: "/Windows Security Studio/"
     schedule:
       interval: "daily"
       time: "07:30"
