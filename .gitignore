@@ -24,6 +24,7 @@
 
 # Rust artifacts
 [cC]argo.lock
+!Windows Security Studio/Cargo.lock
 [tT]arget/
 
 # Visual Studio Publish Profile user files (match anywhere)
