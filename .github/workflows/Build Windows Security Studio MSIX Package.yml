@@ -607,16 +607,24 @@ jobs:
                   # tool otherwise passes Cargo manifest paths containing
                   # "Windows Security Studio" without preserving the quotes.
                   [string]$SbomSourcePath = [System.IO.Path]::Combine($env:RUNNER_TEMP, 'wss-source')
+                  [string]$SbomManifestPath = [System.IO.Path]::Combine($env:RUNNER_TEMP, 'wss-manifest')
                   if (Test-Path -LiteralPath $SbomSourcePath) {
                       Remove-Item -LiteralPath $SbomSourcePath -Force
+                  }
+                  if (Test-Path -LiteralPath $SbomManifestPath) {
+                      Remove-Item -LiteralPath $SbomManifestPath -Recurse -Force
                   }
                   $null = New-Item -ItemType Junction -Path $SbomSourcePath -Target $script:WSSDirectory
 
                   # https://github.com/microsoft/sbom-tool/blob/main/docs/sbom-tool-arguments.md
-                  . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc $SbomSourcePath -pn 'Windows Security Studio' -ps 'OFFSECHQ' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
+                  . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc $SbomSourcePath -m $SbomManifestPath -pn 'Windows Security Studio' -ps 'OFFSECHQ' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
 
                   # Saving the details of the SBOM file
-                  Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "SBOM_PATH=$MSIXBundleOutput/_manifest/spdx_2.2/manifest.spdx.json"
+                  [string]$SbomOutputPath = [System.IO.Path]::Combine($SbomManifestPath, 'spdx_2.2', 'manifest.spdx.json')
+                  if (-not [System.IO.File]::Exists($SbomOutputPath)) {
+                      throw [System.IO.FileNotFoundException]::New("Generated SBOM was not found at $SbomOutputPath")
+                  }
+                  Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "SBOM_PATH=$SbomOutputPath"
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value 'SBOM_NAME=manifest.spdx.json'
               }
 
@@ -709,7 +717,7 @@ jobs:
               @{ Path = "${{ env.MSIXBundle_PATH }}"; Name = $StandaloneBundleName }
               @{ Path = "${{ env.CERT_PATH }}"; Name = 'OFFSECHQ_CodeSigning.cer' }
               @{ Path = "${{ env.X64MSBuildLog_PATH }}"; Name = 'X64MSBuildLog.binlog' }
-              @{ Path = "${{ env.X64Symbol_PATH }}"; Name = "${{ env.X64Symbol_NAME }}" }
+              @{ Path = "${{ env.X64Symbol_PATH }}"; Name = "${{ env.X64Symbol_NAME }}".Replace('Windows Security Studio', 'Windows.Security.Studio') }
               @{ Path = "${{ env.SBOM_PATH }}"; Name = "${{ env.SBOM_NAME }}" }
           )
           [string]$DraftReleaseId = $env:DRAFT_RELEASE_ID

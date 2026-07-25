@@ -264,6 +264,12 @@ The Windows release build and smoke test must cover:
   published once instead of restored/cleaned/built/published, and the main app
   now restores and publishes/packages in one pass. Draft-release uploads now
   replace same-named assets so reruns are idempotent.
+- The first optimized run completed the build/package work and began replacing
+  release assets in 11m16s, then exposed GitHub's normalization of spaces to
+  dots in the symbol asset name. Normalized that name before matching/uploading.
+  Moved the generated SBOM manifest outside the component scan root so the tool
+  cannot discover its own output while source/package detection is still
+  running.
 
 ## Completion Definition
 
