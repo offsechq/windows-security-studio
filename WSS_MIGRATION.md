@@ -232,6 +232,13 @@ The Windows release build and smoke test must cover:
   flags.
 - Confirmed the legacy-term audit is empty outside this tracker, historical
   screenshot URLs, and the documented MSIX compatibility identity.
+- The first Windows packaging run reached the main WSS compile after
+  successfully building ComManager, RustInterop, DISMService, and
+  QuantumRelayWSS. It exposed two generic CommonCore utilities that the initial
+  caller audit had incorrectly classified as unused. Restored only their
+  WSS-required functionality (`FileUtility` and `CertificateGenerator`),
+  removed the ACS-only certificate workflow, and removed three duplicate using
+  directives promoted to errors by the Release build.
 
 ## Completion Definition
 

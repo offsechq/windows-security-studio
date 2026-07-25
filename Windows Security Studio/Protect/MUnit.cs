@@ -28,7 +28,6 @@ using WindowsSecurityStudio.CustomUIElements;
 using WindowsSecurityStudio.ViewModels;
 using WindowsSecurityStudio.GroupPolicy;
 using WindowsSecurityStudio.Helpers;
-using WindowsSecurityStudio.ViewModels;
 using Microsoft.UI.Xaml;
 
 namespace WindowsSecurityStudio.Protect;
