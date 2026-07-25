@@ -676,8 +676,17 @@ jobs:
                       Invoke-WebRequest -Uri 'https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-win-x64.exe' -OutFile "${Env:RUNNER_TEMP}\sbom-tool.exe"
                   }
 
+                  # Use a no-space junction for source discovery. The SBOM
+                  # tool otherwise passes Cargo manifest paths containing
+                  # "Windows Security Studio" without preserving the quotes.
+                  [string]$SbomSourcePath = [System.IO.Path]::Combine($env:RUNNER_TEMP, 'wss-source')
+                  if (Test-Path -LiteralPath $SbomSourcePath) {
+                      Remove-Item -LiteralPath $SbomSourcePath -Force
+                  }
+                  $null = New-Item -ItemType Junction -Path $SbomSourcePath -Target $script:WSSDirectory
+
                   # https://github.com/microsoft/sbom-tool/blob/main/docs/sbom-tool-arguments.md
-                  . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc .\ -pn 'Windows Security Studio' -ps 'OFFSECHQ' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
+                  . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc $SbomSourcePath -pn 'Windows Security Studio' -ps 'OFFSECHQ' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
 
                   # Saving the details of the SBOM file
                   Add-Content -Path ($env:GITHUB_ENV, $env:GITHUB_OUTPUT) -Value "SBOM_PATH=$MSIXBundleOutput/_manifest/spdx_2.2/manifest.spdx.json"
@@ -833,6 +842,7 @@ jobs:
   # The Attestation runs right after build and no other job, especially 3rd party actions/steps etc. should run in between.
   attest:
     needs: [build]
+    if: ${{ github.event.repository.visibility == 'public' }}
     runs-on: windows-2025
     permissions:
       attestations: write
@@ -849,12 +859,13 @@ jobs:
         run: ls -R Downloaded-Artifacts
 
       - name: Generating Artifact Attestation
-        uses: actions/attest-build-provenance@v4
+        uses: actions/attest@v4
         with:
           subject-path: "Downloaded-Artifacts/*" # Use all the files in the artifact downloads folder
 
   SbomAttest:
     needs: [build]
+    if: ${{ github.event.repository.visibility == 'public' }}
     runs-on: windows-2025
     permissions:
       contents: read
@@ -872,14 +883,14 @@ jobs:
         run: ls -R Downloaded-Artifacts
 
       - name: Generating SBOM attestation
-        uses: actions/attest-sbom@v4
+        uses: actions/attest@v4
         with:
           subject-path: "Downloaded-Artifacts/*" # Use all the files in the artifact downloads folder
           sbom-path: ./Downloaded-Artifacts/manifest.spdx.json
           show-summary: true
 
   final:
-    needs: [build, attest, SbomAttest]
+    needs: [build]
     runs-on: windows-2025
     permissions:
       contents: write
