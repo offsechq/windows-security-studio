@@ -1,0 +1,12 @@
+{
+    "profiles": {
+        "Windows Security Studio (Package)": {
+            "commandName": "MsixPackage",
+            "nativeDebugging": true,
+            "remoteDebugEnabled": false
+        },
+        "Windows Security Studio (Unpackaged)": {
+            "commandName": "Project"
+        }
+    }
+}

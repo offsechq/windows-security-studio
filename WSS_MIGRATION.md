@@ -117,64 +117,64 @@ artifacts, and documentation will use WSS branding.
 
 ### Phase 2: Relocate required ACS-owned code
 
-- [ ] Move `Directory.Build.props` under WSS.
-- [ ] Move `CommonCore` under WSS and update all imports.
-- [ ] Move the 39 linked source files under WSS.
-- [ ] Remove cross-product linked-source entries from the main project.
-- [ ] Move `ComManager`, `DISMService`, `QuantumRelayHSS`, and Rust interop under
+- [x] Move `Directory.Build.props` under WSS.
+- [x] Move `CommonCore` under WSS and update all imports.
+- [x] Move the 39 linked source files under WSS.
+- [x] Remove cross-product linked-source entries from the main project.
+- [x] Move `ComManager`, `DISMService`, `QuantumRelayHSS`, and Rust interop under
   `Windows Security Studio/Components`.
-- [ ] Update solution and helper project references.
-- [ ] Update local build script paths and outputs.
+- [x] Update solution and helper project references.
+- [x] Update local build script paths and outputs.
 
 ### Phase 3: Rename SSS/HSS to WSS
 
-- [ ] Rename the application directory, project, solution, and build script.
-- [ ] Rename `HardenSystemSecurity` namespaces and symbols.
-- [ ] Rename remaining `AppControlManager` namespaces used by WSS-owned code.
-- [ ] Rename `QuantumRelayHSS` source/project/service/executable to
+- [x] Rename the application directory, project, solution, and build script.
+- [x] Rename `HardenSystemSecurity` namespaces and symbols.
+- [x] Rename remaining `AppControlManager` namespaces used by WSS-owned code.
+- [x] Rename `QuantumRelayHSS` source/project/service/executable to
   `QuantumRelayWSS`.
-- [ ] Change product display names, descriptions, package metadata, execution
+- [x] Change product display names, descriptions, package metadata, execution
   alias, release notes, update identifiers, and artifact names.
-- [ ] Preserve only explicitly documented compatibility identifiers.
-- [ ] Update localized resource values without changing unrelated translations.
+- [x] Preserve only explicitly documented compatibility identifiers.
+- [x] Update localized resource values without changing unrelated translations.
 
 ### Phase 4: Automation and repository metadata
 
-- [ ] Rename and update the WSS build/release workflow.
-- [ ] Remove the ACS build/release workflow.
-- [ ] Update caches and all helper project paths.
-- [ ] Update Dependabot to scan only WSS and its components.
-- [ ] Keep .NET SDK auto-merge limited to the surviving SDK manifest.
-- [ ] Update README, agent instructions, CODEOWNERS, `.gitattributes`,
+- [x] Rename and update the WSS build/release workflow.
+- [x] Remove the ACS build/release workflow.
+- [x] Update caches and all helper project paths.
+- [x] Update Dependabot to scan only WSS and its components.
+- [x] Keep .NET SDK auto-merge limited to the surviving SDK manifest.
+- [x] Update README, agent instructions, CODEOWNERS, `.gitattributes`,
   `.gitignore`, installer behavior, and security documentation where needed.
 
 ### Phase 5: Remove ACS and obsolete documentation
 
-- [ ] Delete all residual ACS-only application source and assets.
-- [ ] Delete ACS manifests, solutions, scripts, download/version files, and
+- [x] Delete all residual ACS-only application source and assets.
+- [x] Delete ACS manifests, solutions, scripts, download/version files, and
   packaging metadata.
-- [ ] Delete ACS-only wiki documentation.
-- [ ] Delete general wiki material outside the WSS product documentation scope,
+- [x] Delete ACS-only wiki documentation.
+- [x] Delete general wiki material outside the WSS product documentation scope,
   as requested.
-- [ ] Rename the surviving wiki section to `Windows Security Studio`.
-- [ ] Rebuild the wiki home/index so it exposes WSS documentation only.
-- [ ] Remove tracked build outputs, IDE caches, binaries, and user files that
+- [x] Rename the surviving wiki section to `Windows Security Studio`.
+- [x] Rebuild the wiki home/index so it exposes WSS documentation only.
+- [x] Remove tracked build outputs, IDE caches, binaries, and user files that
   should be generated.
 
 ### Phase 6: Validation and cleanup
 
-- [ ] XML-parse project, manifest, solution, and resource files.
-- [ ] Validate workflow YAML with `actionlint`.
-- [ ] Validate PowerShell syntax where a parser is available.
-- [ ] Run `dotnet restore` and the strongest build available in the local
+- [x] XML-parse project, manifest, solution, and resource files.
+- [x] Validate workflow YAML with `actionlint`.
+- [x] Validate PowerShell syntax where a parser is available.
+- [x] Run `dotnet restore` and the strongest build available in the local
   environment.
-- [ ] Run Cargo metadata/checks for moved Rust workspaces where supported.
-- [ ] Confirm every project/import/content/native-library path exists.
-- [ ] Confirm no ACS directory or ACS product automation remains.
-- [ ] Audit residual `App Control Studio`, `AppControlManager`,
+- [x] Run Cargo metadata/checks for moved Rust workspaces where supported.
+- [x] Confirm every project/import/content/native-library path exists.
+- [x] Confirm no ACS directory or ACS product automation remains.
+- [x] Audit residual `App Control Studio`, `AppControlManager`,
   `System Security Studio`, `HardenSystemSecurity`, `QuantumRelayHSS`, `HSS`,
   `SSS`, `acs-v`, and `sss-v` references.
-- [ ] Classify and document any intentional compatibility residue.
+- [x] Classify and document any intentional compatibility residue.
 - [ ] Build/package WSS on the `windows-2025` GitHub runner.
 - [ ] Verify the produced bundle, symbols, SBOM, release tag/name, download URL,
   and installer inputs.
@@ -209,6 +209,29 @@ The Windows release build and smoke test must cover:
 - Chose to preserve the current MSIX package identity for upgrade compatibility
   while replacing visible and code-level SSS/HSS branding.
 - Created this tracker before moving or deleting application files.
+- Moved all WSS-required shared sources and native/privileged components into
+  the self-contained `Windows Security Studio` tree.
+- Removed the ACS application, its packaging workflow, its generated binaries,
+  and all non-WSS wiki sections.
+- Renamed visible product branding, namespaces, executable/alias, relay service,
+  artifact names, release tags, paths, automation, and documentation to WSS.
+- Preserved `OFFSECHQ.SystemSecurityStudio` only as the internal MSIX package
+  identity required for in-place upgrades.
+- Replaced stale linked-source and staged-binary packaging with direct local
+  component output references.
+- Updated the Native AOT runtime packages to `10.0.9`, resolving a restore
+  downgrade detected by the pinned .NET 10.0.301 SDK.
+- Validated 41 XML files, every `CommonCore` compile entry, PowerShell syntax,
+  both workflow files with `actionlint`, every referenced action tag, all
+  retained internal wiki links, and all JSON resources (allowing UTF-8 BOMs).
+- Restored all three .NET projects. DISMService and QuantumRelayWSS compile with
+  zero warnings; the main app reaches the Windows-only WinUI XAML compiler,
+  which cannot execute on Linux and is deferred to the Windows runner.
+- Ran Cargo metadata and cross-target `cargo check` successfully for
+  `x86_64-pc-windows-msvc` with the nightly toolchain and configured mitigation
+  flags.
+- Confirmed the legacy-term audit is empty outside this tracker, historical
+  screenshot URLs, and the documented MSIX compatibility identity.
 
 ## Completion Definition
 

@@ -1,0 +1,24 @@
+[workspace]
+members = [
+  "Components/RustInterop"
+]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+authors = ["Kenyata Gomo"]
+license = "MIT"
+homepage = "https://github.com/OFFSECHQ/windows-security-studio"
+repository = "https://github.com/OFFSECHQ/windows-security-studio"
+documentation = "https://github.com/OFFSECHQ/windows-security-studio/wiki"
+publish = false
+rust-version = "1.92"
+
+[profile.release]
+codegen-units = 1
+opt-level = "s"
+split-debuginfo = "packed"
+strip = "symbols"
+lto = "fat"
+incremental = false
+panic = "unwind"
