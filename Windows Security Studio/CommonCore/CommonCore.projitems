@@ -60,6 +60,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Others\AllCertificatesGrabber.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Others\AllFileSigners.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Others\ClipboardManagement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\CertificateCreator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Others\GetFilesFast.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LLPackageReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Signing\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Signing\Main.cs" />

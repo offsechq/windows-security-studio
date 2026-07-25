@@ -32,7 +32,6 @@ using Windows.Foundation;
 using Windows.Management.Deployment;
 using Windows.System;
 
-using WindowsSecurityStudio.Others;
 using WindowsSecurityStudio.ViewModels;
 namespace WindowsSecurityStudio.ViewModels;
 

@@ -27,7 +27,6 @@ using Windows.Graphics;
 using WinRT;
 
 using WindowsSecurityStudio.WindowComponents;
-using WindowsSecurityStudio.ViewModels;
 using System.Collections.Frozen;
 using System.Runtime.InteropServices;
 namespace WindowsSecurityStudio.WindowComponents;
