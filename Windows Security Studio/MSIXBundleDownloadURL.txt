@@ -1,1 +1,1 @@
-https://github.com/OFFSECHQ/windows-security-studio/releases/download/wss-v1.2.0.0/Windows.Security.Studio_1.2.0.0.msixbundle
+https://github.com/offsechq/windows-security-studio/releases/download/wss-v1.2.0.0/Windows.Security.Studio_1.2.0.0.msixbundle
