@@ -274,6 +274,10 @@ The Windows release build and smoke test must cover:
   signing path again, then showed that the SBOM tool requires a custom manifest
   directory to exist before invocation. Created it explicitly and added a
   direct exit-code check before validating the generated manifest.
+- The following runner telemetry confirmed successful SBOM generation with 60
+  packages and 357 relationships. Corrected the validation/output path to
+  include the `_manifest` directory that the tool creates beneath a custom
+  manifest root.
 
 ## Completion Definition
 
