@@ -1,0 +1,402 @@
+[
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows\\LanmanServer",
+        "ValueName": "MinSmb2Dialect",
+        "Type": 4,
+        "Size": 4,
+        "Data": "EQMAAA==",
+        "RegValue": "785",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "MinSmb2DialectServer-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2838-70f3-b2b9-2022fd28ccbd"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows\\LanmanServer",
+        "ValueName": "EnableSMBQUIC",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "EnableSMBQUICServer-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2838-7770-9e68-58b494f76645"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows\\LanmanServer",
+        "ValueName": "CipherSuiteOrder",
+        "Type": 7,
+        "Size": 98,
+        "Data": "QQBFAFMAXwAyADUANgBfAEcAQwBNAAAAQQBFAFMAXwAyADUANgBfAEMAQwBNAAAAQQBFAFMAXwAxADIAOABfAEcAQwBNAAAAQQBFAFMAXwAxADIAOABfAEMAQwBNAAAAAAA=",
+        "RegValue": "AES_256_GCM;AES_256_CCM;AES_128_GCM;AES_128_CCM",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "CipherSuiteOrderServer-WindowsNetworking",
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-lanmanserver#pol_ciphersuiteorder",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2838-7515-a455-fff3c68e6ceb"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows\\LanmanWorkstation",
+        "ValueName": "RequireEncryption",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "RequireEncryption-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2838-79bd-8f7c-cc134541fc63"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows\\LanmanWorkstation",
+        "ValueName": "MinSmb2Dialect",
+        "Type": 4,
+        "Size": 4,
+        "Data": "EQMAAA==",
+        "RegValue": "785",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "MinSmb2DialectClient-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2838-77a5-bc70-c5a0cbe581f5"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows\\LanmanWorkstation",
+        "ValueName": "CipherSuiteOrder",
+        "Type": 7,
+        "Size": 98,
+        "Data": "QQBFAFMAXwAyADUANgBfAEcAQwBNAAAAQQBFAFMAXwAyADUANgBfAEMAQwBNAAAAQQBFAFMAXwAxADIAOABfAEcAQwBNAAAAQQBFAFMAXwAxADIAOABfAEMAQwBNAAAAAAA=",
+        "RegValue": "AES_256_GCM;AES_256_CCM;AES_128_GCM;AES_128_CCM",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "CipherSuiteOrderClient-WindowsNetworking",
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-lanmanworkstation#pol_ciphersuiteorder",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2838-7e64-964d-666ef51e1c60"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows\\LanmanWorkstation",
+        "ValueName": "EnableSMBQUIC",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "EnableSMBQUICClient-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2838-71f6-910c-c9b052553bc6"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows NT\\DNSClient",
+        "ValueName": "EnableNetbios",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AAAAAA==",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "EnableNetbios-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2838-75be-9700-902625f190ed"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows NT\\DNSClient",
+        "ValueName": "DisableSmartNameResolution",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableSmartNameResolution-WindowsNetworking",
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-dnsclient#dns_smartmultihomednameresolution",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2839-75ca-9507-bce49b534f97"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows NT\\DNSClient",
+        "ValueName": "EnableMulticast",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AAAAAA==",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "EnableMulticast-WindowsNetworking",
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-dnsclient#turn_off_multicast",
+        "Category": null,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2839-7e05-9ede-cb97f86a90a7"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows NT\\Printers",
+        "ValueName": "DisableHTTPPrinting",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableHTTPPrinting-WindowsNetworking",
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-connectivity?WT.mc_id=Portal-fx#diableprintingoverhttp",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2839-7173-9e7c-80c74cfb465b"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows NT\\Printers",
+        "ValueName": "DisableWebPnPDownload",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableWebPnPDownload-WindowsNetworking",
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-admx-icm#disablewebpnpdownload_1",
+        "Category": null,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2839-76e2-8581-2164d2c34192"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows\\LanmanWorkstation",
+        "ValueName": "BlockNTLM",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "BlockNTLM-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": 9,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            5
+        ],
+        "ID": "019a8dfa-2839-7660-bb0c-efae9bb797e7"
+    },
+    {
+        "Source": 0,
+        "KeyName": "Software\\Policies\\Microsoft\\Windows NT\\Rpc",
+        "ValueName": "EnableAuthEpResolution",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AAAAAA==",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "EnableAuthEpResolution-WindowsNetworking",
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-remoteprocedurecall#rpcendpointmapperclientauthentication",
+        "Category": 11,
+        "SubCategory": 9,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            5
+        ],
+        "ID": "019a8dfa-2839-7430-a4e4-570f2666d608"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+        "ValueName": "EncryptData",
+        "Type": 4,
+        "Size": 4,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "EncryptData-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2839-7e63-b0d8-91ac94981b2e"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters",
+        "ValueName": "EnableLMHOSTS",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "EnableLMHOSTS-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2839-7c85-8e9c-7d487469a2e6"
+    },
+    {
+        "Source": 1,
+        "KeyName": "System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedExactPaths",
+        "ValueName": "Machine",
+        "Type": 7,
+        "Size": 4,
+        "Data": "AAAAAA==",
+        "RegValue": "",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "AllowedExactPathsMachine-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": "System\\CurrentControlSet\\Control\\ProductOptions;System\\CurrentControlSet\\Control\\Server Applications;Software\\Microsoft\\Windows NT\\CurrentVersion",
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2839-7a9a-a137-dbcfe23f8f33"
+    },
+    {
+        "Source": 1,
+        "KeyName": "System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths",
+        "ValueName": "Machine",
+        "Type": 7,
+        "Size": 4,
+        "Data": "AAAAAA==",
+        "RegValue": "",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "AllowedPathsMachine-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": null,
+        "DefaultRegValue": "System\\CurrentControlSet\\Control\\Print\\Printers;System\\CurrentControlSet\\Services\\Eventlog;Software\\Microsoft\\OLAP Server;Software\\Microsoft\\Windows NT\\CurrentVersion\\Print;Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows;System\\CurrentControlSet\\Control\\ContentIndex;System\\CurrentControlSet\\Control\\Terminal Server;System\\CurrentControlSet\\Control\\Terminal Server\\UserConfig;System\\CurrentControlSet\\Control\\Terminal Server\\DefaultUserConfiguration;Software\\Microsoft\\Windows NT\\CurrentVersion\\Perflib;System\\CurrentControlSet\\Services\\SysmonLog",
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-283a-7f1c-b135-3df7524fb167"
+    },
+    {
+        "Source": 1,
+        "KeyName": "System\\CurrentControlSet\\Control\\Lsa\\MSV1_0",
+        "ValueName": "RestrictReceivingNTLMTraffic",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AgAAAA==",
+        "RegValue": "2",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "RestrictReceivingNTLMTraffic-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": 9,
+        "DefaultRegValue": "0",
+        "DeviceIntents": [
+            5
+        ],
+        "ID": "019a8dfa-283a-72f5-828e-a8d8c69b2528"
+    },
+    {
+        "Source": 1,
+        "KeyName": "System\\CurrentControlSet\\Control\\Lsa\\MSV1_0",
+        "ValueName": "RestrictSendingNTLMTraffic",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AgAAAA==",
+        "RegValue": "2",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "RestrictSendingNTLMTraffic-WindowsNetworking",
+        "URL": "",
+        "Category": 11,
+        "SubCategory": 9,
+        "DefaultRegValue": "0",
+        "DeviceIntents": [
+            5
+        ],
+        "ID": "019a8dfa-283a-7c6b-a9ec-75a2f2ad89d8"
+    }
+]

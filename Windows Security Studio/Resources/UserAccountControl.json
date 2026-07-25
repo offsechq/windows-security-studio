@@ -1,0 +1,133 @@
+[
+    {
+        "Source": 0,
+        "KeyName": "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+        "ValueName": "HideFastUserSwitching",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "HideFastUserSwitching-UAC",
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowslogon#hidefastuserswitching",
+        "Category": 7,
+        "SubCategory": 7,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            5
+        ],
+        "ID": "019a8dfa-277b-7ccf-a0d3-c7eaef14b258"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+        "ValueName": "ConsentPromptBehaviorAdmin",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AgAAAA==",
+        "RegValue": "2",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "ConsentPromptBehaviorAdmin-UAC",
+        "URL": "https://learn.microsoft.com/openspecs/windows_protocols/ms-gpsb/341747f5-6b5d-4d30-85fc-fa1cc04038d4",
+        "Category": 7,
+        "SubCategory": null,
+        "DefaultRegValue": "5",
+        "DeviceIntents": [
+            2,
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-277c-7722-8319-31aaa70845e5"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+        "ValueName": "ConsentPromptBehaviorUser",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "ConsentPromptBehaviorUser-UAC",
+        "URL": "https://learn.microsoft.com/openspecs/windows_protocols/ms-gpsb/15f4f7b3-d966-4ff4-8393-cb22ea1c3a63",
+        "Category": 7,
+        "SubCategory": null,
+        "DefaultRegValue": "3",
+        "DeviceIntents": [
+            2,
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-277c-7cbb-8d31-a9637b9ef898"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+        "ValueName": "ValidateAdminCodeSignatures",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "ValidateAdminCodeSignatures-UAC",
+        "URL": "https://learn.microsoft.com/openspecs/windows_protocols/ms-gpsb/a9b816e0-075b-4674-a1a9-cecd1d9523e7",
+        "Category": 7,
+        "SubCategory": 8,
+        "DefaultRegValue": "0",
+        "DeviceIntents": [
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-277d-784d-bd53-44eeeffd4bc9"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+        "ValueName": "ConsentPromptBehaviorEnhancedAdmin",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AQAAAA==",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "ConsentPromptBehaviorEnhancedAdmin-UAC",
+        "URL": "",
+        "Category": 7,
+        "SubCategory": null,
+        "DefaultRegValue": "1",
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-277d-7435-b9f4-c07249acd178"
+    },
+    {
+        "Source": 1,
+        "KeyName": "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+        "ValueName": "TypeOfAdminApprovalMode",
+        "Type": 4,
+        "Size": 4,
+        "Data": "AgAAAA==",
+        "RegValue": "2",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "TypeOfAdminApprovalMode-UAC",
+        "URL": "https://blogs.windows.com/windowsdeveloper/2025/05/19/enhance-your-application-security-with-administrator-protection/",
+        "Category": 7,
+        "SubCategory": null,
+        "DefaultRegValue": "1",
+        "DeviceIntents": [
+            2,
+            3,
+            4,
+            5
+        ],
+        "ID": "019a8dfa-277e-72da-8a60-eb86938f9d88"
+    }
+]

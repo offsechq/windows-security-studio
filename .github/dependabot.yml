@@ -1,0 +1,40 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# https://devblogs.microsoft.com/dotnet/using-dependabot-to-manage-dotnet-sdk-updates/
+# https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
+
+version: 2
+updates:
+  - package-ecosystem: "dotnet-sdk"
+    directory: "/Windows Security Studio/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+    labels:
+      - "Dependabot ✨"
+  - package-ecosystem: "nuget"
+    directories:
+      - "/Windows Security Studio/"
+      - "/Windows Security Studio/Components/DISMService/"
+      - "/Windows Security Studio/Components/QuantumRelayWSS/"
+    schedule:
+      interval: "daily"
+      time: "07:30"
+      timezone: "Asia/Kolkata"
+    labels:
+      - "Dependabot ✨"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for updates to GitHub Actions every week: https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot
+      interval: "daily"
+    labels:
+      - "Dependabot ✨"
+  - package-ecosystem: "cargo"
+    directory: "/Windows Security Studio/"
+    schedule:
+      interval: "daily"
+      time: "07:30"
+      timezone: "Asia/Kolkata"

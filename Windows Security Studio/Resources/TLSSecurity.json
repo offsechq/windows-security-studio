@@ -1,0 +1,444 @@
+[
+    {
+        "Source": 0,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Cryptography\\Configuration\\SSL\\00010002",
+        "ValueName": "Functions",
+        "Type": 1,
+        "Size": 606,
+        "Data": "VABMAFMAXwBDAEgAQQBDAEgAQQAyADAAXwBQAE8ATABZADEAMwAwADUAXwBTAEgAQQAyADUANgAsAFQATABTAF8AQQBFAFMAXwAyADUANgBfAEcAQwBNAF8AUwBIAEEAMwA4ADQALABUAEwAUwBfAEEARQBTAF8AMQAyADgAXwBHAEMATQBfAFMASABBADIANQA2ACwAVABMAFMAXwBFAEMARABIAEUAXwBFAEMARABTAEEAXwBXAEkAVABIAF8AQQBFAFMAXwAyADUANgBfAEcAQwBNAF8AUwBIAEEAMwA4ADQALABUAEwAUwBfAEUAQwBEAEgARQBfAEUAQwBEAFMAQQBfAFcASQBUAEgAXwBBAEUAUwBfADEAMgA4AF8ARwBDAE0AXwBTAEgAQQAyADUANgAsAFQATABTAF8ARQBDAEQASABFAF8AUgBTAEEAXwBXAEkAVABIAF8AQQBFAFMAXwAyADUANgBfAEcAQwBNAF8AUwBIAEEAMwA4ADQALABUAEwAUwBfAEUAQwBEAEgARQBfAFIAUwBBAF8AVwBJAFQASABfAEEARQBTAF8AMQAyADgAXwBHAEMATQBfAFMASABBADIANQA2ACwAVABMAFMAXwBEAEgARQBfAFIAUwBBAF8AVwBJAFQASABfAEEARQBTAF8AMgA1ADYAXwBHAEMATQBfAFMASABBADMAOAA0ACwAVABMAFMAXwBEAEgARQBfAFIAUwBBAF8AVwBJAFQASABfAEEARQBTAF8AMQAyADgAXwBHAEMATQBfAFMASABBADIANQA2AAAA",
+        "RegValue": "TLS_CHACHA20_POLY1305_SHA256,TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "Functions-TLS",
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-cryptography#tlsciphersuites",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-2725-71bb-b3ab-1950941755fd"
+    },
+    {
+        "Source": 0,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Cryptography\\Configuration\\SSL\\00010002",
+        "ValueName": "EccCurves",
+        "Type": 7,
+        "Size": 78,
+        "Data": "bgBpAHMAdABQADUAMgAxAAAAYwB1AHIAdgBlADIANQA1ADEAOQAAAE4AaQBzAHQAUAAzADgANAAAAE4AaQBzAHQAUAAyADUANgAAAAAA",
+        "RegValue": "nistP521;curve25519;NistP384;NistP256",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "EccCurves-TLS",
+        "URL": "https://learn.microsoft.com/windows/win32/secauthn/tls-elliptic-curves-in-windows-10-1607-and-later",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            4,
+            5
+        ],
+        "ID": "019a8dfa-2725-764b-b396-7948bc3b1e64"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Client",
+        "ValueName": "DisabledByDefault",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableTLS10ClientPart1-TLS",
+        "URL": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/demystifying-schannel/259233",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2725-72a1-abc9-fc8ab07cb796"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Client",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableTLS10ClientPart2-TLS",
+        "URL": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/demystifying-schannel/259233",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2725-7b84-af76-111c61b31e5c"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Server",
+        "ValueName": "DisabledByDefault",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableTLS10ServerPart1-TLS",
+        "URL": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/demystifying-schannel/259233",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2725-7b21-b7d6-ec48d68ebf17"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Server",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableTLS10ServerPart2-TLS",
+        "URL": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/demystifying-schannel/259233",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2725-778a-8b84-9c01fe5628f9"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.1\\Client",
+        "ValueName": "DisabledByDefault",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableTLS11ClientPart1-TLS",
+        "URL": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/demystifying-schannel/259233",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2726-7257-b578-3dd1303a6e02"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.1\\Client",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableTLS11ClientPart2-TLS",
+        "URL": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/demystifying-schannel/259233",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2726-7e81-8f10-26f4667aba58"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.1\\Server",
+        "ValueName": "DisabledByDefault",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "1",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableTLS11ServerPart1-TLS",
+        "URL": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/demystifying-schannel/259233",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2726-7bf9-94cd-f2df962b8e5b"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.1\\Server",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableTLS11ServerPart2-TLS",
+        "URL": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/demystifying-schannel/259233",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2726-7378-be00-e757a80cabbe"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\NULL\\",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableNULL-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2726-7828-a50b-5258ecfea2cd"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\DES 56/56",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableDES56-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2726-7b15-ae13-3457fcc0aebf"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\RC2 40/128",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableRC240-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2727-7887-8fe1-b1e26b4e7f5c"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\RC2 56/128",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableRC256-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2727-7546-81e3-356fda97db4c"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\RC2 128/128",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableRC2128-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2727-716e-a69b-4ecd2ed21da5"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\RC4 40/128",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableRC440-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2727-7ea0-bedc-4a0b781efc3c"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\RC4 56/128",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableRC456-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2727-7f74-a883-0805c8c5ceae"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\RC4 64/128",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableRC464-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2727-733f-9f95-9b07e7a82658"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\RC4 128/128",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableRC4128-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2728-73c3-ab23-757ff136e9d1"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Ciphers\\Triple DES 168",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableTripleDES-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2728-7297-9b43-f71630e15b9a"
+    },
+    {
+        "Source": 1,
+        "KeyName": "SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Hashes\\MD5",
+        "ValueName": "Enabled",
+        "Type": 4,
+        "Size": 0,
+        "Data": "",
+        "RegValue": "0",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "DisableMD5-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": null,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            99
+        ],
+        "ID": "019a8dfa-2728-70b3-a7f7-9b50df8aa3a4"
+    },
+    {
+        "Source": 0,
+        "KeyName": "SOFTWARE\\Policies\\Microsoft\\Cryptography\\Configuration\\SSL\\00010002",
+        "ValueName": "Functions",
+        "Type": 1,
+        "Size": 664,
+        "Data": "VABMAFMAXwBDAEgAQQBDAEgAQQAyADAAXwBQAE8ATABZADEAMwAwADUAXwBTAEgAQQAyADUANgAsAFQATABTAF8AQQBFAFMAXwAyADUANgBfAEcAQwBNAF8AUwBIAEEAMwA4ADQALABUAEwAUwBfAEEARQBTAF8AMQAyADgAXwBHAEMATQBfAFMASABBADIANQA2ACwAVABMAFMAXwBFAEMARABIAEUAXwBFAEMARABTAEEAXwBXAEkAVABIAF8AQQBFAFMAXwAyADUANgBfAEcAQwBNAF8AUwBIAEEAMwA4ADQALABUAEwAUwBfAEUAQwBEAEgARQBfAEUAQwBEAFMAQQBfAFcASQBUAEgAXwBBAEUAUwBfADEAMgA4AF8ARwBDAE0AXwBTAEgAQQAyADUANgAsAFQATABTAF8ARQBDAEQASABFAF8AUgBTAEEAXwBXAEkAVABIAF8AQQBFAFMAXwAyADUANgBfAEcAQwBNAF8AUwBIAEEAMwA4ADQALABUAEwAUwBfAEUAQwBEAEgARQBfAFIAUwBBAF8AVwBJAFQASABfAEEARQBTAF8AMQAyADgAXwBHAEMATQBfAFMASABBADIANQA2ACwAVABMAFMAXwBEAEgARQBfAFIAUwBBAF8AVwBJAFQASABfAEEARQBTAF8AMgA1ADYAXwBHAEMATQBfAFMASABBADMAOAA0ACwAVABMAFMAXwBEAEgARQBfAFIAUwBBAF8AVwBJAFQASABfAEEARQBTAF8AMQAyADgAXwBHAEMATQBfAFMASABBADIANQA2ACwAVABMAFMAXwBSAFMAQQBfAFcASQBUAEgAXwBBAEUAUwBfADIANQA2AF8AQwBCAEMAXwBTAEgAQQAAAA==",
+        "RegValue": "TLS_CHACHA20_POLY1305_SHA256,TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA",
+        "Hive": 0,
+        "PolicyAction": 0,
+        "FriendlyName": "BattleNetCipher-TLS",
+        "URL": "",
+        "Category": 5,
+        "SubCategory": 4,
+        "DefaultRegValue": null,
+        "DeviceIntents": [
+            1
+        ],
+        "ID": "019a8dfa-2728-7542-9726-3db4141869f9"
+    }
+]
