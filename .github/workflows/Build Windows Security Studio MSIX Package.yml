@@ -615,9 +615,13 @@ jobs:
                       Remove-Item -LiteralPath $SbomManifestPath -Recurse -Force
                   }
                   $null = New-Item -ItemType Junction -Path $SbomSourcePath -Target $script:WSSDirectory
+                  $null = New-Item -ItemType Directory -Path $SbomManifestPath
 
                   # https://github.com/microsoft/sbom-tool/blob/main/docs/sbom-tool-arguments.md
                   . "${Env:RUNNER_TEMP}\sbom-tool.exe" generate -b $MSIXBundleOutput -bc $SbomSourcePath -m $SbomManifestPath -pn 'Windows Security Studio' -ps 'OFFSECHQ' -pv $MSIXVersion -nsb 'https://github.com/OFFSECHQ/windows-security-studio' -V Verbose -gt true -li true -pm true -D true -lto 80
+                  if ($LASTEXITCODE -ne 0) {
+                      throw [System.InvalidOperationException]::New("SBOM generation failed. Exit Code: $LASTEXITCODE")
+                  }
 
                   # Saving the details of the SBOM file
                   [string]$SbomOutputPath = [System.IO.Path]::Combine($SbomManifestPath, 'spdx_2.2', 'manifest.spdx.json')

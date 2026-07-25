@@ -270,6 +270,10 @@ The Windows release build and smoke test must cover:
   Moved the generated SBOM manifest outside the component scan root so the tool
   cannot discover its own output while source/package detection is still
   running.
+- The next validation confirmed the optimized compile, Native AOT package, and
+  signing path again, then showed that the SBOM tool requires a custom manifest
+  directory to exist before invocation. Created it explicitly and added a
+  direct exit-code check before validating the generated manifest.
 
 ## Completion Definition
 
