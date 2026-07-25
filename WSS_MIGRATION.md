@@ -278,6 +278,11 @@ The Windows release build and smoke test must cover:
   packages and 357 relationships. Corrected the validation/output path to
   include the `_manifest` directory that the tool creates beneath a custom
   manifest root.
+- The first fully green optimized run completed its build job in 10m53s,
+  replacing all six draft-release assets and completing the metadata job.
+  Artifact inspection then caught an invalid literal `"true"` SBOM creation
+  timestamp inherited from the old workflow; replaced it with an invariant UTC
+  ISO 8601 timestamp.
 
 ## Completion Definition
 
