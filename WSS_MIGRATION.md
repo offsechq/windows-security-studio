@@ -248,6 +248,15 @@ The Windows release build and smoke test must cover:
   were resolved. A broader local formatter had suggested removing a separate
   query nullability suppression that the actual Windows compiler still
   requires; restored it after the runner reported `CS8602`.
+- The fourth Windows run completed the full 15-minute build job: every native
+  and managed component compiled, the signed MSIX bundle and install kit were
+  created, the SBOM and symbols were generated, and all six draft-release
+  assets uploaded. GitHub then rejected both provenance jobs because artifact
+  attestations are unavailable to user-owned private repositories. Made those
+  jobs conditional on public visibility, migrated the deprecated SBOM action to
+  `actions/attest`, and allowed the release metadata job to complete
+  independently. Added a no-space source junction for SBOM Cargo discovery to
+  work around the tool's unquoted manifest-path handling.
 
 ## Completion Definition
 
