@@ -151,8 +151,8 @@ internal interface IMUnitListViewModel : INotifyPropertyChanged
 
 				// Grab Protection Categories objects
 				query = from item in viewModel.AllMUnits
-							// Group the items returned from the query, sort and select the ones you want to keep
-						group item by item.Name![..1].ToUpperInvariant() into g
+						// Group the items returned from the query, sort and select the ones you want to keep
+						group item by item.Name[..1].ToUpperInvariant() into g
 						orderby g.Key
 						// GroupInfoListForMUnit is a simple custom class that has an IEnumerable type attribute, and
 						// a key attribute. The IGrouping-typed variable g now holds the App objects,

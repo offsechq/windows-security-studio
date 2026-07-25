@@ -239,6 +239,11 @@ The Windows release build and smoke test must cover:
   WSS-required functionality (`FileUtility` and `CertificateGenerator`),
   removed the ACS-only certificate workflow, and removed three duplicate using
   directives promoted to errors by the Release build.
+- The second Windows packaging run again built every native and helper
+  component, then exposed four style diagnostics promoted to errors in the main
+  Release build. Corrected the query formatting, simplified two animation null
+  checks, and removed an unnecessary nullable suppression before rerunning the
+  complete Windows release pipeline.
 
 ## Completion Definition
 
