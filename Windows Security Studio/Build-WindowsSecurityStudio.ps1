@@ -165,14 +165,13 @@ if ($LASTEXITCODE -ne 0) { throw "Failed building ComManager for x64" }
 Write-Host "`nBuilding Rust projects..." -ForegroundColor Magenta
 
 # Setup Rust toolchain
-rustup default nightly 2>$null
-rustup target add x86_64-pc-windows-msvc 2>$null
-rustup component add rust-src --toolchain nightly-x86_64-pc-windows-msvc 2>$null
+rustup toolchain install nightly --profile minimal --component rust-src --target x86_64-pc-windows-msvc 2>$null
+if ($LASTEXITCODE -ne 0) { throw "Failed preparing the nightly Rust toolchain" }
 
 Push-Location '.\Components\RustInterop'
 
 Write-Host "  Building Rust Interop (x64)..." -ForegroundColor Yellow
-cargo build_x64
+cargo +nightly build_x64 --locked
 if ($LASTEXITCODE -ne 0) { Pop-Location; throw "Failed building x64 Rust Interop project" }
 
 Pop-Location
@@ -183,19 +182,11 @@ Write-Host "`nBuilding C# service projects..." -ForegroundColor Magenta
 
 # DISM Service
 Write-Host "  Building DISMService (x64)..." -ForegroundColor Yellow
-dotnet restore '.\Components\DISMService\DISMService.csproj' -r win-x64
-dotnet clean '.\Components\DISMService\DISMService.csproj' --configuration Release
-dotnet build '.\Components\DISMService\DISMService.csproj' --configuration Release --verbosity minimal /p:Platform=x64 /p:RuntimeIdentifier=win-x64
-if ($LASTEXITCODE -ne 0) { throw "Failed building DISMService x64" }
 dotnet msbuild '.\Components\DISMService\DISMService.csproj' /p:Configuration=Release /restore /p:Platform=x64 /p:RuntimeIdentifier=win-x64 /p:PublishProfile=".\Components\DISMService\Properties\PublishProfiles\win-x64.pubxml" /t:Publish -v:minimal
 if ($LASTEXITCODE -ne 0) { throw "Failed publishing DISMService x64" }
 
 # QuantumRelay Service
 Write-Host "  Building QuantumRelayWSS (x64)..." -ForegroundColor Yellow
-dotnet restore '.\Components\QuantumRelayWSS\QuantumRelayWSS.csproj' -r win-x64
-dotnet clean '.\Components\QuantumRelayWSS\QuantumRelayWSS.csproj' --configuration Release
-dotnet build '.\Components\QuantumRelayWSS\QuantumRelayWSS.csproj' --configuration Release --verbosity minimal /p:Platform=x64 /p:RuntimeIdentifier=win-x64
-if ($LASTEXITCODE -ne 0) { throw "Failed building QuantumRelayWSS x64" }
 dotnet msbuild '.\Components\QuantumRelayWSS\QuantumRelayWSS.csproj' /p:Configuration=Release /restore /p:Platform=x64 /p:RuntimeIdentifier=win-x64 /p:PublishProfile=".\Components\QuantumRelayWSS\Properties\PublishProfiles\win-x64.pubxml" /t:Publish -v:minimal
 if ($LASTEXITCODE -ne 0) { throw "Failed publishing QuantumRelayWSS x64" }
 #endregion
@@ -204,12 +195,8 @@ if ($LASTEXITCODE -ne 0) { throw "Failed publishing QuantumRelayWSS x64" }
 Write-Host "`nBuilding MSIX packages..." -ForegroundColor Magenta
 
 Write-Host "  Building x64 MSIX..." -ForegroundColor Yellow
-dotnet clean 'Windows Security Studio.csproj' --configuration Release
-dotnet build 'Windows Security Studio.csproj' --configuration Release --verbosity minimal /p:Platform=x64 /p:RuntimeIdentifier=win-x64
-if ($LASTEXITCODE -ne 0) { throw "Failed building x64 project" }
-
 $mspdbArg = if ($mspdbcmfPath) { "/p:MsPdbCmfExeFullpath=$mspdbcmfPath" } else { "" }
-dotnet msbuild 'Windows Security Studio.csproj' /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-x64 /p:AppxPackageDir="MSIXOutputX64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=x64 -v:minimal $mspdbArg
+dotnet msbuild 'Windows Security Studio.csproj' /restore /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-x64 /p:AppxPackageDir="MSIXOutputX64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=x64 -v:minimal $mspdbArg
 if ($LASTEXITCODE -ne 0) { throw "Failed packaging x64 project" }
 #endregion
 

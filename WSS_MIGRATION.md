@@ -257,6 +257,13 @@ The Windows release build and smoke test must cover:
   `actions/attest`, and allowed the release metadata job to complete
   independently. Added a no-space source junction for SBOM Cargo discovery to
   work around the tool's unquoted manifest-path handling.
+- Measured the successful baseline build job at 15m19s, then removed redundant
+  work from both CI and the local build script: one Rust toolchain preparation
+  replaces repeated updates, cached Rust outputs are retained, a committed
+  lockfile makes `--locked` builds reproducible, each Native AOT helper is
+  published once instead of restored/cleaned/built/published, and the main app
+  now restores and publishes/packages in one pass. Draft-release uploads now
+  replace same-named assets so reruns are idempotent.
 
 ## Completion Definition
 

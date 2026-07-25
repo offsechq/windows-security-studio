@@ -172,8 +172,6 @@ jobs:
                   Write-Host -Object 'The version of the Winget currently in use:'
                   Write-Host -Object (winget --version)
 
-                  winget source update
-
                   # Smart install - only install if not already present
                   Write-Host -Object "`nChecking Rust toolchain..." -ForegroundColor Magenta
                   if (Get-Command rustc -ErrorAction SilentlyContinue) {
@@ -311,67 +309,19 @@ jobs:
 
               #region --- RUST projects ---
 
-              # Uncomment this once stable toolchain supports ehcont security feature, till then we use nightly only
-              # rustup default stable
-              rustup default nightly
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed setting Rust toolchain to Stable. Exit Code: $LASTEXITCODE") }
-
-              rustup target add x86_64-pc-windows-msvc
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed adding x86_64-pc-windows-msvc target to Rust toolchain. Exit Code: $LASTEXITCODE") }
-
-              rustup update
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed updating Rust. Exit Code: $LASTEXITCODE") }
-
-              cargo version
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed checking for Rust version. Exit Code: $LASTEXITCODE") }
-
               [string]$Current_Location = (Get-Location).Path
 
               Set-Location -Path '.\Components\RustInterop'
 
-              if (Test-Path -PathType Leaf -LiteralPath 'Cargo.lock') {
-                  Remove-Item -Force -LiteralPath 'Cargo.lock'
-              }
+              # Install only the required nightly components. Keep the cached
+              # target directory and build the committed dependency graph.
+              rustup toolchain install nightly --profile minimal --component rust-src --target x86_64-pc-windows-msvc
+              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed preparing the nightly Rust toolchain. Exit Code: $LASTEXITCODE") }
 
-              rustup toolchain install nightly
+              cargo +nightly version
+              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed checking the Rust version. Exit Code: $LASTEXITCODE") }
 
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed installing nightly Rust toolchain. Exit Code: $LASTEXITCODE") }
-
-              rustup default nightly
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed setting Rust toolchain to Nightly. Exit Code: $LASTEXITCODE") }
-
-              rustup component add rust-src --toolchain nightly-x86_64-pc-windows-msvc
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed adding rust-src component to Nightly toolchain. Exit Code: $LASTEXITCODE") }
-
-              rustup update
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed updating Rust. Exit Code: $LASTEXITCODE") }
-
-              cargo version
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed checking for Rust version. Exit Code: $LASTEXITCODE") }
-
-              cargo clean
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning the Rust project. Exit Code: $LASTEXITCODE") }
-
-              cargo update --verbose
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed updating Rust. Exit Code: $LASTEXITCODE") }
-
-              cargo tree
-
-              rustup show active-toolchain
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed showing active Rust toolchain. Exit Code: $LASTEXITCODE") }
-
-              cargo build_x64
+              cargo +nightly build_x64 --locked
 
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building x64 Rust Interop project. Exit Code: $LASTEXITCODE") }
 
@@ -383,29 +333,11 @@ jobs:
 
               # DISM Service
 
-              dotnet restore '.\Components\DISMService\DISMService.csproj' -r win-x64
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed restoring DISMService for x64. Exit Code: $LASTEXITCODE") }
-
-              dotnet clean '.\Components\DISMService\DISMService.csproj' --configuration Release
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning DISMService (first pass). Exit Code: $LASTEXITCODE") }
-
-              dotnet build '.\Components\DISMService\DISMService.csproj' --configuration Release --verbosity minimal /p:Platform=x64 /p:RuntimeIdentifier=win-x64
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building DISMService (first pass). Exit Code: $LASTEXITCODE") }
-
               dotnet msbuild '.\Components\DISMService\DISMService.csproj' /p:Configuration=Release /restore /p:Platform=x64 /p:RuntimeIdentifier=win-x64 /p:PublishProfile=".\Components\DISMService\Properties\PublishProfiles\win-x64.pubxml" /t:Publish -v:minimal
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed publishing DISMService for x64. Exit Code: $LASTEXITCODE") }
 
 
               # Windows Service
-
-              dotnet restore '.\Components\QuantumRelayWSS\QuantumRelayWSS.csproj' -r win-x64
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed restoring QuantumRelayWSS for x64. Exit Code: $LASTEXITCODE") }
-
-              dotnet clean '.\Components\QuantumRelayWSS\QuantumRelayWSS.csproj' --configuration Release
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed cleaning QuantumRelayWSS (first pass). Exit Code: $LASTEXITCODE") }
-
-              dotnet build '.\Components\QuantumRelayWSS\QuantumRelayWSS.csproj' --configuration Release --verbosity minimal /p:Platform=x64 /p:RuntimeIdentifier=win-x64
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building QuantumRelayWSS (first pass). Exit Code: $LASTEXITCODE") }
 
               dotnet msbuild '.\Components\QuantumRelayWSS\QuantumRelayWSS.csproj' /p:Configuration=Release /restore /p:Platform=x64 /p:RuntimeIdentifier=win-x64 /p:PublishProfile=".\Components\QuantumRelayWSS\Properties\PublishProfiles\win-x64.pubxml" /t:Publish -v:minimal
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed publishing QuantumRelayWSS for x64. Exit Code: $LASTEXITCODE") }
@@ -419,13 +351,8 @@ jobs:
               # https://learn.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
               # https://learn.microsoft.com/visualstudio/msbuild/common-msbuild-project-properties
 
-              # Generate for X64 architecture
-              dotnet clean 'Windows Security Studio.csproj' --configuration Release
-              dotnet build 'Windows Security Studio.csproj' --configuration Release --verbosity minimal /p:Platform=x64 /p:RuntimeIdentifier=win-x64
-
-              if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed building x64 Windows Security Studio project. Exit Code: $LASTEXITCODE") }
-
-              dotnet msbuild 'Windows Security Studio.csproj' /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-x64 /p:AppxPackageDir="MSIXOutputX64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=x64 -v:minimal /p:MsPdbCmfExeFullpath=$mspdbcmfPath -bl:X64MSBuildLog.binlog
+              # Restore, compile, Native AOT publish, and package once.
+              dotnet msbuild 'Windows Security Studio.csproj' /restore /t:Publish /p:Configuration=Release /p:RuntimeIdentifier=win-x64 /p:AppxPackageDir="MSIXOutputX64\" /p:GenerateAppxPackageOnBuild=true /p:Platform=x64 -v:minimal /p:MsPdbCmfExeFullpath=$mspdbcmfPath -bl:X64MSBuildLog.binlog
 
               if ($LASTEXITCODE -ne 0) { throw [System.InvalidOperationException]::New("Failed packaging x64 Windows Security Studio project. Exit Code: $LASTEXITCODE") }
 
@@ -788,8 +715,20 @@ jobs:
           [string]$DraftReleaseId = $env:DRAFT_RELEASE_ID
           [string]$Repo = "${{ github.repository }}"
           [string]$AuthHeader = "token ${{ secrets.GITHUB_TOKEN }}"
+          $ExistingAssets = Invoke-RestMethod -Uri "https://api.github.com/repos/$Repo/releases/$DraftReleaseId/assets" -Headers @{
+              'Authorization' = $AuthHeader
+              'Accept'        = 'application/vnd.github+json'
+          }
           foreach ($Asset in $Assets) {
               if (-Not [string]::IsNullOrEmpty($Asset.Path)) {
+                  $ExistingAsset = $ExistingAssets | Where-Object -FilterScript { $_.name -eq $Asset.Name } | Select-Object -First 1
+                  if ($ExistingAsset) {
+                      Write-Host -Object "Replacing existing draft-release asset $($Asset.Name)..."
+                      $null = Invoke-RestMethod -Uri "https://api.github.com/repos/$Repo/releases/assets/$($ExistingAsset.id)" -Method Delete -Headers @{
+                          'Authorization' = $AuthHeader
+                          'Accept'        = 'application/vnd.github+json'
+                      }
+                  }
                   [string]$UploadUrl = "https://uploads.github.com/repos/$Repo/releases/$DraftReleaseId/assets?name=$($Asset.Name)"
                   Write-Host -Object "Uploading $($Asset.Name) to draft release..."
                   $null = Invoke-RestMethod -Uri $UploadUrl -Method Put -InFile $Asset.Path -Headers @{
