@@ -1,4 +1,4 @@
-name: Dependabot Auto-Merge .NET SDK Updates
+name: Dependabot Auto-Merge
 
 on:
   pull_request_target:
@@ -17,12 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Read Dependabot metadata
-        id: dependabot-metadata
-        uses: dependabot/fetch-metadata@v3.1.0
-
-      - name: Enable auto-merge for .NET SDK updates
-        if: steps.dependabot-metadata.outputs.package-ecosystem == 'dotnet-sdk'
+      - name: Enable auto-merge
         env:
           GH_TOKEN: ${{ github.token }}
           PR_URL: ${{ github.event.pull_request.html_url }}
