@@ -813,7 +813,7 @@ jobs:
         run: ls -R Downloaded-Artifacts
 
       - name: Generating Artifact Attestation
-        uses: actions/attest@v4.2.0
+        uses: actions/attest@v4.2.1
         with:
           subject-path: "Downloaded-Artifacts/*" # Use all the files in the artifact downloads folder
 
@@ -837,7 +837,7 @@ jobs:
         run: ls -R Downloaded-Artifacts
 
       - name: Generating SBOM attestation
-        uses: actions/attest@v4.2.0
+        uses: actions/attest@v4.2.1
         with:
           subject-path: "Downloaded-Artifacts/*" # Use all the files in the artifact downloads folder
           sbom-path: ./Downloaded-Artifacts/manifest.spdx.json
